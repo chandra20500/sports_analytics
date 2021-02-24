@@ -1,0 +1,25 @@
+resources:
+  requests:
+    cpu: 256m
+    memory: 512Mi
+  limits:
+    cpu: 256m
+    memory: 512Mi
+
+
+ingress:
+  annotations:
+    # max uplaod body size
+    nginx.ingress.kubernetes.io/proxy-body-size: 1000m
+
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+
+# Horizontal pod autoscaler
+hpa:
+  # Keeping this disabled as production UI applications should be served via a CDN and not load the backend pod at all
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 40

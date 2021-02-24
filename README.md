@@ -1,4 +1,4 @@
-# ngX Starter Kit
+# Angular Starter Kit
 
 Web project starter kit including modern tools and workflow based on
 [angular-cli](https://github.com/angular/angular-cli), best practices from the community, a scalable base template and
@@ -18,7 +18,7 @@ Generated using [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket)
 
 1. Go to project folder and install dependencies:
  ```bash
- npm install
+ yarn # DO NOT USE npm for install.
  ```
  
 2. Launch development server, and open `localhost:4200` in your browser:
@@ -141,6 +141,3 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [Using a backend proxy for development](docs/backend-proxy.md)
 - [Browser routing](docs/routing.md)
 
-# License
-
-[MIT](https://github.com/ngx-rocket/generator-ngx-rocket/blob/main/LICENSE)

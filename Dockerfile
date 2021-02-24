@@ -10,3 +10,9 @@ RUN yarn build
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist/ /usr/share/nginx/html
+
+### STAGE 3: Add Entrypoint
+WORKDIR /usr/src/app
+COPY .gitlab/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [ "sh", "/entrypoint.sh" ]

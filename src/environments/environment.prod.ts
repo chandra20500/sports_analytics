@@ -9,7 +9,10 @@ import { env } from './.env';
 export const environment = {
   production: true,
   version: env.npm_package_version,
-  serverUrl: 'https://api.chucknorris.io',
+
+  // Check .gitlab/entrypoint.sh file in your project to find how this URL is replaced in Kubernetes depeloyments
+  serverUrl: 'BACKEND_URL_FOR_BUILD',
+
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
 };
