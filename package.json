@@ -4,7 +4,7 @@
   "private": true,
     "scripts": {
     "ng": "ng",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw ('YOU MUST USE yarn TO DO EVERYTHING INSTEAD OF npm. Check README')\"",
+    "preinstall-disabled": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw ('YOU MUST USE yarn TO DO EVERYTHING INSTEAD OF npm. Check README')\"",
     "build": "npm run write:env -s && ng build --prod",
     "start": "npm run write:env -s && ng serve --proxy-config proxy.conf.js",
     "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
