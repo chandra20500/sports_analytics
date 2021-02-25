@@ -1,9 +1,5 @@
 include:
-  - template: Auto-DevOps.gitlab-ci.yml
+  - project: 'devops/ci-templates'
+    ref: master
+    file: '/ui/default.yml'
 
-variables:
-  STAGING_ENABLED: "1"
-  INCREMENTAL_ROLLOUT_MODE: manual
-
-test:
-  image: registry.gitlab.mtxb2b.com/commons/docker-images/herokuish-buildpack/master:latest
