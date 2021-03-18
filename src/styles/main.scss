@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@import 'base/font';
+@import 'base/typography';
+@import 'themes/theme';
+
+// Import all the components scss files
+@import 'components/button';
+@import 'components/table';
+
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/common';
+
+@import 'layout/layout-utils';
+
+@include mat-core($app-typography);
+@include angular-material-theme($app-theme);
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: $font-family;
+}

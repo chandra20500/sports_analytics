@@ -1,0 +1,14 @@
+@import 'utils/variables';
+
+/**
+  Configure Button component
+*/
+
+@mixin app-button-styles {
+  .mat-flat-button,
+  .mat-raised-button,
+  .mat-fab,
+  .mat-mini-fab {
+    color: $basic-color; // default style when background is white
+  }
+}

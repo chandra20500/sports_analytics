@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-
-import { SharedModule } from '@shared';
+import { SharedModule } from '@app/shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { I18nModule } from '@app/shared/i18n/i18n.module';
+
+import * as fromContainers from './containers';
+import * as fromComponents from './components';
+import * as fromServices from './services';
+import * as fromGuards from './guards';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, SharedModule, HomeRoutingModule],
-  declarations: [HomeComponent],
+  declarations: [...fromContainers.containers, fromComponents.components],
+  imports: [SharedModule, HomeRoutingModule, I18nModule],
+  providers: [...fromServices.services, ...fromGuards.guards],
 })
 export class HomeModule {}

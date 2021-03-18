@@ -9,7 +9,7 @@ resources:
 
 ingress:
   tls:
-    useDefaultSecret: true
+    useDefaultSecret: false
   annotations:
     # max uplaod body size
     nginx.ingress.kubernetes.io/proxy-body-size: 1000m

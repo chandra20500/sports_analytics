@@ -1,0 +1,6 @@
+*.yaml
+*.json
+*.js
+*.md
+
+coverage/*

@@ -1,0 +1,254 @@
+@import 'utils/mixins';
+
+:root {
+  --space-xs: 2px;
+  --space-s: 4px;
+  --space-m: 8px;
+  --space-l: 16px;
+  --space-xl: 32px;
+  --space-xll: 64px;
+
+  @include media-query(md) {
+    --space-xs: 4px;
+    --space-s: 8px;
+    --space-m: 16px;
+    --space-l: 32px;
+    --space-xl: 64px;
+    --space-xll: 124px;
+  }
+}
+
+$space-sizes: (
+  xs: var(--space-xs),
+  s: var(--space-s),
+  m: var(--space-m),
+  l: var(--space-l),
+  xl: var(--space-xl),
+  xxl: var(--space-xxl),
+);
+
+.padding-xs {
+  @include padding(map_get($space-sizes, 'xs'));
+}
+
+.padding-s {
+  @include padding(map_get($space-sizes, 's'));
+}
+
+.padding-m {
+  @include padding(map_get($space-sizes, 'm'));
+}
+
+.padding-l {
+  @include padding(map_get($space-sizes, 'l'));
+}
+
+.padding-xl {
+  @include padding(map_get($space-sizes, 'xl'));
+}
+
+.padding-bottom-xs {
+  @include padding-bottom(map_get($space-sizes, 'xs'));
+}
+
+.padding-bottom-s {
+  @include padding-bottom(map_get($space-sizes, 's'));
+}
+
+.padding-bottom-m {
+  @include padding-bottom(map_get($space-sizes, 'm'));
+}
+
+.padding-bottom-l {
+  @include padding-bottom(map_get($space-sizes, 'l'));
+}
+
+.padding-bottom-xl {
+  @include padding-bottom(map_get($space-sizes, 'xl'));
+}
+
+.padding-top-xs {
+  @include padding-top(map_get($space-sizes, 'xs'));
+}
+
+.padding-top-s {
+  @include padding-top(map_get($space-sizes, 's'));
+}
+
+.padding-top-m {
+  @include padding-top(map_get($space-sizes, 'm'));
+}
+
+.padding-top-l {
+  @include padding-top(map_get($space-sizes, 'l'));
+}
+
+.padding-top-xl {
+  @include padding-top(map_get($space-sizes, 'xl'));
+}
+
+.padding-right-xs {
+  @include padding-right(map_get($space-sizes, 'xs'));
+}
+
+.padding-right-s {
+  @include padding-right(map_get($space-sizes, 's'));
+}
+
+.padding-right-m {
+  @include padding-right(map_get($space-sizes, 'm'));
+}
+
+.padding-right-l {
+  @include padding-right(map_get($space-sizes, 'l'));
+}
+
+.padding-right-xl {
+  @include padding-right(map_get($space-sizes, 'xl'));
+}
+
+.padding-left-xs {
+  @include padding-left(map_get($space-sizes, 'xs'));
+}
+
+.padding-left-s {
+  @include padding-left(map_get($space-sizes, 's'));
+}
+
+.padding-left-m {
+  @include padding-left(map_get($space-sizes, 'm'));
+}
+
+.padding-left-l {
+  @include padding-left(map_get($space-sizes, 'l'));
+}
+
+.padding-left-xl {
+  @include padding-left(map_get($space-sizes, 'xl'));
+}
+
+.padding-horizontal-top-xl {
+  @include padding-left(map_get($space-sizes, 'xl'));
+  @include padding-right(map_get($space-sizes, 'xl'));
+  @include padding-top(map_get($space-sizes, 'xl'));
+}
+
+.padding-horizontal-top-l {
+  @include padding-left(map_get($space-sizes, 'l'));
+  @include padding-right(map_get($space-sizes, 'l'));
+  @include padding-top(map_get($space-sizes, 'l'));
+}
+
+.padding-horizontal-top-m {
+  @include padding-left(map_get($space-sizes, 'm'));
+  @include padding-right(map_get($space-sizes, 'm'));
+  @include padding-top(map_get($space-sizes, 'm'));
+}
+
+.margin-xs {
+  @include margin(map_get($space-sizes, 'xs'));
+}
+
+.margin-s {
+  @include margin(map_get($space-sizes, 's'));
+}
+
+.margin-m {
+  @include margin(map_get($space-sizes, 'm'));
+}
+
+.margin-l {
+  @include margin(map_get($space-sizes, 'l'));
+}
+
+.margin-xl {
+  @include margin(map_get($space-sizes, 'xl'));
+}
+
+.margin-bottom-xs {
+  @include margin-bottom(map_get($space-sizes, 'xs'));
+}
+
+.margin-bottom-s {
+  @include margin-bottom(map_get($space-sizes, 's'));
+}
+
+.margin-bottom-m {
+  @include margin-bottom(map_get($space-sizes, 'm'));
+}
+
+.margin-bottom-l {
+  @include margin-bottom(map_get($space-sizes, 'l'));
+}
+
+.margin-bottom-xl {
+  @include margin-bottom(map_get($space-sizes, 'xl'));
+}
+
+.margin-bottom-xxl {
+  @include margin-bottom(map_get($space-sizes, 'xxl'));
+}
+
+.margin-bottom-xxl {
+  @include margin-bottom(map_get($space-sizes, 'xxl'));
+}
+
+.margin-top-xs {
+  @include margin-top(map_get($space-sizes, 'xs'));
+}
+
+.margin-top-s {
+  @include margin-top(map_get($space-sizes, 's'));
+}
+
+.margin-top-m {
+  @include margin-top(map_get($space-sizes, 'm'));
+}
+
+.margin-top-l {
+  @include margin-top(map_get($space-sizes, 'l'));
+}
+
+.margin-top-xl {
+  @include margin-top(map_get($space-sizes, 'xl'));
+}
+
+.margin-left-xs {
+  @include margin-left(map_get($space-sizes, 'xs'));
+}
+
+.margin-left-s {
+  @include margin-left(map_get($space-sizes, 's'));
+}
+
+.margin-left-m {
+  @include margin-left(map_get($space-sizes, 'm'));
+}
+
+.margin-left-l {
+  @include margin-left(map_get($space-sizes, 'l'));
+}
+
+.margin-left-xl {
+  @include margin-left(map_get($space-sizes, 'xl'));
+}
+
+.margin-right-xs {
+  @include margin-right(map_get($space-sizes, 'xs'));
+}
+
+.margin-right-s {
+  @include margin-right(map_get($space-sizes, 's'));
+}
+
+.margin-right-m {
+  @include margin-right(map_get($space-sizes, 'm'));
+}
+
+.margin-right-l {
+  @include margin-right(map_get($space-sizes, 'l'));
+}
+
+.margin-right-xl {
+  @include margin-right(map_get($space-sizes, 'xl'));
+}

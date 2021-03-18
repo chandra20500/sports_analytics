@@ -1,0 +1,72 @@
+@import './variables';
+
+@mixin icon-size($size) {
+  font-size: $size;
+  line-height: $size !important;
+  width: $size !important;
+  height: $size !important;
+}
+
+@mixin button-size($size) {
+  line-height: $size;
+  width: $size;
+  height: $size;
+}
+
+@mixin media-query($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media only screen and (min-width: $breakpoint-value) {
+      @content;
+    }
+
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin padding($size) {
+  padding: $size;
+}
+
+@mixin padding-bottom($size) {
+  padding-bottom: $size;
+}
+
+@mixin padding-top($size) {
+  padding-top: $size;
+}
+
+@mixin padding-left($size) {
+  padding-left: $size;
+}
+
+@mixin padding-right($size) {
+  padding-right: $size;
+}
+
+@mixin margin($size) {
+  margin: $size;
+}
+
+@mixin margin-bottom($size) {
+  margin-bottom: $size;
+}
+
+@mixin margin-top($size) {
+  margin-top: $size;
+}
+
+@mixin margin-left($size) {
+  margin-left: $size;
+}
+
+@mixin margin-right($size) {
+  margin-right: $size;
+}

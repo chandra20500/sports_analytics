@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+@import 'utils/variables';
+
+/**
+
+ Typography from Material Specs https://material.io/design/typography/the-type-system.html#applying-the-type-scale
+
+  H1 - display-4
+  H2 - display-3
+  H3 - display-2
+  H4 - display 1
+  H5 - headline
+  H6 - title
+  subtitle 1 - subheading-1
+  subtitle 2 - subheading-2
+
+ **/
+
+$app-typography: mat-typography-config(
+  $font-family: $font-family,
+  $display-4: mat-typography-level(96px, 96px, 300, $font-family, -1.5px),
+  $display-3: mat-typography-level(60px, 60px, 300, $font-family, -0.5px),
+  $display-2: mat-typography-level(48px, 48px, 400, $font-family),
+  $display-1: mat-typography-level(32px, 32px, 600, $font-family, 0.25px),
+  $headline: mat-typography-level(30px, 30px, 400, $font-family, 0px),
+  $title: mat-typography-level(20px, 27px, 500, $font-family, 0.15px),
+  $subheading-1: mat-typography-level(16px, 24px, 400, $font-family, 0.15px),
+  $subheading-2: mat-typography-level(18px, 16px, 600, $font-family, 0.1px),
+  $body-1: mat-typography-level(16px, 20px, 400, $font-family, 0),
+  $body-2: mat-typography-level(16px, 20px, 600, $font-family),
+  $button: mat-typography-level(14px, 16px, 600, $font-family, 1.14px),
+  $caption: mat-typography-level(12px, 18px, 400, $font-family, 0.2px),
+);

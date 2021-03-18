@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -9,9 +10,9 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "importHelpers": true,
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
@@ -20,19 +21,21 @@
       "es2018",
       "dom"
     ],
-    "baseUrl": "./",
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@core": ["src/app/@core"],
-      "@core/*": ["src/app/@core/*"],
-      "@shared": ["src/app/@shared"],
-      "@shared/*": ["src/app/@shared/*"],
-      "@env/*": ["src/environments/*"]
+      "@app/core/*": ["src/app/core/*"],
+      "@app/shared/*": ["src/app/shared/*"],
+      "@app/home/*": ["src/app/home/*"],
+      "@app/auth/*": ["src/app/auth/*"],
+      "@app/about/*": ["src/app/about/*"],
+      "@app/shared/i18n/*": ["src/app/shared/modules/i18n/*"],
+      "@app/env/*": ["src/environments/*"]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "preserveWhitespaces": true
-  }
+    "strictInjectionParameters": true
+  },
+  "exclude": [
+    "./src/environments/.env.ts"
+  ]
 }

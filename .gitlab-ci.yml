@@ -2,4 +2,3 @@ include:
   - project: 'devops/ci-templates'
     ref: master
     file: '/ui/default.yml'
-

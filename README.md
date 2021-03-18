@@ -6,6 +6,12 @@ a good learning base.
 
 Generated using [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket).
 
+# Before you start
+
+Before you start coding please take a moment and checkout our rules of writing Angular code by reading
+the [Code Guidelines](docs/guidelines.md). It's very important to understand the Guidelines, because
+every Pull Request should match our coding style guide.
+
 ### Benefits
 
 - Quickstart a project in seconds and focus on features, not on frameworks or tools
@@ -34,18 +40,26 @@ docs/                        project docs and coding guides
 e2e/                         end-to-end tests
 src/                         project source code
 |- app/                      app components
-|  |- @core/                 core module (singleton services and single-use components)
-|  |- @shared/               shared module  (common components, directives and pipes)
+|  |- core/                  core module (singleton services and single-use components)
+|  |- shared/                shared module (common components, directives and pipes)
+|  |- auth/                  auth module (components and services for authentication)
+|  |- home/                  home module (the module after the user is authenticated)
 |  |- app.component.*        app root component (shell)
 |  |- app.module.ts          app root module definition
 |  |- app-routing.module.ts  app routes
 |  +- ...                    additional modules and components
 |- assets/                   app assets (images, fonts, sounds...)
 |- environments/             values for various build environments
-|- theme/                    app global scss variables and theme
+|- styles/                   SCSS Files 
+|  |- base/
+|  |- components/
+|  |- layout/
+|  |- themes/
+|  |- utils/
+|  |- main.scss              global style entry point
+
 |- translations/             translations files
 |- index.html                html entry point
-|- main.scss                 global style entry point
 |- main.ts                   app entry point
 |- polyfills.ts              polyfills needed by Angular
 +- test.ts                   unit tests entry point
@@ -117,10 +131,8 @@ Development, build and quality processes are based on [angular-cli](https://gith
 #### Libraries
 
 - [Angular](https://angular.io)
-- [Bootstrap 4](https://getbootstrap.com)
-- [Font Awesome](http://fontawesome.io)
+- [Material](https://material.angular.io/)
 - [RxJS](http://reactivex.io/rxjs)
-- [ng-bootstrap](https://ng-bootstrap.github.io)
 - [ngx-translate](https://github.com/ngx-translate/core)
 - [Lodash](https://lodash.com)
 
@@ -134,7 +146,7 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [End-to-end tests](docs/coding-guides/e2e-tests.md)
 
 #### Other documentation
-
+- [Code Guidelines](docs/guidelines.md)
 - [I18n guide](docs/i18n.md)
 - [Working behind a corporate proxy](docs/corporate-proxy.md)
 - [Updating dependencies and tools](docs/updating.md)

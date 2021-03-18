@@ -1,0 +1,32 @@
+@import 'themes/theme';
+
+$font-family: 'Open Sans', sans-serif;
+
+$x_small: 4px;
+$small: 8px;
+$medium: 16px;
+$large: 32px;
+
+$breakpoints: (
+  xs: 0px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$basic: (
+  200: #f7f9fc,
+  300: #edf1f7,
+  400: #e4e9f2,
+  500: #c5cee0,
+  600: #8f9bb3,
+  700: #2e3a59,
+  800: #222b45,
+  900: #192038,
+);
+
+$primary-color: map_get($app-primary, 500);
+$accent-color: map_get($app-accent, 500);
+$warn-color: map_get($app-warn, 500);
+$basic-color: map_get($basic, 500);
