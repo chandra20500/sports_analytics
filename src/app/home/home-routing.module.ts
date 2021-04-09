@@ -5,7 +5,7 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: fromContainers.HomeComponent,
     children: [
       /*{
@@ -13,12 +13,19 @@ const routes: Routes = [
         loadChildren: () => import('../about/about.module').then((m) => m.AboutModule),
       },*/
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'about',
+        path: 'roaster',
+        component: fromContainers.RoasterComponent,
+      },
+      {
+        path: 'playerdetails',
+        component: fromContainers.PlayerDetailsComponent,
       },
     ],
   },
+  // {
+  //   path: 'roaster',
+  //   component: fromContainers.RoasterComponent,
+  // },
   {
     path: '',
     redirectTo: 'home',

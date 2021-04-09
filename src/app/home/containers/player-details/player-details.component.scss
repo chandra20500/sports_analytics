@@ -1,0 +1,165 @@
+.container-p {
+  margin: 40px;
+  margin-top: 70px;
+  .bread-path {
+    color: #0053a1;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  .name_link {
+    text-align: left !important;
+    color: #0042b1;
+  }
+
+  .row {
+    margin: 0 !important;
+  }
+  .arrow-icon {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .card-container {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    // padding: 10px;
+    min-height: 300px;
+  }
+
+  .user-image {
+    width: 99px;
+    height: 99px;
+  }
+
+  .hline {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 0px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 20px;
+  }
+
+  .playername {
+    font-family: 'Montserrat';
+    margin-left: auto;
+    margin-right: 90px;
+    padding-top: 15px;
+    .first-name {
+      color: #a9a9a9;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .last-name {
+      padding-top: 10px;
+      color: #1b1b1b;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  .headkey {
+    padding-bottom: 10px;
+    width: 120px;
+    font-family: 'Montserrat';
+    color: #676767;
+    font-size: 12px;
+    margin-left: 30px;
+  }
+
+  .headvalue {
+    font-family: 'Montserrat';
+    color: #242424;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .season-performace {
+    padding-left: 10px;
+    background: #fdfdfd 0% 0% no-repeat padding-box;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    min-height: 200px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  .recent-performace {
+    background: #fafafa 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    min-height: 200px;
+    padding-left: 10px;
+    .heading {
+      font-size: 14px;
+      font-family: 'Montserrat';
+      font-weight: 500;
+      padding-top: 10px;
+      color: #242424;
+    }
+  }
+
+  .tableclass {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .table-season {
+    background: #fdfdfd 0% 0% no-repeat padding-box;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+  }
+
+  .table-header {
+    background: #eceef2 0% 0% no-repeat padding-box;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .table-head {
+    color: #393939;
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .tablecontent {
+    color: #393939;
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+    padding: 0px;
+  }
+
+  .mat-row:nth-child(odd) {
+    background: #fcfcfc 0% 0% no-repeat padding-box;
+  }
+
+  .mat-row:nth-child(even) {
+    background: #eceef2 0% 0% no-repeat padding-box;
+  }
+
+  .graph-container {
+    background: #f7f7f7 0% 0% no-repeat padding-box;
+    border-radius: 8px 6px 2px 2px;
+    min-height: 200px;
+    margin-bottom: 15px;
+    .heading {
+      font-size: 13px;
+      font-family: 'Montserrat';
+      font-weight: 600;
+      padding-top: 10px;
+      padding-left: 20px;
+    }
+
+    .graph {
+      margin-left: 20px;
+      width: 80%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+}

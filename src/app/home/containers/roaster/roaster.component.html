@@ -1,0 +1,248 @@
+<!-- <div class="container-p">
+    <div class="bread-path">
+        Roaster Builder
+    </div>
+
+    <div class="card-container">
+        <div class="card active">
+            <div class="head-text">
+                Manager Roster
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="head-text">
+                Free Agents
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="head-text">
+                Prospects
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="head-text">
+                Comparison
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <input mat-input type="text" class="search" placeholder="Search by Player Name">
+        <div class="search-icon-bar">
+            <img class="search-icon" src="assets/images/header/search.svg">
+        </div>
+    </div>
+
+    <table mat-table class="tableclass" [dataSource]="dataSource"  matSort>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Name</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="team">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Team</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Gender</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="dob">
+            <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="height">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Height</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Weight</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="bmi">
+            <th mat-header-cell *matHeaderCellDef class="table-head">BMI</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="phv">
+            <th mat-header-cell *matHeaderCellDef class="table-head">PHV</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="time_10">
+            <th mat-header-cell *matHeaderCellDef class="table-head">10 Time</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="time_20">
+            <th mat-header-cell *matHeaderCellDef class="table-head">20 Time</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="vertical_jump">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Vertical Jump</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="triple_jump">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Triple Jump</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="dribbling">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Dribbling</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="passing">
+            <th mat-header-cell *matHeaderCellDef class="table-head">Passing</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="l_drill_left">
+            <th mat-header-cell *matHeaderCellDef class="table-head">L Drill Left</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="l_drill_right">
+            <th mat-header-cell *matHeaderCellDef class="table-head">L Drill Right</th>
+            <td mat-cell class="tablecontent" *matCellDef="let element">
+                1
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+
+</div> -->
+
+<div class="container-p row">
+  <div class="col-md-8">
+    <div class="bread-path">Roaster Builder</div>
+
+    <div class="card-container">
+      <div class="card active">
+        <div class="head-text">Manager Roster</div>
+      </div>
+
+      <div class="card">
+        <div class="head-text">Free Agents</div>
+      </div>
+
+      <div class="card">
+        <div class="head-text">Prospects</div>
+      </div>
+
+      <div class="card">
+        <div class="head-text">Comparison</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <input mat-input type="text" class="search" placeholder="Search by Player Name" />
+      <div class="search-icon-bar">
+        <img class="search-icon" src="assets/images/header/search.svg" />
+      </div>
+      <div class="filter">
+        <span class="material-icons">filter_list</span>
+        Filter
+      </div>
+    </div>
+
+    <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Name</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          <mat-checkbox style="float: left"></mat-checkbox>
+          <a href="/playerdetails" class="name_link">{{ element.name }}</a>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          {{ element.age }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Gender</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          {{ element.gender }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          {{ element.dob }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="height">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Height</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          {{ element.height }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Weight</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          {{ element.weight }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Position</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          {{ element.position }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="workload">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          <span class="material-icons" style="float: right">more_vert</span>
+          {{ element.workload }}
+        </td>
+      </ng-container>
+      <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <div class="col-md-4">
+    <mat-tab-group>
+      <mat-tab label="Performace Analyser">
+        <div class="performace-analyser">
+          <div class="heading">Team workload</div>
+          <img class="graph" src="assets/images/header/graph.png" />
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

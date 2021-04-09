@@ -1,0 +1,258 @@
+<div class="container-p">
+  <div class="bread-path">
+    <a href="roaster" class="name_link">Roaster Builder</a>
+    <span class="material-icons arrow-icon">arrow_forward</span>
+    Player Details
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card-container">
+        <div class="row">
+          <img class="user-image" src="assets/images/header/profile.png" />
+          <div class="playername">
+            <div class="first-name">Jonathan</div>
+            <div class="last-name">Kaminga</div>
+          </div>
+        </div>
+        <div class="hline"></div>
+        <div class="row">
+          <div class="headkey">Experience</div>
+          <div class="headvalue">3 years</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Position</div>
+          <div class="headvalue">G/F</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Height</div>
+          <div class="headvalue">6`8</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Weight</div>
+          <div class="headvalue">205lbs</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Birth Date</div>
+          <div class="headvalue">10/06/2002</div>
+        </div>
+        <div class="row">
+          <div class="headkey">College</div>
+          <div class="headvalue">G League</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card-container">
+        <mat-tab-group>
+          <mat-tab label="Overview">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="season-performace">
+                  <mat-tab-group>
+                    <mat-tab label="Per game">
+                      <table mat-table class="tableclass m-l-md" [dataSource]="seasonData">
+                        <ng-container matColumnDef="season">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.season }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="age">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.age }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="gp">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">GP</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.gp }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="mp">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">MP</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.mp }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="fg">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">FG%</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.fg }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="pt3">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">3pt%</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.pt3 }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="ft">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">FT%</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.ft }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="reb">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">REB</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.reb }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="ast">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">AST</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.ast }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="stl">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">STL</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.stl }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="blk">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">BLK</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.blk }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="tov">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">TOV</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.tov }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="pf">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">PF</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.pf }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="pts">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">Pts</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.pts }}
+                          </td>
+                        </ng-container>
+                        <tr mat-header-row class="table-header" *matHeaderRowDef="seasonColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
+                      </table>
+                    </mat-tab>
+                    <mat-tab label="Game log"> </mat-tab>
+                    <mat-tab label="Similarity score"> </mat-tab>
+                  </mat-tab-group>
+                </div>
+                <div class="recent-performace">
+                  <div class="heading">Recent Performances</div>
+                  <table mat-table class="tableclass table-season" [dataSource]="recentData" matSort>
+                    <ng-container matColumnDef="date">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">Date</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.date }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="opp">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">Opp</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.opp }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="gr">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">GR</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.gr }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="mp">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">MP</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.mp }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="fg">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">FG%</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.fg }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pt3">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">3pt%</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.pt3 }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ft">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">FT%</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.ft }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="reb">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">REB</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.reb }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ast">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">AST</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.ast }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="stl">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">STL</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.stl }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="blk">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">BLK</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.blk }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tov">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">TOV</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.tov }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pf">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">PF</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.pf }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pts">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">Pts</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.pts }}
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row class="table-header" *matHeaderRowDef="recentColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: recentColumns"></tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="graph-container">
+                  <div class="heading">Winning Index measures player / role fit</div>
+                  <img class="graph" src="assets/images/header/graph.png" />
+                </div>
+                <div class="graph-container">
+                  <div class="heading">WAR Index</div>
+                  <img class="graph" src="assets/images/header/graph.png" />
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Practice"> </mat-tab>
+          <mat-tab label="Tab 3"> </mat-tab>
+          <mat-tab label="Tab 4"> </mat-tab>
+          <mat-tab label="Tab 5"> </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
