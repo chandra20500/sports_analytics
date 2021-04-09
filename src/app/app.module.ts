@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from '@app/core/core.module';
 
+import { MaterialModule } from './material.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +21,7 @@ import { CoreModule } from '@app/core/core.module';
     TranslateModule.forRoot(),
     HammerModule,
     CoreModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

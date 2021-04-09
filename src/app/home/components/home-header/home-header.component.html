@@ -1,0 +1,33 @@
+<mat-toolbar  class="app-toolbar">
+    <div class="toolbar">
+        <div class="title">
+            <div class="heading">
+                Application Logo
+            </div>
+            <input mat-input type="text" class="search" placeholder="Search">
+        </div>
+
+        <div class="toolbar-action-container">
+            <img class="actions" src="assets/images/settings.svg">
+            <div class="line"></div>
+            <img class="actions" src="assets/images/notification.svg">
+            <div class="profile-name">
+                Hi Donnie Nelson,
+            </div>
+            <img class="app-my-user-img" src="assets/images/headshot.png">
+            <img class="dropdown" [matMenuTriggerFor]="menu" src="assets/images/dropdown_down.svg">
+            
+            <!-- </button> -->
+            <mat-menu #menu="matMenu" hasBackdrop="true">
+                <button mat-menu-item>
+                <mat-icon>person_pin</mat-icon>
+                <span>Profile</span>
+                </button>
+                <button mat-menu-item>
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-toolbar>
