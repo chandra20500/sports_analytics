@@ -1,53 +1,62 @@
-<mat-toolbar  class="app-toolbar">
-    <div class="toolbar">
-        <div class="title">
-            <div class="heading">
-                Application Logo
-            </div>
-            <img class="sidenav-dropdown"  *ngIf="!sidenavOpen" (click)="toogleSidenav()" src="assets/images/header/expand_more.svg">
-            <img class="sidenav-dropdown"  *ngIf="sidenavOpen" (click)="toogleSidenav()" src="assets/images/header/expand_less.svg">
-            <input mat-input type="text" class="search" placeholder="Search">
-            <img class="search-icon" src="assets/images/header/search.svg">
-        </div>
-
-        <div class="toolbar-action-container">
-            <img class="actions" src="assets/images/header/settings.svg">
-            <div class="line"></div>
-            <img class="actions" src="assets/images/header/notification.svg">
-            <div class="profile-name">
-                Hi Donnie Nelson,
-            </div>
-            <img class="user-image" src="assets/images/header/profile.png">
-            <img class="dropdown" [matMenuTriggerFor]="menu" src="assets/images/header/dropdown.svg">
-            
-            <!-- </button> -->
-            <mat-menu #menu="matMenu" hasBackdrop="true">
-                <button mat-menu-item>
-                <mat-icon>person_pin</mat-icon>
-                <span>Profile</span>
-                </button>
-                <button mat-menu-item>
-                <mat-icon>logout</mat-icon>
-                <span>Logout</span>
-                </button>
-            </mat-menu>
-        </div>
+<mat-toolbar class="app-toolbar">
+  <div class="toolbar">
+    <div class="title">
+      <div class="heading">Application Logo</div>
+      <img
+        class="sidenav-dropdown"
+        *ngIf="!sidenavOpen"
+        (click)="toogleSidenav()"
+        src="assets/images/header/expand_more.svg"
+      />
+      <img
+        class="sidenav-dropdown"
+        *ngIf="sidenavOpen"
+        (click)="toogleSidenav()"
+        src="assets/images/header/expand_less.svg"
+      />
+      <input mat-input type="text" class="search" placeholder="Search" />
+      <img class="search-icon" src="assets/images/header/search.svg" />
     </div>
+
+    <div class="toolbar-action-container">
+      <img class="actions" src="assets/images/header/settings.svg" />
+      <div class="line"></div>
+      <img class="actions" src="assets/images/header/notification.svg" />
+      <div class="profile-name">Hi Donnie Nelson,</div>
+      <img class="user-image" src="assets/images/header/profile.png" />
+      <img class="dropdown" [matMenuTriggerFor]="menu" src="assets/images/header/dropdown.svg" />
+
+      <!-- </button> -->
+      <mat-menu #menu="matMenu" hasBackdrop="true">
+        <button mat-menu-item>
+          <mat-icon>person_pin</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
 </mat-toolbar>
 
 <div class="sidenav-bar" *ngIf="sidenavOpen">
-    <div *ngFor="let sidenavItem of sidenavItems" >
-        <div [ngClass]="[sidenavItem.name=='Roster Builder' ? 'activeitem': 'item' ]" (click)="changePage()" >
-            {{sidenavItem.name}}
-            <img *ngIf="sidenavItem.hasChildren" class="sidenav-child-dropdown" src="assets/images/header/expand_more.svg">
-        </div>
-        
-        <div *ngIf="sidenavItem.hasChildren">
-            <div *ngFor="let child of sidenavItem.children" [ngClass]="[sidenavItem.name=='Roster Builder' ? 'activeitemchild': 'itemchild' ]">
-                {{child.name}}
-            </div>
-        </div>
+  <div *ngFor="let sidenavItem of sidenavItems">
+    <div [ngClass]="[sidenavItem.name == 'Roster Builder' ? 'activeitem' : 'item']" (click)="changePage()">
+      {{ sidenavItem.name }}
+      <img *ngIf="sidenavItem.hasChildren" class="sidenav-child-dropdown" src="assets/images/header/expand_more.svg" />
     </div>
 
-    <img class="powered-by" src="assets/images/header/mavericklogo.svg">
+    <div *ngIf="sidenavItem.hasChildren">
+      <div
+        *ngFor="let child of sidenavItem.children"
+        [ngClass]="[sidenavItem.name == 'Roster Builder' ? 'activeitemchild' : 'itemchild']"
+      >
+        {{ child.name }}
+      </div>
+    </div>
+  </div>
+
+  <img class="powered-by" src="assets/images/header/mavericklogo.svg" />
 </div>

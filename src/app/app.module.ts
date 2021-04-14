@@ -21,7 +21,7 @@ import { MaterialModule } from './material.module';
     TranslateModule.forRoot(),
     HammerModule,
     CoreModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,7 +8,7 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'app-home',
   template: `
     <app-home-shell (logout)="onLogout()"></app-home-shell>
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['./home.component.scss'],
 })

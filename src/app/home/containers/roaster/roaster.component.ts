@@ -33,8 +33,10 @@ export class RoasterComponent implements OnInit {
   ];
 
   dataSource = new MatTableDataSource(this.elements);
-  // displayedColumns: string[] = ['name', 'team', 'age', 'gender', 'dob','height','weight', 'bmi', 'phv', 'time_10', 'time_20', 'vertical_jump',
-  //   'triple_jump', 'dribbling', 'passing', 'l_drill_left', 'l_drill_right'];
+  // displayedColumns: string[] = ['name', 'team', 'age', 'gender',
+  // 'dob','height','weight',
+  // 'bmi', 'phv', 'time_10', 'time_20', 'vertical_jump',
+  //  'triple_jump', 'dribbling', 'passing', 'l_drill_left', 'l_drill_right'];
 
   displayedColumns: string[] = ['name', 'age', 'gender', 'dob', 'height', 'weight', 'position', 'workload'];
   constructor() {}

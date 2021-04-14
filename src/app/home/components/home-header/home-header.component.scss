@@ -1,10 +1,9 @@
-
 .app-toolbar {
   display: flex;
   flex-direction: column;
   height: auto;
   padding: 0px 0px;
-  background-color: #376DC8;
+  background-color: #376dc8;
 }
 
 .toolbar {
@@ -21,27 +20,27 @@
   width: 100%;
   z-index: 10;
 
-  .heading{
-      color: rgb(255, 255, 255);
-      font-size: 18px;
-      padding-left: 15px;
-      font-family: 'Montserrat';
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+  .heading {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    padding-left: 15px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
-  .sidenav-dropdown{
+  .sidenav-dropdown {
     margin-left: 5px;
     height: 32px;
     cursor: pointer;
   }
 
-  .search{
+  .search {
     margin-left: 30px;
     height: 28px;
     width: 220px;
-    background: #FFFFFF66 0% 0% no-repeat padding-box;
+    background: #ffffff66 0% 0% no-repeat padding-box;
     border: 0.5px solid #ffffff;
     border-radius: 3px;
     padding-left: 10px;
@@ -55,57 +54,56 @@
     color: white;
   }
 
-  .search-icon{
+  .search-icon {
     margin-left: -25px;
   }
 
-
   .toggle-container {
-      flex: 0 0 auto;
-      padding-right: 1rem;
+    flex: 0 0 auto;
+    padding-right: 1rem;
   }
 
   .toolbar-action-container {
-      display: flex;
-      align-items: flex-end;
-      margin-right: 20px;
-      .actions {
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
-        cursor: pointer;
-      }
+    display: flex;
+    align-items: flex-end;
+    margin-right: 20px;
+    .actions {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
 
-      .line{
-          margin-right: 10px;
-          width: 0px;
-          height: 24px;
-          border: 1px solid #FFFFFF99;
-          opacity: 0.4;
-      }
+    .line {
+      margin-right: 10px;
+      width: 0px;
+      height: 24px;
+      border: 1px solid #ffffff99;
+      opacity: 0.4;
+    }
 
-      .profile-name{
-          margin-left: 5px;
-          margin-right: 5px;
-          color: white;
-          font-family: 'Montserrat';
-          font-weight: 400;
-          font-size: 16px;
-      } 
+    .profile-name {
+      margin-left: 5px;
+      margin-right: 5px;
+      color: white;
+      font-family: 'Montserrat';
+      font-weight: 400;
+      font-size: 16px;
+    }
 
-      .dropdown{
-        margin-bottom: 5px;
-        cursor: pointer;
-      }
+    .dropdown {
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
 
-      .user-image{
-        width: 32px;
-        height: 32px;
-      }
+    .user-image {
+      width: 32px;
+      height: 32px;
+    }
 
-      mat-menu {
-          margin-top: 0.5rem;
-      }
+    mat-menu {
+      margin-top: 0.5rem;
+    }
   }
 }
 
@@ -121,10 +119,10 @@
   display: flex;
   min-width: 100px;
   .app-my-user-img {
-      width: 46px;
-      height: 46px;
-      margin-top: 0px;
-      margin-right: 5px;
+    width: 46px;
+    height: 46px;
+    margin-top: 0px;
+    margin-right: 5px;
   }
 }
 
@@ -142,69 +140,66 @@
   transition: all 0.25s ease-in;
 }
 
-.sidenav-bar{
+.sidenav-bar {
   position: absolute;
   top: 90px;
   left: 30px;
   height: 400px;
   width: 250px;
-  background: #102D5A;
+  background: #102d5a;
   box-shadow: 0px 10px 20px #00000029;
   border-radius: 6px;
   z-index: 99999;
 
-  .item{
+  .item {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 50px;
     color: white;
-    font-family:'Montserrat';
+    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
   }
 
-  .activeitem{
+  .activeitem {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 50px;
     color: white;
-    font-family:'Montserrat';
+    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
-    background-color: #87A8DE;
+    background-color: #87a8de;
   }
 
-  .sidenav-child-dropdown{
+  .sidenav-child-dropdown {
     margin-left: 30px;
   }
 
-  .itemchild{
+  .itemchild {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 70px;
     color: white;
-    font-family:'Montserrat';
+    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
   }
 
-  .activeitemchild{
+  .activeitemchild {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 70px;
     color: white;
-    font-family:'Montserrat';
+    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
-    background-color: #87A8DE;
+    background-color: #87a8de;
   }
 
-  .powered-by{
+  .powered-by {
     position: absolute;
     bottom: 15px;
-    left: 15px
+    left: 15px;
   }
 }
-
-
-

@@ -165,11 +165,9 @@
   }
 }
 
-
-
 ::ng-deep.mat-tab-label.mat-tab-label-active {
   opacity: 1;
-  background-color: #00549A;
+  background-color: #00549a;
 }
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
@@ -178,7 +176,7 @@
   font-size: 16px;
   font-weight: 400;
 }
-  
+
 ::ng-deep .mat-tab-label-content {
   font-family: 'Montserrat';
   font-size: 16px;
@@ -186,5 +184,5 @@
 }
 
 ::ng-deep.mat-ink-bar {
-    display: none !important;
+  display: none !important;
 }
