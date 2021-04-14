@@ -1,6 +1,6 @@
 .container-p {
   margin: 40px;
-  margin-top: 70px;
+  margin-top: 64px;
   .bread-path {
     padding-top: 20px;
     color: #0053a1;
@@ -138,4 +138,11 @@
     text-align: left !important;
     color: #0042b1;
   }
+}
+
+::ng-deep.mat-tab-label.mat-tab-label-active {
+  opacity: 1;
+  background: #376DC8 0% 0% no-repeat padding-box;;
+  color: #ffffff;
+  font-family: 'Montserrat';
 }

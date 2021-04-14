@@ -46,11 +46,11 @@
         <mat-tab-group>
           <mat-tab label="Overview">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-8 p-a-0">
                 <div class="season-performace">
                   <mat-tab-group>
                     <mat-tab label="Per game">
-                      <table mat-table class="tableclass m-l-md" [dataSource]="seasonData">
+                      <table mat-table class="tableclass" [dataSource]="seasonData">
                         <ng-container matColumnDef="season">
                           <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
                           <td mat-cell class="tablecontent" *matCellDef="let element">
@@ -145,7 +145,7 @@
                 </div>
                 <div class="recent-performace">
                   <div class="heading">Recent Performances</div>
-                  <table mat-table class="tableclass table-season" [dataSource]="recentData" matSort>
+                  <table mat-table class="tableclass table-season m-t" [dataSource]="recentData" matSort>
                     <ng-container matColumnDef="date">
                       <th mat-header-cell *matHeaderCellDef class="table-head">Date</th>
                       <td mat-cell class="tablecontent" *matCellDef="let element">
