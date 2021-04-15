@@ -1,205 +1,155 @@
 <div class="container-p">
-    <div class="row">
-        <div class="bread-path">
-            <a (click)= "goToPage('roaster')" class="link">Roaster Builder</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            <a (click)= "goToPage('trade')" class="link">Trade Machine</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            <a (click)= "goToPage('trade/team-selection')" class="link">Select Teams</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            <a (click)= "goToPage('trade/player-selection')" class="link">Select Players</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            Trade Overview
-        </div>
+  <div class="row">
+    <div class="bread-path">
+      <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      <a (click)="goToPage('trade')" class="link">Trade Machine</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      <a (click)="goToPage('trade/team-selection')" class="link">Select Teams</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      <a (click)="goToPage('trade/player-selection')" class="link">Select Players</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      Trade Overview
     </div>
-    
-    <div class="head">
-        Trade Progress
+  </div>
+
+  <div class="head">Trade Progress</div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="cont">
+        <div class="row">
+          <img class="team-image" src="assets/images/header/profile.png" />
+        </div>
+        <div class="team-name">Mavericks</div>
+        <div class="hline"></div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <img class="team-image" src="assets/images/header/profile.png" />
+            </div>
+            <div class="team-name">Jazz</div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <img class="team-image" src="assets/images/header/profile.png" />
+            </div>
+            <div class="team-name">Nuggets</div>
+          </div>
+        </div>
+        <div class="sub-head">Trade conditions</div>
+        <div class="row">
+          <div class="headkey">Experience</div>
+          <div class="headvalue">3 years</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Position</div>
+          <div class="headvalue">G/F</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Height</div>
+          <div class="headvalue">6`8</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Weight</div>
+          <div class="headvalue">205lbs</div>
+        </div>
+        <div class="row">
+          <div class="headkey">Birth Date</div>
+          <div class="headvalue">10/06/2002</div>
+        </div>
+        <div class="row">
+          <div class="headkey">College</div>
+          <div class="headvalue">G League</div>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-2 ">
-            <div class="cont">
-            <div class="row">
-                <img class="team-image" src="assets/images/header/profile.png" />
-            </div>
-            <div class="team-name">
-                Mavericks
-            </div>
-            <div class="hline"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <img class="team-image" src="assets/images/header/profile.png" />
-                    </div>
-                    <div class="team-name">
-                        Jazz
-                    </div>
+    <div class="col-md-7">
+      <mat-tab-group class="pill-tab">
+        <mat-tab class="pill-mat-tab" label="Overview">
+          <div class="cont-back">
+            <div class="head p-l p-t">Players involved in Trade</div>
+            <div class="row m-l">
+              <div class="m-l m-r traded-player">
+                <img class="user-image" src="assets/images/header/profile.png" />
+                <div class="row">Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon></div>
+              </div>
+              <div class="vline"></div>
+              <div class="m-l m-r traded-player">
+                <img class="user-image" src="assets/images/header/profile.png" />
+                <div class="row">
+                  Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon> Player Name
+                  <mat-icon class="m-l m-r info-icon">info</mat-icon>
                 </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <img class="team-image" src="assets/images/header/profile.png" />
-                    </div>
-                    <div class="team-name">
-                        Nuggets
-                    </div>
-                </div>
+              </div>
+              <div class="vline"></div>
+              <div class="m-l m-r traded-player">
+                <img class="user-image" src="assets/images/header/profile.png" />
+                <div class="row">Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon></div>
+              </div>
             </div>
-            <div class="sub-head">
-                Trade conditions
-            </div>
-            <div class="row">
-                <div class="headkey">Experience</div>
-                <div class="headvalue">3 years</div>
-            </div>
-            <div class="row">
-                <div class="headkey">Position</div>
-                <div class="headvalue">G/F</div>
-            </div>
-            <div class="row">
-                <div class="headkey">Height</div>
-                <div class="headvalue">6`8</div>
-            </div>
-            <div class="row">
-                <div class="headkey">Weight</div>
-                <div class="headvalue">205lbs</div>
-            </div>
-            <div class="row">
-                <div class="headkey">Birth Date</div>
-                <div class="headvalue">10/06/2002</div>
-            </div>
-            <div class="row">
-                <div class="headkey">College</div>
-                <div class="headvalue">G League</div>
-            </div>
-            </div>
+          </div>
+        </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Notes"> </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Scouting Reports"> </mat-tab>
+      </mat-tab-group>
+
+      <div class="cont m-b-md">
+        <div class="row">
+          <div class="head p-l">Team Impacts</div>
+          <div class="expand">
+            Expand
+            <mat-icon class="icons"> launch </mat-icon>
+          </div>
         </div>
 
-        <div class="col-md-7">
+        <div class="row">
+          <div class="card">
+            <div class="card-head">Defense Strength</div>
+            <div class="card-value">66%</div>
+          </div>
 
-            <mat-tab-group class="pill-tab">
-                <mat-tab class="pill-mat-tab" label="Overview">
-                    <div class="cont-back">
-                        <div class="head p-l p-t">
-                        Players involved in Trade
-                        </div>
-                        <div class="row m-l">
-                            <div class="m-l m-r traded-player">
-                                <img class="user-image" src="assets/images/header/profile.png" />
-                                <div class="row">
-                                     Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon>
-                                </div>  
-                            </div>
-                            <div class="vline"></div>
-                            <div class="m-l m-r traded-player">
-                                <img class="user-image" src="assets/images/header/profile.png" />
-                                <div class="row">
-                                    Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon>
-                                    Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon>
-                                </div>
-                            </div>
-                            <div class="vline"></div>
-                            <div class="m-l m-r traded-player">
-                                <img class="user-image" src="assets/images/header/profile.png" />
-                                <div class="row">
-                                     Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                </mat-tab>
-                <mat-tab class="pill-mat-tab" label="Notes">
-                    
-                </mat-tab>
-                <mat-tab class="pill-mat-tab" label="Scouting Reports">
-                    
-                </mat-tab>
-            </mat-tab-group>
+          <div class="card">
+            <div class="card-head">Midfield Strength</div>
+            <div class="card-value">66%</div>
+          </div>
 
-            <div class="cont m-b-md">
-                <div class="row">
-                    <div class="head p-l">
-                        Team Impacts
-                    </div>
-                    <div class="expand">
-                        Expand  
-                        <mat-icon class="icons">
-                            launch
-                        </mat-icon>
-                    </div>
-                </div>
+          <div class="card">
+            <div class="card-head">Attack strength</div>
+            <div class="card-value">46%</div>
+          </div>
 
-                <div class="row">
-                    <div class="card">
-                        <div class="card-head">
-                            Defense Strength
-                        </div>
-                        <div class="card-value">
-                            66%
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            Midfield Strength
-                        </div>
-                        <div class="card-value">
-                            66%
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            Attack strength
-                        </div>
-                        <div class="card-value">
-                            46%
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            Winning Ability
-                        </div>
-                        <div class="card-value">
-                            46%
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="cont">
-                <div class="row">
-                    <div class="head p-l">
-                        Projected Growth
-                    </div>
-                    <mat-select class="input-r" value="last_6_season">
-                        <mat-option value="last_6_season">Last 6 Seasons</mat-option>
-                    </mat-select>
-                </div>
-                <img src="assets/images/graphs/g-4.png" width="800px" height="200px" />
-            </div>
+          <div class="card">
+            <div class="card-head">Winning Ability</div>
+            <div class="card-value">46%</div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-md-3">
-            <div class="cont m-b-md">
-                <div class="head p-l">
-                    Salary Impacts
-                </div>
-                <img src="assets/images/graphs/g-5a.png" width="300px" height="150px" />
-                <div class="hline"></div>
-                <img src="assets/images/graphs/g-5.png" width="300px" height="150px" />
-            </div>
-
-            <div class="cont">
-                <div class="head p-l">
-                    Positional Improvements
-                </div>
-                <img class="p-l" src="assets/images/graphs/g-6.png" width="300px" height="150px" />
-            </div>
-            
-
+      <div class="cont">
+        <div class="row">
+          <div class="head p-l">Projected Growth</div>
+          <mat-select class="input-r" value="last_6_season">
+            <mat-option value="last_6_season">Last 6 Seasons</mat-option>
+          </mat-select>
         </div>
+        <img src="assets/images/graphs/g-4.png" width="800px" height="200px" />
+      </div>
     </div>
+
+    <div class="col-md-3">
+      <div class="cont m-b-md">
+        <div class="head p-l">Salary Impacts</div>
+        <img src="assets/images/graphs/g-5a.png" width="300px" height="150px" />
+        <div class="hline"></div>
+        <img src="assets/images/graphs/g-5.png" width="300px" height="150px" />
+      </div>
+
+      <div class="cont">
+        <div class="head p-l">Positional Improvements</div>
+        <img class="p-l" src="assets/images/graphs/g-6.png" width="300px" height="150px" />
+      </div>
+    </div>
+  </div>
 </div>

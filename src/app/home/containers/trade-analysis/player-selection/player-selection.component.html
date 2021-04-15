@@ -1,95 +1,83 @@
 <div class="container-p">
-    <div class="row">
-        <div class="bread-path">
-            <a (click)= "goToPage('roaster')" class="link">Roaster Builder</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            <a (click)= "goToPage('trade')" class="link">Trade Machine</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            <a (click)= "goToPage('trade/team-selection')" class="link">Select Teams</a>
-            <span class="material-icons arrow-icon">arrow_forward</span>
-            Select Players
-            <div class="note">
-                Select Players who want to be the part of the trade
-            </div>
-        </div>
-        <button mat-button class="configure-button" (click)= "openConfigure()">
-            <div class="text">
-              Configure
-            </div>
-        </button>
-        <button mat-button class="launch-button" (click)= "goToPage('trade/trade-overview')">
-            <div class="text">
-              Next
-            </div>
-        </button>
+  <div class="row">
+    <div class="bread-path">
+      <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      <a (click)="goToPage('trade')" class="link">Trade Machine</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      <a (click)="goToPage('trade/team-selection')" class="link">Select Teams</a>
+      <span class="material-icons arrow-icon">arrow_forward</span>
+      Select Players
+      <div class="note">Select Players who want to be the part of the trade</div>
     </div>
+    <button mat-button class="configure-button" (click)="openConfigure()">
+      <div class="text">Configure</div>
+    </button>
+    <button mat-button class="launch-button" (click)="goToPage('trade/trade-overview')">
+      <div class="text">Next</div>
+    </button>
+  </div>
 
-    <div >
-        <div class="cont"  style="display:flex">
-            <div class="mav-team">
-                <div class="team-name">
-                    <div class="name">
-                        Mavericks
-                    </div>
-                </div>
-                <input mat-input class="filter-input" type="text" placeholder="Search Players">
-    
-                <div *ngFor="let player of players" class="player-details">
-                    <div class="row m-a-0 p-l">
-                        <div class="t">
-                            Player Name <br />
-                            Age, Weight <br />
-                            Contract Type
-                        </div>
-
-                        <div class="t">
-                            $5.1M <br />
-                            2 years
-                        </div>
-
-                        <!-- <div class="vline"></div> -->
-
-                        <mat-select class="input-r">
-                            <mat-option>sdasd</mat-option>
-                        </mat-select> 
-                    </div>
-                </div>
-            </div>
-            <div *ngFor="let team of teams" class="team">
-                <div class="team-name">
-                    <div class="name">
-                        Mavericks
-                    </div>
-                </div>
-                <input mat-input class="filter-input" type="text" placeholder="Search Players">
-    
-                <div *ngFor="let player of players" class="player-details">
-                        <div class="row m-a-0 p-l">
-                            <div class="t">
-                                Player Name <br />
-                                Age, Weight <br />
-                                Contract Type
-                            </div>
-
-                            <div class="t">
-                                $5.1M <br />
-                                2 years
-                            </div>
-
-                            <!-- <div class="vline"></div> -->
-
-                            <mat-select class="input-r">
-                                <mat-option>sdasd</mat-option>
-                            </mat-select> 
-                        </div>
-
-                </div>
-            </div>
-            <div class="add-team">
-                <mat-icon class="add-icon">add</mat-icon>
-                Add Team
-            </div> 
+  <div>
+    <div class="cont" style="display: flex">
+      <div class="mav-team">
+        <div class="team-name">
+          <div class="name">Mavericks</div>
         </div>
+        <input mat-input class="filter-input" type="text" placeholder="Search Players" />
+
+        <div *ngFor="let player of players" class="player-details">
+          <div class="row m-a-0 p-l">
+            <div class="t">
+              Player Name <br />
+              Age, Weight <br />
+              Contract Type
+            </div>
+
+            <div class="t">
+              $5.1M <br />
+              2 years
+            </div>
+
+            <!-- <div class="vline"></div> -->
+
+            <mat-select class="input-r">
+              <mat-option>sdasd</mat-option>
+            </mat-select>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let team of teams" class="team">
+        <div class="team-name">
+          <div class="name">Mavericks</div>
+        </div>
+        <input mat-input class="filter-input" type="text" placeholder="Search Players" />
+
+        <div *ngFor="let player of players" class="player-details">
+          <div class="row m-a-0 p-l">
+            <div class="t">
+              Player Name <br />
+              Age, Weight <br />
+              Contract Type
+            </div>
+
+            <div class="t">
+              $5.1M <br />
+              2 years
+            </div>
+
+            <!-- <div class="vline"></div> -->
+
+            <mat-select class="input-r">
+              <mat-option>sdasd</mat-option>
+            </mat-select>
+          </div>
+        </div>
+      </div>
+      <div class="add-team">
+        <mat-icon class="add-icon">add</mat-icon>
+        Add Team
+      </div>
     </div>
-    
+  </div>
 </div>

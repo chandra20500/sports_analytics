@@ -32,7 +32,7 @@ $app-theme: mat-light-theme(
     bottom: 0px;
     width: 16px;
     height: 4px;
-    background: #376DC8 0% 0% no-repeat padding-box;
+    background: #376dc8 0% 0% no-repeat padding-box;
   }
   .mat-tab-label.mat-tab-label-active {
     opacity: 1;
@@ -40,7 +40,7 @@ $app-theme: mat-light-theme(
   }
 
   .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-    color: #376DC8;
+    color: #376dc8;
     font-family: 'Montserrat';
     font-size: 16px;
     font-weight: 400;
@@ -56,5 +56,3 @@ $app-theme: mat-light-theme(
     display: none !important;
   }
 }
-
-

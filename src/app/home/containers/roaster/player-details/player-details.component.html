@@ -1,6 +1,6 @@
 <div class="container-p">
   <div class="bread-path">
-    <a class="link" (click)= "goToPage('roaster')"> Roaster Builder</a>
+    <a class="link" (click)="goToPage('roaster')"> Roaster Builder</a>
     <span class="material-icons arrow-icon">arrow_forward</span>
     Player Details
   </div>
@@ -48,7 +48,7 @@
             <div class="row">
               <div class="col-md-8 p-a-0">
                 <div class="season-performace">
-                  <mat-tab-group >
+                  <mat-tab-group>
                     <mat-tab class="solid-mat-tab" label="Per game">
                       <table mat-table class="tableclass" [dataSource]="seasonData">
                         <ng-container matColumnDef="season">
