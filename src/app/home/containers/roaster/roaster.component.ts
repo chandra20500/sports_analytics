@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-roaster',
   templateUrl: './roaster.component.html',
@@ -17,6 +17,7 @@ export class RoasterComponent implements OnInit {
       dob: '03-10-1990',
       height: '5.7',
       weight: '113',
+      season: '2019-20',
       position: 'LB',
       workload: '80%',
     },
@@ -27,21 +28,32 @@ export class RoasterComponent implements OnInit {
       dob: '12-20-1990',
       height: '6.1',
       weight: '200',
+      season: '2019-20',
       position: 'UB',
       workload: '85%',
     },
   ];
 
   dataSource = new MatTableDataSource(this.elements);
-  // displayedColumns: string[] = ['name', 'team', 'age', 'gender',
-  // 'dob','height','weight',
-  // 'bmi', 'phv', 'time_10', 'time_20', 'vertical_jump',
-  //  'triple_jump', 'dribbling', 'passing', 'l_drill_left', 'l_drill_right'];
-
-  displayedColumns: string[] = ['name', 'age', 'gender', 'dob', 'height', 'weight', 'position', 'workload'];
-  constructor() {}
+  displayedColumns: string[] = [
+    'name',
+    'age',
+    'gender',
+    'dob',
+    'height',
+    'weight',
+    'season',
+    'position',
+    'workload',
+    'action',
+  ];
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.elements);
+  }
+
+  goToPage(url) {
+    this.router.navigateByUrl(url);
   }
 }

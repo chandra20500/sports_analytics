@@ -20,3 +20,41 @@ $app-theme: mat-light-theme(
     ),
   )
 );
+
+.pill-tab {
+  .mat-tab-list .mat-tab-labels .mat-tab-label-active:before {
+    content: '';
+    position: absolute;
+    /* width: 20px; */
+    /* height: 4px; */
+    background-color: blue;
+    border-radius: 4px;
+    bottom: 0px;
+    width: 16px;
+    height: 4px;
+    background: #376DC8 0% 0% no-repeat padding-box;
+  }
+  .mat-tab-label.mat-tab-label-active {
+    opacity: 1;
+    background-color: #ffffff;
+  }
+
+  .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: #376DC8;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .mat-tab-label-content {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .mat-ink-bar {
+    display: none !important;
+  }
+}
+
+

@@ -1,0 +1,65 @@
+.container-p {
+    margin: 30px;
+    margin-top: 64px;
+
+    .launch-button{
+        margin-left: auto;
+        background-color: #376DC8;
+        height: 34px;
+        margin-bottom: 30px;
+        padding: 0px 20px;
+        background: #376DC8 0% 0% no-repeat padding-box;
+        box-shadow: 0px 5px 10px #00000029;
+        border-radius: 4px;
+        margin-top: 20px;
+        .text{
+          color: white;
+          font-weight: 600;
+          font-size: 14px;
+          font-family: 'Montserrat';
+        }
+    }
+
+    .note{
+        text-align: left;
+        font-family: 'Montserrat';
+        font-size: 14px;
+        font-weight:500;
+        color: #686868;
+        padding-top: 10px;
+    }
+
+    .cont{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 10px;
+        padding: 30px;
+
+
+        .border-teams {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            padding-right: 25px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #376DC8;
+            border-radius: 4px;
+            font-family: 'Montserrat';
+            font-size: 14px;
+            color : #161616;
+            font-weight: 600;
+            .te{
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+            }
+            .user-image{
+                width: 34px;
+                height: 34px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+        }
+    }
+
+}

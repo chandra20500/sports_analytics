@@ -1,0 +1,240 @@
+<div class="container-p">
+    <div class="row">
+        <div class="bread-path">
+            <a (click)= "goToPage('roaster')" class="link">Roaster Builder</a>
+            <span class="material-icons arrow-icon">arrow_forward</span>
+            Trade Machine
+        </div>
+        <button mat-button class="launch-button" (click)= "goToPage('trade/team-selection')">
+            <div class="text">
+              Launch Trade Machine
+            </div>
+          </button>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-9">
+            <div class="cont">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="head">
+                            Salary Payroll
+                        </div>
+                        <img src="assets/images/graphs/g-2.png" width="300px" height="200px" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="vline" style="height: 280px;"></div>
+                        <div class="row">
+                            <div class="head">
+                                Payroll Variations
+                                <div class="sub-head">
+                                    Variation in Millions
+                                </div>   
+                            </div>
+                            <mat-select class="input-r" value="last_6_season">
+                                <mat-option value="last_6_season">Last 6 Seasons</mat-option>
+                            </mat-select>
+                        </div>
+                        <img src="assets/images/graphs/g-3.png" width="600px" height="200px" class="m-l-md" />
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-md-3 cont p-a-0">
+            <div class="row">
+                <div class="head" >
+                    Highest Valued Trades
+                </div>
+                <div class="expand">
+                    Expand  
+                    <mat-icon class="icons">
+                        launch
+                    </mat-icon>
+                </div>
+            </div>
+            <div class="hline"></div>
+            <div class="player-trade">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <img class="user-image" src="assets/images/header/profile.png" />
+                            <div >
+                                <div class="p-name">
+                                    Nkosi Burgess
+                                </div>
+                                <div class="p-role">
+                                    Defender
+                                </div>
+                                <div class="p-type">
+                                    Contract Type
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="vline" style="height: 40px;margin-right: 10px;"></div>
+                        <div class="row">
+                            <img class="user-image" src="assets/images/header/profile.png" />
+                            <div >
+                                <div class="p-name">
+                                    Nkosi Burgess
+                                </div>
+                                <div class="p-role">
+                                    Defender
+                                </div>
+                                <div class="p-type">
+                                    Contract Type
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="row price">
+                    <div class="p-head">
+                        Deal Sign-off Value
+                    </div>
+                    <div class="deal-price">
+                        $ 1,200,550
+                    </div>
+                </div>
+                <div class="hline"></div>      
+            </div>
+                  
+            
+        </div>
+    </div>
+
+    <div class="row m-t-lg">
+        <div class="col-md-5">
+            <div class="cont">
+                <div class="row">
+                    <div class="head">
+                        Trade Summary
+                    </div>
+                    <div class="expand">
+                        Expand  
+                        <mat-icon class="icons">
+                            launch
+                        </mat-icon>
+                    </div>
+                </div>
+                <div style="margin-left: 20px;margin-right: 30px;margin-top: 20px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-a">
+                                <div class="card-head">
+                                    Total Trades
+                                </div>
+                                <div class="card-sub">
+                                    22
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-b">
+                                <div class="card-head">
+                                    Successful
+                                </div>
+                                <div class="card-sub">
+                                    14
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-c">
+                                <div class="card-head">
+                                    Unsuccessful
+                                </div>
+                                <div class="card-sub">
+                                    8
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="sub-head">
+                        Total Player Involved in Trade
+                        <div class="trade-count">
+                            35
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+           
+        </div>
+        <div class="col-md-7">
+            <div class="cont">
+                <div class="row">
+                    <div class="head">
+                        Saved Trade Records
+                    </div>
+                    <div class="expand">
+                        Expand  
+                        <mat-icon class="icons">
+                            launch
+                        </mat-icon>
+                    </div>
+                </div>
+                <div class="table-cont">
+                    <table mat-table class="tableclass" [dataSource]="data">
+                        <ng-container matColumnDef="player_trade_in">
+                            <th mat-header-cell *matHeaderCellDef class="table-head">Player Traded in</th>
+                            <td mat-cell class="tablecontent" *matCellDef="let element">
+                              {{ element.player_trade_in }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="player_trade_out">
+                            <th mat-header-cell *matHeaderCellDef class="table-head">Player Traded out</th>
+                            <td mat-cell class="tablecontent" *matCellDef="let element">
+                              {{ element.player_trade_out }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="team_involved">
+                            <th mat-header-cell *matHeaderCellDef class="table-head">Teams Involved</th>
+                            <td mat-cell class="tablecontent" *matCellDef="let element">
+                                <img class="user-image" src="assets/images/header/profile.png" />
+                                <img class="user-image" src="assets/images/header/profile.png" />
+                              
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="contract">
+                            <th mat-header-cell *matHeaderCellDef class="table-head">Contract</th>
+                            <td mat-cell class="tablecontent" *matCellDef="let element">
+                              {{ element.contract }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="payroll">
+                            <th mat-header-cell *matHeaderCellDef class="table-head">Payroll</th>
+                            <td mat-cell class="tablecontent" *matCellDef="let element">
+                              {{ element.payroll }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="impact">
+                            <th mat-header-cell *matHeaderCellDef class="table-head">Impact</th>
+                            <td mat-cell class="tablecontent" *matCellDef="let element">
+                                <button mat-button *ngIf="element.impact === 'failure'" class="button-failure">Unsuccessful</button>
+                                <button mat-button *ngIf="element.impact === 'success'" class="button-success">Successful</button>
+                            </td>
+                          </ng-container>
+                          <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    </table>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>

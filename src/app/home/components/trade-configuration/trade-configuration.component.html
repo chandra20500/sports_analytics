@@ -1,0 +1,112 @@
+<div class="modal-toolbar">
+    <div class="row m-a-0">
+        <div class="head-text">
+            Configure Trade
+        </div>
+        <mat-icon (click)="close()" class="close-icon">close</mat-icon>
+    </div>
+</div>
+<div class="cont">
+    <div class="note">
+        The parameters that is being edited here affects all the Teams in the current Trade window
+    </div>
+    <div class="head">
+        Demographic Info
+    </div>
+
+    <div class="row m-a-0">
+        <div class="">
+            <label class="input-label">Age </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">School </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Nationality </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Height </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Weight </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+    </div>
+
+    <div class="hline"></div>
+
+    <div class="head">
+        Career
+    </div>
+
+    <div class="row m-a-0">
+        <div class="">
+            <label class="input-label">Team Name </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Games Played </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Points scored </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Contract </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Pay </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+    </div>
+    <mat-checkbox class="input-checkbox">Include Uncapped Players</mat-checkbox> <br />
+    <mat-checkbox class="input-checkbox">Include Player with No Contracts</mat-checkbox>
+
+    <div class="hline"></div>
+
+    <div class="head">
+        Team Conditions
+    </div>
+
+    <div class="row m-a-0">
+        <div class="">
+            <label class="input-label">Condition 1 </label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+
+        <div class="">
+            <label class="input-label">Condition 2</label> <br />
+            <input type="text" class="input-field" mat-input />
+        </div>
+    </div>
+
+    <div class="row m-a-0">
+        <div style="margin-left: auto;">
+            <button (click)="close()" mat-button class="reset-button">
+                <div class="text">
+                    Reset
+                </div>
+            </button>
+
+            <button (click)="submit()" mat-button class="submit-button">
+                <div class="text">
+                    Configure
+                </div>
+            </button>
+        </div>
+    </div>
+</div>

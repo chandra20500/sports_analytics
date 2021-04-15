@@ -1,18 +1,7 @@
 .container-p {
-  margin: 40px;
-  margin-top: 70px;
-  .bread-path {
-    color: #0053a1;
-    font-family: 'Montserrat';
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 30px;
-  }
-  .name_link {
-    text-align: left !important;
-    color: #0042b1;
-  }
-
+  margin: 30px;
+  margin-top: 64px;
+  
   .row {
     margin: 0 !important;
   }
@@ -165,24 +154,7 @@
   }
 }
 
-::ng-deep.mat-tab-label.mat-tab-label-active {
-  opacity: 1;
-  background-color: #00549a;
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-  color: #ffffff;
-  font-family: 'Montserrat';
-  font-size: 16px;
-  font-weight: 400;
-}
-
-::ng-deep .mat-tab-label-content {
-  font-family: 'Montserrat';
-  font-size: 16px;
-  font-weight: 400;
-}
-
-::ng-deep.mat-ink-bar {
-  display: none !important;
+.d3-chart{
+  width: 100px;
+  height: 100px;
 }

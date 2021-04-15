@@ -1,6 +1,6 @@
 <div class="container-p">
   <div class="bread-path">
-    <a href="roaster" class="name_link">Roaster Builder</a>
+    <a class="link" (click)= "goToPage('roaster')"> Roaster Builder</a>
     <span class="material-icons arrow-icon">arrow_forward</span>
     Player Details
   </div>
@@ -43,13 +43,13 @@
     </div>
     <div class="col-md-9">
       <div class="card-container">
-        <mat-tab-group>
-          <mat-tab label="Overview">
+        <mat-tab-group class="pill-tab">
+          <mat-tab class="pill-mat-tab" label="Overview">
             <div class="row">
               <div class="col-md-8 p-a-0">
                 <div class="season-performace">
-                  <mat-tab-group>
-                    <mat-tab label="Per game">
+                  <mat-tab-group >
+                    <mat-tab class="solid-mat-tab" label="Per game">
                       <table mat-table class="tableclass" [dataSource]="seasonData">
                         <ng-container matColumnDef="season">
                           <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
@@ -139,8 +139,8 @@
                         <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
                       </table>
                     </mat-tab>
-                    <mat-tab label="Game log"> </mat-tab>
-                    <mat-tab label="Similarity score"> </mat-tab>
+                    <mat-tab class="solid-mat-tab" label="Game log"> </mat-tab>
+                    <mat-tab class="solid-mat-tab" label="Similarity score"> </mat-tab>
                   </mat-tab-group>
                 </div>
                 <div class="recent-performace">
@@ -238,6 +238,7 @@
               <div class="col-md-4">
                 <div class="graph-container">
                   <div class="heading">Winning Index measures player / role fit</div>
+                  <!-- <div class="d3-chart" #chart></div> -->
                   <img class="graph" src="assets/images/header/graph.png" />
                 </div>
                 <div class="graph-container">
@@ -247,10 +248,10 @@
               </div>
             </div>
           </mat-tab>
-          <mat-tab label="Practice"> </mat-tab>
-          <mat-tab label="Tab 3"> </mat-tab>
-          <mat-tab label="Tab 4"> </mat-tab>
-          <mat-tab label="Tab 5"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Practice"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Tab 3"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Tab 4"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Tab 5"> </mat-tab>
         </mat-tab-group>
       </div>
     </div>

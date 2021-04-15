@@ -1,0 +1,188 @@
+.container-p {
+    margin: 30px;
+    margin-top: 64px;
+
+    .cont {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 6px;
+        // min-height: 300px;
+        padding-top: 10px;
+    }
+
+    .cont-back{
+       height: 100px;
+       margin-bottom: 40px;
+    }
+
+    .head{
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Montserrat';
+        color: #242424;
+        margin-bottom: 10px;
+    }
+
+    .sub-head{
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Montserrat';
+        color: #686868;
+        margin-bottom: 15px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .team-image{
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .team-name{
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Montserrat';
+        color: #242424;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .hline {
+        margin-top: 10px;
+        margin-left: 5%;
+        margin-right: 5%;
+        height: 0px;
+        border: 1px solid #e6e6e6;
+        margin-bottom: 20px;
+    }
+
+    .vline{
+        border: 1px solid #e6e6e6;
+    }
+
+    .headkey {
+        padding-bottom: 10px;
+        width: 110px;
+        font-family: 'Montserrat';
+        color: #676767;
+        font-size: 12px;
+        margin-left: 20px;
+    }
+
+    .headvalue {
+        font-family: 'Montserrat';
+        color: #242424;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .expand{
+        cursor: pointer;
+        margin-left:auto;
+        color: #376DC8;
+        font-family: 'Montserrat';
+        font-size: 12px;
+        text-decoration: underline;
+        .icons{
+            font-size: 12px;
+        }
+    }
+
+    .input-r{
+        margin-left: auto;
+        margin-right: 15px;
+        margin-top: 10px;
+        width: 120px;
+        height: 15px;
+        font-family: 'Montserrat' !important;
+        font-size: 11px;
+        padding-left: 10px;
+        border: 1px solid rgb(221, 219, 218);
+        border-radius: 1px;
+    }
+
+    .user-image{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .traded-player{
+        color: #272727;
+        font-family: 'Montserrat';
+        font-size: 12px;
+        font-weight: 500;
+
+        .info-icon{
+            font-size: 18px;
+        }
+    }
+
+    .card{
+        margin-left: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #D3D3D3;
+        border-radius: 8px;
+        padding: 20px;
+        
+        .card-head{
+            font-family: 'Montserrat' !important;
+            font-size: 12px;
+            color: #252E48;
+            text-align: left;
+            font-weight: 600;
+            padding-bottom: 5px;
+        }
+
+        .card-value{
+            font-family: 'Montserrat' !important;
+            font-size: 12px;
+            color: #376DC8;
+            text-align: left;
+            font-weight: 800;
+            
+        }
+    }
+
+    .mat-tab-list .mat-tab-labels .mat-tab-label-active ::before {
+        content: '';
+        position: absolute;
+        /* width: 20px; */
+        /* height: 4px; */
+        background-color: blue;
+        border-radius: 4px;
+        bottom: 0px;
+        width: 16px;
+        height: 4px;
+        background: #376DC8 0% 0% no-repeat padding-box;
+      }
+
+      ::ng-deep.mat-tab-labels{
+        background-color: #ffffff;
+      }
+
+      ::ng-deep.mat-tab-label.mat-tab-label-active {
+        opacity: 1;
+        background-color: #ffffff;
+      }
+    
+      ::ng-deep.mat-tab-list .mat-tab-labels .mat-tab-label-active {
+        color: #376DC8;
+        font-family: 'Montserrat';
+        font-size: 16px;
+        font-weight: 400;
+      }
+    
+      ::ng-deep.mat-tab-label-content {
+        font-family: 'Montserrat';
+        font-size: 16px;
+        font-weight: 400;
+      }
+    
+      ::ng-deep.mat-ink-bar {
+        display: none !important;
+      }
+
+}

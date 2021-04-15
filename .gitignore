@@ -10,6 +10,8 @@
 # Dependencies
 /node_modules
 
+/package-lock.json
+
 # Cordova
 /www
 /plugins
