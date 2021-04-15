@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class TeamSelectionComponent implements OnInit {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
-
   teams: Array<any> = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, , 1, 1, 1, 1, 1, 1];
+
+  ngOnInit(): void {}
 
   goToPage(url) {
     this.router.navigateByUrl(url);
