@@ -29,21 +29,31 @@
         <div *ngFor="let player of players" class="player-details">
           <div class="row m-a-0 p-l">
             <div class="t">
-              Player Name <br />
-              Age, Weight <br />
-              Contract Type
+              <div class="name">
+                Player Name 
+              </div>
+
+              <div class="details">
+                Age, Weight
+              </div>
+              
+              <div class="contract">
+                Contract Type
+              </div>
             </div>
 
-            <div class="t">
-              $5.1M <br />
-              2 years
+            <div class="t p-l p-t">
+              <div class="price">
+                $5.1M
+              </div>
+              <div class="duration">
+                2 years
+              </div> 
             </div>
-
-            <!-- <div class="vline"></div> -->
-
             <mat-select class="input-r">
               <mat-option>sdasd</mat-option>
             </mat-select>
+            
           </div>
         </div>
       </div>
@@ -56,20 +66,31 @@
         <div *ngFor="let player of players" class="player-details">
           <div class="row m-a-0 p-l">
             <div class="t">
-              Player Name <br />
-              Age, Weight <br />
-              Contract Type
+              <div class="name">
+                Player Name 
+              </div>
+
+              <div class="details">
+                Age, Weight
+              </div>
+              
+              <div class="contract">
+                Contract Type
+              </div>
             </div>
 
-            <div class="t">
-              $5.1M <br />
-              2 years
+            <div class="t p-l p-t">
+              <div class="price">
+                $5.1M
+              </div>
+              <div class="duration">
+                2 years
+              </div> 
             </div>
-
-            <!-- <div class="vline"></div> -->
-
-            <mat-select class="input-r">
-              <mat-option>sdasd</mat-option>
+            <mat-select class="input-r" value="s">
+              <mat-option value="s">
+                <img class="user-image" src="assets/images/header/profile.png" />
+              </mat-option>
             </mat-select>
           </div>
         </div>

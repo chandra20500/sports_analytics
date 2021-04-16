@@ -48,8 +48,22 @@
             <div class="row">
               <div class="col-md-8 p-a-0">
                 <div class="season-performace">
-                  <mat-tab-group>
-                    <mat-tab class="solid-mat-tab" label="Per game">
+                  <div class="row">
+                    <mat-select class="fieldbox fieldvalue m-t m-b m-r col-md-3" value="day">
+                      <mat-option value="day">
+                        Per game
+                      </mat-option>
+                      <mat-option value="week">
+                        Game log
+                      </mat-option>
+                      <mat-option value="month">
+                        Similarity score
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  
+                  <!-- <mat-tab-group>
+                    <mat-tab class="solid-mat-tab" label="Per game"> -->
                       <table mat-table class="tableclass" [dataSource]="seasonData">
                         <ng-container matColumnDef="season">
                           <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
@@ -138,10 +152,10 @@
                         <tr mat-header-row class="table-header" *matHeaderRowDef="seasonColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
                       </table>
-                    </mat-tab>
+                    <!-- </mat-tab>
                     <mat-tab class="solid-mat-tab" label="Game log"> </mat-tab>
                     <mat-tab class="solid-mat-tab" label="Similarity score"> </mat-tab>
-                  </mat-tab-group>
+                  </mat-tab-group> -->
                 </div>
                 <div class="recent-performace">
                   <div class="heading">Recent Performances</div>
@@ -239,16 +253,106 @@
                 <div class="graph-container">
                   <div class="heading">Winning Index measures player / role fit</div>
                   <!-- <div class="d3-chart" #chart></div> -->
-                  <img class="graph" src="assets/images/header/graph.png" />
+                  <img class="graph" src="assets/images/graphs/g-1.png" />
                 </div>
                 <div class="graph-container">
                   <div class="heading">WAR Index</div>
-                  <img class="graph" src="assets/images/header/graph.png" />
+                  <img class="graph" src="assets/images/graphs/g-1.png" />
                 </div>
               </div>
             </div>
           </mat-tab>
-          <mat-tab class="pill-mat-tab" label="Practice"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Practice">
+            <div class="row">
+              <div class="col-md-3 practice">
+                <div class="head-text">
+                  Upcoming Practices
+                </div>
+                <div *ngFor = "let practice of practices">
+                  <div class="practice-date">
+                    Dec 24
+                  </div>
+                  <div class="practice-text">
+                    Practice Name
+                  </div>
+                  <div class="practice-text">
+                    Practice Duration
+                  </div>
+                  <div class="practice-tag">
+                    Tag
+                  </div>
+                  <div class="hline"></div>
+                </div>
+                
+              </div>
+              <div class="col-md-9 p-t-md">
+                  <div class="row calendar">
+                    <div
+                      class="navigate-calendar"
+                      mwlCalendarPreviousView
+                      [view]="view"
+                      [(viewDate)]="viewDate"
+                      (viewDateChange)="closeOpenMonthViewDay()"
+                    >
+                      <mat-icon class="icon">navigate_before</mat-icon>
+                    </div>
+
+                      <div class="head">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</div>
+
+                    <div
+                      class="navigate-calendar"
+                      mwlCalendarNextView
+                      [view]="view"
+                      [(viewDate)]="viewDate"
+                      (viewDateChange)="closeOpenMonthViewDay()"
+                    >
+                      <mat-icon class="icon">navigate_next</mat-icon>
+                    </div>
+                    
+                  
+                  <mat-select class="fieldbox fieldvalue col-md-3" (selectionChange)="setView($event)"  [(ngModel)]="selectedView">
+                    <mat-option value="day">
+                      Day
+                    </mat-option>
+                    <mat-option value="week">
+                      Week
+                    </mat-option>
+                    <mat-option value="month">
+                      Month
+                    </mat-option>
+                  </mat-select>
+                </div>
+
+                
+                <div [ngSwitch]="view" class="p-t-md">
+                  <mwl-calendar-month-view
+                    *ngSwitchCase="CalendarView.Month"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    (dayClicked)="dayClicked($event.day)"
+                    (eventTimesChanged)="eventTimesChanged($event)"
+                  >
+                  </mwl-calendar-month-view>
+                  <mwl-calendar-week-view
+                    *ngSwitchCase="CalendarView.Week"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    (eventTimesChanged)="eventTimesChanged($event)"
+                  >
+                  </mwl-calendar-week-view>
+                  <mwl-calendar-day-view
+                    *ngSwitchCase="CalendarView.Day"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    (eventTimesChanged)="eventTimesChanged($event)"
+                  >
+                  </mwl-calendar-day-view>
+                </div>
+              </div>
+            </div>
+            
+          </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 3"> </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 4"> </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 5"> </mat-tab>

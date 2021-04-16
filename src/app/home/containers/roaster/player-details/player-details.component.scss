@@ -69,7 +69,7 @@
     background: #fdfdfd 0% 0% no-repeat padding-box;
     border: 1px solid #dbdbdb;
     border-radius: 8px;
-    min-height: 200px;
+    // min-height: 200px;
     margin-top: 20px;
     margin-bottom: 50px;
     margin-left: 10px;
@@ -152,6 +152,94 @@
       margin-bottom: 30px;
     }
   }
+}
+
+.navigate-calendar {
+  background-color: #81a7e9;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.head{
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.practice{
+  background: #F5F5F5 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  font-family: 'Montserrat';
+  padding-left: 10px;
+  .head-text{
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .practice-date{
+    padding-top: 10x;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #272727;
+    font-weight: 600;
+  }
+
+  .practice-text{
+    font-size: 10px;
+    color: #676767;;
+    font-weight: 500;
+  }
+
+  .practice-tag{
+    background: #E6EAFC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #676767;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.calendar{
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  padding-left: 30%;
+}
+
+.icon{
+  color: white;
+  font-size: 32px;
+}
+
+.fieldbox{
+  margin-left: auto;
+  width: 98%;
+  height: 32px;
+  border: 1px solid rgb(221, 219, 218);
+  border-radius: 1px;
+  border-radius: 4px;
+}
+
+.fieldvalue{
+  padding-left: 10px;
+  padding-top: 10px;
+  color: rgb(8, 7, 7);
+  font-size: 13px;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  padding-right: 10px;
 }
 
 .d3-chart {

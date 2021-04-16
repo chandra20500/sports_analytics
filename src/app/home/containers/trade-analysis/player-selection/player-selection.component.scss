@@ -49,6 +49,12 @@
     padding-top: 10px;
   }
 
+  .vline {
+    position: absolute;
+    border: 0.5px solid #f1f4f8;
+    width: 0px;
+  }
+
   .cont {
     background: #ffffff 0% 0% no-repeat padding-box;
     width: fit-content;
@@ -99,6 +105,37 @@
       margin-left: 10px;
       margin-right: 10px;
       margin-top: 10px;
+      padding: 5px;
+      font-family: 'Montserrat';
+      .name{
+        font-size: 11px;
+        font-weight: 600;
+        color: #393939;
+      }
+
+      .details{
+        font-size: 10px;
+        font-weight: 400;
+        color: #393939;
+      }
+
+      .contract{
+        font-size: 10px;
+        font-weight: 400;
+        color: #393939;
+      }
+
+      .price{
+        font-size: 10px;
+        font-weight: 600;
+        color: #404040;
+      }
+
+      .duration{
+        font-size: 10px;
+        font-weight: 400;
+        color: #393939;
+      }
     }
 
     .add-team {
@@ -128,9 +165,11 @@
     }
 
     .input-r {
+      margin-left: auto;
+      margin-right: 10px;
       margin-top: 10px;
-      width: 20px;
-      height: 15px;
+      width: 50px;
+      height: 25px;
       font-family: 'Montserrat' !important;
       font-size: 11px;
       padding-left: 10px;

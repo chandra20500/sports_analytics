@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [AuthenticationGuard],
+    // canActivate: [AuthenticationGuard],/
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   // Fallback when no prior route is matched

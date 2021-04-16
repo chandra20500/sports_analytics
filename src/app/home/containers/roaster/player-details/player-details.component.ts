@@ -3,6 +3,25 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import * as d3 from 'd3';
+
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+
+const colors: any = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF',
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
+  },
+};
+
 @Component({
   selector: 'app-player-details',
   templateUrl: './player-details.component.html',
@@ -11,6 +30,35 @@ import * as d3 from 'd3';
 export class PlayerDetailsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('chart') private chartContainer: ElementRef;
+
+  view: CalendarView = CalendarView.Month;
+  CalendarView = CalendarView;
+  selectedView = 'month';
+  viewDate: Date = new Date();
+
+  events: CalendarEvent[] = [
+    {
+      start: subDays(startOfDay(new Date()), 1),
+      end: addDays(new Date(), 1),
+      title: '3 Day Practice for club match',
+      color: colors.blue,
+      // actions: this.actions,
+      allDay: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+    {
+      start: startOfDay(new Date()),
+      title: 'MavericK live event',
+      color: colors.yellow,
+      // actions: this.actions,
+    },
+  ];
+
+  activeDayIsOpen: boolean = false;
 
   seasonlements = [
     {
@@ -117,6 +165,8 @@ export class PlayerDetailsComponent implements AfterViewInit {
     'pf',
     'pts',
   ];
+
+  practices = [1, 1, 1, 1];
   constructor(private router: Router) {}
 
   ngAfterViewInit(): void {
@@ -144,5 +194,66 @@ export class PlayerDetailsComponent implements AfterViewInit {
 
   goToPage(url) {
     this.router.navigateByUrl(url);
+  }
+
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+      }
+      this.viewDate = date;
+    }
+  }
+
+  eventTimesChanged({ event, newStart, newEnd }: CalendarEventTimesChangedEvent): void {
+    this.events = this.events.map((iEvent) => {
+      if (iEvent === event) {
+        return {
+          ...event,
+          start: newStart,
+          end: newEnd,
+        };
+      }
+      return iEvent;
+    });
+    // this.handleEvent('Dropped or resized', event);
+  }
+
+  addEvent(): void {
+    this.events = [
+      ...this.events,
+      {
+        title: 'New event',
+        start: startOfDay(new Date()),
+        end: endOfDay(new Date()),
+        color: colors.red,
+        draggable: true,
+        resizable: {
+          beforeStart: true,
+          afterEnd: true,
+        },
+      },
+    ];
+  }
+
+  deleteEvent(eventToDelete: CalendarEvent) {
+    this.events = this.events.filter((event) => event !== eventToDelete);
+  }
+
+  setView(event) {
+    this.selectedView = event.value;
+    if (event.value === 'month') {
+      this.view = CalendarView.Month;
+    } else if (event.value === 'week') {
+      this.view = CalendarView.Week;
+    } else if (event.value === 'day') {
+      this.view = CalendarView.Day;
+    }
+  }
+
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
   }
 }

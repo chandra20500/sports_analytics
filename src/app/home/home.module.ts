@@ -7,10 +7,21 @@ import * as fromContainers from './containers';
 import * as fromComponents from './components';
 import * as fromServices from './services';
 import * as fromGuards from './guards';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [...fromContainers.containers, fromComponents.components],
-  imports: [SharedModule, HomeRoutingModule, I18nModule, MaterialModule],
+  imports: [
+    SharedModule,
+    HomeRoutingModule,
+    I18nModule,
+    MaterialModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+  ],
   providers: [...fromServices.services, ...fromGuards.guards],
 })
 export class HomeModule {}
