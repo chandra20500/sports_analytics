@@ -50,109 +50,103 @@
                 <div class="season-performace">
                   <div class="row">
                     <mat-select class="fieldbox fieldvalue m-t m-b m-r col-md-3" value="day">
-                      <mat-option value="day">
-                        Per game
-                      </mat-option>
-                      <mat-option value="week">
-                        Game log
-                      </mat-option>
-                      <mat-option value="month">
-                        Similarity score
-                      </mat-option>
+                      <mat-option value="day"> Per game </mat-option>
+                      <mat-option value="week"> Game log </mat-option>
+                      <mat-option value="month"> Similarity score </mat-option>
                     </mat-select>
                   </div>
-                  
+
                   <!-- <mat-tab-group>
                     <mat-tab class="solid-mat-tab" label="Per game"> -->
-                      <table mat-table class="tableclass" [dataSource]="seasonData">
-                        <ng-container matColumnDef="season">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.season }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="age">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.age }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="gp">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">GP</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.gp }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="mp">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">MP</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.mp }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="fg">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">FG%</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.fg }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="pt3">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">3pt%</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.pt3 }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="ft">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">FT%</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.ft }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="reb">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">REB</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.reb }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="ast">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">AST</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.ast }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="stl">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">STL</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.stl }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="blk">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">BLK</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.blk }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="tov">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">TOV</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.tov }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="pf">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">PF</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.pf }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="pts">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Pts</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.pts }}
-                          </td>
-                        </ng-container>
-                        <tr mat-header-row class="table-header" *matHeaderRowDef="seasonColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
-                      </table>
-                    <!-- </mat-tab>
+                  <table mat-table class="tableclass" [dataSource]="seasonData">
+                    <ng-container matColumnDef="season">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.season }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="age">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.age }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="gp">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">GP</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.gp }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="mp">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">MP</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.mp }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="fg">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">FG%</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.fg }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pt3">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">3pt%</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.pt3 }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ft">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">FT%</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.ft }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="reb">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">REB</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.reb }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ast">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">AST</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.ast }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="stl">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">STL</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.stl }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="blk">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">BLK</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.blk }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="tov">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">TOV</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.tov }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pf">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">PF</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.pf }}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pts">
+                      <th mat-header-cell *matHeaderCellDef class="table-head">Pts</th>
+                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                        {{ element.pts }}
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row class="table-header" *matHeaderRowDef="seasonColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
+                  </table>
+                  <!-- </mat-tab>
                     <mat-tab class="solid-mat-tab" label="Game log"> </mat-tab>
                     <mat-tab class="solid-mat-tab" label="Similarity score"> </mat-tab>
                   </mat-tab-group> -->
@@ -265,65 +259,50 @@
           <mat-tab class="pill-mat-tab" label="Practice">
             <div class="row">
               <div class="col-md-3 practice">
-                <div class="head-text">
-                  Upcoming Practices
-                </div>
-                <div *ngFor = "let practice of practices">
-                  <div class="practice-date">
-                    Dec 24
-                  </div>
-                  <div class="practice-text">
-                    Practice Name
-                  </div>
-                  <div class="practice-text">
-                    Practice Duration
-                  </div>
-                  <div class="practice-tag">
-                    Tag
-                  </div>
+                <div class="head-text">Upcoming Practices</div>
+                <div *ngFor="let practice of practices">
+                  <div class="practice-date">Dec 24</div>
+                  <div class="practice-text">Practice Name</div>
+                  <div class="practice-text">Practice Duration</div>
+                  <div class="practice-tag">Tag</div>
                   <div class="hline"></div>
                 </div>
-                
               </div>
               <div class="col-md-9 p-t-md">
-                  <div class="row calendar">
-                    <div
-                      class="navigate-calendar"
-                      mwlCalendarPreviousView
-                      [view]="view"
-                      [(viewDate)]="viewDate"
-                      (viewDateChange)="closeOpenMonthViewDay()"
-                    >
-                      <mat-icon class="icon">navigate_before</mat-icon>
-                    </div>
+                <div class="row calendar">
+                  <div
+                    class="navigate-calendar"
+                    mwlCalendarPreviousView
+                    [view]="view"
+                    [(viewDate)]="viewDate"
+                    (viewDateChange)="closeOpenMonthViewDay()"
+                  >
+                    <mat-icon class="icon">navigate_before</mat-icon>
+                  </div>
 
-                      <div class="head">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</div>
+                  <div class="head">{{ viewDate | calendarDate: view + 'ViewTitle':'en' }}</div>
 
-                    <div
-                      class="navigate-calendar"
-                      mwlCalendarNextView
-                      [view]="view"
-                      [(viewDate)]="viewDate"
-                      (viewDateChange)="closeOpenMonthViewDay()"
-                    >
-                      <mat-icon class="icon">navigate_next</mat-icon>
-                    </div>
-                    
-                  
-                  <mat-select class="fieldbox fieldvalue col-md-3" (selectionChange)="setView($event)"  [(ngModel)]="selectedView">
-                    <mat-option value="day">
-                      Day
-                    </mat-option>
-                    <mat-option value="week">
-                      Week
-                    </mat-option>
-                    <mat-option value="month">
-                      Month
-                    </mat-option>
+                  <div
+                    class="navigate-calendar"
+                    mwlCalendarNextView
+                    [view]="view"
+                    [(viewDate)]="viewDate"
+                    (viewDateChange)="closeOpenMonthViewDay()"
+                  >
+                    <mat-icon class="icon">navigate_next</mat-icon>
+                  </div>
+
+                  <mat-select
+                    class="fieldbox fieldvalue col-md-3"
+                    (selectionChange)="setView($event)"
+                    [(ngModel)]="selectedView"
+                  >
+                    <mat-option value="day"> Day </mat-option>
+                    <mat-option value="week"> Week </mat-option>
+                    <mat-option value="month"> Month </mat-option>
                   </mat-select>
                 </div>
 
-                
                 <div [ngSwitch]="view" class="p-t-md">
                   <mwl-calendar-month-view
                     *ngSwitchCase="CalendarView.Month"
@@ -351,7 +330,6 @@
                 </div>
               </div>
             </div>
-            
           </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 3"> </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 4"> </mat-tab>

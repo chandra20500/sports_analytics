@@ -58,7 +58,7 @@ export class PlayerDetailsComponent implements AfterViewInit {
     },
   ];
 
-  activeDayIsOpen: boolean = false;
+  activeDayIsOpen = false;
 
   seasonlements = [
     {
