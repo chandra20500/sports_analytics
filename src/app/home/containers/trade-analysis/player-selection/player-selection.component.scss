@@ -170,7 +170,7 @@
 
   .select-container {
     position: relative;
-  
+
     .input-container {
       i {
         position: absolute;
@@ -183,9 +183,8 @@
         text-overflow: ellipsis;
         padding-right: 2rem;
       }
-  
     }
-  
+
     .select-menu {
       width: 100%;
       z-index: 100;
@@ -198,7 +197,7 @@
       border: 1px solid gray;
       padding: 1rem;
       box-sizing: border-box;
-  
+
       .option-item {
         padding-left: 1rem;
         line-height: 3rem;
@@ -207,22 +206,21 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         margin: 0 -1rem;
-  
+
         &:last-child {
           margin-bottom: 0;
         }
-  
+
         &.selected,
         &:hover {
           background-color: lightgray;
           color: black;
         }
-  
+
         &:focus {
           outline: none;
         }
       }
     }
   }
-  
 }
