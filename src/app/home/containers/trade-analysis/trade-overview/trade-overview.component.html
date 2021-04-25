@@ -2,13 +2,13 @@
   <div class="row">
     <div class="bread-path">
       <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       <a (click)="goToPage('trade')" class="link">Trade Machine</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       <a (click)="goToPage('trade/team-selection')" class="link">Select Teams</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       <a (click)="goToPage('trade/player-selection')" class="link">Select Players</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       Trade Overview
     </div>
   </div>
@@ -16,7 +16,7 @@
   <div class="head">Trade Progress</div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 m-t p-l-0">
       <div class="cont">
         <div class="row">
           <img class="team-image" src="assets/images/header/profile.png" />
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-7 m-t">
       <mat-tab-group class="pill-tab">
         <mat-tab class="pill-mat-tab" label="Overview">
           <div class="cont-back">
@@ -134,21 +134,76 @@
             <mat-option value="last_6_season">Last 6 Seasons</mat-option>
           </mat-select>
         </div>
-        <img src="assets/images/graphs/g-4.png" width="800px" height="200px" />
+        <!-- <img src="assets/images/graphs/g-4.png" width="800px" height="200px" /> -->
+        <canvas
+          baseChart
+          width="80%"
+          height="30px"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+        >
+        </canvas>
       </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-3 m-t">
       <div class="cont m-b-md">
         <div class="head p-l">Salary Impacts</div>
-        <img src="assets/images/graphs/g-5a.png" width="300px" height="150px" />
+        <div class="row">
+          <div class="col-md-7">
+            <canvas
+              baseChart
+              width="100%"
+              height="80px"
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [colors]="doughnutChartColors"
+              [options]="doughnutChartOptions"
+              [legend]="doughnutChartLegend"
+              [chartType]="doughnutChartType"
+              [plugins]="doughnutChartPlugins"
+            >
+            </canvas>
+            <div class="leg-name">Out of Total Budget</div>
+          </div>
+          <div class="col-md-5 m-t">
+            <div class="leg-value" style="color: #3074d5">$ 4,500,450</div>
+            <div class="leg-name">Limit Available</div>
+            <div class="leg-value" style="color: #a11300">$ 4,500,450</div>
+            <div class="leg-name">Total Incurred</div>
+          </div>
+        </div>
+
         <div class="hline"></div>
-        <img src="assets/images/graphs/g-5b.png" width="300px" height="150px" />
+        <div *ngFor="let player of players" class="row player-records">
+          <div class="col-md-4 name">Player Name 1</div>
+          <div class="col-md-4 progress">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          </div>
+          <div class="col-md-4 exhausted">35% exhausted</div>
+        </div>
       </div>
 
       <div class="cont">
-        <div class="head p-l">Positional Improvements</div>
-        <img class="p-l" src="assets/images/graphs/g-6.png" width="300px" height="150px" />
+        <div class="head p-l m-b">Positional Improvements</div>
+        <canvas
+          baseChart
+          width="80%"
+          height="50"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [colors]="barChartColors"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+        >
+        </canvas>
+        <!-- <img class="p-l" src="assets/images/graphs/g-6.png" width="300px" height="150px" /> -->
       </div>
     </div>
   </div>

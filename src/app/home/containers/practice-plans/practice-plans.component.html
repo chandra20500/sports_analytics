@@ -1,0 +1,185 @@
+<div class="container-p">
+  <div class="bread-path">Practice Plans</div>
+
+  <div class="row m-a-0">
+    <div class="col-md-2 p-a-0">
+      <div class="row m-a-0">
+        <div class="text">Practice Schedule</div>
+        <div class="left-cont">
+          <mat-icon class="cursor-pointer"> chevron_left</mat-icon>
+          <mat-icon class="cursor-pointer"> chevron_right</mat-icon>
+        </div>
+      </div>
+
+      <div class="cont">
+        <div class="head">Training Name</div>
+        <div class="hline"></div>
+        <div class="details">
+          Player Group name <br />
+          Total Players <br />
+          Practice Start Time - End Time <br />
+          Total Training Duration <br />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-container">
+        <mat-tab-group class="pill-tab">
+          <mat-tab class="pill-mat-tab" label="Schedule">
+            <div class="row back-cont m-l-0">
+              <div class="head m-b-md">Today’s Schedule</div>
+              <div class="date">
+                <div>
+                  <mat-icon class="cursor-pointer"> chevron_left </mat-icon>
+                </div>
+
+                <span class="text"> 15-04-2021 (Thursday) </span>
+                <div>
+                  <mat-icon class="cursor-pointer"> chevron_right </mat-icon>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let player of players">
+              <mat-accordion multi class="m-t">
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="timing-box">
+                        <div class="text">11:00 AM - 12:00 AM</div>
+                      </div>
+                      <div class="detail">
+                        Offensive Series 1
+                        <div class="sub-detail">Group Name | Total Players</div>
+                      </div>
+                    </mat-panel-title>
+                    <mat-panel-description class="row">
+                      <button mat-button class="status">Completed</button>
+                      <div class="action">
+                        Expand
+                        <img src="/assets/images/header/down-d.svg" />
+                      </div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+
+                  <div class="row accord-desc" *ngFor="let p of players; let i = index">
+                    <div
+                      class="hline"
+                      style="width: 100% !important; margin-top: 5px; margin-left: 0px; margin-right: 0px"
+                      *ngIf="i != 0"
+                    ></div>
+                    <div class="accord-details p-l">
+                      <div class="head-tab">Drill Name</div>
+                      <div class="cate">Category</div>
+                    </div>
+                    <div class="accord-details">
+                      <div class="value">Drill Goal</div>
+                      <div class="head-tab">Drill Goal</div>
+                    </div>
+                    <div class="accord-details">
+                      <div class="value">Drill Result</div>
+                      <div class="head-tab">Drill Result</div>
+                    </div>
+                    <div class="accord-details">
+                      <div class="value">Drill Performance</div>
+                      <div class="head-tab">Drill Performance</div>
+                    </div>
+                    <div class="accord-details" style="margin-left: auto">
+                      <div class="head-tab" style="display: flex; padding-top: 10px">
+                        <mat-icon class="icon">schedule</mat-icon> 2.5hrs <mat-icon class="icon p-l">loop</mat-icon> 3
+                        Reps
+                        <mat-icon class="p-l cursor-pointer">more_vert</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <div style="background: #f2f4f8; height: 10px"></div>
+            </div>
+          </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Notes"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Scouting Reports"> </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="analytics-cont">
+        <div class="head">Training Analytics</div>
+      </div>
+
+      <div class="cont">
+        <div class="row">
+          <div class="col-md-5 p-l-0">
+            <div class="head">Training Time Split</div>
+            <!-- <img src="assets/images/graphs/g-2.png" width="90%" height="200px" /> -->
+            <canvas
+              baseChart
+              width="100%"
+              height="90px"
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [colors]="doughnutChartColors"
+              [options]="doughnutChartOptions"
+              [legend]="doughnutChartLegend"
+              [chartType]="doughnutChartType"
+              [plugins]="doughnutChartPlugins"
+              (chartClick)="chartHovered($event)"
+            >
+            </canvas>
+          </div>
+
+          <div class="col-md-7">
+            <div class="sub-head">Total Training Time</div>
+            <div class="value">6 Hours</div>
+            <div class="legend">
+              <div class="row">
+                <div class="leg" style="background-color: #f85951"></div>
+                <div class="name">Stamina Building</div>
+                <div class="value">30% (1.5 Hours)</div>
+              </div>
+              <div class="row">
+                <div class="leg" style="background-color: #333333"></div>
+                <div class="name">Fundamentals</div>
+                <div class="value">30% (1.5 Hours)</div>
+              </div>
+              <div class="row">
+                <div class="leg" style="background-color: #39ab41"></div>
+                <div class="name">Skill Training</div>
+                <div class="value">30% (1.5 Hours)</div>
+              </div>
+              <div class="row">
+                <div class="leg" style="background-color: #f89751"></div>
+                <div class="name">High Intensity</div>
+                <div class="value">30% (1.5 Hours)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hline m-a-0" style="width: 100%"></div>
+
+        <div class="head">Group Workload</div>
+        <!-- <img class="graph m-l-md" src="assets/images/graphs/g-1.png" /> -->
+        <canvas
+          baseChart
+          width="100%"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [plugins]="lineChartPlugins"
+        >
+        </canvas>
+        <div class="head">Players with Highest Workload</div>
+        <div *ngFor="let player of players" class="row player-records">
+          <div class="col-md-4 name">Player Name 1</div>
+          <div class="col-md-4 progress">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          </div>
+          <div class="col-md-4 exhausted">35% exhausted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,56 +9,72 @@ import { Router } from '@angular/router';
 export class HomeHeaderComponent implements OnInit {
   @Output() logout = new EventEmitter<void>();
   sidenavOpen = false;
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
+  childOpen = {
+    freeagent: false,
+  };
 
   sidenavItems = [
     {
       name: 'Dashboard',
       hasChildren: false,
+      childName: '',
+      route: '/dashboard',
     },
     {
       name: 'Roster Builder',
       hasChildren: false,
+      childName: '',
+      route: '/roaster',
+    },
+    {
+      name: 'Practice Plans',
+      hasChildren: false,
+      childName: '',
+      route: '/practice-plans',
     },
     {
       name: 'Scouting',
       hasChildren: false,
+      childName: '',
+      route: '/scout',
     },
     {
       name: 'Free Agents',
       hasChildren: false,
-      children: [
-        {
-          name: '',
-          status: '',
-          hasChildren: false,
-        },
-      ],
+      childName: 'freeagent',
+      route: '/free-agent',
     },
     {
       name: 'Staff',
       hasChildren: true,
+      childName: 'staff',
+      route: '/staff',
       children: [
         {
           name: 'On field',
           hasChildren: false,
+          route: '/dashboard',
         },
         {
           name: 'Off field',
           hasChildren: false,
+          route: '/dashboard',
         },
       ],
     },
     {
       name: 'Communication',
       hasChildren: false,
+      childName: '',
+      route: '/dashboard',
     },
   ];
 
   ngOnInit(): void {}
 
-  changePage() {
-    this.router.navigateByUrl('/roaster');
+  changePage(route) {
+    this.router.navigateByUrl(route);
     this.sidenavOpen = false;
   }
 
@@ -68,6 +84,10 @@ export class HomeHeaderComponent implements OnInit {
 
   toogleSidenav() {
     this.sidenavOpen = !this.sidenavOpen;
+  }
+
+  childopen(childid) {
+    this.childOpen[childid] = !this.childOpen[childid];
   }
 
   onAbout() {

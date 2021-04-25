@@ -1,0 +1,264 @@
+.container-p {
+  margin: 30px;
+  margin-top: 64px;
+
+  .card-container {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
+
+  .back-cont {
+    background-color: #f2f4f8 !important;
+  }
+
+  .cont {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    min-height: 150px;
+
+    .head {
+      padding-top: 20px;
+      padding-bottom: 10px;
+      font-weight: 600;
+      font-size: 12px;
+      color: #404040;
+      text-align: left;
+      padding-left: 14px;
+    }
+
+    .sub-head {
+      padding-top: 20px;
+      padding-bottom: 5px;
+      font-weight: 400;
+      font-size: 12px;
+      color: #404040;
+      text-align: center;
+    }
+
+    .value {
+      padding-bottom: 10px;
+      font-weight: 600;
+      font-size: 20px;
+      color: #376dc8;
+      text-align: center;
+    }
+
+    .details {
+      padding-top: 10px;
+      font-weight: 400;
+      font-size: 12px;
+      color: #404040;
+      text-align: left;
+      padding-left: 15px;
+    }
+  }
+
+  .hline {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 0px;
+    border: 1px solid #e6e6e6;
+  }
+
+  .head {
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #242424;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .text {
+    padding-top: 5px;
+    color: #242424;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .left-cont {
+    margin-left: auto;
+    margin-right: 5px;
+    color: #0053a1;
+  }
+
+  .date {
+    display: flex;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: 10px;
+    .text {
+      font-weight: 500;
+      font-size: 13px;
+      color: #242424;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  .graph {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .analytics-cont {
+    background: #eef1fc 0% 0% no-repeat padding-box;
+    border-radius: 4px 4px 0px 0px;
+    width: 100%;
+    height: 50px;
+    .head {
+      font-weight: 600;
+      font-size: 15px;
+      color: #242424;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .player-records {
+    padding-left: 4px;
+    color: #404040;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    .name {
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .progress {
+    }
+    .exhausted {
+      font-size: 11px;
+      font-weight: 600;
+      padding-left: 15px;
+    }
+  }
+
+  .timing-box {
+    background: #376dc8 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    width: 100px;
+    .text {
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 10px 20px 10px 20px;
+      font-family: 'Montserrat';
+      line-height: 18px;
+    }
+  }
+
+  .legend {
+    margin-top: 20px;
+    .value {
+      margin-left: auto;
+      margin-right: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #313131;
+    }
+    .leg {
+      margin-top: 3px;
+      height: 8px;
+      width: 6px;
+      margin-right: 5px;
+      border-radius: 4px;
+    }
+    .name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #313131;
+    }
+  }
+
+  .detail {
+    padding-top: 10px;
+    padding-left: 15px;
+    color: #404040;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Montserrat';
+  }
+
+  .sub-detail {
+    color: #404040;
+    font-size: 12px;
+    padding-top: 5px;
+    font-weight: 500;
+    font-family: 'Montserrat';
+  }
+
+  .status {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #dafddf 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    height: 30px;
+    margin-right: 20px;
+    color: #00a119;
+    font-size: 12px;
+    font-weight: 500px;
+  }
+
+  .action {
+    color: #0053a1;
+    margin-right: 10px;
+    font-size: 12px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'Montserrat';
+  }
+
+  .accord-details {
+    margin-right: 15px;
+    margin-top: 10px;
+    .head-tab {
+      font-size: 11px;
+      font-family: 'Montserrat';
+      color: #404040;
+      font-weight: 600;
+    }
+    .value {
+      font-size: 10px;
+      font-family: 'Montserrat';
+      color: #404040;
+    }
+    .m-l-a {
+      margin-left: auto;
+    }
+
+    .icon {
+      padding-right: 10px;
+      color: #3074d5;
+    }
+    .accord-desc {
+      padding-left: 10px !important;
+    }
+
+    .cate {
+      background: #ebf3ff 0% 0% no-repeat padding-box;
+      border-radius: 4px;
+      font-size: 8px;
+      font-family: 'Montserrat';
+      color: #404040;
+      text-align: center;
+    }
+  }
+
+  ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #3074d5;
+  }
+
+  ::ng-deep .mat-progress-bar-buffer {
+    background: white;
+  }
+
+  ::ng-deep .mat-progress-bar {
+    border: 1px solid #e5e5e5;
+    height: 10px;
+  }
+}

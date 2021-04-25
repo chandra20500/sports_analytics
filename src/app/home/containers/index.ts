@@ -5,6 +5,7 @@ import { TradeAnalysisComponent } from '@app/home/containers/trade-analysis/trad
 import { TeamSelectionComponent } from '@app/home/containers/trade-analysis/team-selection/team-selection.component';
 import { PlayerSelectionComponent } from '@app/home/containers/trade-analysis/player-selection/player-selection.component';
 import { TradeOverviewComponent } from '@app/home/containers/trade-analysis/trade-overview/trade-overview.component';
+import { PracticePlansComponent } from '@app/home/containers/practice-plans/practice-plans.component';
 
 export const containers = [
   HomeComponent,
@@ -14,6 +15,7 @@ export const containers = [
   TeamSelectionComponent,
   PlayerSelectionComponent,
   TradeOverviewComponent,
+  PracticePlansComponent,
 ];
 
 export * from './home/home.component';
@@ -23,3 +25,4 @@ export * from './trade-analysis/trade-analysis.component';
 export * from './trade-analysis/team-selection/team-selection.component';
 export * from './trade-analysis/player-selection/player-selection.component';
 export * from './trade-analysis/trade-overview/trade-overview.component';
+export * from './practice-plans/practice-plans.component';

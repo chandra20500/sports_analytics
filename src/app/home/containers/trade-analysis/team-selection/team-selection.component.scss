@@ -16,17 +16,15 @@
       color: white;
       font-weight: 600;
       font-size: 14px;
-      font-family: 'Montserrat';
     }
   }
 
   .note {
     text-align: left;
-    font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 500;
     color: #686868;
-    padding-top: 10px;
+    margin-top: -25px;
   }
 
   .cont {
@@ -37,12 +35,13 @@
     .border-teams {
       margin-top: 10px;
       margin-bottom: 20px;
+      margin-left: 15px;
       padding: 15px;
       padding-right: 25px;
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 2px solid #376dc8;
       border-radius: 4px;
-      font-family: 'Montserrat';
+
       font-size: 14px;
       color: #161616;
       font-weight: 600;

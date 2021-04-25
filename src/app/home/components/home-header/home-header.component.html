@@ -41,22 +41,40 @@
   </div>
 </mat-toolbar>
 
-<div class="sidenav-bar" *ngIf="sidenavOpen">
-  <div *ngFor="let sidenavItem of sidenavItems">
-    <div [ngClass]="[sidenavItem.name == 'Roster Builder' ? 'activeitem' : 'item']" (click)="changePage()">
-      {{ sidenavItem.name }}
-      <img *ngIf="sidenavItem.hasChildren" class="sidenav-child-dropdown" src="assets/images/header/expand_more.svg" />
-    </div>
+<div class="sidenav-bar p-t" *ngIf="sidenavOpen">
+  <div class="side-cont">
+    <div *ngFor="let sidenavItem of sidenavItems">
+      <div [ngClass]="[router.url.includes(sidenavItem.route) ? 'activeitem' : 'item']">
+        <span style="cursor: pointer" (click)="changePage(sidenavItem.route)">
+          {{ sidenavItem.name }}
+        </span>
+        <mat-icon
+          *ngIf="sidenavItem.hasChildren && !childOpen[sidenavItem.childName]"
+          (click)="childopen(sidenavItem.childName)"
+          class="sidenav-child-dropdown"
+        >
+          expand_less
+        </mat-icon>
+        <mat-icon
+          *ngIf="sidenavItem.hasChildren && childOpen[sidenavItem.childName]"
+          (click)="childopen(sidenavItem.childName)"
+          class="sidenav-child-dropdown"
+        >
+          expand_more
+        </mat-icon>
+      </div>
 
-    <div *ngIf="sidenavItem.hasChildren">
-      <div
-        *ngFor="let child of sidenavItem.children"
-        [ngClass]="[sidenavItem.name == 'Roster Builder' ? 'activeitemchild' : 'itemchild']"
-      >
-        {{ child.name }}
+      <div *ngIf="sidenavItem.hasChildren && childOpen[sidenavItem.childName]">
+        <div
+          *ngFor="let child of sidenavItem.children"
+          [ngClass]="[sidenavItem.name == router.url ? 'activeitemchild' : 'itemchild']"
+          (click)="changePage(child.route)"
+        >
+          {{ child.name }}
+        </div>
       </div>
     </div>
   </div>
 
-  <img class="powered-by" src="assets/images/header/mavq.png" />
+  <img class="powered-by" src="assets/images/header/mavq.svg" />
 </div>

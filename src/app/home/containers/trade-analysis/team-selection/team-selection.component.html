@@ -2,16 +2,16 @@
   <div class="row">
     <div class="bread-path">
       <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       <a (click)="goToPage('trade')" class="link">Trade Machine</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
-      Select Teams
-      <div class="note">Select Teams which want to be the part of your current Trade</div>
+      <mat-icon>arrow_forward</mat-icon>
+      Select Team
     </div>
     <button mat-button class="launch-button" (click)="goToPage('trade/player-selection')">
       <div class="text">Next</div>
     </button>
   </div>
+  <div class="note m-b">Select Teams which want to be the part of your current Trade</div>
 
   <div class="cont row">
     <div class="col-md-3" *ngFor="let team of teams">

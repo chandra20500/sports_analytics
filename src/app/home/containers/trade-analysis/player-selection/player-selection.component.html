@@ -2,13 +2,12 @@
   <div class="row">
     <div class="bread-path">
       <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       <a (click)="goToPage('trade')" class="link">Trade Machine</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       <a (click)="goToPage('trade/team-selection')" class="link">Select Teams</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       Select Players
-      <div class="note">Select Players who want to be the part of the trade</div>
     </div>
     <button mat-button class="configure-button" (click)="openConfigure()">
       <div class="text">Configure</div>
@@ -17,6 +16,7 @@
       <div class="text">Next</div>
     </button>
   </div>
+  <div class="note m-b">Select Players who want to be the part of the trade</div>
 
   <div>
     <div class="cont" style="display: flex">
@@ -40,9 +40,25 @@
               <div class="price">$5.1M</div>
               <div class="duration">2 years</div>
             </div>
+            <!-- <select class="input-r"> 
+              <option style="background-image:url(assets/images/header/profile.png);">male</option>
+              <option style="background-image:url(assets/images/header/profile.png);">female</option>
+              <option style="background-image:url(assets/images/header/profile.png);">others</option>
+            </select>  -->
             <mat-select class="input-r">
               <mat-option>sdasd</mat-option>
             </mat-select>
+            <!-- <div class="select-container">
+              <input type="text" />
+              <ul class="select-menu box" role="listbox">   
+                <li role="option"
+                  *ngFor="let option of players; let i = index;" 
+                  class="option-item"
+                >
+                    <span> {{option}}</span>
+                </li>
+              </ul>
+            </div> -->
           </div>
         </div>
       </div>

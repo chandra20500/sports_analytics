@@ -17,7 +17,7 @@ const routes: Routes = [
         component: fromContainers.RoasterComponent,
       },
       {
-        path: 'playerdetails',
+        path: 'roaster/playerdetails',
         component: fromContainers.PlayerDetailsComponent,
       },
       {
@@ -35,6 +35,10 @@ const routes: Routes = [
       {
         path: 'trade/trade-overview',
         component: fromContainers.TradeOverviewComponent,
+      },
+      {
+        path: 'practice-plans',
+        component: fromContainers.PracticePlansComponent,
       },
     ],
   },

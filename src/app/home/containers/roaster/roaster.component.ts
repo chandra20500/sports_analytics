@@ -1,13 +1,65 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { ChartOptions, ChartType } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
+
 @Component({
   selector: 'app-roaster',
   templateUrl: './roaster.component.html',
   styleUrls: ['./roaster.component.scss'],
 })
 export class RoasterComponent implements OnInit {
+  public lineChartData = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Actual' },
+    { data: [85, 69, 90, 91, 66, 65, 50], label: 'Forecast' },
+  ];
+  public lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  public lineChartOptions: ChartOptions = {
+    responsive: true,
+    elements: {
+      point: {
+        radius: 0,
+      },
+    },
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            drawOnChartArea: false,
+            drawBorder: false,
+          },
+          ticks: {
+            fontColor: '#768BC4',
+          },
+        },
+      ],
+      yAxes: [
+        {
+          display: false,
+          gridLines: {
+            drawOnChartArea: false,
+            drawBorder: false,
+          },
+        },
+      ],
+    },
+  };
+  public lineChartColors = [
+    {
+      borderColor: '#EAEEFF',
+      backgroundColor: '#EAEEFF',
+    },
+    {
+      borderColor: '#376DC8',
+      fill: false,
+    },
+  ];
+  public lineChartLegend = false;
+  public lineChartType: ChartType = 'line';
+  public lineChartPlugins = [];
+
   @ViewChild(MatSort) sort: MatSort;
   elements = [
     {

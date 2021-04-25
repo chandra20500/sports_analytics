@@ -9,7 +9,7 @@ import * as fromServices from './services';
 import * as fromGuards from './guards';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [...fromContainers.containers, fromComponents.components],
   imports: [
@@ -21,6 +21,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    ChartsModule,
   ],
   providers: [...fromServices.services, ...fromGuards.guards],
 })

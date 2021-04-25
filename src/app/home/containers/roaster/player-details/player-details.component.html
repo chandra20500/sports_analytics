@@ -1,11 +1,11 @@
 <div class="container-p">
   <div class="bread-path">
     <a class="link" (click)="goToPage('roaster')"> Roaster Builder</a>
-    <span class="material-icons arrow-icon">arrow_forward</span>
+    <mat-icon>arrow_forward</mat-icon>
     Player Details
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 p-l-0">
       <div class="card-container">
         <div class="row">
           <img class="user-image" src="assets/images/header/profile.png" />
@@ -247,11 +247,37 @@
                 <div class="graph-container">
                   <div class="heading">Winning Index measures player / role fit</div>
                   <!-- <div class="d3-chart" #chart></div> -->
-                  <img class="graph" src="assets/images/graphs/g-1.png" />
+                  <!-- <img class="graph" src="assets/images/graphs/g-1.png" /> -->
+                  <canvas
+                    #myChart
+                    id="myChart"
+                    baseChart
+                    width="90%"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins"
+                  >
+                  </canvas>
                 </div>
                 <div class="graph-container">
                   <div class="heading">WAR Index</div>
-                  <img class="graph" src="assets/images/graphs/g-1.png" />
+                  <!-- <img class="graph" src="assets/images/graphs/g-1.png" /> -->
+                  <canvas
+                    baseChart
+                    width="90%"
+                    height="90px"
+                    [datasets]="radarChartData"
+                    [options]="radarChartOptions"
+                    [labels]="radarChartLabels"
+                    [chartType]="radarChartType"
+                    [legend]="radarChartLegend"
+                    [colors]="radarChartColors"
+                  >
+                  </canvas>
                 </div>
               </div>
             </div>

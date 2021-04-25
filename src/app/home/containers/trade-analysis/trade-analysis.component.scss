@@ -17,7 +17,6 @@
       color: white;
       font-weight: 600;
       font-size: 14px;
-      font-family: 'Montserrat';
     }
   }
 
@@ -45,28 +44,28 @@
     padding-right: 10px;
     .p-name {
       text-align: left;
-      font-family: 'Montserrat';
+
       font-size: 12px;
       font-weight: 600;
       color: #0f0f0f;
     }
     .p-role {
       text-align: left;
-      font-family: 'Montserrat';
+
       font-size: 10px;
       font-weight: 500;
       color: #393939;
     }
     .p-type {
       text-align: left;
-      font-family: 'Montserrat';
+
       font-size: 10px;
       font-weight: 400;
       color: #adadad;
     }
     .p-head {
       text-align: center;
-      font-family: 'Montserrat';
+
       font-size: 12px;
       font-weight: 600;
       color: #0f0f0f;
@@ -87,7 +86,7 @@
       background: #e6eafc 0% 0% no-repeat padding-box;
       border-radius: 4px;
       padding: 5px;
-      font-family: 'Montserrat';
+
       font-size: 14px;
       font-weight: 500;
     }
@@ -107,7 +106,6 @@
   }
 
   .head {
-    font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 600;
     padding-top: 10px;
@@ -116,7 +114,6 @@
 
   .sub-head {
     color: #adadad;
-    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 600;
     padding-top: 5px;
@@ -124,7 +121,6 @@
 
   .card-head {
     text-align: center;
-    font-family: 'Montserrat';
     font-weight: 500;
     font-size: 14px;
     color: #ffffff;
@@ -133,7 +129,6 @@
 
   .card-sub {
     text-align: center;
-    font-family: 'Montserrat';
     font-weight: 800;
     font-size: 16px;
     color: #ffffff;
@@ -167,10 +162,36 @@
     margin-top: 30px;
     .trade-count {
       color: #376dc8;
-      font-family: 'Montserrat';
       font-size: 20px;
       font-weight: 600;
       padding-top: 5px;
+    }
+  }
+
+  .legend {
+    margin-top: 20px;
+    width: 150px;
+    .value {
+      text-align: center;
+      padding-top: 15px;
+      padding-bottom: 5px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #313131;
+    }
+    .name {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      font-size: 12px;
+      font-weight: 500;
+      color: #313131;
+      .leg {
+        height: 8px;
+        width: 6px;
+        margin-right: 5px;
+        border-radius: 4px;
+      }
     }
   }
 
@@ -193,7 +214,6 @@
 
   .table-head {
     color: #393939;
-    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 500;
     text-align: center;
@@ -202,7 +222,6 @@
 
   .tablecontent {
     color: #393939;
-    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 400;
     text-align: center;
@@ -223,7 +242,6 @@
     padding-top: 10px;
     margin-left: auto;
     color: #376dc8;
-    font-family: 'Montserrat';
     font-size: 12px;
     text-decoration: underline;
     .icons {
@@ -234,7 +252,6 @@
     background: #dafddf 0% 0% no-repeat padding-box;
     border-radius: 4px;
     color: #00a119;
-    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 500;
     width: 120px;
@@ -245,7 +262,6 @@
     background: #ffe4e0 0% 0% no-repeat padding-box;
     border-radius: 4px;
     color: #a11300;
-    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 500;
     width: 120px;

@@ -8,10 +8,8 @@
 }
 
 .toolbar {
-  // background-color: #426ec2;
   color: white;
   padding-left: 20px;
-  // position: fixed;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -24,8 +22,7 @@
   .heading {
     color: rgb(255, 255, 255);
     font-size: 18px;
-    padding-left: 25px;
-    font-family: 'Montserrat';
+    padding-left: 30px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -47,7 +44,6 @@
     padding-left: 10px;
     padding-right: 30px;
     color: white;
-    font-family: 'Montserrat';
     font-weight: 400px;
   }
 
@@ -87,7 +83,7 @@
       margin-left: 5px;
       margin-right: 5px;
       color: white;
-      font-family: 'Montserrat';
+
       font-weight: 400;
       font-size: 16px;
     }
@@ -142,33 +138,39 @@
 }
 
 .sidenav-bar {
-  position: absolute;
+  position: fixed;
   top: 90px;
   left: 30px;
-  height: 400px;
+  min-height: 400px;
   width: 250px;
   background: #102d5a;
   box-shadow: 0px 10px 20px #00000029;
   border-radius: 6px;
   z-index: 99999;
+  padding-bottom: 20px;
+
+  .side-cont {
+    min-height: 300px;
+    overflow-y: scroll;
+  }
 
   .item {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    display: flex;
+    padding-top: 12px;
+    padding-bottom: 12px;
     padding-left: 50px;
     color: white;
-    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
+    align-items: center;
   }
 
   .activeitem {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     padding-left: 50px;
     color: white;
-    font-family: 'Montserrat';
-    font-weight: 600px;
+    font-weight: 600;
     font-size: 14px;
     background-color: #87a8de;
   }
@@ -182,7 +184,6 @@
     padding-bottom: 10px;
     padding-left: 70px;
     color: white;
-    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
   }
@@ -192,7 +193,6 @@
     padding-bottom: 10px;
     padding-left: 70px;
     color: white;
-    font-family: 'Montserrat';
     font-weight: 600px;
     font-size: 14px;
     background-color: #87a8de;
@@ -200,8 +200,8 @@
 
   .powered-by {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
+    bottom: 18px;
+    left: 18px;
     width: 80px;
   }
 }

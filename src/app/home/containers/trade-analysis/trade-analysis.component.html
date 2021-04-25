@@ -2,7 +2,7 @@
   <div class="row">
     <div class="bread-path">
       <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
-      <span class="material-icons arrow-icon">arrow_forward</span>
+      <mat-icon>arrow_forward</mat-icon>
       Trade Machine
     </div>
     <button mat-button class="launch-button" (click)="goToPage('trade/team-selection')">
@@ -11,15 +11,54 @@
   </div>
 
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-9 p-l-0 m-t">
       <div class="cont">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-5 m-t">
             <div class="head">Salary Payroll</div>
-            <img src="assets/images/graphs/g-2.png" width="300px" height="200px" />
+            <!-- <img src="assets/images/graphs/g-2.png" width="300px" height="200px" /> -->
+            <div class="row">
+              <div class="col-md-7 m-t-md">
+                <canvas
+                  baseChart
+                  width="100%"
+                  height="90"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [colors]="doughnutChartColors"
+                  [options]="doughnutChartOptions"
+                  [legend]="doughnutChartLegend"
+                  [chartType]="doughnutChartType"
+                  [plugins]="doughnutChartPlugins"
+                >
+                </canvas>
+              </div>
+              <div class="col-md-5 legend">
+                <div class="value">$ 4,500,450</div>
+                <div class="name">
+                  <div class="leg" style="background-color: #f89751"></div>
+                  Total Salary
+                </div>
+                <div class="value">$ 4,500,450</div>
+                <div class="name">
+                  <div class="leg" style="background-color: #a11300"></div>
+                  MLE/Room
+                </div>
+                <div class="value">$ 4,500,450</div>
+                <div class="name">
+                  <div class="leg" style="background-color: #363333"></div>
+                  Over Tax
+                </div>
+                <div class="value">$ 4,500,450</div>
+                <div class="name">
+                  <div class="leg" style="background-color: #39ab41"></div>
+                  Cap Room
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-8">
-            <div class="vline" style="height: 280px"></div>
+          <div class="col-md-7">
+            <div class="vline" style="height: 340px"></div>
             <div class="row">
               <div class="head">
                 Payroll Variations
@@ -29,13 +68,30 @@
                 <mat-option value="last_6_season">Last 6 Seasons</mat-option>
               </mat-select>
             </div>
-            <img src="assets/images/graphs/g-3.png" width="600px" height="200px" class="m-l-md" />
+            <div class="m-a">
+              <canvas
+                baseChart
+                width="100%"
+                id="myChart"
+                #myChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [colors]="barChartColors"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+              >
+              </canvas>
+            </div>
+
+            <!-- <img src="assets/images/graphs/g-3.png" width="600px" height="200px" class="m-l-md" /> -->
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3 cont p-a-0">
+    <div class="col-md-3 cont p-a-0 m-t">
       <div class="row">
         <div class="head">Highest Valued Trades</div>
         <div class="expand">
@@ -77,8 +133,8 @@
     </div>
   </div>
 
-  <div class="row m-t-lg">
-    <div class="col-md-5">
+  <div class="row">
+    <div class="col-md-5 p-l-0 m-t">
       <div class="cont">
         <div class="row">
           <div class="head">Trade Summary</div>
@@ -118,7 +174,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 p-r-0 m-t">
       <div class="cont">
         <div class="row">
           <div class="head">Saved Trade Records</div>
