@@ -48,17 +48,28 @@
             <div class="row">
               <div class="col-md-8 p-a-0">
                 <div class="season-performace">
-                  <div class="row">
+                  <!-- <div class="row">
                     <mat-select class="fieldbox fieldvalue m-t m-b m-r col-md-3" value="day">
                       <mat-option value="day"> Per game </mat-option>
                       <mat-option value="week"> Game log </mat-option>
                       <mat-option value="month"> Similarity score </mat-option>
                     </mat-select>
+                  </div> -->
+                  <div class="button-group">
+                    <button mat-button (click)="tabselect('pergame')" class="tab-button-b1"
+                    [ngClass]="[ tabvalue=='pergame' ? 'active-tab' : '']">
+                      Per Game
+                    </button>
+                    <button mat-button (click)="tabselect('gamelog')" class="tab-button-b2"
+                    [ngClass]="[ tabvalue=='gamelog' ? 'active-tab' : '']">
+                      Game Log
+                    </button>
+                    <button mat-button (click)="tabselect('similarityscore')" class="tab-button-b3"
+                    [ngClass]="[ tabvalue=='similarityscore' ? 'active-tab' : '']">
+                      Similarity score
+                    </button>
                   </div>
-
-                  <!-- <mat-tab-group>
-                    <mat-tab class="solid-mat-tab" label="Per game"> -->
-                  <table mat-table class="tableclass" [dataSource]="seasonData">
+                  <table *ngIf="tabvalue=='pergame'" mat-table class="tableclass" [dataSource]="seasonData">
                     <ng-container matColumnDef="season">
                       <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
                       <td mat-cell class="tablecontent" *matCellDef="let element">
@@ -146,10 +157,12 @@
                     <tr mat-header-row class="table-header" *matHeaderRowDef="seasonColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
                   </table>
-                  <!-- </mat-tab>
-                    <mat-tab class="solid-mat-tab" label="Game log"> </mat-tab>
-                    <mat-tab class="solid-mat-tab" label="Similarity score"> </mat-tab>
-                  </mat-tab-group> -->
+                  <div *ngIf="tabvalue=='gamelog'">
+                    Game Log
+                  </div>
+                  <div *ngIf="tabvalue=='similarityscore'">
+                    Game Log
+                  </div>
                 </div>
                 <div class="recent-performace">
                   <div class="heading">Recent Performances</div>
@@ -246,8 +259,6 @@
               <div class="col-md-4">
                 <div class="graph-container">
                   <div class="heading">Winning Index measures player / role fit</div>
-                  <!-- <div class="d3-chart" #chart></div> -->
-                  <!-- <img class="graph" src="assets/images/graphs/g-1.png" /> -->
                   <canvas
                     #myChart
                     id="myChart"
@@ -265,11 +276,10 @@
                 </div>
                 <div class="graph-container">
                   <div class="heading">WAR Index</div>
-                  <!-- <img class="graph" src="assets/images/graphs/g-1.png" /> -->
                   <canvas
                     baseChart
                     width="90%"
-                    height="90px"
+                    height="70"
                     [datasets]="radarChartData"
                     [options]="radarChartOptions"
                     [labels]="radarChartLabels"

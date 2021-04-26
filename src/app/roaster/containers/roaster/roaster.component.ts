@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { ChartOptions, ChartType } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
+import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-roaster',
@@ -46,6 +45,7 @@ export class RoasterComponent implements OnInit {
       ],
     },
   };
+
   public lineChartColors = [
     {
       borderColor: '#EAEEFF',
@@ -56,12 +56,14 @@ export class RoasterComponent implements OnInit {
       fill: false,
     },
   ];
+
   public lineChartLegend = false;
+
   public lineChartType: ChartType = 'line';
+
   public lineChartPlugins = [];
 
-  @ViewChild(MatSort) sort: MatSort;
-  elements = [
+  data = [
     {
       name: 'John',
       age: 23,
@@ -86,7 +88,8 @@ export class RoasterComponent implements OnInit {
     },
   ];
 
-  dataSource = new MatTableDataSource(this.elements);
+  dataSource = new MatTableDataSource(this.data);
+
   displayedColumns: string[] = [
     'name',
     'age',
@@ -99,11 +102,10 @@ export class RoasterComponent implements OnInit {
     'workload',
     'action',
   ];
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.elements);
-  }
+  ngOnInit(): void {}
 
   goToPage(url) {
     this.router.navigateByUrl(url);

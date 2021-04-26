@@ -8,8 +8,8 @@ import { environment } from '@app/env/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from '@app/core/core.module';
-
-import { MaterialModule } from './material.module';
+import { SharedModule } from './shared/shared.module';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +22,7 @@ import { MaterialModule } from './material.module';
     HammerModule,
     CoreModule,
     MaterialModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,7 +4,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   selector: 'app-home-shell',
   template: `
     <div>
-      <app-home-header (logout)="onLogout()"></app-home-header>
       <ng-content></ng-content>
     </div>
   `,

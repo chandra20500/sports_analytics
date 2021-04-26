@@ -116,6 +116,7 @@ export class PlayerDetailsComponent implements AfterViewInit {
   CalendarView = CalendarView;
   selectedView = 'month';
   viewDate: Date = new Date();
+  tabvalue = 'pergame';
 
   events: CalendarEvent[] = [
     {
@@ -333,5 +334,9 @@ export class PlayerDetailsComponent implements AfterViewInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+
+  tabselect(value) {
+    this.tabvalue = value;
   }
 }

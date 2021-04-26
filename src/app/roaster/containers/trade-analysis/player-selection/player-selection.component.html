@@ -3,16 +3,16 @@
     <div class="bread-path">
       <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
       <mat-icon>arrow_forward</mat-icon>
-      <a (click)="goToPage('trade')" class="link">Trade Machine</a>
+      <a (click)="goToPage('roaster/trade')" class="link">Trade Machine</a>
       <mat-icon>arrow_forward</mat-icon>
-      <a (click)="goToPage('trade/team-selection')" class="link">Select Teams</a>
+      <a (click)="goToPage('roaster/trade/team-selection')" class="link">Select Teams</a>
       <mat-icon>arrow_forward</mat-icon>
       Select Players
     </div>
     <button mat-button class="configure-button" (click)="openConfigure()">
       <div class="text">Configure</div>
     </button>
-    <button mat-button class="launch-button" (click)="goToPage('trade/trade-overview')">
+    <button mat-button class="launch-button" (click)="goToPage('roaster/trade/trade-overview')">
       <div class="text">Next</div>
     </button>
   </div>

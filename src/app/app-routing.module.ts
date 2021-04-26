@@ -12,6 +12,16 @@ const routes: Routes = [
     // canActivate: [AuthenticationGuard],/
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'roaster',
+    // canActivate: [AuthenticationGuard],/
+    loadChildren: () => import('./roaster/roaster.module').then((m) => m.RoasterModule),
+  },
+  {
+    path: 'practice-plans',
+    // canActivate: [AuthenticationGuard],/
+    loadChildren: () => import('./practice-plans/practice-plans.module').then((m) => m.PracticePlansModule),
+  },
   // Fallback when no prior route is matched
   {
     path: '**',
