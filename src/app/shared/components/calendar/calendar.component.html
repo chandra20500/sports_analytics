@@ -1,0 +1,79 @@
+<div class="row calendar" *ngIf="navigation == 'all'">
+  <div
+    class="navigate-calendar"
+    mwlCalendarPreviousView
+    [view]="view"
+    [(viewDate)]="viewDate"
+    (viewDateChange)="closeOpenMonthViewDay()"
+  >
+    <mat-icon class="icon">navigate_before</mat-icon>
+  </div>
+
+  <div class="head">{{ viewDate | calendarDate: view + 'ViewTitle':'en' }}</div>
+
+  <div
+    class="navigate-calendar"
+    mwlCalendarNextView
+    [view]="view"
+    [(viewDate)]="viewDate"
+    (viewDateChange)="closeOpenMonthViewDay()"
+  >
+    <mat-icon class="icon">navigate_next</mat-icon>
+  </div>
+
+  <mat-select
+    class="fieldbox fieldvalue col-md-3 col-xs-5"
+    (selectionChange)="setView($event)"
+    [(ngModel)]="selectedView"
+  >
+    <mat-option value="day"> Day </mat-option>
+    <mat-option value="week"> Week </mat-option>
+    <mat-option value="month"> Month </mat-option>
+  </mat-select>
+</div>
+
+<div class="row calendar" *ngIf="navigation == 'current'">
+  <mat-select
+    style="margin-top: -50px"
+    class="fieldbox fieldvalue col-md-5 col-xs-5"
+    (selectionChange)="setView($event)"
+    [(ngModel)]="selectedView"
+  >
+    <mat-option value="week"> Current Week </mat-option>
+    <mat-option value="month"> Current Month </mat-option>
+  </mat-select>
+</div>
+<div [ngSwitch]="view" class="p-t-md">
+  <div [ngClass]="[size == 'small' ? 'small' : 'large']">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+  </div>
+
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [dayStartHour]="startTime"
+    [dayEndHour]="endTime"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-week-view>
+
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [refresh]="refresh"
+    [viewDate]="viewDate"
+    [events]="events"
+    [dayStartHour]="startTime"
+    [dayEndHour]="endTime"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-day-view>
+</div>

@@ -1,18 +1,7 @@
 .container-p {
   margin: 30px;
   margin-top: 64px;
-
-  .cont {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border-radius: 6px;
-    // min-height: 300px;
-    padding-top: 10px;
-  }
-
-  .cont-back {
-    height: 100px;
-    margin-bottom: 40px;
-  }
+  padding-bottom: 30px;
 
   .head {
     font-size: 14px;
@@ -21,27 +10,136 @@
     margin-bottom: 10px;
   }
 
-  .sub-head {
-    font-size: 14px;
-    font-weight: 400;
-    color: #686868;
-    margin-bottom: 15px;
-    margin-bottom: 15px;
-    text-align: center;
+  .cont {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    padding-top: 10px;
+    .team-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #242424;
+      margin-bottom: 10px;
+      text-align: center;
+      width: 100%;
+    }
+    .vline {
+      border: 1px solid #e6e6e6;
+      width: 0px;
+      position: absolute;
+      width: 0px;
+      right: 0px;
+      margin-left: auto;
+    }
+    .sub-head {
+      font-size: 14px;
+      font-weight: 400;
+      color: #686868;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .headkey {
+      padding-bottom: 10px;
+      width: 110px;
+      color: #676767;
+      font-size: 12px;
+      margin-left: 20px;
+    }
+
+    .headvalue {
+      color: #242424;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .input-r {
+      margin-left: auto;
+      margin-right: 15px;
+      margin-top: 10px;
+      width: 120px;
+      height: 15px;
+      font-family: 'Montserrat' !important;
+      font-size: 11px;
+      padding-left: 10px;
+      border: 1px solid rgb(221, 219, 218);
+      border-radius: 1px;
+    }
+
+    .leg-value {
+      padding-top: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .leg-name {
+      padding-top: 5px;
+      font-size: 12px;
+      font-weight: 400;
+      text-align: center;
+      color: #676767;
+    }
+
+    .card {
+      margin-left: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #d3d3d3;
+      border-radius: 8px;
+      padding: 20px;
+
+      .card-head {
+        font-family: 'Montserrat' !important;
+        font-size: 12px;
+        color: #252e48;
+        text-align: left;
+        font-weight: 600;
+        padding-bottom: 5px;
+      }
+
+      .card-value {
+        font-family: 'Montserrat' !important;
+        font-size: 18px;
+        color: #376dc8;
+        text-align: left;
+        font-weight: 600;
+      }
+    }
   }
 
   .team-image {
     text-align: center !important;
     margin-left: auto;
     margin-right: auto;
+    width: 24px;
+    height: 28px;
+    margin-bottom: 10px;
+    display: flex;
   }
 
-  .team-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: #242424;
-    margin-bottom: 10px;
-    text-align: center;
+  .cont-back {
+    min-height: 100px;
+    margin-bottom: 40px;
+    .vline {
+      border: 1px solid #e6e6e6;
+      width: 0px;
+      height: 90px;
+      margin-top: -80px;
+      margin-left: auto;
+    }
+
+    .traded-player {
+      color: #272727;
+      font-size: 12px;
+      font-weight: 500;
+
+      .info-icon {
+        font-size: 18px;
+        color: black;
+        fill: white;
+      }
+    }
   }
 
   .hline {
@@ -51,124 +149,6 @@
     height: 0px;
     border: 1px solid #e6e6e6;
     margin-bottom: 20px;
-  }
-
-  .vline {
-    border: 1px solid #e6e6e6;
-  }
-
-  .headkey {
-    padding-bottom: 10px;
-    width: 110px;
-    color: #676767;
-    font-size: 12px;
-    margin-left: 20px;
-  }
-
-  .headvalue {
-    color: #242424;
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .expand {
-    cursor: pointer;
-    margin-left: auto;
-    color: #376dc8;
-    font-size: 12px;
-    text-decoration: underline;
-    .icons {
-      font-size: 12px;
-    }
-  }
-
-  .input-r {
-    margin-left: auto;
-    margin-right: 15px;
-    margin-top: 10px;
-    width: 120px;
-    height: 15px;
-    font-family: 'Montserrat' !important;
-    font-size: 11px;
-    padding-left: 10px;
-    border: 1px solid rgb(221, 219, 218);
-    border-radius: 1px;
-  }
-
-  .user-image {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .traded-player {
-    color: #272727;
-    font-size: 12px;
-    font-weight: 500;
-
-    .info-icon {
-      font-size: 18px;
-    }
-  }
-
-  .leg-value {
-    padding-top: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-  }
-
-  .leg-name {
-    padding-top: 5px;
-    font-size: 12px;
-    font-weight: 400;
-    text-align: center;
-    color: #676767;
-  }
-
-  .card {
-    margin-left: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border: 1px solid #d3d3d3;
-    border-radius: 8px;
-    padding: 20px;
-
-    .card-head {
-      font-family: 'Montserrat' !important;
-      font-size: 12px;
-      color: #252e48;
-      text-align: left;
-      font-weight: 600;
-      padding-bottom: 5px;
-    }
-
-    .card-value {
-      font-family: 'Montserrat' !important;
-      font-size: 18px;
-      color: #376dc8;
-      text-align: left;
-      font-weight: 600;
-    }
-  }
-
-  .player-records {
-    padding-left: 4px;
-    color: #404040;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    .name {
-      font-size: 12px;
-      font-weight: 500;
-    }
-    .progress {
-    }
-    .exhausted {
-      font-size: 11px;
-      font-weight: 600;
-      padding-left: 15px;
-    }
   }
 
   .mat-tab-list .mat-tab-labels .mat-tab-label-active ::before {

@@ -1,14 +1,18 @@
 <div class="container-p">
   <div class="row">
-    <div class="bread-path">
-      <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
-      <mat-icon>arrow_forward</mat-icon>
-      <a (click)="goToPage('roaster/trade')" class="link">Trade Machine</a>
-      <mat-icon>arrow_forward</mat-icon>
-      <a (click)="goToPage('roaster/trade/team-selection')" class="link">Select Teams</a>
-      <mat-icon>arrow_forward</mat-icon>
-      Select Players
+    <div>
+      <div class="bread-path">
+        <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
+        <mat-icon>arrow_forward</mat-icon>
+        <a (click)="goToPage('roaster/trade')" class="link">Trade Machine</a>
+        <mat-icon>arrow_forward</mat-icon>
+        <a (click)="goToPage('roaster/trade/team-selection')" class="link">Select Teams</a>
+        <mat-icon>arrow_forward</mat-icon>
+        Select Players
+      </div>
+      <div class="note m-b">Select Players who want to be the part of the trade</div>
     </div>
+
     <button mat-button class="configure-button" (click)="openConfigure()">
       <div class="text">Configure</div>
     </button>
@@ -16,77 +20,116 @@
       <div class="text">Next</div>
     </button>
   </div>
-  <div class="note m-b">Select Players who want to be the part of the trade</div>
 
   <div>
     <div class="cont" style="display: flex">
-      <div class="mav-team">
+      <div *ngFor="let team of teams" [ngClass]="[team.id == 'maverick' ? 'mav-team' : 'team']">
         <div class="team-name">
           <div class="name">Mavericks</div>
         </div>
-        <input mat-input class="filter-input" type="text" placeholder="Search Players" />
+        <div class="filter">
+          <input mat-input class="filter-input" type="text" placeholder="Search Players" />
+          <mat-icon>tune</mat-icon>
+        </div>
+        <div *ngIf="tradedPlayers[team.id].length != 0" class="traded">
+          Traded Players
+          <div *ngFor="let player of tradedPlayers[team.id]; let i = index">
+            <div class="traded-from">
+              <div class="text">Traded from</div>
 
-        <div *ngFor="let player of players" class="player-details">
-          <div class="row m-a-0 p-l">
-            <div class="t">
-              <div class="name">Player Name</div>
-
-              <div class="details">Age, Weight</div>
-
-              <div class="contract">Contract Type</div>
+              <img class="logo" src="assets/images/teams/{{ logo[player.teamid] }}" />
             </div>
+            <div class="player-details">
+              <div class="row m-a-0">
+                <div class="t">
+                  <div class="name">{{ player.id }}</div>
 
-            <div class="t p-l p-t">
-              <div class="price">$5.1M</div>
-              <div class="duration">2 years</div>
+                  <div class="details">Age, Weight</div>
+
+                  <div class="contract">Contract Type</div>
+                </div>
+
+                <div class="t p-l p-t">
+                  <div class="price">$5.1M</div>
+                  <div class="duration">2 years</div>
+                </div>
+                <div class="hline" style="height: 30px; margin-left: auto"></div>
+                <div class="dropdown-select">
+                  <img class="selected" src="assets/images/teams/{{ logo[player.currentteam] }}" />
+                  <mat-icon
+                    class="dropdown"
+                    *ngIf="!options[team.id][player.id]"
+                    (click)="showOptions(team.id, player.id, true)"
+                    >keyboard_arrow_down</mat-icon
+                  >
+                  <mat-icon
+                    class="dropdown"
+                    *ngIf="options[team.id][player.id]"
+                    (click)="showOptions(team.id, player.id, false)"
+                    >keyboard_arrow_up</mat-icon
+                  >
+                </div>
+                <div class="custom-select-wrapper" *ngIf="options[team.id][player.id]">
+                  <div class="custom-options">
+                    <span
+                      class="custom-option"
+                      (click)="teamChange(option.id, i, player, true)"
+                      [ngClass]="[option.id == player.currentteam ? 'selected' : '']"
+                      *ngFor="let option of teams"
+                    >
+                      <img class="option-image" src="assets/images/teams/{{ logo[option.id] }}" />
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- <select class="input-r"> 
-              <option style="background-image:url(assets/images/header/profile.png);">male</option>
-              <option style="background-image:url(assets/images/header/profile.png);">female</option>
-              <option style="background-image:url(assets/images/header/profile.png);">others</option>
-            </select>  -->
-            <mat-select class="input-r">
-              <mat-option>sdasd</mat-option>
-            </mat-select>
-            <!-- <div class="select-container">
-              <input type="text" />
-              <ul class="select-menu box" role="listbox">   
-                <li role="option"
-                  *ngFor="let option of players; let i = index;" 
-                  class="option-item"
-                >
-                    <span> {{option}}</span>
-                </li>
-              </ul>
-            </div> -->
           </div>
         </div>
-      </div>
-      <div *ngFor="let team of teams" class="team">
-        <div class="team-name">
-          <div class="name">Mavericks</div>
-        </div>
-        <input mat-input class="filter-input" type="text" placeholder="Search Players" />
 
-        <div *ngFor="let player of players" class="player-details">
-          <div class="row m-a-0 p-l">
-            <div class="t">
-              <div class="name">Player Name</div>
+        <div *ngFor="let player of players[team.id]; let i = index">
+          <div class="player-details" *ngIf="!tradedIds.includes(player.id)">
+            <div class="row m-a-0">
+              <div class="t">
+                <div class="name">{{ player.id }}</div>
 
-              <div class="details">Age, Weight</div>
+                <div class="details">Age, Weight</div>
 
-              <div class="contract">Contract Type</div>
+                <div class="contract">Contract Type</div>
+              </div>
+
+              <div class="t p-l p-t">
+                <div class="price">$5.1M</div>
+                <div class="duration">2 years</div>
+              </div>
+              <div class="hline" style="height: 30px; margin-left: auto"></div>
+              <div class="dropdown-select">
+                <img class="selected" src="assets/images/teams/{{ logo[player.currentteam] }}" />
+                <mat-icon
+                  class="dropdown"
+                  *ngIf="!options[team.id][player.id]"
+                  (click)="showOptions(team.id, player.id, true)"
+                  >keyboard_arrow_down</mat-icon
+                >
+                <mat-icon
+                  class="dropdown"
+                  *ngIf="options[team.id][player.id]"
+                  (click)="showOptions(team.id, player.id, false)"
+                  >keyboard_arrow_up</mat-icon
+                >
+              </div>
+              <div class="custom-select-wrapper" *ngIf="options[team.id][player.id]">
+                <div class="custom-options">
+                  <span
+                    class="custom-option"
+                    (click)="teamChange(option.id, i, player, false)"
+                    [ngClass]="[option.id == player.currentteam ? 'selected' : '']"
+                    *ngFor="let option of teams"
+                  >
+                    <img class="option-image" src="assets/images/teams/{{ logo[option.id] }}" />
+                  </span>
+                </div>
+              </div>
             </div>
-
-            <div class="t p-l p-t">
-              <div class="price">$5.1M</div>
-              <div class="duration">2 years</div>
-            </div>
-            <mat-select class="input-r" value="s">
-              <mat-option value="s">
-                <img class="user-image" src="assets/images/header/profile.png" />
-              </mat-option>
-            </mat-select>
           </div>
         </div>
       </div>

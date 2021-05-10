@@ -10,30 +10,25 @@
     </button>
   </div>
 
-  <div class="row">
-    <div class="col-md-9 p-l-0 m-t">
+  <div class="row ac">
+    <div class="col-md-9 col-xs-12 p-l-0 m-t">
       <div class="cont">
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-5 col-xs-5">
             <div class="head">Salary Payroll</div>
-            <!-- <img src="assets/images/graphs/g-2.png" width="300px" height="200px" /> -->
-            <div class="row">
-              <div class="col-md-7 m-t-md">
-                <canvas
-                  baseChart
-                  width="100%"
+            <div class="row p-b">
+              <div class="col-md-7 col-xs-6 m-t-md">
+                <app-donut-chart
+                  [doughnutChartData]="doughnutChartData"
+                  [doughnutChartLabels]="doughnutChartLabels"
+                  [doughnutChartOptions]="doughnutChartOptions"
+                  [doughnutChartColors]="doughnutChartColors"
+                  [doughnutChartLegend]="doughnutChartLegend"
+                  [doughnutChartPlugins]="doughnutChartPlugins"
                   height="90"
-                  [data]="doughnutChartData"
-                  [labels]="doughnutChartLabels"
-                  [colors]="doughnutChartColors"
-                  [options]="doughnutChartOptions"
-                  [legend]="doughnutChartLegend"
-                  [chartType]="doughnutChartType"
-                  [plugins]="doughnutChartPlugins"
-                >
-                </canvas>
+                ></app-donut-chart>
               </div>
-              <div class="col-md-5 legend">
+              <div class="col-md-5 col-xs-6 legend">
                 <div class="value">$ 4,500,450</div>
                 <div class="name">
                   <div class="leg" style="background-color: #f89751"></div>
@@ -57,7 +52,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-7 col-xs-7">
             <div class="vline" style="height: 340px"></div>
             <div class="row">
               <div class="head">
@@ -69,30 +64,23 @@
               </mat-select>
             </div>
             <div class="m-a">
-              <canvas
-                baseChart
-                width="100%"
-                id="myChart"
-                #myChart
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [colors]="barChartColors"
-                [plugins]="barChartPlugins"
-                [legend]="barChartLegend"
-                [chartType]="barChartType"
-              >
-              </canvas>
+              <app-bar-chart
+                [barChartData]="barChartData"
+                [barChartLabels]="barChartLabels"
+                [barChartOptions]="barChartOptions"
+                [barChartColors]="barChartColors"
+                [barChartLegend]="barChartLegend"
+                [gradient]="barGradient"
+                height="45"
+              ></app-bar-chart>
             </div>
-
-            <!-- <img src="assets/images/graphs/g-3.png" width="600px" height="200px" class="m-l-md" /> -->
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3 cont p-a-0 m-t">
-      <div class="row">
+    <div class="col-md-3 col-xs-9 cont p-a-0 m-t">
+      <div class="row p-t">
         <div class="head">Highest Valued Trades</div>
         <div class="expand">
           Expand
@@ -100,41 +88,41 @@
         </div>
       </div>
       <div class="hline"></div>
-      <div class="player-trade">
+      <div class="player-trade" *ngFor="let trade of highestTrades; let i = index">
+        <div class="hline" *ngIf="i != 0"></div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-xs-6">
             <div class="row">
-              <img class="user-image" src="assets/images/header/profile.png" />
-              <div>
-                <div class="p-name">Nkosi Burgess</div>
-                <div class="p-role">Defender</div>
-                <div class="p-type">Contract Type</div>
+              <img class="team-logo" src="assets/images/teams/{{ trade.playerA.logo }}" />
+              <div class="m-r-a">
+                <div class="p-name">{{ trade.playerA.name }}</div>
+                <div class="p-role">{{ trade.playerA.role }}</div>
+                <div class="p-type">{{ trade.playerA.contract }}</div>
               </div>
+              <div class="vline" style="height: 30px"></div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="vline" style="height: 40px; margin-right: 10px"></div>
+          <div class="col-md-6 col-xs-6">
             <div class="row">
-              <img class="user-image" src="assets/images/header/profile.png" />
-              <div>
-                <div class="p-name">Nkosi Burgess</div>
-                <div class="p-role">Defender</div>
-                <div class="p-type">Contract Type</div>
+              <img class="team-logo" src="assets/images/teams/{{ trade.playerB.logo }}" />
+              <div class="m-r-a">
+                <div class="p-name">{{ trade.playerB.name }}</div>
+                <div class="p-role">{{ trade.playerB.role }}</div>
+                <div class="p-type">{{ trade.playerB.contract }}</div>
               </div>
             </div>
           </div>
         </div>
         <div class="row price">
           <div class="p-head">Deal Sign-off Value</div>
-          <div class="deal-price">$ 1,200,550</div>
+          <div class="deal-price">{{ trade.signValue }}</div>
         </div>
-        <div class="hline"></div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-5 p-l-0 m-t">
+    <div class="col-md-5 col-xs-12 p-l-0 m-t">
       <div class="cont">
         <div class="row">
           <div class="head">Trade Summary</div>
@@ -145,19 +133,19 @@
         </div>
         <div style="margin-left: 20px; margin-right: 30px; margin-top: 20px">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-4">
               <div class="card-a">
                 <div class="card-head">Total Trades</div>
                 <div class="card-sub">22</div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-4">
               <div class="card-b">
                 <div class="card-head">Successful</div>
                 <div class="card-sub">14</div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-4">
               <div class="card-c">
                 <div class="card-head">Unsuccessful</div>
                 <div class="card-sub">8</div>
@@ -174,8 +162,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7 p-r-0 m-t">
-      <div class="cont">
+    <div class="col-md-7 col-xs-12 p-r-0 m-t p-l-0">
+      <div class="cont m-r-0">
         <div class="row">
           <div class="head">Saved Trade Records</div>
           <div class="expand">
@@ -184,7 +172,7 @@
           </div>
         </div>
         <div class="table-cont">
-          <table mat-table class="tableclass" [dataSource]="data">
+          <table mat-table class="tableclass" [dataSource]="tradeData">
             <ng-container matColumnDef="player_trade_in">
               <th mat-header-cell *matHeaderCellDef class="table-head">Player Traded in</th>
               <td mat-cell class="tablecontent" *matCellDef="let element">
@@ -200,8 +188,8 @@
             <ng-container matColumnDef="team_involved">
               <th mat-header-cell *matHeaderCellDef class="table-head">Teams Involved</th>
               <td mat-cell class="tablecontent" *matCellDef="let element">
-                <img class="user-image" src="assets/images/header/profile.png" />
-                <img class="user-image" src="assets/images/header/profile.png" />
+                <img class="team-logo" src="assets/images/teams/{{ element.team_involved[0] }}" />
+                <img class="team-logo" src="assets/images/teams/{{ element.team_involved[1] }}" />
               </td>
             </ng-container>
             <ng-container matColumnDef="contract">
@@ -219,8 +207,8 @@
             <ng-container matColumnDef="impact">
               <th mat-header-cell *matHeaderCellDef class="table-head">Impact</th>
               <td mat-cell class="tablecontent" *matCellDef="let element">
-                <button mat-button *ngIf="element.impact === 'failure'" class="button-failure">Unsuccessful</button>
-                <button mat-button *ngIf="element.impact === 'success'" class="button-success">Successful</button>
+                <button mat-button *ngIf="element.impact === 'failure'" class="button failure">Unsuccessful</button>
+                <button mat-button *ngIf="element.impact === 'success'" class="button success">Successful</button>
               </td>
             </ng-container>
             <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>

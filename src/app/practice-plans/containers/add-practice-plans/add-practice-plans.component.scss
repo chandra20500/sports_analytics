@@ -1,0 +1,538 @@
+.container-p {
+  margin: 30px;
+  margin-top: 64px;
+
+  .cont {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    .head {
+      padding-top: 20px;
+      font-size: 12px;
+      color: #404040;
+      font-weight: 600;
+      padding-left: 20px;
+    }
+    .note {
+      font-size: 11px;
+      padding-top: 5px;
+      color: #808080;
+      font-weight: 400;
+      padding-left: 20px;
+    }
+
+    .form-cont-lg {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      margin-left: 20px;
+      border-radius: 1px;
+      background: #f3f3f3 0% 0% no-repeat padding-box;
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      height: 50px;
+    }
+
+    .form-cont-sm {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 1px;
+      background: #f3f3f3 0% 0% no-repeat padding-box;
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      width: 25%;
+      .text {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-size: 10px;
+        color: #808080;
+        font-weight: 400;
+      }
+    }
+
+    .filled {
+      background: #e4ebf7 0% 0% no-repeat padding-box !important;
+      border-radius: 4px !important;
+      padding-right: 20px;
+      .playername {
+        color: #161616;
+        font-size: 12px;
+        font-weight: 600;
+        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-right: 25px;
+        padding-left: 10px;
+      }
+      .playersub {
+        color: #414141;
+        font-size: 10px;
+        font-weight: 400;
+        padding-bottom: 10px;
+        padding-left: 10px;
+      }
+      .name {
+        color: #161616;
+        font-size: 14px;
+        font-weight: 600;
+        padding-bottom: 5px;
+        padding-top: 10px;
+        margin-left: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        p {
+          padding: 0px;
+          margin: 0px !important;
+          margin-left: 5px !important;
+          margin-right: 5px !important;
+          color: #376dc8;
+          font-weight: 700;
+        }
+      }
+      .sub {
+        color: #414141;
+        font-size: 10px;
+        font-weight: 400;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      .vline {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid #d0d0d0;
+        width: 0px;
+      }
+
+      .level {
+        padding-top: 15px;
+        color: #161616;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    .remove {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #a11300;
+      font-weight: 500;
+      font-size: 10px;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-right: 30px;
+      padding-left: 15px;
+    }
+    .formfilled {
+      .input {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        background: #e4ebf7 0% 0% no-repeat padding-box;
+        border-radius: 6px;
+        height: 30px;
+        width: 160px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-right: 30px;
+        font-family: 'Montserrat';
+        letter-spacing: 2px;
+      }
+    }
+
+    .input {
+      margin-top: 10px;
+      margin-bottom: 15px;
+      background: #f3f3f3 0% 0% no-repeat padding-box;
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      height: 30px;
+      width: 160px;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-right: 30px;
+      font-family: 'Montserrat';
+      letter-spacing: 2px;
+    }
+
+    .input-checkbox {
+      margin-left: auto;
+      margin-right: 20px;
+      font-size: 10px;
+      font-family: 'Montserrat';
+      padding-top: 15px;
+    }
+
+    .hline {
+      border-bottom: 2px solid #f3f3f3;
+      width: 100%;
+    }
+
+    .active {
+      background: #f3f3f3 0% 0% no-repeat padding-box;
+      border: 1px dashed #376dc8;
+      border-radius: 4px;
+    }
+
+    .filter {
+      display: flex;
+      background: #f4f4f4 0% 0% no-repeat padding-box;
+      border: 1px solid #d0d0d0;
+      margin-top: 10px;
+      .filter-input {
+        height: 28px;
+        width: 100%;
+        background: #f4f4f4 0% 0% no-repeat padding-box;
+        border: 0px solid #d0d0d0;
+        font-weight: 400;
+        font-family: 'Montserrat';
+        margin-right: -35px;
+        padding-right: 10px;
+        margin-left: -34px;
+        padding-left: 35px;
+      }
+      mat-icon {
+        padding-top: 5px;
+        cursor: pointer;
+        padding-right: 5px;
+        padding-left: 5px;
+        width: 25px;
+        z-index: 2;
+      }
+      .filter-icon {
+        background: #e4ebf7;
+      }
+    }
+
+    .select-cont {
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #e2e2e2;
+      border-radius: 6px;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      .name {
+        color: #161616;
+        font-size: 10px;
+        font-weight: 600;
+        padding-bottom: 5px;
+        p {
+          padding: 0px;
+          margin: 0px !important;
+          margin-left: 5px !important;
+          margin-right: 5px !important;
+          color: #376dc8;
+          font-weight: 700;
+        }
+      }
+      .sub {
+        color: #414141;
+        font-size: 8px;
+        font-weight: 400;
+        padding-bottom: 5px;
+      }
+      .vline {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-bottom: 10px;
+        border: 1px solid #f3f3f3;
+        width: 0px;
+      }
+
+      .level {
+        color: #161616;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: left;
+        margin-right: auto;
+      }
+
+      .text {
+        font-weight: 500;
+        font-size: 10px;
+        color: #404040;
+        padding-top: 5px;
+      }
+
+      .info {
+        display: flex;
+        font-size: 10px;
+        color: #376dc8;
+        margin-left: 10px;
+        margin-top: 3px;
+        cursor: pointer;
+        height: 10px;
+      }
+
+      .icon {
+        font-size: 20px;
+        color: #376dc8;
+        margin-right: 10px;
+      }
+
+      .w-video {
+        cursor: pointer;
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 10px;
+        color: #376dc8;
+        padding-top: 5px;
+      }
+    }
+
+    .create-button {
+      display: flex;
+      background: #376dc8 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 4px;
+      margin: 10px auto 10px auto;
+      .text {
+        display: flex;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: 600;
+      }
+      .add {
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+    }
+
+    .button-group {
+      margin-bottom: 5px;
+      .button-left {
+        height: 40px;
+        width: 50%;
+        border: 1px solid #dedede;
+        border-radius: 10px 0px 0px 0px;
+        .text {
+          font-family: 'Montserrat' !important;
+          font-size: 13px;
+          color: #161616;
+          font-weight: 500;
+        }
+      }
+      .active {
+        background: #376dc8 0% 0% no-repeat padding-box;
+        .active-text {
+          font-family: 'Montserrat' !important;
+          font-size: 13px;
+          color: #ffffff;
+          font-weight: 600;
+        }
+      }
+      .button-right {
+        height: 40px;
+        width: 50%;
+        border: 1px solid #dedede;
+        border-radius: 0px 10px 0px 0px;
+        .text {
+          font-family: 'Montserrat' !important;
+          font-size: 13px;
+          color: #161616;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    tr.border {
+      border: 1px dashed #cccccc;
+    }
+
+    .table {
+      background: #f7f7f7 0% 0% no-repeat padding-box;
+      border-radius: 0px 0px 10px 10px;
+      width: 100%;
+      padding-top: 10px;
+      .time {
+        font-size: 13px;
+        font-weight: 500;
+        color: #161616;
+        width: 80px;
+        padding-left: 15px;
+      }
+      .schedule {
+        font-size: 13px;
+        font-weight: 500;
+        color: #161616;
+        width: 80px;
+        padding-left: 15px;
+        border-top: 1px dashed #cccccc;
+        width: 100%;
+        .drill {
+          height: 100%;
+          background: #e4ebf7 0% 0% no-repeat padding-box;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+.cdk-drag-preview {
+  .notfilled {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Montserrat';
+    font-size: 10px;
+    .name {
+      color: #161616;
+      font-size: 10px;
+      font-weight: 600;
+      padding-bottom: 5px;
+      p {
+        padding: 0px;
+        margin: 0px !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+        color: #376dc8;
+        font-weight: 700;
+      }
+    }
+    .sub {
+      color: #414141;
+      font-size: 8px;
+      font-weight: 400;
+      padding-bottom: 5px;
+    }
+    .vline {
+      margin-left: auto;
+      margin-right: auto;
+      height: auto;
+      margin-bottom: 10px;
+      border: 1px solid #f3f3f3;
+      width: 0px;
+    }
+
+    .level {
+      color: #161616;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: left;
+      margin-right: auto;
+    }
+
+    .text {
+      font-weight: 500;
+      font-size: 10px;
+      color: #404040;
+      padding-top: 5px;
+    }
+
+    .info {
+      display: flex;
+      font-size: 10px;
+      color: #376dc8;
+      margin-left: 10px;
+      margin-top: 3px;
+      cursor: pointer;
+      height: 10px;
+    }
+
+    .icon {
+      font-size: 20px;
+      color: #376dc8;
+      margin-right: 10px;
+    }
+  }
+
+  .filled {
+    background: #e4ebf7 0% 0% no-repeat padding-box !important;
+    border-radius: 4px !important;
+    padding-right: 20px;
+    .playername {
+      color: #161616;
+      font-size: 12px;
+      font-weight: 600;
+      padding-bottom: 5px;
+      padding-top: 10px;
+      padding-right: 25px;
+      padding-left: 10px;
+    }
+    .playersub {
+      color: #414141;
+      font-size: 10px;
+      font-weight: 400;
+      padding-bottom: 10px;
+      padding-left: 10px;
+    }
+    .name {
+      color: #161616;
+      font-size: 14px;
+      font-weight: 600;
+      padding-bottom: 5px;
+      padding-top: 10px;
+      margin-left: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      p {
+        padding: 0px;
+        margin: 0px !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+        color: #376dc8;
+        font-weight: 700;
+      }
+    }
+    .sub {
+      color: #414141;
+      font-size: 10px;
+      font-weight: 400;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .vline {
+      margin-left: auto;
+      margin-right: auto;
+      height: auto;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      border: 1px solid #d0d0d0;
+      width: 0px;
+    }
+
+    .level {
+      padding-top: 15px;
+      color: #161616;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      margin-right: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .remove {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #a11300;
+      font-weight: 500;
+      font-size: 10px;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-right: 30px;
+      padding-left: 15px;
+    }
+  }
+}

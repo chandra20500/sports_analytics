@@ -10,16 +10,19 @@ import { Label } from 'ng2-charts';
   styleUrls: ['./roaster.component.scss'],
 })
 export class RoasterComponent implements OnInit {
-  public lineChartData = [
+  lineChartData = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Actual' },
     { data: [85, 69, 90, 91, 66, 65, 50], label: 'Forecast' },
   ];
-  public lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  public lineChartOptions: ChartOptions = {
+  lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  lineChartOptions = {
     responsive: true,
+    maintainAspectRatio: true,
     elements: {
       point: {
-        radius: 0,
+        radius: 5,
+        backgroundColor: '#376DC8',
+        borderWidth: 1,
       },
     },
     scales: {
@@ -45,8 +48,7 @@ export class RoasterComponent implements OnInit {
       ],
     },
   };
-
-  public lineChartColors = [
+  lineChartColors = [
     {
       borderColor: '#EAEEFF',
       backgroundColor: '#EAEEFF',
@@ -56,12 +58,9 @@ export class RoasterComponent implements OnInit {
       fill: false,
     },
   ];
-
-  public lineChartLegend = false;
-
-  public lineChartType: ChartType = 'line';
-
-  public lineChartPlugins = [];
+  lineChartLegend = false;
+  lineChartPlugins = [];
+  lineGradient = { gradient: false };
 
   data = [
     {

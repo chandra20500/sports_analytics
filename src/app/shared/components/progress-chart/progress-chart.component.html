@@ -1,0 +1,7 @@
+<div *ngFor="let player of data" class="row player-records">
+  <div class="name">{{ player.name }}</div>
+  <div class="progress">
+    <mat-progress-bar mode="determinate" [value]="player.progress"></mat-progress-bar>
+  </div>
+  <div class="exhausted">{{ player.label }}</div>
+</div>

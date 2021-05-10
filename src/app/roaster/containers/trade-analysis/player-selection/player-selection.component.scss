@@ -3,7 +3,8 @@
   margin-top: 64px;
 
   .launch-button {
-    margin-left: 20px;
+    margin-left: auto;
+    margin-right: 10px;
     background-color: #376dc8;
     height: 34px;
     margin-bottom: 30px;
@@ -21,9 +22,10 @@
 
   .configure-button {
     margin-left: auto;
+    margin-right: 10px;
     background-color: #dafddf;
     height: 34px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     padding: 0px 20px;
     background: #dafddf 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 10px #00000029;
@@ -58,16 +60,16 @@
       background: #f4f4f4 0% 0% no-repeat padding-box;
       border: 1px solid #d0d0d0;
       border-radius: 10px 0px 0px 10px;
-      // height: 300px;
-      width: 250px;
+      width: 260px;
       margin-right: 20px;
+      padding-bottom: 10px;
     }
 
     .team {
       background: #e4ebf7 0% 0% no-repeat padding-box;
-      // height: 300px;
-      width: 250px;
+      width: 260px;
       margin-right: 20px;
+      padding-bottom: 10px;
     }
 
     .team-name {
@@ -75,7 +77,6 @@
       height: 40px;
       .name {
         text-align: center;
-
         font-size: 14px;
         font-weight: 600;
         color: #ffffff;
@@ -83,13 +84,52 @@
       }
     }
 
-    .filter-input {
-      height: 28px;
-      width: 245px;
+    .filter {
+      display: flex;
       background: #f4f4f4 0% 0% no-repeat padding-box;
       border: 1px solid #d0d0d0;
-      // padding-right: 30px;
-      font-weight: 400;
+      .filter-input {
+        height: 28px;
+        width: 245px;
+        background: #f4f4f4 0% 0% no-repeat padding-box;
+        border: 0px solid #d0d0d0;
+        font-weight: 400;
+        padding-left: 10px;
+        font-family: 'Montserrat';
+        margin-right: -28px;
+        padding-right: 35px;
+      }
+      mat-icon {
+        padding-top: 5px;
+        cursor: pointer;
+        padding-right: 5px;
+        width: 25px;
+      }
+    }
+
+    .traded {
+      background: #dafddf 0% 0% no-repeat padding-box !important;
+      padding-top: 5px;
+      padding-bottom: 10px;
+      font-size: 12px;
+      padding-left: 10px;
+      font-weight: 600;
+      .traded-from {
+        display: flex;
+        align-items: center;
+        padding-top: 5px;
+        .text {
+          font-size: 12px;
+          margin-left: auto;
+          margin-right: 5px;
+          font-weight: 400;
+        }
+      }
+      .logo {
+        width: 26px;
+        height: 26px;
+        margin-right: 10px;
+      }
     }
 
     .player-details {
@@ -98,21 +138,25 @@
       border-radius: 4px;
       margin-left: 10px;
       margin-right: 10px;
-      margin-top: 10px;
+      margin-top: 5px;
       padding: 5px;
+
       .name {
+        padding-top: 5px;
         font-size: 11px;
         font-weight: 600;
         color: #393939;
       }
 
       .details {
+        padding-top: 5px;
         font-size: 10px;
         font-weight: 400;
         color: #393939;
       }
 
       .contract {
+        padding-top: 3px;
         font-size: 10px;
         font-weight: 400;
         color: #393939;
@@ -125,6 +169,7 @@
       }
 
       .duration {
+        padding-top: 3px;
         font-size: 10px;
         font-weight: 400;
         color: #393939;
@@ -155,72 +200,79 @@
       font-size: 10px;
     }
 
-    .input-r {
+    .hline {
+      display: flex;
+      border: 1px solid #e1e1e1;
+      margin-top: 13px;
+    }
+
+    .dropdown-select {
+      display: flex;
       margin-left: auto;
-      margin-right: 10px;
-      margin-top: 10px;
-      width: 35px;
-      height: 25px;
-      font-size: 11px;
-      padding-left: 10px;
-      border: 1px solid rgb(221, 219, 218);
-      border-radius: 1px;
+      margin-right: 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 0.5px solid #e0e0e0;
+      border-radius: 4px;
+
+      .selected {
+        width: 28px;
+        padding: 5px;
+      }
+
+      .dropdown {
+        font-size: 32px;
+        font-weight: 500;
+        padding-right: 10px;
+        cursor: pointer;
+      }
     }
   }
 
-  .select-container {
+  .custom-select-wrapper {
     position: relative;
-
-    .input-container {
-      i {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-      }
-      input[type='text'] {
-        overflow-x: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        padding-right: 2rem;
+    user-select: none;
+    width: 100%;
+    .custom-options {
+      position: absolute;
+      top: 100%;
+      height: 90px;
+      overflow: scroll;
+      right: 0;
+      border-top: 0;
+      background: #e1e1e1;
+      transition: all 0.5s;
+      opacity: 1;
+      pointer-events: all;
+      z-index: 2;
+      width: 60px;
+    }
+    .custom-option {
+      position: relative;
+      display: block;
+      padding: 0 5px 0 5px;
+      line-height: 12px;
+      cursor: pointer;
+      transition: all 0.5s;
+      .option-image {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
-    .select-menu {
-      width: 100%;
-      z-index: 100;
-      max-height: 17.75rem;
-      overflow: auto;
-      position: absolute;
-      top: -5px;
-      right: 0;
-      background-color: white;
-      border: 1px solid gray;
-      padding: 1rem;
-      box-sizing: border-box;
-
-      .option-item {
-        padding-left: 1rem;
-        line-height: 3rem;
-        color: gray;
-        overflow-x: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin: 0 -1rem;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-
-        &.selected,
-        &:hover {
-          background-color: lightgray;
-          color: black;
-        }
-
-        &:focus {
-          outline: none;
-        }
-      }
+    .custom-option:hover {
+      cursor: pointer;
+      background-color: #b2b2b2;
+    }
+    .custom-option.selected {
+      color: #ffffff;
+      background-color: #376dc8;
     }
   }
 }

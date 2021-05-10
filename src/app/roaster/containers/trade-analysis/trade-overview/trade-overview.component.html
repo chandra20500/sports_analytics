@@ -15,78 +15,64 @@
 
   <div class="head">Trade Progress</div>
 
-  <div class="row">
-    <div class="col-md-2 m-t p-l-0">
+  <div class="row ac">
+    <div class="col-md-2 col-xs-6 m-t p-l-0">
       <div class="cont">
         <div class="row">
-          <img class="team-image" src="assets/images/header/profile.png" />
+          <img class="team-image" src="assets/images/teams/{{ trade.mainTeam.logo }}" />
         </div>
-        <div class="team-name">Mavericks</div>
+        <div class="team-name">{{ trade.mainTeam.name }}</div>
         <div class="hline"></div>
-        <div class="row">
+        <div class="row ac">
           <div class="col-md-6">
             <div class="row">
-              <img class="team-image" src="assets/images/header/profile.png" />
+              <img class="team-image" src="assets/images/teams/{{ trade.teamInvolved[0].logo }}" />
+              <div class="team-name">{{ trade.teamInvolved[0].name }}</div>
             </div>
-            <div class="team-name">Jazz</div>
           </div>
+          <div class="vline" style="height: 30px"></div>
           <div class="col-md-6">
             <div class="row">
-              <img class="team-image" src="assets/images/header/profile.png" />
+              <img class="team-image" src="assets/images/teams/{{ trade.teamInvolved[1].logo }}" />
+              <div class="team-name">{{ trade.teamInvolved[1].name }}</div>
             </div>
-            <div class="team-name">Nuggets</div>
           </div>
         </div>
         <div class="sub-head">Trade conditions</div>
-        <div class="row">
-          <div class="headkey">Experience</div>
-          <div class="headvalue">3 years</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Position</div>
-          <div class="headvalue">G/F</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Height</div>
-          <div class="headvalue">6`8</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Weight</div>
-          <div class="headvalue">205lbs</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Birth Date</div>
-          <div class="headvalue">10/06/2002</div>
-        </div>
-        <div class="row">
-          <div class="headkey">College</div>
-          <div class="headvalue">G League</div>
-        </div>
+        <table class="m-r-a m-l-a">
+          <div class="row" *ngFor="let condition of trade.conditions">
+            <tr>
+              <td class="headkey">{{ condition.key }}</td>
+              <td class="headvalue">{{ condition.value }}</td>
+            </tr>
+          </div>
+        </table>
       </div>
     </div>
 
-    <div class="col-md-7 m-t">
+    <div class="col-md-7 col-xs-12 m-t">
       <mat-tab-group class="pill-tab">
         <mat-tab class="pill-mat-tab" label="Overview">
           <div class="cont-back">
             <div class="head p-l p-t">Players involved in Trade</div>
-            <div class="row m-l">
-              <div class="m-l m-r traded-player">
-                <img class="user-image" src="assets/images/header/profile.png" />
-                <div class="row">Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon></div>
-              </div>
-              <div class="vline"></div>
-              <div class="m-l m-r traded-player">
-                <img class="user-image" src="assets/images/header/profile.png" />
+            <div class="row">
+              <div class="traded-player m-l" *ngFor="let trade of trades">
+                <img class="team-image" src="assets/images/teams/{{ trade.logo }}" />
                 <div class="row">
-                  Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon> Player Name
-                  <mat-icon class="m-l m-r info-icon">info</mat-icon>
+                  <div *ngFor="let player of trade.players">
+                    <div style="display: flex">
+                      {{ player.name }}
+                      <img class="m-l m-r info-icon" alt="info" src="assets/images/icons/info.svg" />
+                    </div>
+                    <div *ngIf="player.trade == 'out'">
+                      <img class="m-l m-r m-t info-icon" alt="info" src="assets/images/icons/tradeout.svg" />
+                    </div>
+                    <div *ngIf="player.trade == 'in'">
+                      <img class="m-l m-r m-t info-icon" alt="info" src="assets/images/icons/tradein.svg" />
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="vline"></div>
-              <div class="m-l m-r traded-player">
-                <img class="user-image" src="assets/images/header/profile.png" />
-                <div class="row">Player Name <mat-icon class="m-l m-r info-icon">info</mat-icon></div>
+                <div class="vline"></div>
               </div>
             </div>
           </div>
@@ -134,43 +120,37 @@
             <mat-option value="last_6_season">Last 6 Seasons</mat-option>
           </mat-select>
         </div>
-        <!-- <img src="assets/images/graphs/g-4.png" width="800px" height="200px" /> -->
-        <canvas
-          baseChart
-          width="80%"
-          height="30px"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [colors]="lineChartColors"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
+        <app-line-chart
+          [lineChartData]="lineChartData"
+          [lineChartLabels]="lineChartLabels"
+          [lineChartOptions]="lineChartOptions"
+          [lineChartColors]="lineChartColors"
+          [lineChartLegend]="lineChartLegend"
+          [lineChartPlugins]="lineChartPlugins"
+          [gradient]="lineGradient"
+          height="40"
         >
-        </canvas>
+        </app-line-chart>
       </div>
     </div>
 
-    <div class="col-md-3 m-t">
+    <div class="col-md-3 col-xs-8 m-t">
       <div class="cont m-b-md">
         <div class="head p-l">Salary Impacts</div>
         <div class="row">
-          <div class="col-md-7">
-            <canvas
-              baseChart
-              width="100%"
-              height="80px"
-              [data]="doughnutChartData"
-              [labels]="doughnutChartLabels"
-              [colors]="doughnutChartColors"
-              [options]="doughnutChartOptions"
-              [legend]="doughnutChartLegend"
-              [chartType]="doughnutChartType"
-              [plugins]="doughnutChartPlugins"
-            >
-            </canvas>
+          <div class="col-md-7 col-xs-7">
+            <app-donut-chart
+              [doughnutChartData]="doughnutChartData"
+              [doughnutChartLabels]="doughnutChartLabels"
+              [doughnutChartOptions]="doughnutChartOptions"
+              [doughnutChartColors]="doughnutChartColors"
+              [doughnutChartLegend]="doughnutChartLegend"
+              [doughnutChartPlugins]="doughnutChartPlugins"
+              height="70"
+            ></app-donut-chart>
             <div class="leg-name">Out of Total Budget</div>
           </div>
-          <div class="col-md-5 m-t">
+          <div class="col-md-5 col-xs-5 m-t">
             <div class="leg-value" style="color: #3074d5">$ 4,500,450</div>
             <div class="leg-name">Limit Available</div>
             <div class="leg-value" style="color: #a11300">$ 4,500,450</div>
@@ -179,31 +159,22 @@
         </div>
 
         <div class="hline"></div>
-        <div *ngFor="let player of players" class="row player-records">
-          <div class="col-md-4 name">Player Name 1</div>
-          <div class="col-md-4 progress">
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-          </div>
-          <div class="col-md-4 exhausted">35% exhausted</div>
+        <div class="col-xs-12">
+          <app-progress-chart [data]="players"></app-progress-chart>
         </div>
       </div>
 
       <div class="cont">
         <div class="head p-l m-b">Positional Improvements</div>
-        <canvas
-          baseChart
-          width="80%"
-          height="50"
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [colors]="barChartColors"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType"
-        >
-        </canvas>
-        <!-- <img class="p-l" src="assets/images/graphs/g-6.png" width="300px" height="150px" /> -->
+        <app-bar-chart
+          [barChartData]="barChartData"
+          [barChartLabels]="barChartLabels"
+          [barChartOptions]="barChartOptions"
+          [barChartColors]="barChartColors"
+          [barChartLegend]="barChartLegend"
+          [gradient]="barGradient"
+          height="60"
+        ></app-bar-chart>
       </div>
     </div>
   </div>
