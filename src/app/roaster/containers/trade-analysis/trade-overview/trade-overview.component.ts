@@ -8,14 +8,22 @@ import { Label } from 'ng2-charts';
   styleUrls: ['./trade-overview.component.scss'],
 })
 export class TradeOverviewComponent implements OnInit {
-  public doughnutChartLabels: Label[] = ['spend', 'remaining'];
-  public doughnutChartData = [[35, 45]];
-  public doughnutChartOptions: ChartOptions = {
+  doughnutChartLabels: Label[] = ['spend', 'remaining'];
+  doughnutChartData = [[35, 45]];
+  doughnutChartOptions: ChartOptions = {
     responsive: true,
     cutoutPercentage: 80,
-    tooltips: { enabled: false },
+    tooltips: {
+      enabled: true,
+      backgroundColor: '#FFF',
+      titleFontSize: 16,
+      titleFontColor: '#0066ff',
+      bodyFontColor: '#000',
+      bodyFontSize: 14,
+      displayColors: true,
+    },
   };
-  public doughnutChartColors = [
+  doughnutChartColors = [
     {
       backgroundColor: ['#A11300', '#C0CDF2'],
       hoverBorderColor: ['#A11300', '#C0CDF2'],
@@ -23,9 +31,8 @@ export class TradeOverviewComponent implements OnInit {
     },
   ];
 
-  public doughnutChartLegend = false;
-  public doughnutChartType: ChartType = 'doughnut';
-  public doughnutChartPlugins = [
+  doughnutChartLegend = false;
+  doughnutChartPlugins = [
     {
       beforeDraw(chart) {
         const ctx = chart.ctx;
@@ -61,7 +68,7 @@ export class TradeOverviewComponent implements OnInit {
     },
   ];
 
-  public barChartColors = [
+  barChartColors = [
     {
       borderColor: '#376DC8',
       backgroundColor: '#376DC8',
@@ -72,7 +79,7 @@ export class TradeOverviewComponent implements OnInit {
     },
   ];
 
-  public barChartOptions = {
+  barChartOptions = {
     responsive: true,
     legend: { position: 'top' },
     borderRadius: '50px',
@@ -103,22 +110,22 @@ export class TradeOverviewComponent implements OnInit {
     },
   };
 
-  public barChartLabels: Label[] = ['Defence', 'Offense', 'MidField', 'Others'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
-  public barChartData = [
+  barChartLabels: Label[] = ['Defence', 'Offense', 'MidField', 'Others'];
+  barChartLegend = true;
+  barChartPlugins = [];
+  barChartData = [
     { data: [55, 45, 77, 80], label: 'Team Avg', stack: 'a' },
     { data: [35, 29, 17, 17], label: 'After New Plaers', stack: 'a' },
   ];
+  barGradient = { gradient: false };
 
-  public lineChartData = [
+  lineChartData = [
     { data: [65, 59, 80, 81, 56, 55, 40, 22, 33, 44], label: 'Player 1' },
     { data: [28, 48, 40, 19, 86, 27, 30, 11, 44, 28], label: 'Player 2' },
     { data: [18, 40, 70, 50, 20, 37, 50, 22, 11, 33], label: 'Player 3' },
     { data: [12, 40, 70, 90, 10, 27, 40, 67, 76, 66], label: 'Team' },
   ];
-  public lineChartOptions: ChartOptions = {
+  lineChartOptions: ChartOptions = {
     responsive: true,
     scales: {
       xAxes: [
@@ -141,8 +148,9 @@ export class TradeOverviewComponent implements OnInit {
       ],
     },
   };
-  public lineChartLabels: Label[] = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'];
-  public lineChartColors = [
+
+  lineChartLabels: Label[] = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'];
+  lineChartColors = [
     {
       borderColor: '#63B1EC',
       pointBackgroundColor: '#63B1EC',
@@ -168,10 +176,49 @@ export class TradeOverviewComponent implements OnInit {
       fill: false,
     },
   ];
-  public lineChartLegend = true;
-  public lineChartType: ChartType = 'line';
+  lineChartLegend = true;
+  lineGradient = { gradient: false };
+  lineChartPlugins = [];
 
-  players = [1, 2, 3, 4];
+  trade = {
+    mainTeam: { name: 'Mavericks', logo: 'team1.png' },
+    teamInvolved: [
+      { name: 'Jazz', logo: 'team3.png' },
+      { name: 'Nuggets', logo: 'team2.png' },
+    ],
+    conditions: [
+      { key: 'Experience', value: '3 years' },
+      { key: 'Position', value: 'G/F' },
+      { key: 'Height', value: '6`8' },
+      { key: 'Weight', value: '205 lbs' },
+      { key: 'Birth Date', value: '10/06/2002' },
+      { key: 'College', value: 'G League' },
+    ],
+  };
+  trades = [
+    { teamid: 'maverick', logo: 'team1.png', players: [{ name: 'Player Name', trade: 'out' }] },
+    {
+      teamid: 'nuggets',
+      logo: 'team2.png',
+      players: [
+        { name: 'Player Name', trade: 'in' },
+        { name: 'Player Name', trade: 'in' },
+      ],
+    },
+    {
+      teamid: 'dallas',
+      logo: 'team3.png',
+      players: [
+        { name: 'Player Name', trade: 'in' },
+        { name: 'Player Name', trade: 'in' },
+      ],
+    },
+  ];
+  players = [
+    { name: 'Player 1', progress: 55, label: '$ 1,200,000' },
+    { name: 'Player 2', progress: 35, label: '$ 500,000' },
+    { name: 'Player 3', progress: 50, label: '$ 900,000' },
+  ];
 
   constructor(private router: Router) {}
   ngOnInit(): void {}

@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
-import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 import { ChartOptions, ChartType, RadialChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
+import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 
 const colors: any = {
   red: {
@@ -27,20 +26,21 @@ const colors: any = {
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.scss'],
 })
-export class PlayerDetailsComponent implements AfterViewInit {
-  public lineChartData = [
-    { data: [1, 2, 3, 4, 5, 3, 4], label: 'Average' },
-    { data: [5, 9, 8, 1, 6, 5, 4], label: 'Player A' },
-    { data: [5, 9, 5, 3, 6, 3, 7], label: 'Player B' },
+export class PlayerDetailsComponent implements OnInit {
+  lineChartData = [
+    { data: [1, 2, 3, 3, 2, 2, 3], label: 'Average' },
+    { data: [5, 9, 8, 7, 6, 7, 8], label: 'Player A' },
+    { data: [5, 9, 5, 4, 6, 3, 7], label: 'Player B' },
   ];
-  public lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  public lineChartOptions: ChartOptions = {
+  lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  lineChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
     elements: {
       point: {
-        radius: 0,
+        radius: 2,
       },
     },
-    responsive: true,
     legend: { position: 'bottom' },
     scales: {
       xAxes: [
@@ -82,22 +82,24 @@ export class PlayerDetailsComponent implements AfterViewInit {
       fill: false,
     },
   ];
-  public lineChartLegend = false;
-  public lineChartType: ChartType = 'line';
-  public lineChartPlugins = [];
+  lineChartLegend = false;
+  lineChartType: ChartType = 'line';
+  lineChartPlugins = [];
+  lineGradient = { gradient: true, startColor: '#FFFFFF', endColor: '#C5CEEF4D' };
 
-  public radarChartOptions: RadialChartOptions = {
+  radarChartOptions: RadialChartOptions = {
     responsive: true,
+    maintainAspectRatio: true,
   };
-  public radarChartLabels: Label[] = ['k', 'BB%', 'HR', 'BsR', 'OBP', 'ISO', 'WAR Score', 'Def', 'Off', 'wRC +'];
+  radarChartLabels: Label[] = ['k', 'BB%', 'HR', 'BsR', 'OBP', 'ISO', 'WAR Score', 'Def', 'Off', 'wRC +'];
 
-  public radarChartLegend = false;
-  public radarChartData = [
+  radarChartLegend = false;
+  radarChartData = [
     { data: [65, 59, 90, 81, 56, 55, 40, 56, 55, 40], label: 'Player A' },
     { data: [28, 48, 40, 19, 96, 27, 100, 48, 40, 19], label: 'Player B' },
   ];
-  public radarChartType: ChartType = 'radar';
-  public radarChartColors: Color[] = [
+  radarChartType: ChartType = 'radar';
+  radarChartColors: Color[] = [
     {
       borderColor: '#376DC8',
       backgroundColor: '#EAEEFF',
@@ -108,23 +110,15 @@ export class PlayerDetailsComponent implements AfterViewInit {
     },
   ];
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('myChart') myChart: ElementRef;
-  context: CanvasRenderingContext2D;
-
   view: CalendarView = CalendarView.Month;
-  CalendarView = CalendarView;
   selectedView = 'month';
   viewDate: Date = new Date();
-  tabvalue = 'pergame';
-
   events: CalendarEvent[] = [
     {
       start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: '3 Day Practice for club match',
+      end: addDays(new Date(), 2),
+      title: '2 Day Practice for club match',
       color: colors.blue,
-      // actions: this.actions,
       allDay: true,
       resizable: {
         beforeStart: true,
@@ -136,11 +130,18 @@ export class PlayerDetailsComponent implements AfterViewInit {
       start: startOfDay(new Date()),
       title: 'Maverick live event',
       color: colors.yellow,
-      // actions: this.actions,
     },
   ];
 
-  activeDayIsOpen = false;
+  conditions = [
+    { key: 'Experience', value: '3 years' },
+    { key: 'Position', value: 'G/F' },
+    { key: 'Height', value: '6`8' },
+    { key: 'Weight', value: '205 lbs' },
+    { key: 'Birth Date', value: '10/06/2002' },
+    { key: 'College', value: 'G League' },
+  ];
+  tabvalue = 'pergame';
 
   seasonlements = [
     {
@@ -195,7 +196,7 @@ export class PlayerDetailsComponent implements AfterViewInit {
       pts: 19.9,
     },
     {
-      date: '2019-20',
+      date: '1/2/19',
       opp: 20,
       gr: 68,
       mp: 31.1,
@@ -249,91 +250,13 @@ export class PlayerDetailsComponent implements AfterViewInit {
   ];
 
   practices = [1, 1, 1, 1];
+
   constructor(private router: Router) {}
 
-  ngAfterViewInit(): void {
-    const gradient = this.myChart.nativeElement.getContext('2d').createLinearGradient(0, 0, 0, 600);
-    gradient.addColorStop(0, '#A52C00');
-    gradient.addColorStop(1, 'C5CEEF4D');
-    this.lineChartColors = [
-      {
-        borderColor: gradient,
-        backgroundColor: gradient,
-      },
-      {
-        borderColor: '#376DC8',
-        fill: false,
-      },
-      {
-        borderColor: '#A52C00',
-        fill: false,
-      },
-    ];
-  }
+  ngOnInit() {}
 
   goToPage(url) {
     this.router.navigateByUrl(url);
-  }
-
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-      this.viewDate = date;
-    }
-  }
-
-  eventTimesChanged({ event, newStart, newEnd }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-  }
-
-  // addEvent(): void {
-  //   this.events = [
-  //     ...this.events,
-  //     {
-  //       title: 'New event',
-  //       start: startOfDay(new Date()),
-  //       end: endOfDay(new Date()),
-  //       color: colors.red,
-  //       draggable: true,
-  //       resizable: {
-  //         beforeStart: true,
-  //         afterEnd: true,
-  //       },
-  //     },
-  //   ];
-  // }
-
-  // deleteEvent(eventToDelete: CalendarEvent) {
-  //   this.events = this.events.filter((event) => event !== eventToDelete);
-  // }
-
-  setView(event) {
-    this.viewDate = new Date();
-    this.selectedView = event.value;
-    if (event.value === 'month') {
-      this.view = CalendarView.Month;
-    } else if (event.value === 'week') {
-      this.view = CalendarView.Week;
-    } else if (event.value === 'day') {
-      this.view = CalendarView.Day;
-    }
-  }
-
-  closeOpenMonthViewDay() {
-    this.activeDayIsOpen = false;
   }
 
   tabselect(value) {

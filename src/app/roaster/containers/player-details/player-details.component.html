@@ -4,8 +4,8 @@
     <mat-icon>arrow_forward</mat-icon>
     Player Details
   </div>
-  <div class="row">
-    <div class="col-md-3 p-l-0">
+  <div class="row ac">
+    <div class="col-md-3 col-xs-6 p-l-0 m-b">
       <div class="card-container">
         <div class="row">
           <img class="user-image" src="assets/images/header/profile.png" />
@@ -15,61 +15,50 @@
           </div>
         </div>
         <div class="hline"></div>
-        <div class="row">
-          <div class="headkey">Experience</div>
-          <div class="headvalue">3 years</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Position</div>
-          <div class="headvalue">G/F</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Height</div>
-          <div class="headvalue">6`8</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Weight</div>
-          <div class="headvalue">205lbs</div>
-        </div>
-        <div class="row">
-          <div class="headkey">Birth Date</div>
-          <div class="headvalue">10/06/2002</div>
-        </div>
-        <div class="row">
-          <div class="headkey">College</div>
-          <div class="headvalue">G League</div>
-        </div>
+        <table class="m-l-a m-r-a">
+          <div class="row" *ngFor="let condition of conditions">
+            <tr>
+              <td class="headkey">{{ condition.key }}</td>
+              <td class="headvalue">{{ condition.value }}</td>
+            </tr>
+          </div>
+        </table>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 col-xs-12 m-b p-l-0 p-r-0">
       <div class="card-container">
         <mat-tab-group class="pill-tab">
           <mat-tab class="pill-mat-tab" label="Overview">
             <div class="row">
-              <div class="col-md-8 p-a-0">
+              <div class="col-md-8 col-xs-12 m-b p-a-0">
                 <div class="season-performace">
-                  <!-- <div class="row">
-                    <mat-select class="fieldbox fieldvalue m-t m-b m-r col-md-3" value="day">
-                      <mat-option value="day"> Per game </mat-option>
-                      <mat-option value="week"> Game log </mat-option>
-                      <mat-option value="month"> Similarity score </mat-option>
-                    </mat-select>
-                  </div> -->
                   <div class="button-group">
-                    <button mat-button (click)="tabselect('pergame')" class="tab-button-b1"
-                    [ngClass]="[ tabvalue=='pergame' ? 'active-tab' : '']">
+                    <button
+                      mat-button
+                      (click)="tabselect('pergame')"
+                      class="tab-button-b1"
+                      [ngClass]="[tabvalue == 'pergame' ? 'active-tab' : '']"
+                    >
                       Per Game
                     </button>
-                    <button mat-button (click)="tabselect('gamelog')" class="tab-button-b2"
-                    [ngClass]="[ tabvalue=='gamelog' ? 'active-tab' : '']">
+                    <button
+                      mat-button
+                      (click)="tabselect('gamelog')"
+                      class="tab-button-b2"
+                      [ngClass]="[tabvalue == 'gamelog' ? 'active-tab' : '']"
+                    >
                       Game Log
                     </button>
-                    <button mat-button (click)="tabselect('similarityscore')" class="tab-button-b3"
-                    [ngClass]="[ tabvalue=='similarityscore' ? 'active-tab' : '']">
+                    <button
+                      mat-button
+                      (click)="tabselect('similarityscore')"
+                      class="tab-button-b3"
+                      [ngClass]="[tabvalue == 'similarityscore' ? 'active-tab' : '']"
+                    >
                       Similarity score
                     </button>
                   </div>
-                  <table *ngIf="tabvalue=='pergame'" mat-table class="tableclass" [dataSource]="seasonData">
+                  <table *ngIf="tabvalue == 'pergame'" mat-table class="tableclass" [dataSource]="seasonData">
                     <ng-container matColumnDef="season">
                       <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
                       <td mat-cell class="tablecontent" *matCellDef="let element">
@@ -157,12 +146,8 @@
                     <tr mat-header-row class="table-header" *matHeaderRowDef="seasonColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: seasonColumns"></tr>
                   </table>
-                  <div *ngIf="tabvalue=='gamelog'">
-                    Game Log
-                  </div>
-                  <div *ngIf="tabvalue=='similarityscore'">
-                    Game Log
-                  </div>
+                  <div *ngIf="tabvalue == 'gamelog'">Game Log</div>
+                  <div *ngIf="tabvalue == 'similarityscore'">Game Log</div>
                 </div>
                 <div class="recent-performace">
                   <div class="heading">Recent Performances</div>
@@ -256,45 +241,38 @@
                   </table>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-12">
                 <div class="graph-container">
                   <div class="heading">Winning Index measures player / role fit</div>
-                  <canvas
-                    #myChart
-                    id="myChart"
-                    baseChart
-                    width="90%"
-                    [datasets]="lineChartData"
-                    [labels]="lineChartLabels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
-                    [plugins]="lineChartPlugins"
+                  <app-line-chart
+                    [lineChartData]="lineChartData"
+                    [lineChartLabels]="lineChartLabels"
+                    [lineChartOptions]="lineChartOptions"
+                    [lineChartColors]="lineChartColors"
+                    [lineChartLegend]="lineChartLegend"
+                    [lineChartPlugins]="lineChartPlugins"
+                    [gradient]="lineGradient"
+                    height="45"
                   >
-                  </canvas>
+                  </app-line-chart>
                 </div>
                 <div class="graph-container">
                   <div class="heading">WAR Index</div>
-                  <canvas
-                    baseChart
-                    width="90%"
-                    height="70"
-                    [datasets]="radarChartData"
-                    [options]="radarChartOptions"
-                    [labels]="radarChartLabels"
-                    [chartType]="radarChartType"
-                    [legend]="radarChartLegend"
-                    [colors]="radarChartColors"
-                  >
-                  </canvas>
+                  <app-radar-chart
+                    [radarChartData]="radarChartData"
+                    [radarChartLabels]="radarChartLabels"
+                    [radarChartOptions]="radarChartOptions"
+                    [radarChartColors]="radarChartColors"
+                    [radarChartLegend]="radarChartLegend"
+                    height="75"
+                  ></app-radar-chart>
                 </div>
               </div>
             </div>
           </mat-tab>
           <mat-tab class="pill-mat-tab" label="Practice">
             <div class="row">
-              <div class="col-md-3 practice">
+              <div class="col-md-3 col-xs-3 practice">
                 <div class="head-text">Upcoming Practices</div>
                 <div *ngFor="let practice of practices">
                   <div class="practice-date">Dec 24</div>
@@ -304,66 +282,17 @@
                   <div class="hline"></div>
                 </div>
               </div>
-              <div class="col-md-9 p-t-md">
-                <div class="row calendar">
-                  <div
-                    class="navigate-calendar"
-                    mwlCalendarPreviousView
-                    [view]="view"
-                    [(viewDate)]="viewDate"
-                    (viewDateChange)="closeOpenMonthViewDay()"
-                  >
-                    <mat-icon class="icon">navigate_before</mat-icon>
-                  </div>
-
-                  <div class="head">{{ viewDate | calendarDate: view + 'ViewTitle':'en' }}</div>
-
-                  <div
-                    class="navigate-calendar"
-                    mwlCalendarNextView
-                    [view]="view"
-                    [(viewDate)]="viewDate"
-                    (viewDateChange)="closeOpenMonthViewDay()"
-                  >
-                    <mat-icon class="icon">navigate_next</mat-icon>
-                  </div>
-
-                  <mat-select
-                    class="fieldbox fieldvalue col-md-3"
-                    (selectionChange)="setView($event)"
-                    [(ngModel)]="selectedView"
-                  >
-                    <mat-option value="day"> Day </mat-option>
-                    <mat-option value="week"> Week </mat-option>
-                    <mat-option value="month"> Month </mat-option>
-                  </mat-select>
-                </div>
-
-                <div [ngSwitch]="view" class="p-t-md">
-                  <mwl-calendar-month-view
-                    *ngSwitchCase="CalendarView.Month"
-                    [viewDate]="viewDate"
-                    [events]="events"
-                    [activeDayIsOpen]="activeDayIsOpen"
-                    (dayClicked)="dayClicked($event.day)"
-                    (eventTimesChanged)="eventTimesChanged($event)"
-                  >
-                  </mwl-calendar-month-view>
-                  <mwl-calendar-week-view
-                    *ngSwitchCase="CalendarView.Week"
-                    [viewDate]="viewDate"
-                    [events]="events"
-                    (eventTimesChanged)="eventTimesChanged($event)"
-                  >
-                  </mwl-calendar-week-view>
-                  <mwl-calendar-day-view
-                    *ngSwitchCase="CalendarView.Day"
-                    [viewDate]="viewDate"
-                    [events]="events"
-                    (eventTimesChanged)="eventTimesChanged($event)"
-                  >
-                  </mwl-calendar-day-view>
-                </div>
+              <div class="col-md-9 col-xs-9 p-t-md">
+                <app-calendar
+                  navigation="all"
+                  size="large"
+                  [view]="view"
+                  [selectedView]="selectedView"
+                  [viewDate]="viewDate"
+                  [events]="events"
+                  startTime="0"
+                  endTime="23"
+                ></app-calendar>
               </div>
             </div>
           </mat-tab>

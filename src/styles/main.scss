@@ -53,6 +53,18 @@ body {
   }
 }
 
+.expand {
+  display: flex;
+  cursor: pointer;
+  margin-left: auto;
+  color: #376dc8;
+  font-size: 12px;
+  text-decoration: underline;
+  .icons {
+    font-size: 12px;
+  }
+}
+
 .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background,
 .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {
   background-color: #b0b0b0 !important;
@@ -143,4 +155,36 @@ mat-dialog-container {
   padding-right: 0 !important;
   padding-left: 0 !important;
   padding-top: 10px;
+}
+
+.mat-header-row {
+  height: 32px !important;
+  padding: 0px !important;
+}
+
+.mat-header-cell {
+  padding: 0px !important;
+}
+
+.mat-row:nth-child(odd) {
+  background: #fcfcfc 0% 0% no-repeat padding-box;
+  height: 36px !important;
+}
+
+.mat-row:nth-child(even) {
+  background: #eceef2 0% 0% no-repeat padding-box;
+  height: 36px !important;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: #3074d5;
+}
+
+.mat-progress-bar-buffer {
+  background: white;
+}
+
+.mat-progress-bar {
+  border: 1px solid #e5e5e5;
+  height: 15px !important;
 }

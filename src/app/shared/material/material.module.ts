@@ -31,7 +31,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 /* Breakpoints based in bootstrap */
 
 const CUSTOM_BREAKPOINTS = [
@@ -90,6 +90,7 @@ const CUSTOM_BREAKPOINTS = [
     MatSortModule,
     MatTooltipModule,
     FlexLayoutModule,
+    DragDropModule,
   ],
   providers: [
     // Configure Material components

@@ -1,32 +1,38 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
-import { ChartOptions, ChartType } from 'chart.js';
+import { ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-trade-analysis',
   templateUrl: './trade-analysis.component.html',
   styleUrls: ['./trade-analysis.component.scss'],
 })
-export class TradeAnalysisComponent implements OnInit, AfterViewInit {
-  public doughnutChartLabels: Label[] = ['MLE/Room', 'Over Tax', 'Cap Room', 'Total Salary'];
-  public doughnutChartData = [[35, 45, 10, 10]];
-  public doughnutChartOptions: ChartOptions = {
+export class TradeAnalysisComponent implements OnInit {
+  doughnutChartLabels: Label[] = ['MLE/Room', 'Over Tax', 'Cap Room', 'Total Salary'];
+  doughnutChartData = [[35, 45, 10, 10]];
+  doughnutChartOptions: ChartOptions = {
     responsive: true,
     cutoutPercentage: 80,
-    tooltips: { enabled: false },
+    tooltips: {
+      enabled: true,
+      backgroundColor: '#FFF',
+      titleFontSize: 16,
+      titleFontColor: '#0066ff',
+      bodyFontColor: '#000',
+      bodyFontSize: 14,
+      displayColors: true,
+    },
   };
-  public doughnutChartColors = [
+  doughnutChartColors = [
     {
       backgroundColor: ['#A11300', '#333333', '#39AB41', '#F89751'],
       hoverBorderColor: ['#A11300', '#333333', '#39AB41', '#F89751'],
       hoverBorderWidth: 2,
     },
   ];
-  public doughnutChartLegend = false;
-  public doughnutChartType: ChartType = 'doughnut';
-  public doughnutChartPlugins = [
+  doughnutChartLegend = false;
+  doughnutChartPlugins = [
     {
       beforeDraw(chart) {
         const ctx = chart.ctx;
@@ -62,7 +68,7 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
     },
   ];
 
-  public barChartOptions = {
+  barChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
@@ -87,20 +93,13 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
       ],
     },
   };
-
-  public barChartLabels: Label[] = ['2015', '2016', '2017', '2018', '2019', '2020', '2021'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = false;
-  public barChartPlugins = [];
-  public barChartData = [
+  barChartLabels: Label[] = ['2015', '2016', '2017', '2018', '2019', '2020', '2021'];
+  barChartLegend = false;
+  barChartPlugins = [];
+  barChartData = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Actual' },
     { data: [75, 69, 87, 87, 66, 65, 70], label: 'Forecast', type: 'line' },
   ];
-
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('myChart') myChart: ElementRef;
-  context: CanvasRenderingContext2D;
-
   barChartColors = [
     {
       borderColor: '#376DC8',
@@ -111,12 +110,13 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
       fill: false,
     },
   ];
+  barGradient = { gradient: true, startColor: '#376DC8', endColor: '#A0ABFF67' };
 
-  elements = [
+  tradeRecords = [
     {
       player_trade_in: 'Player Name',
       player_trade_out: 'Player Name',
-      team_involved: '',
+      team_involved: ['team1.png', 'team2.png'],
       contract: '1 year',
       payroll: '$ 900,000',
       impact: 'success',
@@ -124,7 +124,7 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
     {
       player_trade_in: 'Player Name',
       player_trade_out: 'Player Name',
-      team_involved: '',
+      team_involved: ['team3.png', 'team2.png'],
       contract: '1 year',
       payroll: '$ 900,000',
       impact: 'failure',
@@ -132,7 +132,7 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
     {
       player_trade_in: 'Player Name',
       player_trade_out: 'Player Name',
-      team_involved: '',
+      team_involved: ['team1.png', 'team3.png'],
       contract: '1 year',
       payroll: '$ 900,000',
       impact: 'success',
@@ -140,13 +140,13 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
     {
       player_trade_in: 'Player Name',
       player_trade_out: 'Player Name',
-      team_involved: '',
+      team_involved: ['team2.png', 'team3.png'],
       contract: '1 year',
       payroll: '$ 900,000',
       impact: 'failure',
     },
   ];
-  data = new MatTableDataSource(this.elements);
+  tradeData = new MatTableDataSource(this.tradeRecords);
   displayedColumns: string[] = [
     'player_trade_in',
     'player_trade_out',
@@ -155,26 +155,56 @@ export class TradeAnalysisComponent implements OnInit, AfterViewInit {
     'payroll',
     'impact',
   ];
+  highestTrades = [
+    {
+      playerA: {
+        name: 'Nkosi Burgess',
+        role: 'Defender',
+        contract: 'ABC',
+        logo: 'team1.png',
+      },
+      playerB: {
+        name: 'Nkosi Burgess',
+        role: 'Defender',
+        contract: 'XYZ',
+        logo: 'team2.png',
+      },
+      signValue: '$1,120,500',
+    },
+    {
+      playerA: {
+        name: 'Nkosi Burgess',
+        role: 'Defender',
+        contract: 'ABC',
+        logo: 'team2.png',
+      },
+      playerB: {
+        name: 'Nkosi Burgess',
+        role: 'Defender',
+        contract: 'XYZ',
+        logo: 'team3.png',
+      },
+      signValue: '$1,120,300',
+    },
+    {
+      playerA: {
+        name: 'Nkosi Burgess',
+        role: 'Defender',
+        contract: 'ABC',
+        logo: 'team3.png',
+      },
+      playerB: {
+        name: 'Nkosi Burgess',
+        role: 'Defender',
+        contract: 'XYZ',
+        logo: 'team2.png',
+      },
+      signValue: '$1,120,000',
+    },
+  ];
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
-
-  ngAfterViewInit() {
-    // const ctx = (this.myChart.nativeElement as HTMLCanvasElement).getContext('2d');
-    const gradient = this.myChart.nativeElement.getContext('2d').createLinearGradient(0, 0, 0, 600);
-    gradient.addColorStop(0, '#376DC8');
-    gradient.addColorStop(1, '#A0ABFF67');
-    this.barChartColors = [
-      {
-        borderColor: '#376DC8',
-        backgroundColor: gradient,
-      },
-      {
-        borderColor: '#74AAF8',
-        fill: false,
-      },
-    ];
-  }
 
   goToPage(url) {
     this.router.navigateByUrl(url);

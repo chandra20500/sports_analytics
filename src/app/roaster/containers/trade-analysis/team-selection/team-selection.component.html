@@ -1,26 +1,36 @@
 <div class="container-p">
   <div class="row">
-    <div class="bread-path">
-      <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
-      <mat-icon>arrow_forward</mat-icon>
-      <a (click)="goToPage('roaster/trade')" class="link">Trade Machine</a>
-      <mat-icon>arrow_forward</mat-icon>
-      Select Team
+    <div>
+      <div class="bread-path">
+        <a (click)="goToPage('roaster')" class="link">Roaster Builder</a>
+        <mat-icon>arrow_forward</mat-icon>
+        <a (click)="goToPage('roaster/trade')" class="link">Trade Machine</a>
+        <mat-icon>arrow_forward</mat-icon>
+        Select Team
+      </div>
+      <div class="note m-b">Select Teams which want to be the part of your current Trade</div>
     </div>
+
     <button mat-button class="launch-button" (click)="goToPage('roaster/trade/player-selection')">
       <div class="text">Next</div>
     </button>
   </div>
-  <div class="note m-b">Select Teams which want to be the part of your current Trade</div>
 
   <div class="cont row">
-    <div class="col-md-3" *ngFor="let team of teams">
-      <mat-radio-button class="border-teams">
+    <div class="col-md-3 col-xs-6" *ngFor="let team of teams">
+      <div
+        class="border-teams"
+        [ngClass]="[selectedTeams.includes(team.id) ? 'active' : 'nonactive']"
+        (click)="teamSelect(team.id)"
+      >
         <div class="row te">
-          <img class="user-image" src="assets/images/header/profile.png" />
-          Denver Nuggets
+          <div [ngClass]="[selectedTeams.includes(team.id) ? 'active-radio' : 'nonactive-radio']"></div>
+          <img class="user-image" src="assets/images/teams/{{ team.logo }}" />
+          <div class="text">
+            {{ team.name }}
+          </div>
         </div>
-      </mat-radio-button>
+      </div>
     </div>
   </div>
 </div>

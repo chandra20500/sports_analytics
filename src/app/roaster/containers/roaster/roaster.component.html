@@ -1,5 +1,5 @@
 <div class="container-p row">
-  <div class="col-md-8">
+  <div class="col-md-8 col-xs-12 m-b">
     <div class="row">
       <div class="bread-path">Roaster Builder</div>
       <button mat-button class="launch-button" (click)="goToPage('roaster/trade')">
@@ -103,27 +103,24 @@
     </table>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-4 col-xs-12 p-l-0">
     <mat-tab-group>
       <mat-tab label="Performace Analyser">
         <div class="performace-analyser">
           <div class="heading">Team workload</div>
-          <canvas
-            baseChart
-            width="100%"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [colors]="lineChartColors"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            [plugins]="lineChartPlugins"
+          <app-line-chart
+            [lineChartData]="lineChartData"
+            [lineChartLabels]="lineChartLabels"
+            [lineChartOptions]="lineChartOptions"
+            [lineChartColors]="lineChartColors"
+            [lineChartLegend]="lineChartLegend"
+            [lineChartPlugins]="lineChartPlugins"
+            [gradient]="lineGradient"
+            height="40"
           >
-          </canvas>
-          <!-- <img class="graph" src="assets/images/graphs/g-1.png" /> -->
+          </app-line-chart>
         </div>
       </mat-tab>
     </mat-tab-group>
-    <div style="display: block"></div>
   </div>
 </div>

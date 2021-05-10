@@ -8,6 +8,14 @@ const routes: Routes = [
     path: '',
     component: fromContainers.PracticePlansComponent,
   },
+  {
+    path: 'details',
+    component: fromContainers.DetailedPracticePlansComponent,
+  },
+  {
+    path: 'create',
+    component: fromContainers.AddPracticePlansComponent,
+  },
 ];
 
 @NgModule({

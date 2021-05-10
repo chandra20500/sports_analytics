@@ -1,0 +1,21 @@
+.player-records {
+  padding-left: 4px;
+  color: #404040;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  .name {
+    float: left;
+    font-size: 12px;
+    font-weight: 500;
+    padding-right: 10px;
+  }
+  .progress {
+    flex-grow: 3;
+  }
+  .exhausted {
+    font-size: 11px;
+    font-weight: 600;
+    padding-left: 15px;
+    width: 100px;
+  }
+}
