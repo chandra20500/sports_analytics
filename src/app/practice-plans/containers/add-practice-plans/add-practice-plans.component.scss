@@ -1,6 +1,40 @@
 .container-p {
   margin: 30px;
   margin-top: 64px;
+  .create-button {
+    margin-left: 20px;
+    margin-right: 10px;
+    background-color: #376dc8;
+    height: 34px;
+    margin-bottom: 30px;
+    padding: 0px 20px;
+    background: #376dc8 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #00000029;
+    border-radius: 4px;
+    margin-top: 20px;
+    .text {
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+
+  .cancel-button {
+    margin-left: auto;
+    margin-right: 10px;
+    height: 34px;
+    padding: 0px 20px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #376dc8;
+    border-radius: 6px;
+    border-radius: 4px;
+    margin-top: 20px;
+    .text {
+      color: #376dc8;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
 
   .cont {
     background: #ffffff 0% 0% no-repeat padding-box;

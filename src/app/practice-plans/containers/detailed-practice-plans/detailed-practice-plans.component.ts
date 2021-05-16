@@ -3,6 +3,10 @@ import { MatAccordion } from '@angular/material/expansion';
 import { ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDrillDataComponent } from '../../components/add-drill-data/add-drill-data.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { KeyValue } from '@angular/common';
 @Component({
   selector: 'app-detailed-practice-plans',
   templateUrl: './detailed-practice-plans.component.html',
@@ -116,7 +120,7 @@ export class DetailedPracticePlansComponent implements OnInit {
   players = [
     { name: 'Player 1', progress: 35, label: '35% exhausted' },
     { name: 'Player 2', progress: 65, label: '60% exhausted' },
-    { name: 'Player 3', progress: 50, label: '45% exhausted' },
+    { name: 'Player 3', progress: 45, label: '45% exhausted' },
   ];
 
   schedules = [
@@ -124,34 +128,31 @@ export class DetailedPracticePlansComponent implements OnInit {
       startTime: '11:00 AM',
       endTime: '12:00 PM',
       name: 'Offensive Series 1',
-      status: 'Complete',
+      status: 'Completed',
       groupname: 'Group Name',
       players: 'Total Players',
       drills: [
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'complete',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'no_data',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'ongoing',
           hours: '2.5 ',
           reps: '3 ',
         },
@@ -161,34 +162,31 @@ export class DetailedPracticePlansComponent implements OnInit {
       startTime: '11:50 AM',
       endTime: '12:10 PM',
       name: 'Michigan Shooting series',
-      status: 'Incomplete',
+      status: 'Awating Drill Data',
       groupname: 'Group Name',
       players: 'Total Players',
       drills: [
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'complete',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'no_data',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'ongoing',
           hours: '2.5 ',
           reps: '3 ',
         },
@@ -198,34 +196,31 @@ export class DetailedPracticePlansComponent implements OnInit {
       startTime: '11:00 AM',
       endTime: '12:00 PM',
       name: 'Transition Breakdown Drill',
-      status: 'Incomplete',
+      status: 'Ongoing',
       groupname: 'Group Name',
       players: 'Total Players',
       drills: [
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'complete',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'no_data',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'ongoing',
           hours: '2.5 ',
           reps: '3 ',
         },
@@ -235,34 +230,31 @@ export class DetailedPracticePlansComponent implements OnInit {
       startTime: '12:00 PM',
       endTime: '12:50 PM',
       name: 'Water Break',
-      status: 'Incomplete',
+      status: 'Not Started',
       groupname: 'Group Name',
       players: 'Total Players',
       drills: [
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'complete',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'no_data',
           hours: '2.5 ',
           reps: '3 ',
         },
         {
           name: 'Drill Name',
           category: 'Drill Category',
-          goal: 'Goal',
           result: 'Result',
-          performance: 'Drill Performance',
+          status: 'ongoing',
           hours: '2.5 ',
           reps: '3 ',
         },
@@ -270,11 +262,237 @@ export class DetailedPracticePlansComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {}
+  trialRecordsColumns = [];
+  drillRecords = [
+    {
+      playerName: 'Player Name 1',
+      drillName1: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName2: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName3: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName4: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName5: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+    },
+    {
+      playerName: 'Player Name 2',
+      drillName1: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName2: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName3: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName4: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName5: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+    },
+    {
+      playerName: 'Player Name 3',
+      drillName1: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName2: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName3: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName4: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName5: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+    },
+    {
+      playerName: 'Player Name 4',
+      drillName1: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName2: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName3: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName4: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName5: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+    },
+    {
+      playerName: 'Player Name 5',
+      drillName1: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName2: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName3: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName4: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName5: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+    },
+    {
+      playerName: 'Player Name 6',
+      drillName1: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName2: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName3: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName4: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+      drillName5: {
+        trial1: 'MM:SS',
+        trial2: 'MM:SS',
+        trial3: 'MM:SS',
+      },
+    },
+  ];
 
-  ngOnInit(): void {}
+  constructor(private router: Router, public dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.getObjectKeys();
+  }
+
+  addDrillData(drillname) {
+    const dialogRef = this.dialog.open(AddDrillDataComponent, {
+      width: '60%',
+      disableClose: false,
+      data: {
+        type: 'add',
+        name: drillname,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+      }
+    });
+  }
 
   goToPage(url) {
     this.router.navigateByUrl(url);
+  }
+
+  getObjectKeys() {
+    for (const key in this.drillRecords[0]) {
+      if (key) {
+        this.trialRecordsColumns.push(key);
+      }
+    }
+  }
+
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
+    return 0;
+  }
+
+  checkRecordsColumn(obj: any) {
+    if (obj.key === 'playerName') {
+      return 'first-col-width';
+    } else {
+      return 'next-col-style';
+    }
+  }
+
+  checkMainColumn(obj: any, last: any, first: any) {
+    if (obj === 'playerName') {
+      return 'pad-first-col drill-first-col';
+    } else {
+      return 'pad-next-col';
+    }
+  }
+
+  checkDrillColumn(last: any, first: any) {
+    if (first) {
+      return 'drill-first-col';
+    } else {
+      return 'drill-next-col';
+    }
   }
 }

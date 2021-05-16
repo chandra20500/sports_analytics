@@ -30,7 +30,6 @@ export class TeamSelectionComponent implements OnInit {
   ngOnInit(): void {}
 
   teamSelect(event) {
-    console.log(event);
     if (this.selectedTeams.includes(event)) {
       const index = this.selectedTeams.indexOf(event, 0);
       if (index > -1) {

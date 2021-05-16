@@ -1,0 +1,196 @@
+.modal-toolbar {
+  overflow-x: hidden;
+  height: 40px;
+  background: #376dc8 0% 0% no-repeat padding-box;
+
+  .head-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    padding-left: 30px;
+    padding-top: 10px;
+  }
+
+  .close-icon {
+    cursor: pointer;
+    padding-top: 10px;
+    font-size: 20px;
+    color: #fff;
+    margin-left: auto;
+    padding-right: 10px;
+  }
+}
+
+.cont {
+  .note {
+    font-size: 12px;
+    font-weight: 500;
+    color: #686868;
+    padding-left: 30px;
+    padding-top: 10px;
+  }
+  .head {
+    font-size: 14px;
+    font-weight: 600;
+    color: #242424;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  .input-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #404040;
+    padding-top: 10px;
+    margin-left: 20px;
+  }
+
+  .input-field {
+    margin-top: 10px;
+    width: 85%;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #404040;
+    margin-left: 20px;
+    margin-right: 10px;
+    padding-left: 5px;
+    font-family: 'Montserrat';
+  }
+
+  .textarea-field {
+    margin-top: 10px;
+    padding-top: 5px;
+    width: 90%;
+    height: 70px;
+    font-family: 'Montserrat';
+    padding-left: 10px;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    resize: none;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  .input-checkbox {
+    padding-top: 5px;
+    margin-left: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #404040;
+  }
+
+  .hline {
+    width: 90%;
+    margin-left: 30px;
+    margin-right: 10%;
+    height: 0px;
+    border: 1px solid #e6e6e6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .reset-button {
+    margin-top: 10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #376dc8;
+    border-radius: 6px;
+    width: 150px;
+    margin-right: 20px;
+    .text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #376dc8;
+      text-align: center;
+    }
+  }
+
+  .submit-button {
+    margin-top: 10px;
+    background: #376dc8 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #376dc8;
+    border-radius: 6px;
+    width: 150px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    .text {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+
+  .files {
+    margin-top: 10px;
+    .attachment {
+      margin-left: 20px;
+      color: #376dc8;
+      font-size: 18px;
+    }
+
+    .filename {
+      text-align: left;
+      text-decoration: underline;
+      color: #404040;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+
+    .remove-file {
+      display: inline-flex;
+      align-items: center;
+      background: #f7e3e1 0% 0% no-repeat padding-box;
+      border-radius: 4px;
+      padding-left: 10px;
+      padding-right: 10px;
+      height: 25px;
+      color: #a11300;
+      font-size: 12px;
+      font-weight: 600;
+      mat-icon {
+        padding-top: 10px;
+        font-size: 14px;
+        color: #a11300;
+      }
+    }
+  }
+
+  .center-align {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .dropzone {
+    margin-top: 10px;
+    margin-left: auto;
+    background: #f3f3f3 0% 0% no-repeat padding-box;
+    border: 1px dashed #376dc8;
+    border-radius: 4px;
+    padding-left: 30px;
+    padding-right: 30px;
+    .texthead {
+      padding-top: 15px;
+      text-align: center;
+      color: #808080;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .textnote {
+      text-align: center;
+      color: #808080;
+      font-weight: 400;
+      font-size: 10px;
+      padding-bottom: 15px;
+    }
+  }
+  input[type='file'] {
+    display: none;
+  }
+}

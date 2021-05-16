@@ -1,3 +1,15 @@
+<ng-template #eventActionsTemplate let-event="event">
+  <button *ngIf="event.actions" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let action of event.actions" (mwlClick)="action.onClick({ event: event })">
+      <mat-icon>{{ action.label }}</mat-icon>
+      <span>{{ action.a11yLabel }}</span>
+    </button>
+  </mat-menu>
+</ng-template>
+
 <div class="row calendar" *ngIf="navigation == 'all'">
   <div
     class="navigate-calendar"
@@ -22,7 +34,7 @@
   </div>
 
   <mat-select
-    class="fieldbox fieldvalue col-md-3 col-xs-5"
+    class="fieldbox fieldvalue paddedSelect col-md-4 col-xs-5"
     (selectionChange)="setView($event)"
     [(ngModel)]="selectedView"
   >
@@ -35,7 +47,7 @@
 <div class="row calendar" *ngIf="navigation == 'current'">
   <mat-select
     style="margin-top: -50px"
-    class="fieldbox fieldvalue col-md-5 col-xs-5"
+    class="fieldbox fieldvalue paddedSelect col-md-5 col-xs-5"
     (selectionChange)="setView($event)"
     [(ngModel)]="selectedView"
   >
@@ -72,8 +84,10 @@
     [viewDate]="viewDate"
     [events]="events"
     [dayStartHour]="startTime"
-    [dayEndHour]="endTime"
+    [dayEndHour]="endTime - 1"
+    [hourSegmentHeight]="25"
     (eventTimesChanged)="eventTimesChanged($event)"
+    [eventActionsTemplate]="eventActionsTemplate"
   >
   </mwl-calendar-day-view>
 </div>

@@ -1,8 +1,16 @@
 <div class="container-p">
-  <div class="bread-path">
-    <a class="link" (click)="goToPage('practice-plans')"> Practice Plans</a>
-    <mat-icon>arrow_forward</mat-icon>
-    Create Practice
+  <div class="row">
+    <div class="bread-path">
+      <a class="link" (click)="goToPage('practice-plans')"> Practice Plans</a>
+      <mat-icon>arrow_forward</mat-icon>
+      Create Practice
+    </div>
+    <button mat-button class="cancel-button">
+      <div class="text">Cancel</div>
+    </button>
+    <button mat-button class="create-button" (click)="goToPage('practice-plans')">
+      <div class="text">Create</div>
+    </button>
   </div>
 
   <div class="row ac">
@@ -31,7 +39,8 @@
                     {{ selectedTrainingProgram[0].name }}
                   </div>
                   <div class="sub">
-                    {{ selectedTrainingProgram[0].duration }} | {{ selectedTrainingProgram[0].count }}
+                    {{ selectedTrainingProgram[0].duration.startTime }} -
+                    {{ selectedTrainingProgram[0].duration.endTime }} | {{ selectedTrainingProgram[0].count }}
                   </div>
                 </div>
                 <div class="vline"></div>
@@ -89,9 +98,10 @@
               <input
                 mat-input
                 class="input"
-                type="date"
+                type="text"
                 [ngClass]="[selectedForm == 'details' ? 'active' : '']"
                 [(ngModel)]="date"
+                [readonly]="true"
               />
             </div>
           </div>
@@ -131,7 +141,7 @@
             <div class="head">Drills</div>
             <mat-checkbox class="input-checkbox">Provide equal Intervals between all drills</mat-checkbox>
           </div>
-          <div class="m-l m-t">
+          <!-- <div class="m-l m-t">
             <div cdkDropList (cdkDropListDropped)="drillOrder($event)" class="row">
               <div *ngFor="let selectedDrill of selectedDrills; let i = index" class="row" cdkDrag>
                 <div class="filled">
@@ -145,29 +155,28 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div
-            class="form-cont-sm cursor-pointer"
-            [ngClass]="[selectedForm == 'drills' ? 'active' : '']"
+            class="cursor-pointer p-t"
             cdkDropList
             #drillList="cdkDropList"
             [cdkDropListData]="selectedDrills"
             (cdkDropListDropped)="drillDrop($event)"
           >
-            <div class="text">Drag and Drop applicable Drills</div>
+            <app-calendar
+              navigation="none"
+              size="small"
+              [view]="view"
+              [selectedView]="selectedView"
+              [viewDate]="viewDate"
+              [events]="events"
+              [startTime]="startTime.split(':')[0]"
+              [endTime]="endTime.split(':')[0]"
+              (newEvent)="eventsUpdate($event)"
+            ></app-calendar>
+            <!-- <div class="text">Drag and Drop applicable Drills</div> -->
           </div>
-          <app-calendar
-            navigation="none"
-            size="small"
-            [view]="view"
-            [selectedView]="selectedView"
-            [viewDate]="viewDate"
-            [events]="events"
-            [startTime]="startTime.split(':')[0]"
-            [endTime]="endTime.split(':')[0]"
-            (newEvent)="eventsUpdate($event)"
-          ></app-calendar>
         </div>
       </div>
     </div>
@@ -199,7 +208,10 @@
                     <div class="name">
                       {{ trainingProgram.name }}
                     </div>
-                    <div class="sub">{{ trainingProgram.duration }} | {{ trainingProgram.count }}</div>
+                    <div class="sub">
+                      {{ trainingProgram.duration.startTime }} - {{ trainingProgram.duration.endTime }} |
+                      {{ trainingProgram.count }}
+                    </div>
                   </div>
                   <div class="vline"></div>
                   <div class="level">Training {{ trainingProgram.level }}</div>
@@ -221,14 +233,14 @@
           <button
             class="button-left"
             [ngClass]="[playerType == 'name' ? 'active' : '']"
-            (click)="changeSelected('player', 'name')"
+            (click)="changeSelected('name')"
           >
             <div [ngClass]="[playerType == 'name' ? 'active-text' : 'text']">Player Names</div>
           </button>
           <button
             class="button-right"
             [ngClass]="[playerType == 'group' ? 'active' : '']"
-            (click)="changeSelected('player', 'group')"
+            (click)="changeSelected('group')"
           >
             <div [ngClass]="[playerType == 'group' ? 'active-text' : 'text']">Player Group</div>
           </button>
@@ -332,122 +344,65 @@
         </div>
       </div>
 
+      <div class="cont" *ngIf="selectedForm == 'details'">
+        <mat-calendar
+          [selected]="calendarDate"
+          [minDate]="minDate"
+          [dateClass]="dateClass()"
+          (selectedChange)="onDateSelected($event)"
+          [dateFilter]="filterDates"
+        ></mat-calendar>
+      </div>
+
       <div class="cont" *ngIf="selectedForm == 'drills'">
-        <div class="button-group">
-          <button
-            class="button-left"
-            [ngClass]="[drillType == 'name' ? 'active' : '']"
-            (click)="changeSelected('drill', 'name')"
+        <div class="head">Suggested Drills</div>
+        <div class="note">Drag and Drop Drills to schedule Training</div>
+        <div>
+          <div class="filter">
+            <mat-icon>search</mat-icon>
+            <input mat-input class="filter-input" type="text" placeholder="Search Drills" />
+            <mat-icon class="filter-icon">tune</mat-icon>
+          </div>
+          <div
+            cdkDropList
+            [cdkDropListConnectedTo]="[drillList]"
+            [cdkDropListData]="drills"
+            (cdkDropListDropped)="drillDrop($event)"
           >
-            <div [ngClass]="[drillType == 'name' ? 'active-text' : 'text']">Drill Names</div>
-          </button>
-          <button
-            class="button-right"
-            [ngClass]="[drillType == 'group' ? 'active' : '']"
-            (click)="changeSelected('drill', 'group')"
-          >
-            <div [ngClass]="[drillType == 'group' ? 'active-text' : 'text']">Drill Groups</div>
-          </button>
-        </div>
-        <div *ngIf="drillType == 'name'">
-          <div class="note">Drag and Drop Drills to schedule Training</div>
-          <div>
-            <div class="filter">
-              <mat-icon>search</mat-icon>
-              <input mat-input class="filter-input" type="text" placeholder="Search Drills" />
-              <mat-icon class="filter-icon">tune</mat-icon>
-            </div>
-            <div
-              cdkDropList
-              [cdkDropListConnectedTo]="[drillList]"
-              [cdkDropListData]="drills"
-              (cdkDropListDropped)="drillDrop($event)"
-            >
-              <div cdkDrag *ngFor="let drill of drills">
-                <div class="notfilled select-cont">
-                  <div class="row">
-                    <div>
-                      <div class="name">
-                        {{ drill.name }}
-                      </div>
-                      <div class="sub">
-                        {{ drill.category }}
-                      </div>
-                    </div>
-                    <div class="vline"></div>
+            <div cdkDrag *ngFor="let drill of drills">
+              <div class="notfilled select-cont">
+                <div class="row">
+                  <div>
                     <div class="name">
-                      <div style="display: flex">
-                        <mat-icon class="icon">schedule</mat-icon>
-                        <div class="text">{{ drill.hours }} hrs</div>
-                        <img src="assets/images/icons/reps.svg" class="icon p-l" />
-                        <div class="text">{{ drill.reps }} Reps</div>
-                      </div>
-                      <div style="display: flex">
-                        <mat-icon class="icon p-l">videocam</mat-icon>
-                        <div class="w-video">Watch Video</div>
-                      </div>
+                      {{ drill.name }}
+                    </div>
+                    <div class="sub">
+                      {{ drill.category }}
+                    </div>
+                  </div>
+                  <div class="vline"></div>
+                  <div class="name">
+                    <div style="display: flex">
+                      <mat-icon class="icon">schedule</mat-icon>
+                      <div class="text">{{ drill.hours }} hrs</div>
+                      <img src="assets/images/icons/reps.svg" class="icon p-l" />
+                      <div class="text">{{ drill.reps }} Reps</div>
+                    </div>
+                    <div style="display: flex">
+                      <mat-icon class="icon p-l">videocam</mat-icon>
+                      <div class="w-video">Watch Video</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <button mat-button class="create-button">
-              <div class="text">
-                <mat-icon class="add">add_circle</mat-icon>
-                Create New
-              </div>
-            </button>
           </div>
-        </div>
-        <div *ngIf="drillType == 'group'">
-          <div class="note">Drag and Drop Drill Groups to schedule Training</div>
-          <div>
-            <div class="filter">
-              <mat-icon>search</mat-icon>
-              <input mat-input class="filter-input" type="text" placeholder="Search Drills Groups" />
-              <mat-icon class="filter-icon">tune</mat-icon>
+          <button mat-button class="create-button" (click)="addDrill()">
+            <div class="text">
+              <mat-icon class="add">add_circle</mat-icon>
+              Create New
             </div>
-            <div
-              cdkDropList
-              [cdkDropListConnectedTo]="[drillList]"
-              [cdkDropListData]="drillGroups"
-              (cdkDropListDropped)="drillDrop($event)"
-            >
-              <div cdkDrag *ngFor="let drillGroup of drillGroups">
-                <div class="notfilled select-cont">
-                  <div class="row">
-                    <div>
-                      <div class="name">
-                        {{ drillGroup.name }}
-                      </div>
-                      <div class="sub">
-                        {{ drillGroup.category }}
-                      </div>
-                    </div>
-                    <div class="vline"></div>
-                    <div class="name">
-                      <div style="display: flex">
-                        <mat-icon class="icon">schedule</mat-icon>
-                        <div class="text">{{ drillGroup.hours }} hrs</div>
-                        <img src="assets/images/icons/reps.svg" class="icon p-l" />
-                        <div class="text">{{ drillGroup.reps }} Reps</div>
-                      </div>
-                      <div style="display: flex">
-                        <mat-icon class="icon p-l">videocam</mat-icon>
-                        <div class="w-video">Watch Video</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button mat-button class="create-button">
-              <div class="text">
-                <mat-icon class="add">add_circle</mat-icon>
-                Create New
-              </div>
-            </button>
-          </div>
+          </button>
         </div>
       </div>
     </div>

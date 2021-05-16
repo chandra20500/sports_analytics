@@ -1,17 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { addHours, differenceInDays } from 'date-fns';
-import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { addHours, format, addDays, subDays, isAfter } from 'date-fns';
+import { CalendarEvent, CalendarEventAction, CalendarView } from 'angular-calendar';
 import { CalendarComponent } from '../../../shared/components/calendar/calendar.component';
+import { AddDrillsComponent } from '../../components/add-drills/add-drills.component';
+
 const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
+  others: {
+    primary: '#E4EBF7',
+    secondary: '#E4EBF7',
   },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
+  interval: {
+    primary: '#F7E3E1',
+    secondary: '#F7E3E1',
   },
   yellow: {
     primary: '#e3bc08',
@@ -24,15 +27,39 @@ const colors: any = {
   styleUrls: ['./add-practice-plans.component.scss'],
 })
 export class AddPracticePlansComponent implements OnInit {
-  selectedForm = '';
+  selectedForm = 'name';
   playerType = 'name';
-  drillType = 'name';
   trainingPrograms = [
-    { name: 'Name a Physical Training 1', duration: 'Duration', count: 'Count', level: 'Level' },
-    { name: 'Name a Physical Training 2', duration: 'Duration', count: 'Count', level: 'Level' },
-    { name: 'Name a Physical Training 3', duration: 'Duration', count: 'Count', level: 'Level' },
-    { name: 'Name a Physical Training 4', duration: 'Duration', count: 'Count', level: 'Level' },
-    { name: 'Name a Physical Training 5', duration: 'Duration', count: 'Count', level: 'Level' },
+    {
+      name: 'Name a Physical Training 1',
+      duration: { startTime: '08:00', endTime: '16:00' },
+      count: 'Count',
+      level: 'Level',
+    },
+    {
+      name: 'Name a Physical Training 2',
+      duration: { startTime: '08:00', endTime: '15:00' },
+      count: 'Count',
+      level: 'Level',
+    },
+    {
+      name: 'Name a Physical Training 3',
+      duration: { startTime: '09:00', endTime: '16:00' },
+      count: 'Count',
+      level: 'Level',
+    },
+    {
+      name: 'Name a Physical Training 4',
+      duration: { startTime: '09:00', endTime: '15:00' },
+      count: 'Count',
+      level: 'Level',
+    },
+    {
+      name: 'Name a Physical Training 5',
+      duration: { startTime: '08:00', endTime: '16:00' },
+      count: 'Count',
+      level: 'Level',
+    },
   ];
   players = [
     { name: 'Player Name 1', position: '(Position)', available: 12, booked: 10 },
@@ -65,27 +92,47 @@ export class AddPracticePlansComponent implements OnInit {
     { name: 'Drill Name 4', category: 'Drill Category', hours: 2, reps: 3 },
     { name: 'Drill Name 5', category: 'Drill Category', hours: 2, reps: 3 },
   ];
-  drillGroups = [
-    { name: 'Drill Group 1', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Group 2', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Group 3', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Group 4', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Group 5', category: 'Drill Category', hours: 2, reps: 3 },
+
+  existingDates = [
+    format(addDays(new Date(), 3), 'MM-dd-yyyy'),
+    format(addDays(new Date(), 5), 'MM-dd-yyyy'),
+    format(addDays(new Date(), 6), 'MM-dd-yyyy'),
+    format(addDays(new Date(), 8), 'MM-dd-yyyy'),
   ];
   selectedTrainingProgram = [];
   selectedPlayers = [];
   selectedDrills = [];
-  date = new Date().toISOString().substring(0, 10);
+  date = format(new Date(), 'MM-dd-yyyy');
+  calendarDate = new Date();
   startTime = '08:00';
   endTime = '14:00';
+  minDate = new Date();
   currentTime = new Date(new Date().setHours(8, 0, 0));
 
   view: CalendarView = CalendarView.Day;
   selectedView = 'day';
   viewDate: Date = new Date();
+  actions: CalendarEventAction[] = [
+    {
+      label: 'edit',
+      a11yLabel: 'Edit',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        console.log(event);
+        // this.removeevent('Edited', event);
+      },
+    },
+    {
+      label: 'delete',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.events = this.events.filter((iEvent) => iEvent !== event);
+        // this.handleEvent('Deleted', event);
+      },
+    },
+  ];
   events: CalendarEvent[] = [];
   @ViewChild(CalendarComponent) calendar: CalendarComponent;
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -93,13 +140,8 @@ export class AddPracticePlansComponent implements OnInit {
     this.selectedForm = value;
   }
 
-  changeSelected(type, value) {
-    if (type === 'drill') {
-      this.drillType = value;
-    }
-    if (type === 'player') {
-      this.playerType = value;
-    }
+  changeSelected(value) {
+    this.playerType = value;
   }
 
   programDrop(event) {
@@ -107,7 +149,14 @@ export class AddPracticePlansComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      this.programChange();
     }
+  }
+
+  programChange() {
+    console.log(this.selectedTrainingProgram);
+    this.startTime = this.selectedTrainingProgram[0].duration.startTime;
+    this.endTime = this.selectedTrainingProgram[0].duration.endTime;
   }
 
   playerDrop(event) {
@@ -145,6 +194,21 @@ export class AddPracticePlansComponent implements OnInit {
     moveItemInArray(this.selectedDrills, event.previousIndex, event.currentIndex);
   }
 
+  addDrill() {
+    const dialogRef = this.dialog.open(AddDrillsComponent, {
+      width: '60%',
+      disableClose: false,
+      data: {
+        type: 'add',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+      }
+    });
+  }
+
   removeItem(pData, cData, pIndex, cIndex, type) {
     transferArrayItem(pData, cData, pIndex, cIndex);
     if (type === 'drills') {
@@ -162,14 +226,25 @@ export class AddPracticePlansComponent implements OnInit {
       this.events.push({
         start: startTime,
         end: this.currentTime,
-        title: this.selectedDrills[index - 1].name,
-        color: colors.blue,
+        title:
+          '<div class="drillname">' +
+          this.selectedDrills[index - 1].name +
+          '</div> <div class="cate">' +
+          this.selectedDrills[index - 1].category +
+          '</div> <div class="time" ><img src="assets/images/icons/clock.svg" />' +
+          format(startTime, 'hh:mm aaa') +
+          ' - ' +
+          format(this.currentTime, 'hh:mm aaa') +
+          '</div>',
+        cssClass: 'event-class',
+        color: colors.others,
         allDay: false,
         resizable: {
           beforeStart: true,
           afterEnd: true,
         },
         draggable: true,
+        actions: this.actions,
       });
       startTime = this.currentTime;
       this.currentTime = addHours(this.currentTime, 1);
@@ -177,43 +252,26 @@ export class AddPracticePlansComponent implements OnInit {
         this.events.push({
           start: startTime,
           end: this.currentTime,
-          title: 'Interval',
-          color: colors.red,
+          title: '<img src="assets/images/icons/interval.svg" />Interval',
+          cssClass: 'interval-class',
+          color: colors.interval,
           allDay: false,
           resizable: {
             beforeStart: true,
             afterEnd: true,
           },
-          draggable: true,
+          // draggable: true,
         });
       } else {
         this.events.splice(this.events.length - 1, 1);
-        if (this.drillType === 'name') {
-          transferArrayItem(this.selectedDrills, this.drills, this.selectedDrills.length - 1, this.drills.length);
-        } else {
-          transferArrayItem(
-            this.selectedDrills,
-            this.drillGroups,
-            this.selectedDrills.length - 1,
-            this.drillGroups.length
-          );
-        }
-        window.alert('Time exceeded');
+        transferArrayItem(this.selectedDrills, this.drills, this.selectedDrills.length - 1, this.drills.length);
+        window.alert('Time exceeded handling.');
         this.eventsUpdate(this.events);
       }
     } else {
       this.eventsUpdate(this.events);
-      if (this.drillType === 'name') {
-        transferArrayItem(this.selectedDrills, this.drills, this.selectedDrills.length - 1, this.drills.length);
-      } else {
-        transferArrayItem(
-          this.selectedDrills,
-          this.drillGroups,
-          this.selectedDrills.length - 1,
-          this.drillGroups.length
-        );
-      }
-      window.alert('Time exceeded');
+      transferArrayItem(this.selectedDrills, this.drills, this.selectedDrills.length - 1, this.drills.length);
+      window.alert('Time exceeded handling.');
     }
     this.calendar.refreshData();
   }
@@ -231,6 +289,41 @@ export class AddPracticePlansComponent implements OnInit {
     } else {
       this.currentTime = new Date(new Date().setHours(parseInt(this.startTime.split(':')[0], 10), 0, 0));
     }
+  }
+
+  onDateSelected(date) {
+    this.calendarDate = date;
+    this.date = format(date, 'MM-dd-yyyy');
+  }
+
+  filterDates(date) {
+    const existingDates = [
+      format(addDays(new Date(), 3), 'MM-dd-yyyy'),
+      format(addDays(new Date(), 5), 'MM-dd-yyyy'),
+      format(addDays(new Date(), 6), 'MM-dd-yyyy'),
+      format(addDays(new Date(), 8), 'MM-dd-yyyy'),
+    ];
+    const newDate = format(date, 'MM-dd-yyyy');
+    if (existingDates.includes(newDate)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  dateClass() {
+    return (date: Date) => {
+      const newDate = format(date, 'MM-dd-yyyy');
+      if (newDate === this.date) {
+        return 'available-date';
+      } else if (isAfter(date, subDays(new Date(), 1))) {
+        if (this.existingDates.includes(newDate)) {
+          return '';
+        } else {
+          return 'available-date';
+        }
+      }
+    };
   }
 
   goToPage(url) {
