@@ -10,8 +10,10 @@
       <div class="row m-a-0">
         <div class="text">Practice Schedule</div>
         <div class="left-cont">
-          <mat-icon class="cursor-pointer"> chevron_left</mat-icon>
-          <mat-icon class="cursor-pointer"> chevron_right</mat-icon>
+          <button mat-button class="edit_button" (click)="addDrillData('Name')">
+            <mat-icon>edit</mat-icon>
+            Edit
+          </button>
         </div>
       </div>
 
@@ -26,151 +28,250 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-xs-12 m-b">
+    <div class="col-md-10 col-xs-12 m-b">
       <div class="card-container">
         <mat-tab-group class="pill-tab">
           <mat-tab class="pill-mat-tab" label="Schedule">
-            <div class="row back-cont m-l-0">
-              <div class="head m-b-md">Today’s Schedule</div>
-              <div class="date">
-                <div>
-                  <mat-icon class="cursor-pointer"> chevron_left </mat-icon>
-                </div>
+            <div class="row back-cont">
+              <div class="col-md-8 col-xs-12">
+                <div class="row m-l-0">
+                  <div class="head m-b-md">Today’s Schedule</div>
+                  <div class="date">
+                    <div>
+                      <mat-icon class="cursor-pointer"> chevron_left </mat-icon>
+                    </div>
 
-                <span class="text"> 15-04-2021 (Thursday) </span>
-                <div>
-                  <mat-icon class="cursor-pointer"> chevron_right </mat-icon>
+                    <span class="text"> 15-04-2021 (Thursday) </span>
+                    <div>
+                      <mat-icon class="cursor-pointer"> chevron_right </mat-icon>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div *ngFor="let schedule of schedules">
-              <mat-accordion multi class="m-t">
-                <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <div class="timing-box">
-                        <div class="text">{{ schedule.startTime }} - {{ schedule.endTime }}</div>
-                      </div>
-                      <div class="detail">
-                        {{ schedule.name }}
-                        <div class="sub-detail" *ngIf="schedule.status == 'Complete'">
-                          {{ schedule.groupname }} | {{ schedule.groupname }}
+                <div *ngFor="let schedule of schedules">
+                  <mat-accordion multi class="m-t">
+                    <mat-expansion-panel hideToggle>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <div class="timing-box">
+                            <div class="text">{{ schedule.startTime }} - {{ schedule.endTime }}</div>
+                          </div>
+                          <div class="detail">
+                            {{ schedule.name }}
+                            <div class="sub-detail" *ngIf="schedule.status == 'Complete'">
+                              {{ schedule.groupname }} | {{ schedule.groupname }}
+                            </div>
+                          </div>
+                        </mat-panel-title>
+                        <mat-panel-description class="row">
+                          <button mat-button class="status complete" *ngIf="schedule.status == 'Completed'">
+                            <mat-icon>check_circle</mat-icon>
+                            Drill Completed
+                          </button>
+                          <button mat-button class="status awaitdata" *ngIf="schedule.status == 'Awating Drill Data'">
+                            <mat-icon>hourglass_bottom</mat-icon>
+                            Awaiting Drill Data
+                          </button>
+                          <button mat-button class="status ongoing" *ngIf="schedule.status == 'Ongoing'">
+                            <mat-icon>av_timer</mat-icon>
+                            Ongoing
+                          </button>
+                          <button mat-button class="status notstarted" *ngIf="schedule.status == 'Not Started'">
+                            <mat-icon>more_time</mat-icon>
+                            Not Started
+                          </button>
+                          <div class="action">
+                            Expand
+                            <img src="/assets/images/icons/down-d.svg" />
+                          </div>
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+
+                      <div class="row accord-desc" *ngFor="let drill of schedule.drills; let i = index">
+                        <div
+                          class="hline"
+                          style="width: 100% !important; margin-top: 5px; margin-left: 0px; margin-right: 0px"
+                          *ngIf="i != 0"
+                        ></div>
+                        <div class="accord-details p-l">
+                          <div class="head-tab">{{ drill.name }}</div>
+                          <div class="cate">{{ drill.category }}</div>
+                        </div>
+                        <div class="accord-details">
+                          <div class="value">Drill Result</div>
+                          <div class="head-tab">{{ drill.result }}</div>
+                        </div>
+                        <div class="accord-details p-l m-l">
+                          <button mat-button class="status complete" *ngIf="drill.status == 'complete'">
+                            <mat-icon>check_circle</mat-icon>
+                            Drill Completed
+                          </button>
+                          <button mat-button class="status ongoing" *ngIf="drill.status == 'ongoing'">
+                            <mat-icon>av_timer</mat-icon>
+                            Ongoing
+                          </button>
+                          <button
+                            mat-button
+                            class="edit_button"
+                            *ngIf="drill.status == 'no_data'"
+                            (click)="addDrillData(drill.name)"
+                          >
+                            <mat-icon>edit</mat-icon>
+                            Enter Drill Data
+                          </button>
+                        </div>
+                        <div class="accord-details" style="margin-left: auto">
+                          <div class="head-tab" style="display: flex; padding-top: 10px">
+                            <mat-icon class="icon">schedule</mat-icon> {{ drill.hours }} hrs
+                            <img src="assets/images/icons/reps.svg" class="icon p-l" /> {{ drill.reps }} Reps
+                            <mat-icon class="p-l cursor-pointer">more_vert</mat-icon>
+                          </div>
                         </div>
                       </div>
-                    </mat-panel-title>
-                    <mat-panel-description class="row">
-                      <button mat-button class="status" *ngIf="schedule.status == 'Complete'">Completed</button>
-                      <div class="action">
-                        Expand
-                        <img src="/assets/images/icons/down-d.svg" />
-                      </div>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <div style="background: #f2f4f8; height: 10px"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <div class="analytics-cont">
+                  <div class="head">Training Analytics</div>
+                </div>
 
-                  <div class="row accord-desc" *ngFor="let drill of schedule.drills; let i = index">
-                    <div
-                      class="hline"
-                      style="width: 100% !important; margin-top: 5px; margin-left: 0px; margin-right: 0px"
-                      *ngIf="i != 0"
-                    ></div>
-                    <div class="accord-details p-l">
-                      <div class="head-tab">{{ drill.name }}</div>
-                      <div class="cate">{{ drill.category }}</div>
+                <div class="cont p-b">
+                  <div class="row p-b">
+                    <div class="col-md-5 col-xs-5 p-l-0">
+                      <div class="head">Training Time Split</div>
+                      <app-donut-chart
+                        [doughnutChartData]="doughnutChartData"
+                        [doughnutChartLabels]="doughnutChartLabels"
+                        [doughnutChartOptions]="doughnutChartOptions"
+                        [doughnutChartColors]="doughnutChartColors"
+                        [doughnutChartLegend]="doughnutChartLegend"
+                        [doughnutChartPlugins]="doughnutChartPlugins"
+                        height="90"
+                      ></app-donut-chart>
                     </div>
-                    <div class="accord-details">
-                      <div class="value">Drill Goal</div>
-                      <div class="head-tab">{{ drill.goal }}</div>
-                    </div>
-                    <div class="accord-details">
-                      <div class="value">Drill Result</div>
-                      <div class="head-tab">{{ drill.result }}</div>
-                    </div>
-                    <div class="accord-details">
-                      <div class="value">Drill Performance</div>
-                      <div class="head-tab">{{ drill.performance }}</div>
-                    </div>
-                    <div class="accord-details" style="margin-left: auto">
-                      <div class="head-tab" style="display: flex; padding-top: 10px">
-                        <mat-icon class="icon">schedule</mat-icon> {{ drill.hours }} hrs
-                        <img src="assets/images/icons/reps.svg" class="icon p-l" /> {{ drill.reps }} Reps
-                        <mat-icon class="p-l cursor-pointer">more_vert</mat-icon>
+
+                    <div class="col-md-7 col-xs-7">
+                      <div class="sub-head">Total Training Time</div>
+                      <div class="value">6 Hours</div>
+                      <div class="legend">
+                        <div class="row">
+                          <div class="leg" style="background-color: #f85951"></div>
+                          <div class="name">Stamina Building</div>
+                          <div class="value">30% (1.5 Hours)</div>
+                        </div>
+                        <div class="row">
+                          <div class="leg" style="background-color: #333333"></div>
+                          <div class="name">Fundamentals</div>
+                          <div class="value">30% (1.5 Hours)</div>
+                        </div>
+                        <div class="row">
+                          <div class="leg" style="background-color: #39ab41"></div>
+                          <div class="name">Skill Training</div>
+                          <div class="value">30% (1.5 Hours)</div>
+                        </div>
+                        <div class="row">
+                          <div class="leg" style="background-color: #f89751"></div>
+                          <div class="name">High Intensity</div>
+                          <div class="value">30% (1.5 Hours)</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <div style="background: #f2f4f8; height: 10px"></div>
+
+                  <div class="hline m-a-0" style="width: 100%"></div>
+
+                  <div class="head">Group Workload</div>
+                  <app-line-chart
+                    [lineChartData]="lineChartData"
+                    [lineChartLabels]="lineChartLabels"
+                    [lineChartOptions]="lineChartOptions"
+                    [lineChartColors]="lineChartColors"
+                    [lineChartLegend]="lineChartLegend"
+                    [lineChartPlugins]="lineChartPlugins"
+                    [gradient]="lineGradient"
+                    height="50"
+                  >
+                  </app-line-chart>
+                  <div class="head">Players with Highest Workload</div>
+                  <app-progress-chart [data]="players"></app-progress-chart>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab class="pill-mat-tab drill-data" label="Drill Data">
+            <div class="cont marg-align">
+              <div class="row">
+                <div class="table-cont">
+                  <table class="table-content" style="overflow-x: scroll; overflow-y: visible">
+                    <thead class="table-head">
+                      <col />
+                      <colgroup span="3"></colgroup>
+                      <colgroup span="3"></colgroup>
+                      <tr class="drill-header-row1 flex-display bdr-left">
+                        <th class="drill-col-width1"></th>
+                        <div
+                          class="drill-column-header"
+                          *ngFor="let trlObj of trialRecordsColumns; index as i; let last = last; let first = first"
+                          [ngClass]="checkMainColumn(trlObj, last, first)"
+                        >
+                          <th colspan="3" scope="colgroup" *ngIf="trlObj !== 'playerName'">Drill Name {{ i }}</th>
+                        </div>
+                      </tr>
+                      <tr class="drill-header-row2 flex-display bdr-left">
+                        <th class="drill-col-width2"></th>
+                        <div
+                          class="trail-column-header"
+                          *ngFor="let trlObj of trialRecordsColumns; index as i; let last = last; let first = first"
+                          [ngClass]="checkDrillColumn(last, first)"
+                        >
+                          <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 1</th>
+                          <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 2</th>
+                          <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 3</th>
+                        </div>
+                      </tr>
+                    </thead>
+                    <tbody class="table-body bdr-left">
+                      <tr>
+                        <div
+                          class="drill-rc-contents flex-display"
+                          *ngFor="let trials of drillRecords; index as i; let last = last; let first = first"
+                        >
+                          <div
+                            class="drill-records"
+                            *ngFor="let trlObj of trials | keyvalue: originalOrder"
+                            [ngClass]="checkRecordsColumn(trlObj)"
+                          >
+                            <td
+                              class="player-name"
+                              scope="colgroup"
+                              *ngIf="trlObj.key === 'playerName'"
+                              style="position: absolute"
+                            >
+                              {{ trlObj.value }}
+                            </td>
+                            <td class="trail-name" scope="colgroup" *ngIf="trlObj.key !== 'playerName'">
+                              {{ trlObj.value.trial1 }}
+                            </td>
+                            <td class="trail-name" scope="colgroup" *ngIf="trlObj.key !== 'playerName'">
+                              {{ trlObj.value.trial2 }}
+                            </td>
+                            <td class="trail-name" scope="colgroup" *ngIf="trlObj.key !== 'playerName'">
+                              {{ trlObj.value.trial3 }}
+                            </td>
+                          </div>
+                        </div>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </mat-tab>
           <mat-tab class="pill-mat-tab" label="Notes"> </mat-tab>
           <mat-tab class="pill-mat-tab" label="Scouting Reports"> </mat-tab>
         </mat-tab-group>
-      </div>
-    </div>
-    <div class="col-md-4 col-xs-12">
-      <div class="analytics-cont">
-        <div class="head">Training Analytics</div>
-      </div>
-
-      <div class="cont p-b">
-        <div class="row p-b">
-          <div class="col-md-5 col-xs-5 p-l-0">
-            <div class="head">Training Time Split</div>
-            <app-donut-chart
-              [doughnutChartData]="doughnutChartData"
-              [doughnutChartLabels]="doughnutChartLabels"
-              [doughnutChartOptions]="doughnutChartOptions"
-              [doughnutChartColors]="doughnutChartColors"
-              [doughnutChartLegend]="doughnutChartLegend"
-              [doughnutChartPlugins]="doughnutChartPlugins"
-              height="90"
-            ></app-donut-chart>
-          </div>
-
-          <div class="col-md-7 col-xs-7">
-            <div class="sub-head">Total Training Time</div>
-            <div class="value">6 Hours</div>
-            <div class="legend">
-              <div class="row">
-                <div class="leg" style="background-color: #f85951"></div>
-                <div class="name">Stamina Building</div>
-                <div class="value">30% (1.5 Hours)</div>
-              </div>
-              <div class="row">
-                <div class="leg" style="background-color: #333333"></div>
-                <div class="name">Fundamentals</div>
-                <div class="value">30% (1.5 Hours)</div>
-              </div>
-              <div class="row">
-                <div class="leg" style="background-color: #39ab41"></div>
-                <div class="name">Skill Training</div>
-                <div class="value">30% (1.5 Hours)</div>
-              </div>
-              <div class="row">
-                <div class="leg" style="background-color: #f89751"></div>
-                <div class="name">High Intensity</div>
-                <div class="value">30% (1.5 Hours)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hline m-a-0" style="width: 100%"></div>
-
-        <div class="head">Group Workload</div>
-        <app-line-chart
-          [lineChartData]="lineChartData"
-          [lineChartLabels]="lineChartLabels"
-          [lineChartOptions]="lineChartOptions"
-          [lineChartColors]="lineChartColors"
-          [lineChartLegend]="lineChartLegend"
-          [lineChartPlugins]="lineChartPlugins"
-          [gradient]="lineGradient"
-          height="50"
-        >
-        </app-line-chart>
-        <div class="head">Players with Highest Workload</div>
-        <app-progress-chart [data]="players"></app-progress-chart>
       </div>
     </div>
   </div>

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TradeConfigurationComponent } from '../../../components/trade-configuration/trade-configuration.component';
-import pl from 'date-fns/esm/locale/pl/index.js';
-
 @Component({
   selector: 'app-player-selection',
   templateUrl: 'player-selection.component.html',

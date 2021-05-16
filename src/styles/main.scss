@@ -188,3 +188,18 @@ mat-dialog-container {
   border: 1px solid #e5e5e5;
   height: 15px !important;
 }
+
+.paddedSelect .mat-select-trigger {
+  padding-top: 5px;
+}
+
+.available-date {
+  .mat-calendar-body-cell-content {
+    color: green !important;
+    font-weight: 800;
+  }
+  .mat-calendar-body-selected {
+    background-color: #3074d5 !important;
+    color: white !important;
+  }
+}

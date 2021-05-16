@@ -24,7 +24,6 @@
 
 .fieldvalue {
   padding-left: 10px;
-  padding-top: 10px;
   color: rgb(8, 7, 7);
   font-size: 13px;
   font-weight: 400;
@@ -36,7 +35,6 @@
   font-weight: 600;
   padding-left: 10px;
   padding-right: 10px;
-  text-align: center;
 }
 
 .small {
@@ -48,6 +46,72 @@
   ::ng-deep.cal-month-view .cal-cell-top {
     min-height: 10px;
     max-height: 45px;
+  }
+}
+
+.mat-icon-button {
+  display: flex;
+  margin-left: auto;
+  margin-top: 30px;
+  color: #414141;
+}
+
+.interval-class {
+  .cal-event {
+    width: 20% !important;
+    margin-left: 20% !important;
+    margin-right: 60% !important;
+    color: #a11300;
+    .cal-event-title {
+      margin-top: -30px;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-top: 10px !important;
+      font-size: 13px;
+    }
+    img {
+      margin-right: 13px;
+      color: red;
+    }
+  }
+}
+
+.event-class {
+  .cal-event {
+    width: 60% !important;
+    .cal-event-title {
+      .drillname {
+        margin-top: -60px;
+        margin-left: 13px !important;
+        font-size: 13px !important;
+        font-weight: 600;
+        color: #161616;
+        text-align: left !important;
+        line-height: 20px !important;
+      }
+      .cate {
+        margin-left: 13px !important;
+        font-size: 10px !important;
+        font-weight: 400;
+        color: #414141;
+        text-align: left !important;
+        line-height: 20px !important;
+      }
+      .time {
+        display: flex !important;
+        font-size: 10px !important;
+        font-weight: 400;
+        color: #414141;
+        text-align: left !important;
+        line-height: 20px !important;
+        margin-top: 15px;
+      }
+    }
+    img {
+      margin-left: 13px !important;
+      margin-right: 10px;
+    }
   }
 }
 

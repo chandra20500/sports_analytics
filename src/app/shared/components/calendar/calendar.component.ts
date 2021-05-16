@@ -1,6 +1,16 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
-import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import {
+  startOfDay,
+  endOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addHours,
+  addMinutes,
+} from 'date-fns';
+import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView, collapseAnimation } from 'angular-calendar';
 import { Subject, Observable } from 'rxjs';
 
 const colors: any = {
@@ -22,6 +32,7 @@ const colors: any = {
   selector: 'app-calendar',
   templateUrl: 'calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CalendarComponent implements OnInit {
   @Input() navigation;
@@ -79,15 +90,13 @@ export class CalendarComponent implements OnInit {
   }
 
   eventTimesChanged({ event, newStart, newEnd }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
+    this.events.forEach((ievent, index) => {
+      if (ievent === event) {
+        this.events[index].start = newStart;
+        this.events[index].end = newEnd;
+        this.events[index + 1].start = newEnd;
+        this.events[index + 1].end = addMinutes(newEnd, 60);
       }
-      return iEvent;
     });
     this.newEvent.emit(this.events);
   }

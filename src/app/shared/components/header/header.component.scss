@@ -5,7 +5,7 @@
   padding: 0px 0px;
   background-color: #376dc8;
   box-shadow: 0px 3px 6px #00000029;
-  z-index: 99999;
+  z-index: 99;
 }
 
 .toolbar {
@@ -65,6 +65,7 @@
     display: flex;
     align-items: flex-end;
     margin-right: 20px;
+    z-index: 99999;
     .actions {
       width: 24px;
       height: 24px;

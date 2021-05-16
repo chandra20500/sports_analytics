@@ -1,0 +1,92 @@
+<div class="modal-toolbar">
+  <div class="row m-a-0">
+    <div class="head-text">Create Drill</div>
+    <mat-icon (click)="close()" class="close-icon">close</mat-icon>
+  </div>
+</div>
+<div class="cont">
+  <div class="row m-a-0">
+    <div class="m-t col-md-6 col-xs-6">
+      <label class="input-label">Drill Name </label> <br />
+      <input type="text" class="input-field" mat-input />
+    </div>
+
+    <div class="m-t col-md-3 col-xs-3">
+      <label class="input-label">Drill Type </label> <br />
+      <mat-select class="input-field paddedSelect" placeholder="">
+        <mat-option *ngFor="let drillType of drillTypes; let i = index" [value]="drillType">
+          {{ drillType }}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <div class="m-t col-md-3 col-xs-3">
+      <label class="input-label">Drill Category </label> <br />
+      <mat-select class="input-field paddedSelect" placeholder="">
+        <mat-option *ngFor="let category of categoryData; let i = index" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="row m-a-0">
+    <div class="m-t col-md-3 col-xs-3">
+      <label class="input-label">Drill Time</label> <br />
+      <input type="time" class="input-field" mat-input />
+    </div>
+
+    <div class="m-t col-md-3 col-xs-3">
+      <label class="input-label">Drill Reps </label> <br />
+      <input type="text" class="input-field" mat-input />
+    </div>
+
+    <div class="m-t col-md-6 col-xs-6">
+      <label class="input-label">Drill Result </label> <br />
+      <input type="text" class="input-field" mat-input />
+    </div>
+  </div>
+
+  <div class="row m-a-0 m-t">
+    <div class="m-t col-md-12 col-xs-12">
+      <label class="input-label">Drill Goal </label> <br />
+      <textarea type="text" class="textarea-field" placeholder="Description" mat-input></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <mat-checkbox class="input-checkbox m-t">Drill value not mandatory</mat-checkbox>
+  </div>
+
+  <div class="input-label m-t">Upload Items</div>
+  <div class="files" *ngFor="let file of files; let ind = index">
+    <div class="row">
+      <mat-icon class="attachment">attach_file</mat-icon>
+      <div class="filename">
+        {{ file.name }}
+      </div>
+      <button mat-button class="remove-file" (click)="deleteFile(file)"><mat-icon>delete</mat-icon>Remove</button>
+    </div>
+  </div>
+  <div class="col-md-4 center-align">
+    <div class="dropzone" appDragDrop (filesChangeEmiter)="onFileChange($event)">
+      <input type="file" name="file" id="file" (change)="onFileChange($event.target.files)" multiple />
+      <label for="file">
+        <div class="texthead">Drag and Drop to Upload Items</div>
+        <div class="textnote">(Only Pdf, doc, mov, mp4 formats)</div>
+      </label>
+    </div>
+  </div>
+
+  <div class="row m-a-0 m-t">
+    <div style="margin-left: auto">
+      <button (click)="close()" mat-button class="reset-button">
+        <div class="text">Reset</div>
+      </button>
+
+      <button (click)="submit()" mat-button class="submit-button">
+        <div class="text">Create</div>
+      </button>
+    </div>
+  </div>
+</div>

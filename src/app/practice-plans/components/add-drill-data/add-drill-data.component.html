@@ -1,0 +1,39 @@
+<div class="modal-toolbar">
+  <div class="row">
+    <button mat-button class="prev-button" [disabled]="currentInd == 0" (click)="prevClick()">
+      <mat-icon>chevron_left</mat-icon>
+      Prev
+    </button>
+    <div class="head-text">Enter Drill Data for</div>
+    <div class="head-name">{{ data.name }}</div>
+    <button mat-button class="next-button" [disabled]="currentInd == maxInd" (click)="nextClick()">
+      Next
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+    <mat-icon (click)="close()" class="close-icon">close</mat-icon>
+  </div>
+</div>
+<div class="cont p-t">
+  <div class="row m-t" *ngFor="let player of players.slice(currentInd * 4, (currentInd + 1) * 4)">
+    <div class="playername">
+      {{ player }}
+    </div>
+    <div *ngFor="let drill of drills">
+      <label class="input-label">{{ drill }} </label> <br />
+      <input type="text" class="input-field" mat-input />
+    </div>
+    <div class="hline"></div>
+  </div>
+
+  <div class="row m-a-0 m-t">
+    <div style="margin-left: auto">
+      <button (click)="close()" mat-button class="reset-button">
+        <div class="text">Reset</div>
+      </button>
+
+      <button (click)="submit()" mat-button class="submit-button">
+        <div class="text">Submit</div>
+      </button>
+    </div>
+  </div>
+</div>
