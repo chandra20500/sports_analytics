@@ -209,30 +209,37 @@
                       <col />
                       <colgroup span="3"></colgroup>
                       <colgroup span="3"></colgroup>
-                      <tr class="drill-header-row1 flex-display bdr-left">
-                        <th class="drill-col-width1"></th>
+                      <tr class="drill-header-row1 flex-display">
                         <div
                           class="drill-column-header"
                           *ngFor="let trlObj of trialRecordsColumns; index as i; let last = last; let first = first"
-                          [ngClass]="checkMainColumn(trlObj, last, first)"
+                          [ngClass]="checkMainColumn(trlObj)"
                         >
+                          <th
+                            *ngIf="trlObj === 'playerName'"
+                            style="width: 167px; height: 32px; background-color: #fff"
+                          ></th>
                           <th colspan="3" scope="colgroup" *ngIf="trlObj !== 'playerName'">Drill Name {{ i }}</th>
                         </div>
                       </tr>
-                      <tr class="drill-header-row2 flex-display bdr-left">
-                        <th class="drill-col-width2"></th>
+                      <tr class="drill-header-row2 flex-display">
                         <div
                           class="trail-column-header"
                           *ngFor="let trlObj of trialRecordsColumns; index as i; let last = last; let first = first"
-                          [ngClass]="checkDrillColumn(last, first)"
+                          [ngClass]="checkDrillColumn(first, trlObj)"
                         >
+                          <th
+                            scope="colgroup"
+                            *ngIf="trlObj === 'playerName'"
+                            style="width: 173px; height: 16px; background-color: #fff"
+                          ></th>
                           <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 1</th>
                           <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 2</th>
                           <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 3</th>
                         </div>
                       </tr>
                     </thead>
-                    <tbody class="table-body bdr-left">
+                    <tbody class="table-body">
                       <tr>
                         <div
                           class="drill-rc-contents flex-display"
@@ -241,7 +248,7 @@
                           <div
                             class="drill-records"
                             *ngFor="let trlObj of trials | keyvalue: originalOrder"
-                            [ngClass]="checkRecordsColumn(trlObj)"
+                            [ngClass]="checkRecordsColumn(trlObj, i)"
                           >
                             <td
                               class="player-name"

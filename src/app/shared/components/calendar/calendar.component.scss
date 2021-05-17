@@ -37,18 +37,6 @@
   padding-right: 10px;
 }
 
-.small {
-  ::ng-deep.cal-month-view .cal-day-cell {
-    min-height: 10px;
-    max-height: 45px;
-  }
-
-  ::ng-deep.cal-month-view .cal-cell-top {
-    min-height: 10px;
-    max-height: 45px;
-  }
-}
-
 .mat-icon-button {
   display: flex;
   margin-left: auto;
@@ -124,3 +112,15 @@
 //     min-height: 10px;
 //     max-height: 45px;
 // }
+
+.small {
+  .cal-month-view .cal-day-cell {
+    min-height: 18px;
+    max-height: 45px;
+  }
+
+  .cal-month-view .cal-cell-top {
+    min-height: 18px;
+    max-height: 45px;
+  }
+}
