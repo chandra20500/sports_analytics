@@ -99,6 +99,7 @@ export class CalendarComponent implements OnInit {
       }
     });
     this.newEvent.emit(this.events);
+    this.refreshData();
   }
 
   setView(event) {

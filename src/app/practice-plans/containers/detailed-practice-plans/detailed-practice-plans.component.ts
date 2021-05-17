@@ -138,7 +138,7 @@ export class DetailedPracticePlansComponent implements OnInit {
           result: 'Result',
           status: 'complete',
           hours: '2.5 ',
-          reps: '3 ',
+          reps: '4 ',
         },
         {
           name: 'Drill Name',
@@ -460,6 +460,10 @@ export class DetailedPracticePlansComponent implements OnInit {
     this.router.navigateByUrl(url);
   }
 
+  originalOrder(a: KeyValue<number, string>, b: KeyValue<number, string>) {
+    return 0;
+  }
+
   getObjectKeys() {
     for (const key in this.drillRecords[0]) {
       if (key) {
@@ -468,29 +472,35 @@ export class DetailedPracticePlansComponent implements OnInit {
     }
   }
 
-  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
-    return 0;
-  }
-
-  checkRecordsColumn(obj: any) {
+  checkRecordsColumn(obj: any, ind: number) {
     if (obj.key === 'playerName') {
-      return 'first-col-width';
+      if (ind % 2 !== 0) {
+        return 'first-col-width fixed-column bg-odd';
+      } else {
+        return 'first-col-width fixed-column bg-white';
+      }
+    } else if (obj.key === 'drillName1') {
+      return 'next-col-style';
     } else {
       return 'next-col-style';
     }
   }
 
-  checkMainColumn(obj: any, last: any, first: any) {
+  checkMainColumn(obj: any) {
     if (obj === 'playerName') {
-      return 'pad-first-col drill-first-col';
+      return 'pad-first-col drill-first-col fixed-main-column';
+    } else if (obj === 'drillName1') {
+      return 'pad-next-col';
     } else {
       return 'pad-next-col';
     }
   }
 
-  checkDrillColumn(last: any, first: any) {
+  checkDrillColumn(first: any, obj: any) {
     if (first) {
-      return 'drill-first-col';
+      return 'drill-first-col fixed-top-column';
+    } else if (obj === 'drillName1') {
+      return 'drill-next-col';
     } else {
       return 'drill-next-col';
     }

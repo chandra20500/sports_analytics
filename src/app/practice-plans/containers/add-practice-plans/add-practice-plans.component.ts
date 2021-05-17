@@ -125,7 +125,13 @@ export class AddPracticePlansComponent implements OnInit {
       label: 'delete',
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
+        this.events.forEach((ievent, index) => {
+          if (ievent === event) {
+            this.events.splice(index, 2);
+          }
+        });
+        this.eventsUpdate(this.events);
+        this.calendar.refreshData();
         // this.handleEvent('Deleted', event);
       },
     },
@@ -239,10 +245,10 @@ export class AddPracticePlansComponent implements OnInit {
         cssClass: 'event-class',
         color: colors.others,
         allDay: false,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
+        // resizable: {
+        //   beforeStart: true,
+        //   afterEnd: true,
+        // },
         draggable: true,
         actions: this.actions,
       });
@@ -256,10 +262,10 @@ export class AddPracticePlansComponent implements OnInit {
           cssClass: 'interval-class',
           color: colors.interval,
           allDay: false,
-          resizable: {
-            beforeStart: true,
-            afterEnd: true,
-          },
+          // resizable: {
+          //   beforeStart: true,
+          //   afterEnd: true,
+          // },
           // draggable: true,
         });
       } else {
