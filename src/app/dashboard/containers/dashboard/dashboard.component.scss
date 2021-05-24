@@ -39,7 +39,7 @@
 
   .practice-load {
     margin-left: 13px;
-    padding-bottom: 31px;
+    padding-bottom: 34px;
 
     .players-list {
       padding: 0px 12px;
@@ -49,6 +49,7 @@
       max-height: 288px;
 
       .sec {
+        font-size: 12px;
         .name,
         .position {
           padding-right: 25px;
@@ -233,7 +234,7 @@
     }
 
     .select-cont {
-      margin-top: 10px;
+      margin-top: 12px;
       margin-left: auto;
       margin-right: auto;
       border: 1px solid #e2e2e2;
@@ -241,7 +242,7 @@
       padding-top: 14px;
       padding-left: 10px;
       padding-right: 10px;
-      padding-bottom: 12px;
+      padding-bottom: 14px;
       background: #f6f6f6 0% 0% no-repeat padding-box;
       .name {
         color: #161616;
