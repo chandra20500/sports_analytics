@@ -361,7 +361,7 @@ export class DashboardComponent implements OnInit {
     newProspects: 90,
     freeAgents: 4,
     transactions: 4,
-    practicePlans: 90,
+    practicePlans: 4,
     budget: 45.4,
   };
 
