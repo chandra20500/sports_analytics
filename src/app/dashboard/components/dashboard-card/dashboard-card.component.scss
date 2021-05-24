@@ -1,0 +1,62 @@
+:host ::ng-deep {
+    .card-row {
+        padding: 35px 15px;
+        padding-left: 7px;
+        padding-right: 30px;
+    }
+
+    .pad-btm {
+        padding-bottom: 17px;
+    }
+    
+    .dash-title {
+        color: #292929;
+        font-size: 14px;
+    }
+    
+    .dash-count {
+        color: #376DC8;
+        font-size: 20px;
+        font-weight: 600;
+        padding-top: 8px;
+    
+        .light-text {
+            font-size: 9px;
+        }
+    }
+    
+    .card-icon {
+        background-color: #EBF3FF;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        position: relative;
+    
+        img {
+            position: absolute;
+            font-size: 25px;
+            color: #376DC8;
+            top: 10px;
+        }
+    
+        .people-icon {
+            right: 5px;
+        }
+    
+        .prospects-icon {
+            right: 8px;    
+        }
+    
+        .groups-icon {
+            right: 7px;
+        }
+    
+        .transactions-icon, .calender-icon {
+            right: 9px;
+        }
+    
+        .dollar-icon {
+            right: 13px;
+        }
+    }
+}

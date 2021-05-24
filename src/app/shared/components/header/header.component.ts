@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
       name: 'Communication',
       hasChildren: false,
       childName: '',
-      route: '/dashboard',
+      route: '/communication',
     },
   ];
 

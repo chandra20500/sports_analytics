@@ -1,0 +1,12 @@
+<div class="row card-row {{classes}}">
+    <div class="col-md-10 col-sm-10 col-xs-10 pad-right-zero">
+      <div class="dash-title">{{title}}</div>
+      <div class="dash-count">{{value}}&nbsp;<span *ngIf="lightText" class="light-text">{{lightText}}</span>
+    </div>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-2 pad-zero">
+      <div class="card-icon">
+        <img class="{{iconClass}}" src="{{src}}" />
+      </div>
+    </div>
+</div>
