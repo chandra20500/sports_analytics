@@ -76,7 +76,23 @@ export class DashboardComponent implements OnInit {
     },
   ];
   dashLineChartLegend = false;
-  dashLineChartPlugins = [];
+  dashLineChartPlugins = [
+    {
+      beforeDraw(chart: any) {
+        const ctx = chart.ctx;
+        const _stroke = ctx.stroke;
+        ctx.stroke = function () {
+          ctx.save();
+          ctx.shadowColor = '#00000033';
+          ctx.shadowBlur = 12;
+          ctx.shadowOffsetX = 10;
+          ctx.shadowOffsetY = 10;
+          _stroke.apply(this, arguments);
+          ctx.restore();
+        };
+      },
+    },
+  ];
   dashLineGradient = { gradient: false };
 
   // Bar Chart
@@ -87,7 +103,7 @@ export class DashboardComponent implements OnInit {
       beforeDraw(chart: any) {
         const ctx = chart.ctx;
         const _stroke = ctx.stroke;
-        ctx.stroke = function() {
+        ctx.stroke = function () {
           ctx.save();
           ctx.shadowColor = '#999999';
           ctx.shadowBlur = 5;
@@ -98,7 +114,7 @@ export class DashboardComponent implements OnInit {
         };
 
         const _fill = ctx.fill;
-        ctx.fill = function() {
+        ctx.fill = function () {
           ctx.save();
           ctx.shadowColor = '#999999';
           ctx.shadowBlur = 8;
@@ -349,36 +365,14 @@ export class DashboardComponent implements OnInit {
     budget: 45.4,
   };
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit(): void {
     this.calculateBarRadius();
-    this.drawLineShadow();
-  }
-
-  ngOnInit(): void {}
-
-  drawLineShadow() {
-    const lineExtend = Chart.controllers.line.prototype.initialize;
-    Chart.helpers.extend(Chart.controllers.line.prototype, {
-      // tslint:disable-next-line: object-literal-shorthand
-      initialize: function() {
-        lineExtend.apply(this, arguments);
-        const { ctx } = this.chart.chart;
-        const originalStroke = ctx.stroke;
-        ctx.stroke = function() {
-          ctx.save();
-          ctx.shadowColor = '#00000033';
-          ctx.shadowBlur = 12;
-          ctx.shadowOffsetX = 10;
-          ctx.shadowOffsetY = 10;
-          originalStroke.apply(this, arguments);
-          ctx.restore();
-        };
-      },
-    });
   }
 
   calculateBarRadius() {
-    (Chart as any).elements.Rectangle.prototype.draw = function() {
+    (Chart as any).elements.Rectangle.prototype.draw = function () {
       const ctx = this._chart.ctx;
       const vm = this._view;
       // tslint:disable-next-line: one-variable-per-declaration
@@ -480,23 +474,31 @@ export class DashboardComponent implements OnInit {
         }
         const rounded = this._datasetIndex === lastVisible;
 
-        if (rounded) {
-          ctx.moveTo(x + cradius, y);
-          ctx.quadraticCurveTo(x + width + 1, y + 1, x + width, y + cradius);
-          ctx.lineTo(x + width, y + height);
-          ctx.lineTo(x, y + height);
-          ctx.lineTo(x, y + cradius);
-          ctx.quadraticCurveTo(x, y, x + cradius, y);
-        } else if (vm.backgroundColor === '#86B3FF') {
-          ctx.beginPath();
-          ctx.moveTo(x + cradius, y);
-          ctx.lineTo(x + width, y);
-          ctx.lineTo(x + width, y + height - cradius);
-          ctx.quadraticCurveTo(x + width, y + height, x + width - cradius, y + height);
-          ctx.quadraticCurveTo(x, y + height, x, y + height - cradius);
-          ctx.lineTo(x, y + 1);
-          ctx.quadraticCurveTo(x, y, x + cradius, y);
-          ctx.closePath();
+        if (this._chart.config.options.cornerRadius) {
+          if (rounded) {
+            ctx.moveTo(x + cradius, y);
+            ctx.quadraticCurveTo(x + width + 1, y + 1, x + width, y + cradius);
+            ctx.lineTo(x + width, y + height);
+            ctx.lineTo(x, y + height);
+            ctx.lineTo(x, y + cradius);
+            ctx.quadraticCurveTo(x, y, x + cradius, y);
+          } else if (vm.backgroundColor === '#86B3FF') {
+            ctx.beginPath();
+            ctx.moveTo(x + cradius, y);
+            ctx.lineTo(x + width, y);
+            ctx.lineTo(x + width, y + height - cradius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - cradius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - cradius);
+            ctx.lineTo(x, y + 1);
+            ctx.quadraticCurveTo(x, y, x + cradius, y);
+            ctx.closePath();
+          } else {
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + width, y);
+            ctx.lineTo(x + width, y + height);
+            ctx.lineTo(x, y + height);
+            ctx.lineTo(x, y);
+          }
         } else {
           ctx.moveTo(x, y);
           ctx.lineTo(x + width, y);
