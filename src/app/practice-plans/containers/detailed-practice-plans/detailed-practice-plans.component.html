@@ -215,10 +215,7 @@
                           *ngFor="let trlObj of trialRecordsColumns; index as i; let last = last; let first = first"
                           [ngClass]="checkMainColumn(trlObj)"
                         >
-                          <th
-                            *ngIf="trlObj === 'playerName'"
-                            class="playerCol"
-                          ></th>
+                          <th *ngIf="trlObj === 'playerName'" class="playerCol"></th>
                           <th colspan="3" scope="colgroup" *ngIf="trlObj !== 'playerName'">Drill Name {{ i }}</th>
                         </div>
                       </tr>
@@ -228,11 +225,7 @@
                           *ngFor="let trlObj of trialRecordsColumns; index as i; let last = last; let first = first"
                           [ngClass]="checkDrillColumn(first, trlObj)"
                         >
-                          <th
-                            scope="colgroup"
-                            *ngIf="trlObj === 'playerName'"
-                            class="trailCol"
-                          ></th>
+                          <th scope="colgroup" *ngIf="trlObj === 'playerName'" class="trailCol"></th>
                           <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 1</th>
                           <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 2</th>
                           <th scope="colgroup" *ngIf="trlObj !== 'playerName'">Trial 3</th>

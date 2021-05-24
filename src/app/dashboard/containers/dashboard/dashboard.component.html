@@ -1,105 +1,105 @@
 <div class="container-p">
-    <div class="row">
-      <div class="col-md-6 col-xs-12 p-l-0 p-r-0">
-        <div class="cont const-dash dash-card">
-          <app-dashboard-card 
-          title="Total Rosters" 
-          value="{{dashboardData.totalRosters}}" 
+  <div class="row">
+    <div class="col-md-6 col-xs-12 p-l-0 p-r-0">
+      <div class="cont const-dash dash-card">
+        <app-dashboard-card
+          title="Total Rosters"
+          value="{{ dashboardData.totalRosters }}"
           [src]="'assets/images/dashboard/people.svg'"
           lightText=""
           classes=""
           iconClass="people-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont const-dash dash-card">
-          <app-dashboard-card
-          title="New Prospects" 
-          value="{{dashboardData.newProspects}}" 
+        ></app-dashboard-card>
+      </div>
+      <div class="cont const-dash dash-card">
+        <app-dashboard-card
+          title="New Prospects"
+          value="{{ dashboardData.newProspects }}"
           [src]="'assets/images/dashboard/prospects.svg'"
           lightText="(All Scouting)"
           classes=""
           iconClass="prospects-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont const-dash dash-card">
-          <app-dashboard-card
-          title="Free Agents" 
-          value="{{dashboardData.freeAgents}}" 
+        ></app-dashboard-card>
+      </div>
+      <div class="cont const-dash dash-card">
+        <app-dashboard-card
+          title="Free Agents"
+          value="{{ dashboardData.freeAgents }}"
           [src]="'assets/images/dashboard/groups.svg'"
           lightText=""
           classes=""
           iconClass="groups-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont const-dash dash-card">
-          <app-dashboard-card
-          title="Proposed Transactions" 
-          value="{{dashboardData.transactions}}" 
+        ></app-dashboard-card>
+      </div>
+      <div class="cont const-dash dash-card">
+        <app-dashboard-card
+          title="Proposed Transactions"
+          value="{{ dashboardData.transactions }}"
           [src]="'assets/images/dashboard/transactions.svg'"
           lightText=""
           classes="pad-btm"
           iconClass="transactions-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont const-dash dash-card">
-          <app-dashboard-card
-          title="Practice Plans" 
-          value="{{dashboardData.practicePlans}}" 
+        ></app-dashboard-card>
+      </div>
+      <div class="cont const-dash dash-card">
+        <app-dashboard-card
+          title="Practice Plans"
+          value="{{ dashboardData.practicePlans }}"
           [src]="'assets/images/dashboard/calender.svg'"
           lightText=""
           classes=""
           iconClass="calender-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont const-dash dash-card">
-          <app-dashboard-card
-          title="Transfer Budget" 
-          value="{{dashboardData.budget}}" 
+        ></app-dashboard-card>
+      </div>
+      <div class="cont const-dash dash-card">
+        <app-dashboard-card
+          title="Transfer Budget"
+          value="{{ dashboardData.budget }}"
           [src]="'assets/images/dashboard/dollar.svg'"
           lightText="m"
           classes=""
           iconClass="dollar-icon"
-          ></app-dashboard-card>
-        </div>
-      </div>
-      <div class="col-md-6 col-xs-12 p-r-0 p-l-0">
-        <div class="cont const-dash">
-          <div class="row">
-            <div class="head">Practice Classification</div>
-            <mat-select class="dropdown-menu paddedSelect" value="monthly">
-              <mat-option value="monthly">Monthly</mat-option>
-            </mat-select>
-          </div>  
-          <div>
-            <app-bar-chart
-              [barChartData]="dashBarChartData"
-              [barChartLabels]="dashBarChartLabels"
-              [barChartOptions]="dashBarChartOptions"
-              [barChartColors]="dashBarChartColors"
-              [barChartLegend]="dashBarChartLegend"
-              [gradient]="dashBarGradient"
-              [barChartPlugins]="dashBarChartPlugins"
-              height="210"
-            ></app-bar-chart>
-          </div>
-        </div>  
+        ></app-dashboard-card>
       </div>
     </div>
-  
-    <div class="row">
-      <div class="col-md-6 col-xs-12 p-l-0 p-r-0">
-        <div class="cont const-dash avg-practice-hrs">
-          <div class="row">
-            <div>
-              <div class="head">Average Practice Hours</div>
-              <div class="sub-head pad-top-zero">Based on Coaches Practice Data</div>
-            </div>
-            <mat-select class="dropdown-menu paddedSelect" value="monthly">
-              <mat-option value="monthly">Monthly</mat-option>
-            </mat-select>
+    <div class="col-md-6 col-xs-12 p-r-0 p-l-0">
+      <div class="cont const-dash">
+        <div class="row">
+          <div class="head">Practice Classification</div>
+          <mat-select class="dropdown-menu paddedSelect" value="monthly">
+            <mat-option value="monthly">Monthly</mat-option>
+          </mat-select>
+        </div>
+        <div>
+          <app-bar-chart
+            [barChartData]="dashBarChartData"
+            [barChartLabels]="dashBarChartLabels"
+            [barChartOptions]="dashBarChartOptions"
+            [barChartColors]="dashBarChartColors"
+            [barChartLegend]="dashBarChartLegend"
+            [gradient]="dashBarGradient"
+            [barChartPlugins]="dashBarChartPlugins"
+            height="210"
+          ></app-bar-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-xs-12 p-l-0 p-r-0">
+      <div class="cont const-dash avg-practice-hrs">
+        <div class="row">
+          <div>
+            <div class="head">Average Practice Hours</div>
+            <div class="sub-head pad-top-zero">Based on Coaches Practice Data</div>
           </div>
-          <div class="line-chart-container">
-            <app-line-chart
+          <mat-select class="dropdown-menu paddedSelect" value="monthly">
+            <mat-option value="monthly">Monthly</mat-option>
+          </mat-select>
+        </div>
+        <div class="line-chart-container">
+          <app-line-chart
             [lineChartData]="dashLineChartData"
             [lineChartLabels]="dashLineChartLabels"
             [lineChartOptions]="dashLineChartOptions"
@@ -110,77 +110,77 @@
             height="35"
           >
           </app-line-chart>
-          </div>
-          
         </div>
       </div>
-      <div class="col-md-3 col-xs-12 p-r-0 p-l-0">
-        <div class="cont const-dash marg-btm">
-          <div class="row">
-            <div>
-              <div class="head">Average Player Practice Duration per Day</div>
-            </div>
+    </div>
+    <div class="col-md-3 col-xs-12 p-r-0 p-l-0">
+      <div class="cont const-dash marg-btm">
+        <div class="row">
+          <div>
+            <div class="head">Average Player Practice Duration per Day</div>
           </div>
-          <div class="row">
-            <app-range-slider 
-            [minValue]="rangeMinValue" 
-            [maxValue]="rangeMaxValue" 
+        </div>
+        <div class="row">
+          <app-range-slider
+            [minValue]="rangeMinValue"
+            [maxValue]="rangeMaxValue"
             [rangeOptions]="rangeOptions"
-            ></app-range-slider>
+          ></app-range-slider>
+        </div>
+      </div>
+      <div class="cont const-dash">
+        <div class="row">
+          <div>
+            <div class="head">Practice Classification (Player position)</div>
           </div>
         </div>
-        <div class="cont const-dash">
-          <div class="row">
-            <div>
-              <div class="head">Practice Classification (Player position)</div>
-            </div>
+        <div class="row">
+          <div class="col-md-7 col-xs-6">
+            <app-donut-chart
+              [doughnutChartData]="dashDoughnutChartData"
+              [doughnutChartLabels]="dashDoughnutChartLabels"
+              [doughnutChartOptions]="dashDoughnutChartOptions"
+              [doughnutChartColors]="dashDoughnutChartColors"
+              [doughnutChartLegend]="dashDoughnutChartLegend"
+              [doughnutChartPlugins]="dashDoughnutChartPlugins"
+              height="90"
+            ></app-donut-chart>
           </div>
-          <div class="row">
-            <div class="col-md-7 col-xs-6">
-              <app-donut-chart
-                [doughnutChartData]="dashDoughnutChartData"
-                [doughnutChartLabels]="dashDoughnutChartLabels"
-                [doughnutChartOptions]="dashDoughnutChartOptions"
-                [doughnutChartColors]="dashDoughnutChartColors"
-                [doughnutChartLegend]="dashDoughnutChartLegend"
-                [doughnutChartPlugins]="dashDoughnutChartPlugins"
-                height="90"
-              ></app-donut-chart>
+          <div class="col-md-5 col-xs-6 legend">
+            <div class="name">
+              <div class="leg legend-label1"></div>
+              Player Position
             </div>
-            <div class="col-md-5 col-xs-6 legend">
-              <div class="name">
-                <div class="leg legend-label1"></div>
-                Player Position
-              </div>
-              <div class="name">
-                <div class="leg legend-label2"></div>
-                Player Position
-              </div>
-              <div class="name">
-                <div class="leg legend-label3"></div>
-                Player Position
-              </div>
-              <div class="name">
-                <div class="leg legend-label4"></div>
-                Player Position
-              </div>
+            <div class="name">
+              <div class="leg legend-label2"></div>
+              Player Position
+            </div>
+            <div class="name">
+              <div class="leg legend-label3"></div>
+              Player Position
+            </div>
+            <div class="name">
+              <div class="leg legend-label4"></div>
+              Player Position
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-xs-12 p-r-0 p-l-0">
-        <div class="cont const-dash practice-load">
-          <div class="row">
-            <div>
-              <div class="head">Players with High Practice Load</div>
-            </div>
-            <div class="players-list">
-              <div *ngFor="let practiceLoad of playersPracticeLoad">
-                <div class="notfilled select-cont">
-                  <div class="row">
-                    <div class="sec">
-                      <span class="name">{{ practiceLoad.name }}</span><span class="position">{{ practiceLoad.position }}</span><span class="time">{{ practiceLoad.time }}</span>
-                    </div>
+    </div>
+    <div class="col-md-3 col-xs-12 p-r-0 p-l-0">
+      <div class="cont const-dash practice-load">
+        <div class="row">
+          <div>
+            <div class="head">Players with High Practice Load</div>
+          </div>
+          <div class="players-list">
+            <div *ngFor="let practiceLoad of playersPracticeLoad">
+              <div class="notfilled select-cont">
+                <div class="row">
+                  <div class="sec">
+                    <span class="name">{{ practiceLoad.name }}</span
+                    ><span class="position">{{ practiceLoad.position }}</span
+                    ><span class="time">{{ practiceLoad.time }}</span>
                   </div>
                 </div>
               </div>
@@ -189,4 +189,5 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
