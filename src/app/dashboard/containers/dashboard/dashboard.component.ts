@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
       beforeDraw(chart: any) {
         const ctx = chart.ctx;
         const _stroke = ctx.stroke;
-        ctx.stroke = function () {
+        ctx.stroke = function() {
           ctx.save();
           ctx.shadowColor = '#999999';
           ctx.shadowBlur = 5;
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
         };
 
         const _fill = ctx.fill;
-        ctx.fill = function () {
+        ctx.fill = function() {
           ctx.save();
           ctx.shadowColor = '#999999';
           ctx.shadowBlur = 8;
@@ -360,11 +360,11 @@ export class DashboardComponent implements OnInit {
     const lineExtend = Chart.controllers.line.prototype.initialize;
     Chart.helpers.extend(Chart.controllers.line.prototype, {
       // tslint:disable-next-line: object-literal-shorthand
-      initialize: function () {
+      initialize: function() {
         lineExtend.apply(this, arguments);
         const { ctx } = this.chart.chart;
         const originalStroke = ctx.stroke;
-        ctx.stroke = function () {
+        ctx.stroke = function() {
           ctx.save();
           ctx.shadowColor = '#00000033';
           ctx.shadowBlur = 12;
@@ -378,7 +378,7 @@ export class DashboardComponent implements OnInit {
   }
 
   calculateBarRadius() {
-    (Chart as any).elements.Rectangle.prototype.draw = function () {
+    (Chart as any).elements.Rectangle.prototype.draw = function() {
       const ctx = this._chart.ctx;
       const vm = this._view;
       // tslint:disable-next-line: one-variable-per-declaration
