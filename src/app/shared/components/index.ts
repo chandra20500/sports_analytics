@@ -6,6 +6,7 @@ import { LineChartComponent } from '@app/shared/components/line-chart/line-chart
 import { RadarChartComponent } from '@app/shared/components/radar-chart/radar-chart.component';
 import { ProgressChartComponent } from '@app/shared/components/progress-chart/progress-chart.component';
 import { CalendarComponent } from '@app/shared/components/calendar/calendar.component';
+import { RangeSliderComponent } from './range-slider/range-slider.component';
 
 export const components = [
   InputComponent,
@@ -16,4 +17,5 @@ export const components = [
   RadarChartComponent,
   ProgressChartComponent,
   CalendarComponent,
+  RangeSliderComponent,
 ];

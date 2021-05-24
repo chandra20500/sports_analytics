@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import * as fromComponents from './components';
 import * as fromPipes from './pipes';
 import * as fromDirectives from './directives';
@@ -24,6 +25,7 @@ import * as fromDirectives from './directives';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    NgxSliderModule,
   ],
   exports: [
     CommonModule,
@@ -31,6 +33,7 @@ import * as fromDirectives from './directives';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    NgxSliderModule,
     TranslateModule,
     ...fromComponents.components,
     ...fromDirectives.directives,

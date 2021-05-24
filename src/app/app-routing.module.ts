@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from '@app/auth/guards';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: '',
+    path: 'home',
     // canActivate: [AuthenticationGuard],/
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
@@ -21,6 +22,11 @@ const routes: Routes = [
     path: 'practice-plans',
     // canActivate: [AuthenticationGuard],/
     loadChildren: () => import('./practice-plans/practice-plans.module').then((m) => m.PracticePlansModule),
+  },
+  {
+    path: 'dashboard',
+    // canActivate: [AuthenticationGuard],/
+    loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   // Fallback when no prior route is matched
   {
