@@ -81,7 +81,8 @@ export class DashboardComponent implements OnInit {
       beforeDraw(chart: any) {
         const ctx = chart.ctx;
         const _stroke = ctx.stroke;
-        ctx.stroke = function() {
+        // tslint:disable-next-line:space-before-function-paren
+        ctx.stroke = function () {
           ctx.save();
           ctx.shadowColor = '#00000033';
           ctx.shadowBlur = 12;
@@ -103,7 +104,8 @@ export class DashboardComponent implements OnInit {
       beforeDraw(chart: any) {
         const ctx = chart.ctx;
         const _stroke = ctx.stroke;
-        ctx.stroke = function() {
+        // tslint:disable-next-line:space-before-function-paren
+        ctx.stroke = function () {
           ctx.save();
           ctx.shadowColor = '#999999';
           ctx.shadowBlur = 5;
@@ -114,7 +116,8 @@ export class DashboardComponent implements OnInit {
         };
 
         const _fill = ctx.fill;
-        ctx.fill = function() {
+        // tslint:disable-next-line:space-before-function-paren
+        ctx.fill = function () {
           ctx.save();
           ctx.shadowColor = '#999999';
           ctx.shadowBlur = 8;
@@ -372,7 +375,8 @@ export class DashboardComponent implements OnInit {
   }
 
   calculateBarRadius() {
-    (Chart as any).elements.Rectangle.prototype.draw = function() {
+    // tslint:disable-next-line:space-before-function-paren
+    (Chart as any).elements.Rectangle.prototype.draw = function () {
       const ctx = this._chart.ctx;
       const vm = this._view;
       // tslint:disable-next-line: one-variable-per-declaration

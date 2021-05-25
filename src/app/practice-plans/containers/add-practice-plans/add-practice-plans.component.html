@@ -5,10 +5,10 @@
       <mat-icon>arrow_forward</mat-icon>
       Create Practice
     </div>
-    <button mat-button class="cancel-button">
+    <button mat-button class="cancel-button" (click)="goToPage('practice-plans')">
       <div class="text">Cancel</div>
     </button>
-    <button mat-button class="create-button" (click)="goToPage('practice-plans')">
+    <button mat-button class="create-button" (click)="createPractice()">
       <div class="text">Create</div>
     </button>
   </div>
@@ -64,9 +64,7 @@
             <div cdkDropList class="row" (cdkDropListDropped)="playerOrder($event)">
               <div *ngFor="let selectedPlayer of selectedPlayers; let i = index" class="row" cdkDrag>
                 <div class="filled">
-                  <div class="playername">
-                    {{ selectedPlayer.name }}
-                  </div>
+                  <div class="playername">{{ selectedPlayer.firstName }} {{ selectedPlayer.lastName }}</div>
                   <div class="playersub">
                     {{ selectedPlayer.position }}
                   </div>
@@ -262,9 +260,7 @@
               <div class="notfilled select-cont">
                 <div class="row">
                   <div>
-                    <div class="name">
-                      {{ player.name }}
-                    </div>
+                    <div class="name">{{ player.firstName }} {{ player.lastName }}</div>
                     <div class="sub">
                       {{ player.position }}
                     </div>
@@ -273,12 +269,12 @@
                   <div class="name">
                     <div class="row name">
                       Available weekly:
-                      <p>{{ player.available }}</p>
+                      <p>10{{ player.available }}</p>
                       Hours
                     </div>
                     <div class="row name">
                       Booked weekly:
-                      <p>{{ player.booked }}</p>
+                      <p>2{{ player.booked }}</p>
                       Hours <mat-icon class="info">info</mat-icon>
                     </div>
                   </div>
@@ -312,7 +308,7 @@
                 <div class="row">
                   <div>
                     <div class="name">
-                      {{ playerGroup.name }}
+                      {{ playerGroup.firstName }}
                     </div>
                     <div class="sub">
                       {{ playerGroup.position }}
@@ -384,7 +380,7 @@
                   <div class="name">
                     <div style="display: flex">
                       <mat-icon class="icon">schedule</mat-icon>
-                      <div class="text">{{ drill.hours }} hrs</div>
+                      <div class="text">{{ drill.time }} mins</div>
                       <img src="assets/images/icons/reps.svg" class="icon p-l" />
                       <div class="text">{{ drill.reps }} Reps</div>
                     </div>
