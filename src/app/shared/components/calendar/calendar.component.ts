@@ -95,7 +95,7 @@ export class CalendarComponent implements OnInit {
         this.events[index].start = newStart;
         this.events[index].end = newEnd;
         this.events[index + 1].start = newEnd;
-        this.events[index + 1].end = addMinutes(newEnd, 60);
+        this.events[index + 1].end = addMinutes(newEnd, 30);
       }
     });
     this.newEvent.emit(this.events);

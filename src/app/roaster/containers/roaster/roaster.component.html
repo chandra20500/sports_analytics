@@ -1,126 +1,152 @@
-<div class="container-p row">
-  <div class="col-md-8 col-xs-12 m-b">
-    <div class="row">
-      <div class="bread-path">Roaster Builder</div>
-      <button mat-button class="launch-button" (click)="goToPage('roaster/trade')">
-        <div class="text">Launch Trade Machine</div>
-      </button>
-    </div>
-
-    <div class="card-container">
-      <div class="card active">
-        <div class="head-text">Manager Roster</div>
-      </div>
-
-      <div class="card">
-        <div class="head-text">Free Agents</div>
-      </div>
-
-      <div class="card">
-        <div class="head-text">Prospects</div>
-      </div>
-
-      <div class="card">
-        <div class="head-text">Comparison</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <input mat-input type="text" class="search" placeholder="Search by Player Name" />
-      <div class="search-icon-bar">
-        <img class="search-icon" src="assets/images/header/search.svg" />
-      </div>
-      <button mat-button class="filter">
-        <span class="material-icons">filter_list</span>
-        Filter
-      </button>
-    </div>
-
-    <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Name</th>
-        <td mat-cell *matCellDef="let element">
-          <mat-checkbox style="float: left"></mat-checkbox>
-          <a href="roaster/playerdetails" class="name_link">{{ element.name }}</a>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="age">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.age }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Gender</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.gender }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="dob">
-        <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.dob }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="height">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Height</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.height }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Weight</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.weight }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="season">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.season }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Position</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.position }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="workload">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          {{ element.workload }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef class="table-head"></th>
-        <td mat-cell class="tablecontent" *matCellDef="let element">
-          <span class="material-icons" style="cursor: pointer">more_vert</span>
-        </td>
-      </ng-container>
-      <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+<div class="container-p">
+  <div class="row">
+    <div class="bread-path">Roaster Builder</div>
+    <button mat-button class="launch-button" (click)="goToPage('roaster/trade')">
+      <div class="text">Launch Trade Machine</div>
+    </button>
   </div>
 
-  <div class="col-md-4 col-xs-12 p-l-0">
-    <mat-tab-group>
-      <mat-tab label="Performace Analyser">
-        <div class="performace-analyser">
-          <div class="heading">Team workload</div>
-          <app-line-chart
-            [lineChartData]="lineChartData"
-            [lineChartLabels]="lineChartLabels"
-            [lineChartOptions]="lineChartOptions"
-            [lineChartColors]="lineChartColors"
-            [lineChartLegend]="lineChartLegend"
-            [lineChartPlugins]="lineChartPlugins"
-            [gradient]="lineGradient"
-            height="40"
-          >
-          </app-line-chart>
-        </div>
-      </mat-tab>
-    </mat-tab-group>
+  <div class="row">
+    <button
+      mat-button
+      (click)="buttonChange('main roaster')"
+      [ngClass]="[selectedButton == 'main roaster' ? 'active-button' : 'button-group']"
+    >
+      Main Roaster
+    </button>
+    <button
+      mat-button
+      (click)="buttonChange('second roaster')"
+      [ngClass]="[selectedButton == 'second roaster' ? 'active-button' : 'button-group']"
+    >
+      Second Roaster
+    </button>
+    <button
+      mat-button
+      (click)="buttonChange('third roaster')"
+      [ngClass]="[selectedButton == 'third roaster' ? 'active-button' : 'button-group']"
+    >
+      Third Roaster
+    </button>
   </div>
+
+  <div class="row m-t">
+    <div class="row menu-cont">
+      <mat-select class="input-select paddedSelect" [(ngModel)]="selectedOption">
+        <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+      <img src="assets/images/icons/newmenu.svg" class="icon p-l" />
+      <div class="vline"></div>
+      <div class="row" *ngFor="let option of options">
+        <span class="option-text" [ngClass]="[selectedOption == option ? 'active-option-text' : 'option-text']">
+          {{ option }}
+        </span>
+      </div>
+      <button class="add-option cursor-pointer">Add New</button>
+    </div>
+    <button mat-button class="filter">
+      <span class="material-icons">filter_list</span>
+      Filter
+    </button>
+  </div>
+
+  <div class="row">
+    <input mat-input type="text" class="search" placeholder="Search by Player Name" />
+    <div class="search-icon-bar">
+      <mat-icon class="search-icon">search</mat-icon>
+    </div>
+  </div>
+
+  <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Name</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox style="float: left"></mat-checkbox>
+        <a href="roaster/playerdetails" class="name_link">{{ element.name }}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.age }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Gender</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.gender }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.dob }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="height">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Height</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.height }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Weight</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.weight }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="season">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.season }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="gp">
+      <th mat-header-cell *matHeaderCellDef class="table-head">
+        GP
+        <!-- <mat-icon>tune</mat-icon> -->
+      </th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.gp }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="mp">
+      <th mat-header-cell *matHeaderCellDef class="table-head">MP</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.mp }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Position</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.position }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="workload">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.workload }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ppg">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.ppg }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="seasonpoints">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.seasonpoints }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="table-head"></th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        <span class="material-icons" style="cursor: pointer">more_vert</span>
+      </td>
+    </ng-container>
+    <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>

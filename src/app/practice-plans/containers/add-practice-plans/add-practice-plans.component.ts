@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { addHours, format, addDays, subDays, isAfter } from 'date-fns';
+import { addHours, format, addDays, subDays, isAfter, addMinutes } from 'date-fns';
 import { CalendarEvent, CalendarEventAction, CalendarView } from 'angular-calendar';
 import { CalendarComponent } from '../../../shared/components/calendar/calendar.component';
 import { AddDrillsComponent } from '../../components/add-drills/add-drills.component';
+import { PracticePlansService } from '../../services';
 
 const colors: any = {
   others: {
@@ -62,35 +63,29 @@ export class AddPracticePlansComponent implements OnInit {
     },
   ];
   players = [
-    { name: 'Player Name 1', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 2', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 3', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 4', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 5', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 6', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 7', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 8', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 9', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Name 10', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 1', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 2', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 3', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 4', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 5', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 6', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 7', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 8', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 9', position: '(Position)', available: 12, booked: 10 },
+    // { name: 'Player Name 10', position: '(Position)', available: 12, booked: 10 },
   ];
   playerGroups = [
-    { name: 'Player Group 1', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 2', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 3', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 4', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 5', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 6', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 7', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 8', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 9', position: '(Position)', available: 12, booked: 10 },
-    { name: 'Player Group 10', position: '(Position)', available: 12, booked: 10 },
+    { firstName: 'Defense Group', position: 'Forward', available: 12, booked: 10 },
+    { firstName: 'Forward Group', position: 'Defence', available: 12, booked: 10 },
+    { firstName: 'Group 1', position: 'All', available: 12, booked: 10 },
+    { firstName: 'Group 2', position: 'All', available: 12, booked: 10 },
   ];
   drills = [
-    { name: 'Drill Name 1', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 2', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 3', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 4', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 5', category: 'Drill Category', hours: 2, reps: 3 },
+    // { name: 'Drill Name 1', category: 'Drill Category', hours: 2, reps: 3 },
+    // { name: 'Drill Name 2', category: 'Drill Category', hours: 2, reps: 3 },
+    // { name: 'Drill Name 3', category: 'Drill Category', hours: 2, reps: 3 },
+    // { name: 'Drill Name 4', category: 'Drill Category', hours: 2, reps: 3 },
+    // { name: 'Drill Name 5', category: 'Drill Category', hours: 2, reps: 3 },
   ];
 
   existingDates = [
@@ -118,7 +113,6 @@ export class AddPracticePlansComponent implements OnInit {
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         console.log(event);
-        // this.removeevent('Edited', event);
       },
     },
     {
@@ -132,15 +126,21 @@ export class AddPracticePlansComponent implements OnInit {
         });
         this.eventsUpdate(this.events);
         this.calendar.refreshData();
-        // this.handleEvent('Deleted', event);
       },
     },
   ];
   events: CalendarEvent[] = [];
   @ViewChild(CalendarComponent) calendar: CalendarComponent;
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(private router: Router, public dialog: MatDialog, public apiService: PracticePlansService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService.getAllPlayers().subscribe((data: any) => {
+      this.players = data.data;
+    });
+    this.apiService.getAllDrills().subscribe((data: any) => {
+      this.drills = data.data;
+    });
+  }
 
   changeForm(value) {
     this.selectedForm = value;
@@ -211,6 +211,9 @@ export class AddPracticePlansComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(async (result) => {
       if (result) {
+        this.apiService.getAllDrills().subscribe((data: any) => {
+          this.drills = data.data;
+        });
       }
     });
   }
@@ -227,13 +230,13 @@ export class AddPracticePlansComponent implements OnInit {
   orderTimeslots(index) {
     const endTime = new Date(new Date().setHours(parseInt(this.endTime.split(':')[0], 10) + 1, 0, 0));
     let startTime = this.currentTime;
-    this.currentTime = addHours(this.currentTime, 2);
+    this.currentTime = addMinutes(this.currentTime, this.selectedDrills[index - 1].time);
     if (endTime.getTime() >= this.currentTime.getTime()) {
       this.events.push({
         start: startTime,
         end: this.currentTime,
         title:
-          '<div class="drillname">' +
+          '<div class="content"><div class="drillname">' +
           this.selectedDrills[index - 1].name +
           '</div> <div class="cate">' +
           this.selectedDrills[index - 1].category +
@@ -241,7 +244,7 @@ export class AddPracticePlansComponent implements OnInit {
           format(startTime, 'hh:mm aaa') +
           ' - ' +
           format(this.currentTime, 'hh:mm aaa') +
-          '</div>',
+          '</div></div>',
         cssClass: 'event-class',
         color: colors.others,
         allDay: false,
@@ -253,7 +256,7 @@ export class AddPracticePlansComponent implements OnInit {
         actions: this.actions,
       });
       startTime = this.currentTime;
-      this.currentTime = addHours(this.currentTime, 1);
+      this.currentTime = addMinutes(this.currentTime, 30);
       if (endTime.getTime() >= this.currentTime.getTime()) {
         this.events.push({
           start: startTime,
@@ -330,6 +333,22 @@ export class AddPracticePlansComponent implements OnInit {
         }
       }
     };
+  }
+
+  createPractice() {
+    const data = {
+      name: this.selectedTrainingProgram,
+      players: this.selectedPlayers,
+      date: this.date,
+      startTime: this.startTime,
+      endTime: this.endTime,
+      drills: this.selectedDrills,
+      type: 'Practice',
+      time: 60,
+    };
+    this.apiService.addPractice(data).subscribe((result: any) => {
+      this.goToPage('practice-plans');
+    });
   }
 
   goToPage(url) {

@@ -10,69 +10,22 @@ import { Label } from 'ng2-charts';
   styleUrls: ['./roaster.component.scss'],
 })
 export class RoasterComponent implements OnInit {
-  lineChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Actual' },
-    { data: [85, 69, 90, 91, 66, 65, 50], label: 'Forecast' },
-  ];
-  lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  lineChartOptions = {
-    responsive: true,
-    maintainAspectRatio: true,
-    elements: {
-      point: {
-        radius: 5,
-        backgroundColor: '#376DC8',
-        borderWidth: 1,
-      },
-    },
-    scales: {
-      xAxes: [
-        {
-          gridLines: {
-            drawOnChartArea: false,
-            drawBorder: false,
-          },
-          ticks: {
-            fontColor: '#768BC4',
-          },
-        },
-      ],
-      yAxes: [
-        {
-          display: false,
-          gridLines: {
-            drawOnChartArea: false,
-            drawBorder: false,
-          },
-        },
-      ],
-    },
-  };
-  lineChartColors = [
-    {
-      borderColor: '#EAEEFF',
-      backgroundColor: '#EAEEFF',
-    },
-    {
-      borderColor: '#376DC8',
-      fill: false,
-    },
-  ];
-  lineChartLegend = false;
-  lineChartPlugins = [];
-  lineGradient = { gradient: false };
-
+  selectedButton = 'main roaster';
   data = [
     {
-      name: 'John',
-      age: 23,
+      name: 'Joe Philip',
+      age: 32,
       gender: 'Male',
-      dob: '03-10-1990',
-      height: '5.7',
-      weight: '113',
+      dob: '12-20-1990',
+      height: '6.1',
+      weight: '200',
       season: '2019-20',
-      position: 'LB',
-      workload: '80%',
+      gp: 120,
+      mp: 120,
+      position: 'UB',
+      workload: '85%',
+      ppg: 10,
+      seasonpoints: 125,
     },
     {
       name: 'Joe Philip',
@@ -82,8 +35,12 @@ export class RoasterComponent implements OnInit {
       height: '6.1',
       weight: '200',
       season: '2019-20',
+      gp: 120,
+      mp: 120,
       position: 'UB',
       workload: '85%',
+      ppg: 10,
+      seasonpoints: 125,
     },
   ];
 
@@ -97,14 +54,25 @@ export class RoasterComponent implements OnInit {
     'height',
     'weight',
     'season',
+    'gp',
+    'mp',
     'position',
     'workload',
+    'ppg',
+    'seasonpoints',
     'action',
   ];
+
+  options = ['Overview', 'Performance', 'Growth', 'Points Scored'];
+  selectedOption = 'Overview';
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  buttonChange(name) {
+    this.selectedButton = name;
+  }
 
   goToPage(url) {
     this.router.navigateByUrl(url);
