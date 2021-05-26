@@ -201,3 +201,10 @@
 ::ng-deep.mat-ink-bar {
   display: none !important;
 }
+
+::ng-deep.mat-menu-option {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+}

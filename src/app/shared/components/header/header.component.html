@@ -1,38 +1,33 @@
 <mat-toolbar class="app-toolbar">
   <div class="toolbar">
     <div class="title">
-      <div class="heading">Application Logo</div>
-      <img
-        class="sidenav-dropdown"
-        *ngIf="!sidenavOpen"
-        (click)="toogleSidenav()"
-        src="assets/images/header/expand_more.svg"
-      />
-      <img
-        class="sidenav-dropdown"
-        *ngIf="sidenavOpen"
-        (click)="toogleSidenav()"
-        src="assets/images/header/expand_less.svg"
-      />
+      <img src="assets/images/header/fcdallas.png" alt="FC Dallas" class="header-logo" />
+      <div class="heading">Menu</div>
+      <mat-icon class="sidenav-dropdown" *ngIf="!sidenavOpen" (click)="toogleSidenav()"> expand_more </mat-icon>
+      <mat-icon class="sidenav-dropdown" *ngIf="sidenavOpen" (click)="toogleSidenav()"> expand_less </mat-icon>
       <input mat-input type="text" class="search" placeholder="Search" />
       <img class="search-icon" src="assets/images/header/search.svg" />
     </div>
 
     <div class="toolbar-action-container">
+      <mat-select class="dropdown-menu paddedSelect" (selectionChange)="setRole($event)" [value]="getRoleData()">
+        <mat-option value="admin">Admin</mat-option>
+        <mat-option value="coach">Coach</mat-option>
+      </mat-select>
       <img class="actions" src="assets/images/header/settings.svg" />
       <div class="line"></div>
       <img class="actions" src="assets/images/header/notification.svg" />
       <div class="profile-name">Hi Donnie Nelson,</div>
       <img class="user-image" src="assets/images/header/profile.png" />
-      <img class="dropdown" [matMenuTriggerFor]="menu" src="assets/images/header/dropdown.svg" />
+      <mat-icon class="dropdown" [matMenuTriggerFor]="menu">expand_more</mat-icon>
 
-      <!-- </button> -->
+      <!-- Mat Menu-->
       <mat-menu #menu="matMenu" hasBackdrop="true">
-        <button mat-menu-item>
+        <button class="mat-menu-option" mat-menu-item>
           <mat-icon>person_pin</mat-icon>
           <span>Profile</span>
         </button>
-        <button mat-menu-item>
+        <button class="mat-menu-option" mat-menu-item>
           <mat-icon>logout</mat-icon>
           <span>Logout</span>
         </button>
