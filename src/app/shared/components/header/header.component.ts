@@ -1,15 +1,16 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, AfterViewInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { SidenavService } from '@app/shared/services/sidenav.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   @Output() logout = new EventEmitter<void>();
   sidenavOpen = false;
-  constructor(public router: Router) {}
+  constructor(public router: Router, private sidenavService: SidenavService) {}
+
   childOpen = {
     freeagent: false,
   };
@@ -33,45 +34,53 @@ export class HeaderComponent implements OnInit {
       childName: '',
       route: '/practice-plans',
     },
-    {
-      name: 'Scouting',
-      hasChildren: false,
-      childName: '',
-      route: '/scout',
-    },
-    {
-      name: 'Free Agents',
-      hasChildren: false,
-      childName: 'freeagent',
-      route: '/free-agent',
-    },
-    {
-      name: 'Staff',
-      hasChildren: true,
-      childName: 'staff',
-      route: '/staff',
-      children: [
-        {
-          name: 'On field',
-          hasChildren: false,
-          route: '/dashboard',
-        },
-        {
-          name: 'Off field',
-          hasChildren: false,
-          route: '/dashboard',
-        },
-      ],
-    },
-    {
-      name: 'Communication',
-      hasChildren: false,
-      childName: '',
-      route: '/communication',
-    },
+    // {
+    //   name: 'Scouting',
+    //   hasChildren: false,
+    //   childName: '',
+    //   route: '/scout',
+    // },
+    // {
+    //   name: 'Free Agents',
+    //   hasChildren: false,
+    //   childName: 'freeagent',
+    //   route: '/free-agent',
+    // },
+    // {
+    //   name: 'Staff',
+    //   hasChildren: true,
+    //   childName: 'staff',
+    //   route: '/staff',
+    //   children: [
+    //     {
+    //       name: 'On field',
+    //       hasChildren: false,
+    //       route: '/dashboard',
+    //     },
+    //     {
+    //       name: 'Off field',
+    //       hasChildren: false,
+    //       route: '/dashboard',
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: 'Communication',
+    //   hasChildren: false,
+    //   childName: '',
+    //   route: '/communication',
+    // },
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.setItem('role', 'admin');
+  }
+
+  ngAfterViewInit(): void {
+    this.sidenavService.changeToggleStatus.subscribe((status) => {
+      this.sidenavOpen = false;
+    });
+  }
 
   changePage(route) {
     this.router.navigateByUrl(route);
@@ -84,6 +93,14 @@ export class HeaderComponent implements OnInit {
 
   toogleSidenav() {
     this.sidenavOpen = !this.sidenavOpen;
+  }
+
+  setRole(event) {
+    localStorage.setItem('role', event.value);
+  }
+
+  getRoleData() {
+    return localStorage.getItem('role');
   }
 
   childopen(childid) {

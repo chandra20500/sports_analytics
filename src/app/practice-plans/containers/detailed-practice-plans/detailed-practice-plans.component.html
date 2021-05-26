@@ -123,7 +123,11 @@
                           <div class="head-tab" style="display: flex; padding-top: 10px">
                             <mat-icon class="icon">schedule</mat-icon> {{ drill.hours }} hrs
                             <img src="assets/images/icons/reps.svg" class="icon p-l" /> {{ drill.reps }} Reps
-                            <mat-icon class="p-l cursor-pointer">more_vert</mat-icon>
+                            <mat-icon class="p-l cursor-pointer" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                            <mat-menu #menu="matMenu" hasBackdrop="true">
+                              <button class="mat-menu-option" mat-menu-item>Edit</button>
+                              <button class="mat-menu-option" mat-menu-item>Remove</button>
+                            </mat-menu>
                           </div>
                         </div>
                       </div>

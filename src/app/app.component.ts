@@ -4,16 +4,18 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { merge } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-
 import { environment } from '@app/env/environment';
 import { Logger } from '@app/core/services';
 import { I18nService } from '@app/shared/i18n/services';
+import { SidenavService } from '@app/shared/services/sidenav.service';
 
 @Component({
   selector: 'app-root',
   template: `
     <app-header></app-header>
-    <router-outlet></router-outlet>
+    <div (click)="closeNavbar()">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styleUrls: ['./app.component.scss'],
 })
@@ -23,7 +25,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private translateService: TranslateService,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    private sidenavService: SidenavService
   ) {}
 
   ngOnInit() {
@@ -56,6 +59,10 @@ export class AppComponent implements OnInit, OnDestroy {
           this.titleService.setTitle(this.translateService.instant(title));
         }
       });
+  }
+
+  closeNavbar() {
+    this.sidenavService.close();
   }
 
   ngOnDestroy() {

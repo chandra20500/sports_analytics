@@ -63,16 +63,11 @@ export class AddPracticePlansComponent implements OnInit {
     },
   ];
   players = [
-    // { name: 'Player Name 1', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 2', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 3', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 4', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 5', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 6', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 7', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 8', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 9', position: '(Position)', available: 12, booked: 10 },
-    // { name: 'Player Name 10', position: '(Position)', available: 12, booked: 10 },
+    { firstName: 'Player Name 1', position: '(Position)', available: 12, booked: 10 },
+    { firstName: 'Player Name 2', position: '(Position)', available: 12, booked: 10 },
+    { firstName: 'Player Name 3', position: '(Position)', available: 12, booked: 10 },
+    { firstName: 'Player Name 4', position: '(Position)', available: 12, booked: 10 },
+    { firstName: 'Player Name 5', position: '(Position)', available: 12, booked: 10 },
   ];
   playerGroups = [
     { firstName: 'Defense Group', position: 'Forward', available: 12, booked: 10 },
@@ -81,11 +76,11 @@ export class AddPracticePlansComponent implements OnInit {
     { firstName: 'Group 2', position: 'All', available: 12, booked: 10 },
   ];
   drills = [
-    // { name: 'Drill Name 1', category: 'Drill Category', hours: 2, reps: 3 },
-    // { name: 'Drill Name 2', category: 'Drill Category', hours: 2, reps: 3 },
-    // { name: 'Drill Name 3', category: 'Drill Category', hours: 2, reps: 3 },
-    // { name: 'Drill Name 4', category: 'Drill Category', hours: 2, reps: 3 },
-    // { name: 'Drill Name 5', category: 'Drill Category', hours: 2, reps: 3 },
+    { name: 'Drill Name 1', category: 'Drill Category', hours: 2, reps: 3 },
+    { name: 'Drill Name 2', category: 'Drill Category', hours: 2, reps: 3 },
+    { name: 'Drill Name 3', category: 'Drill Category', hours: 2, reps: 3 },
+    { name: 'Drill Name 4', category: 'Drill Category', hours: 2, reps: 3 },
+    { name: 'Drill Name 5', category: 'Drill Category', hours: 2, reps: 3 },
   ];
 
   existingDates = [
@@ -134,12 +129,12 @@ export class AddPracticePlansComponent implements OnInit {
   constructor(private router: Router, public dialog: MatDialog, public apiService: PracticePlansService) {}
 
   ngOnInit(): void {
-    this.apiService.getAllPlayers().subscribe((data: any) => {
-      this.players = data.data;
-    });
-    this.apiService.getAllDrills().subscribe((data: any) => {
-      this.drills = data.data;
-    });
+    // this.apiService.getAllPlayers().subscribe((data: any) => {
+    //   this.players = data.data;
+    // });
+    // this.apiService.getAllDrills().subscribe((data: any) => {
+    //   this.drills = data.data;
+    // });
   }
 
   changeForm(value) {
@@ -211,9 +206,9 @@ export class AddPracticePlansComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(async (result) => {
       if (result) {
-        this.apiService.getAllDrills().subscribe((data: any) => {
-          this.drills = data.data;
-        });
+        // this.apiService.getAllDrills().subscribe((data: any) => {
+        //   this.drills = data.data;
+        // });
       }
     });
   }
@@ -336,19 +331,20 @@ export class AddPracticePlansComponent implements OnInit {
   }
 
   createPractice() {
-    const data = {
-      name: this.selectedTrainingProgram,
-      players: this.selectedPlayers,
-      date: this.date,
-      startTime: this.startTime,
-      endTime: this.endTime,
-      drills: this.selectedDrills,
-      type: 'Practice',
-      time: 60,
-    };
-    this.apiService.addPractice(data).subscribe((result: any) => {
-      this.goToPage('practice-plans');
-    });
+    // const data = {
+    //   name: this.selectedTrainingProgram,
+    //   players: this.selectedPlayers,
+    //   date: this.date,
+    //   startTime: this.startTime,
+    //   endTime: this.endTime,
+    //   drills: this.selectedDrills,
+    //   type: 'Practice',
+    //   time: 60,
+    // };
+    // this.apiService.addPractice(data).subscribe((result: any) => {
+    //   this.goToPage('practice-plans');
+    // });
+    this.goToPage('practice-plans');
   }
 
   goToPage(url) {
