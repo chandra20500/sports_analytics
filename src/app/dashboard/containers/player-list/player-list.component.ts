@@ -1,22 +1,23 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
-  selector: 'app-roaster',
-  templateUrl: './roaster.component.html',
-  styleUrls: ['./roaster.component.scss'],
+  selector: 'app-player-list',
+  templateUrl: './player-list.component.html',
+  styleUrls: ['./player-list.component.scss'],
 })
-export class RoasterComponent implements OnInit {
-  selectedButton = 'main roaster';
+export class PlayerListComponent implements OnInit {
   data = [
     {
       name: 'Joe Philip',
+      teamname: 'FC Dallas',
       age: 32,
       gender: 'Male',
       dob: '12-20-1990',
       height: '6.1',
       weight: '200',
-      season: '2019-20',
+      season: 'S1',
       gp: 120,
       mp: 120,
       position: 'UB',
@@ -26,12 +27,13 @@ export class RoasterComponent implements OnInit {
     },
     {
       name: 'Joe Philip',
+      teamname: 'FC Dallas',
       age: 32,
       gender: 'Male',
       dob: '12-20-1990',
       height: '6.1',
       weight: '200',
-      season: '2019-20',
+      season: 'S2',
       gp: 120,
       mp: 120,
       position: 'UB',
@@ -45,6 +47,7 @@ export class RoasterComponent implements OnInit {
 
   displayedColumns: string[] = [
     'name',
+    'teamname',
     'age',
     'gender',
     'dob',
@@ -62,14 +65,9 @@ export class RoasterComponent implements OnInit {
 
   options = ['Overview', 'Performance', 'Growth', 'Points Scored'];
   selectedOption = 'Overview';
-
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
-
-  buttonChange(name) {
-    this.selectedButton = name;
-  }
 
   goToPage(url) {
     this.router.navigateByUrl(url);

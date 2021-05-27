@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 import { ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-coach-dashboard',
   templateUrl: './coach-dashboard.component.html',
@@ -377,7 +377,7 @@ export class CoachDashboardComponent implements OnInit {
     practiceHours: 2345,
   };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.calculateBarRadius();
@@ -525,5 +525,9 @@ export class CoachDashboardComponent implements OnInit {
         ctx.stroke();
       }
     };
+  }
+
+  goToPage(url) {
+    this.router.navigateByUrl(url);
   }
 }

@@ -65,7 +65,7 @@
 
   .drill-button-group {
     background: #ffffff 0% 0% no-repeat padding-box;
-    border-radius: 4px;
+    border: 1px solid #e8e8e8;
     color: #323336;
     font-family: 'Montserrat';
     font-weight: 400;
@@ -83,25 +83,24 @@
   }
 
   .drill-btn-bdr {
-    border-top: 3px solid #d9d9d9;
-    border-radius: 0px;
-    border-bottom: 3px solid #d9d9d9;
+    border-top: 1px solid #e8e8e8;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #e8e8e8;
   }
 
   .drill-last-btn-bdr {
-    border-top: 3px solid #d9d9d9;
-    border-bottom: 3px solid #d9d9d9;
-    border-right: 3px solid #d9d9d9;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    border-left: 0px;
   }
 
   .drill-first-btn-bdr {
-    border-top: 3px solid #d9d9d9;
-    border-bottom: 3px solid #d9d9d9;
-    border-left: 3px solid #d9d9d9;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 0px;
   }
 
   .team-drill-content {
@@ -119,6 +118,131 @@
 
   .drill-usage-sec {
     margin-bottom: 10px !important;
+  }
+
+  .menu-cont {
+    margin-bottom: 15px !important;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #eaeaea;
+    width: 90%;
+    height: 40px;
+    .input-select {
+      width: 150px;
+      height: 33px;
+      font-family: 'Montserrat' !important;
+      font-size: 13px;
+      padding-left: 10px;
+      border: 1px solid rgb(221, 219, 218);
+      border-radius: 1px;
+      padding-top: 5px;
+    }
+    .vline {
+      height: 100%;
+      margin-left: 10px;
+      margin-right: 10px;
+      border: 1px solid #e6e6e6;
+    }
+    .active-option-text {
+      background: #e4ebf7 0% 0% no-repeat padding-box;
+      border-radius: 3px;
+      font-weight: 600;
+      height: 22px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .option-text {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+    .add-option {
+      background: #e4ebf7 0% 0% no-repeat padding-box;
+      border: 1px dashed #376dc8;
+      border-radius: 3px;
+      color: #376dc8;
+      font-family: 'Montserrat';
+      margin: 5px;
+      margin-left: 50px;
+    }
+  }
+
+  .filter {
+    margin-top: 8px;
+    margin-bottom: 15px !important;
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 20px;
+    align-items: center;
+    display: flex;
+    background: #ffffff;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .practice {
+    margin-bottom: 10px !important;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 20px;
+    align-items: center;
+    display: flex;
+    background: #376dc8;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  .search {
+    margin-top: 10px;
+    height: 28px;
+    width: 220px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 0.5px solid #ffffff;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 30px;
+    font-weight: 400px;
+  }
+
+  .search-icon-bar {
+    margin-top: 10px;
+    background: #eaeaea 0% 0% no-repeat padding-box;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .search-icon {
+    padding: 5px 8px;
+    color: #adadad;
+  }
+
+  .label {
+    color: #414141;
+    font-size: 13px;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .team-select {
+    width: 200px;
+    height: 30px;
+    font-family: 'Montserrat' !important;
+    font-size: 13px;
+    padding-left: 10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding-top: 5px;
   }
 
   .tableclass {

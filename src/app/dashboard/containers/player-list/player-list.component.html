@@ -1,36 +1,11 @@
 <div class="container-p">
-  <div class="row">
-    <div class="bread-path">Roaster Builder</div>
-    <button mat-button class="launch-button" (click)="goToPage('roaster/trade')">
-      <div class="text">Launch Trade Machine</div>
-    </button>
+  <div class="bread-path">
+    <a class="link" (click)="goToPage('dashboard')"> Dashboard</a>
+    <mat-icon>arrow_forward</mat-icon>
+    Total Players
   </div>
 
   <div class="row">
-    <button
-      mat-button
-      (click)="buttonChange('main roaster')"
-      [ngClass]="[selectedButton == 'main roaster' ? 'active-button' : 'button-group']"
-    >
-      Main Roaster
-    </button>
-    <button
-      mat-button
-      (click)="buttonChange('second roaster')"
-      [ngClass]="[selectedButton == 'second roaster' ? 'active-button' : 'button-group']"
-    >
-      Second Roaster
-    </button>
-    <button
-      mat-button
-      (click)="buttonChange('third roaster')"
-      [ngClass]="[selectedButton == 'third roaster' ? 'active-button' : 'button-group']"
-    >
-      Third Roaster
-    </button>
-  </div>
-
-  <div class="row m-t">
     <div class="row menu-cont">
       <mat-select class="input-select paddedSelect" [(ngModel)]="selectedOption">
         <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
@@ -44,10 +19,6 @@
       </div>
       <button class="add-option cursor-pointer">Add New</button>
     </div>
-    <button mat-button class="filter">
-      <span class="material-icons">filter_list</span>
-      Filter
-    </button>
   </div>
 
   <div class="row">
@@ -55,49 +26,65 @@
     <div class="search-icon-bar">
       <mat-icon class="search-icon">search</mat-icon>
     </div>
+
+    <button mat-button class="filter">
+      <span class="material-icons">tune</span>
+      Filter
+    </button>
+
+    <button mat-button class="compare">
+      <span class="material-icons">tune</span>
+      Comapare
+    </button>
   </div>
 
   <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Name</th>
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l p-l">Name</th>
       <td mat-cell *matCellDef="let element">
         <mat-checkbox style="float: left"></mat-checkbox>
-        <a href="roaster/playerdetails" class="name_link">{{ element.name }}</a>
+        <a href="" class="name_link t-a-l">{{ element.name }}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="teamname">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Team Name</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.teamname }}
       </td>
     </ng-container>
     <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Age</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Age</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.age }}
       </td>
     </ng-container>
     <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Gender</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Gender</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.gender }}
       </td>
     </ng-container>
     <ng-container matColumnDef="dob">
-      <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">DOB</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.dob }}
       </td>
     </ng-container>
     <ng-container matColumnDef="height">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Height</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Height</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.height }}
       </td>
     </ng-container>
     <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Weight</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Weight</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.weight }}
       </td>
     </ng-container>
     <ng-container matColumnDef="season">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Season</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Season</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.season }}
       </td>
     </ng-container>
@@ -106,37 +93,37 @@
         G.P
         <!-- <mat-icon>tune</mat-icon> -->
       </th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.gp }}
       </td>
     </ng-container>
     <ng-container matColumnDef="mp">
-      <th mat-header-cell *matHeaderCellDef class="table-head">MP</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">M.P</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.mp }}
       </td>
     </ng-container>
     <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef class="table-head">Position</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Position</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.position }}
       </td>
     </ng-container>
     <ng-container matColumnDef="workload">
       <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.workload }}
       </td>
     </ng-container>
     <ng-container matColumnDef="ppg">
       <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.ppg }}
       </td>
     </ng-container>
     <ng-container matColumnDef="seasonpoints">
       <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element">
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
         {{ element.seasonpoints }}
       </td>
     </ng-container>

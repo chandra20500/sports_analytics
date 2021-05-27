@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import Chart from 'chart.js';
 import { ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -388,7 +389,66 @@ export class AdminDashboardComponent implements OnInit {
     practiceHours: 2345,
   };
 
-  constructor() {}
+  data = [
+    {
+      name: 'Joe Philip',
+      teamname: 'FC Dallas',
+      age: 32,
+      gender: 'Male',
+      dob: '12-20-1990',
+      height: '6.1',
+      weight: '200',
+      season: 'S1',
+      gp: 120,
+      mp: 120,
+      position: 'UB',
+      workload: '85%',
+      ppg: 10,
+      seasonpoints: 125,
+    },
+    {
+      name: 'Joe Philip',
+      teamname: 'FC Dallas',
+      age: 32,
+      gender: 'Male',
+      dob: '12-20-1990',
+      height: '6.1',
+      weight: '200',
+      season: 'S2',
+      gp: 120,
+      mp: 120,
+      position: 'UB',
+      workload: '85%',
+      ppg: 10,
+      seasonpoints: 125,
+    },
+  ];
+
+  tableData = new MatTableDataSource(this.data);
+
+  displayedColumn: string[] = [
+    'name',
+    'teamname',
+    'age',
+    'gender',
+    'dob',
+    'height',
+    'weight',
+    'season',
+    'gp',
+    'mp',
+    'position',
+    'workload',
+    'ppg',
+    'seasonpoints',
+    'action',
+  ];
+
+  options = ['Overview', 'Performance', 'Growth', 'Points Scored'];
+  selectedOption = 'Overview';
+  teams = ['FC Dallas'];
+  selectedTeam = '';
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.calculateBarRadius();
@@ -548,5 +608,9 @@ export class AdminDashboardComponent implements OnInit {
 
   drillUsageChange(name: any) {
     this.selectedDrillUsageButton = name;
+  }
+
+  goToPage(url) {
+    this.router.navigateByUrl(url);
   }
 }

@@ -1,0 +1,116 @@
+<div class="container-p">
+  <div class="bread-path">
+    <a class="link" (click)="goToPage('dashboard')"> Dashboard</a>
+    <mat-icon>arrow_forward</mat-icon>
+    Total Teams
+  </div>
+
+  <div class="row">
+    <div class="row menu-cont">
+      <mat-select class="input-select paddedSelect" [(ngModel)]="selectedOption">
+        <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+      <img src="assets/images/icons/newmenu.svg" class="icon p-l" />
+      <div class="vline"></div>
+      <div class="row" *ngFor="let option of options">
+        <span class="option-text" [ngClass]="[selectedOption == option ? 'active-option-text' : 'option-text']">
+          {{ option }}
+        </span>
+      </div>
+      <button class="add-option cursor-pointer">Add New</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <input mat-input type="text" class="search" placeholder="Search by Player Name" />
+    <div class="search-icon-bar">
+      <mat-icon class="search-icon">search</mat-icon>
+    </div>
+
+    <button mat-button class="filter">
+      <span class="material-icons">tune</span>
+      Filter
+    </button>
+
+    <button mat-button class="compare">
+      <span class="material-icons">tune</span>
+      Comapare
+    </button>
+  </div>
+
+  <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Team Name</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox style="float: left"></mat-checkbox>
+        <a href="" class="name_link">{{ element.name }}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="members">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Total Members</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.members }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Gender</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.gender }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ageGroup">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Age Group</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.ageGroup }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="avgWeight">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Avg. Weight</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.avgWeight }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="avgHeight">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Avg. Height</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.avgHeight }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="bmi">
+      <th mat-header-cell *matHeaderCellDef class="table-head">BMI</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.bmi }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="totalPracticeDays">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Total Practice Days</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.totalPracticeDays }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="avgPracticeHours">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Avg. Practice hrs per Day</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.avgPracticeHours }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="teamranking">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Team Ranking</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        {{ element.teamranking }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="table-head"></th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        <span class="material-icons cursor-pointer" [matMenuTriggerFor]="menu">more_vert</span>
+        <mat-menu #menu="matMenu" hasBackdrop="true">
+          <button class="mat-menu-option" mat-menu-item>Edit</button>
+          <button class="mat-menu-option" mat-menu-item>Remove</button>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

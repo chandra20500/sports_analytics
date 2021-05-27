@@ -1,0 +1,99 @@
+<div class="container-p">
+  <div class="bread-path">
+    <a class="link" (click)="goToPage('dashboard')"> Dashboard</a>
+    <mat-icon>arrow_forward</mat-icon>
+    Created Drills
+  </div>
+
+  <div class="row m-t">
+    <div class="row menu-cont">
+      <mat-select class="input-select paddedSelect" [(ngModel)]="selectedOption">
+        <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+      <img src="assets/images/icons/newmenu.svg" class="icon p-l" />
+      <div class="vline"></div>
+      <div class="row" *ngFor="let option of options">
+        <span class="option-text" [ngClass]="[selectedOption == option ? 'active-option-text' : 'option-text']">
+          {{ option }}
+        </span>
+      </div>
+      <button class="add-option cursor-pointer">Add New</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <input mat-input type="text" class="search" placeholder="Search by Drill Name" />
+    <div class="search-icon-bar">
+      <mat-icon class="search-icon">search</mat-icon>
+    </div>
+
+    <button mat-button class="filter">
+      <span class="material-icons">tune</span>
+      Filter
+    </button>
+  </div>
+
+  <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="table-head">Drill Name</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox style="float: left"></mat-checkbox>
+        <a href="" class="name_link">{{ element.name }}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Drill Category</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.category }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Drill Count</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.count }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Drill Duration</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.duration }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="goal">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Drill Goal</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.goal }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="performance">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Drill Performance</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.performance }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="result">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Drill Result</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.result }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="usage">
+      <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Usage</th>
+      <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+        {{ element.usage }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="table-head"></th>
+      <td mat-cell class="tablecontent" *matCellDef="let element">
+        <span class="material-icons cursor-pointer" [matMenuTriggerFor]="menu">more_vert</span>
+        <mat-menu #menu="matMenu" hasBackdrop="true">
+          <button class="mat-menu-option" mat-menu-item>Edit</button>
+          <button class="mat-menu-option" mat-menu-item>Remove</button>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
