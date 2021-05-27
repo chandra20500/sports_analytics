@@ -440,9 +440,9 @@ export class DetailedPracticePlansComponent implements OnInit {
   dayName: string;
   constructor(private router: Router, public dialog: MatDialog, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe((params) => {
-      this.date = params['date'];
+      this.date = params.date;
       this.dayName = this.date.substring(0, 3);
-      var dt = new Date(this.date);
+      const dt = new Date(this.date);
       this.day = dt.getDate();
       this.month = dt.getMonth();
       this.year = dt.getFullYear();
