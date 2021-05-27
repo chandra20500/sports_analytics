@@ -1,0 +1,256 @@
+<div class="container-p">
+    <div class="row top-layout">
+        <button
+          mat-button
+          (click)="buttonChange('overview')"
+          [ngClass]="[selectedAdminButton == 'overview' ? 'active-button' : 'button-group']"
+        >
+          Overview
+        </button>
+        <button
+          mat-button
+          (click)="buttonChange('detailed')"
+          [ngClass]="[selectedAdminButton == 'detailed' ? 'active-button' : 'button-group']"
+        >
+          Detailed
+        </button>
+    </div>
+    <div>
+        <div class="row">
+            <div class="card-sec col-md-4 col-xs-12 p-l-0 p-r-0">
+              <div class="cont const-dash dash-card">
+                <app-dashboard-card
+                  title="Total Rosters"
+                  value="{{ adminDashboardData.totalTeams }}"
+                  [src]="'assets/images/dashboard/people.svg'"
+                  lightText=""
+                  classes=""
+                  iconClass="people-icon"
+                ></app-dashboard-card>
+              </div>
+              <div class="cont const-dash dash-card">
+                <app-dashboard-card
+                  title="Total Players"
+                  value="{{ adminDashboardData.totalPlayers }}"
+                  [src]="'assets/images/dashboard/groups.svg'"
+                  lightText=""
+                  classes=""
+                  iconClass="prospects-icon"
+                ></app-dashboard-card>
+              </div>
+              <div class="cont const-dash dash-card">
+                <app-dashboard-card
+                  title="Created Drills"
+                  value="{{ adminDashboardData.createdDrills }}"
+                  [src]="'assets/images/dashboard/calender.svg'"
+                  lightText=""
+                  classes=""
+                  iconClass="calender-icon"
+                ></app-dashboard-card>
+              </div>
+              <div class="cont const-dash dash-card">
+                <app-dashboard-card
+                  title="Practice Hours"
+                  value="{{ adminDashboardData.practiceHours }}"
+                  [src]="'assets/images/dashboard/transactions.svg'"
+                  lightText=""
+                  classes=""
+                  iconClass="transactions-icon"
+                ></app-dashboard-card>
+              </div>
+            </div>
+            <div class="col-md-8 col-xs-12 p-r-0 p-l-0">
+              <div class="cont const-dash">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div class="head">Practice Classification</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 text-c">
+                        <mat-select class="dropdown-menu paddedSelect" value="age-group">
+                        <mat-option value="age-group">Age Group</mat-option>
+                        </mat-select>
+                        <mat-select class="dropdown-menu paddedSelect" value="gender">
+                        <mat-option value="gender">Gender</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div>
+                  <app-bar-chart
+                    [barChartData]="dashBarChartData"
+                    [barChartLabels]="dashBarChartLabels"
+                    [barChartOptions]="dashBarChartOptions"
+                    [barChartColors]="dashBarChartColors"
+                    [barChartLegend]="dashBarChartLegend"
+                    [gradient]="dashBarGradient"
+                    [barChartPlugins]="dashBarChartPlugins"
+                    height="210"
+                  ></app-bar-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="col-md-8 col-xs-12 p-l-0 p-r-0">
+                <div class="cont const-dash avg-practice-hrs">
+                    <div class="row"> 
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-8 col-xs-8 p-l-0">
+                                    <div class="head m-l-0">Drill Data Metrics</div>
+                                    <div class="sub-head p-t-0 m-l-0">Based on Drill Data from All the Teams</div>
+                                </div>
+                                <div class="col-md-6 col-sm-4 col-xs-4 text-c disp-flex">
+                                    <mat-select class="dropdown-menu paddedSelect" value="age-group">
+                                    <mat-option value="age-group">Age Group</mat-option>
+                                    </mat-select>
+                                    <mat-select class="dropdown-menu paddedSelect" value="gender">
+                                    <mat-option value="gender">Gender</mat-option>
+                                    </mat-select>
+                                </div>    
+                            </div>
+                            <div class="row">
+                                <button
+                                mat-button
+                                (click)="drillButtonChange('physical')"
+                                [ngClass]="[selectedDrillTypeButton == 'physical' ? 'drill-active-button' : 'drill-button-group drill-first-btn-bdr']"
+                            >
+                                Physical
+                            </button>
+                            <button
+                                mat-button
+                                (click)="drillButtonChange('running')"
+                                [ngClass]="[selectedDrillTypeButton == 'running' ? 'drill-active-button' : 'drill-button-group drill-btn-bdr']"
+                            >
+                                Running
+                            </button>
+                            <button
+                                mat-button
+                                (click)="drillButtonChange('jumping')"
+                                [ngClass]="[selectedDrillTypeButton == 'jumping' ? 'drill-active-button' : 'drill-button-group drill-btn-bdr']"
+                            >
+                                Jumping
+                            </button>
+                            <button
+                                mat-button
+                                (click)="drillButtonChange('skill')"
+                                [ngClass]="[selectedDrillTypeButton == 'skill' ? 'drill-active-button' : 'drill-button-group drill-last-btn-bdr']"
+                            >
+                                Skill
+                            </button>
+                            </div>
+                            <div class="line-chart-container">
+                                <app-line-chart
+                                    [lineChartData]="dashLineChartData"
+                                    [lineChartLabels]="dashLineChartLabels"
+                                    [lineChartOptions]="dashLineChartOptions"
+                                    [lineChartColors]="dashLineChartColors"
+                                    [lineChartLegend]="dashLineChartLegend"
+                                    [lineChartPlugins]="dashLineChartPlugins"
+                                    [gradient]="dashLineGradient"
+                                    height="50"
+                                >
+                                </app-line-chart>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row data-sec">
+                                <div class="col-md-12 col-sm-12 col-xs-12 p-l-0">
+                                    <div class="head m-l-0">Drill Data Detailed</div>
+                                    <div class="sub-head p-t-0 m-l-0">Based on Data from All the Teams</div>
+                                </div>
+                            </div> 
+                            <div class="row team-drill-content">
+                                <table mat-table class="tableclass" [dataSource]="dataSource" matSort>
+                                    <ng-container matColumnDef="team">
+                                      <th mat-header-cell *matHeaderCellDef class="table-head">Team</th>
+                                      <td mat-cell *matCellDef="let element">
+                                        {{ element.team }}
+                                      </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="high">
+                                      <th mat-header-cell *matHeaderCellDef class="table-head">High</th>
+                                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                                        {{ element.high }}
+                                      </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="low">
+                                      <th mat-header-cell *matHeaderCellDef class="table-head">Low</th>
+                                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                                        {{ element.low }}
+                                      </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="dob">
+                                      <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
+                                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                                        {{ element.dob }}
+                                      </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="average">
+                                      <th mat-header-cell *matHeaderCellDef class="table-head">Average</th>
+                                      <td mat-cell class="tablecontent" *matCellDef="let element">
+                                        {{ element.average }}
+                                      </td>
+                                    </ng-container>
+                                    <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                                </table>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 p-r-0 p-l-0">
+              <div class="cont const-dash drill-usg-align">
+                <div class="row">
+                    <div>
+                        <div class="head m-l-0">Drill Usage</div>
+                    </div>
+                </div>
+                <div class="row drill-usage-sec">
+                    <button
+                    mat-button
+                    (click)="drillUsageChange('most-used')"
+                    [ngClass]="[selectedDrillUsageButton == 'most-used' ? 'drill-active-button' : 'drill-button-group drill-first-btn-bdr']"
+                    >
+                    Most-used
+                    </button>
+                    <button
+                    mat-button
+                    (click)="drillUsageChange('least-used')"
+                    [ngClass]="[selectedDrillUsageButton == 'least-used' ? 'drill-active-button' : 'drill-button-group drill-last-btn-bdr']"
+                    >
+                    Least-used
+                    </button>
+                </div>
+                <div class="row team-drill-content content-hght">
+                    <table mat-table class="tableclass" [dataSource]="drillUsageDataSource" matSort>
+                        <ng-container matColumnDef="drillName">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">Drill Name</th>
+                          <td mat-cell *matCellDef="let element">
+                            {{ element.drillName }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="drillCategory">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">Drill Category</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.drillCategory }}
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="time">
+                          <th mat-header-cell *matHeaderCellDef class="table-head">Time</th>
+                          <td mat-cell class="tablecontent" *matCellDef="let element">
+                            {{ element.time }}
+                          </td>
+                        </ng-container>
+                        <tr mat-header-row class="table-header" *matHeaderRowDef="displayedDrillUsageColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedDrillUsageColumns"></tr>
+                    </table>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+  

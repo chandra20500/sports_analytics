@@ -1,6 +1,6 @@
 <div class="container-p">
   <div class="row">
-    <div class="col-md-6 col-xs-12 p-l-0 p-r-0">
+    <div class="card-sec col-md-4 col-xs-12 p-l-0 p-r-0">
       <div class="cont const-dash dash-card">
         <app-dashboard-card
           title="Total Rosters"
@@ -13,32 +13,12 @@
       </div>
       <div class="cont const-dash dash-card">
         <app-dashboard-card
-          title="New Prospects"
-          value="{{ dashboardData.newProspects }}"
-          [src]="'assets/images/dashboard/prospects.svg'"
-          lightText="(All Scouting)"
-          classes=""
-          iconClass="prospects-icon"
-        ></app-dashboard-card>
-      </div>
-      <div class="cont const-dash dash-card">
-        <app-dashboard-card
-          title="Free Agents"
-          value="{{ dashboardData.freeAgents }}"
+          title="Total Players"
+          value="{{ dashboardData.totalPlayers }}"
           [src]="'assets/images/dashboard/groups.svg'"
           lightText=""
           classes=""
-          iconClass="groups-icon"
-        ></app-dashboard-card>
-      </div>
-      <div class="cont const-dash dash-card">
-        <app-dashboard-card
-          title="Proposed Transactions"
-          value="{{ dashboardData.transactions }}"
-          [src]="'assets/images/dashboard/transactions.svg'"
-          lightText=""
-          classes="pad-btm"
-          iconClass="transactions-icon"
+          iconClass="prospects-icon"
         ></app-dashboard-card>
       </div>
       <div class="cont const-dash dash-card">
@@ -53,22 +33,30 @@
       </div>
       <div class="cont const-dash dash-card">
         <app-dashboard-card
-          title="Transfer Budget"
-          value="{{ dashboardData.budget }}"
-          [src]="'assets/images/dashboard/dollar.svg'"
-          lightText="m"
+          title="Practice Hours"
+          value="{{ dashboardData.practiceHours }}"
+          [src]="'assets/images/dashboard/transactions.svg'"
+          lightText=""
           classes=""
-          iconClass="dollar-icon"
+          iconClass="transactions-icon"
         ></app-dashboard-card>
       </div>
     </div>
-    <div class="col-md-6 col-xs-12 p-r-0 p-l-0">
+    <div class="col-md-8 col-xs-12 p-r-0 p-l-0">
       <div class="cont const-dash">
         <div class="row">
-          <div class="head">Practice Classification</div>
-          <mat-select class="dropdown-menu paddedSelect" value="monthly">
-            <mat-option value="monthly">Monthly</mat-option>
-          </mat-select>
+          <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="head">Practice Classification</div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-4 text-c">
+            <mat-select class="dropdown-menu paddedSelect" value="team-name">
+              <mat-option value="team-name">Team Name</mat-option>
+            </mat-select>
+            <mat-select class="dropdown-menu paddedSelect" value="date">
+              <mat-option value="date">Date</mat-option>
+            </mat-select>
+          </div>
+         
         </div>
         <div>
           <app-bar-chart

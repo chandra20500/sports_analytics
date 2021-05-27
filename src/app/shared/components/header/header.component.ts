@@ -73,7 +73,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ];
 
   ngOnInit(): void {
-    localStorage.setItem('role', 'admin');
+    localStorage.setItem('role', 'coach');
+    this.router.navigateByUrl('dashboard');
   }
 
   ngAfterViewInit(): void {
@@ -85,6 +86,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   changePage(route) {
     this.router.navigateByUrl(route);
     this.sidenavOpen = false;
+
+    if (route.includes('dashboard')) {
+      const path = this.getRoleData();
+      if (path.includes('admin')) {
+        this.router.navigateByUrl('dashboard/admin');
+      } else {
+        this.router.navigateByUrl('dashboard');
+      }
+    }
   }
 
   onLogout() {
@@ -97,6 +107,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   setRole(event) {
     localStorage.setItem('role', event.value);
+    if (event.value === 'admin') {
+      this.router.navigateByUrl('dashboard/admin');
+    } else {
+      this.router.navigateByUrl('dashboard');
+    }
   }
 
   getRoleData() {
