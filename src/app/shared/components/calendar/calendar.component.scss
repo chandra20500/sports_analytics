@@ -4,7 +4,16 @@
   height: 30px;
   cursor: pointer;
 }
-
+.cal-month-view .cal-cell-top {
+  min-height: 18px;
+  max-height: 45px;
+  font: normal normal medium Montserrat;
+  font-size: 16px;
+  text-align: center;
+  color: #686868;
+  letter-spacing: 0px;
+  margin-top: 3px;
+}
 .calendar {
   align-items: center;
   justify-content: center;
@@ -115,15 +124,60 @@
 //     min-height: 10px;
 //     max-height: 45px;
 // }
+.cal-month-view .cal-header .cal-cell {
+  text-align: center;
+  font: normal normal medium Montserrat;
+  letter-spacing: 0px;
+  color: #686868;
+  opacity: 1;
+  font-size: 16px;
+  text-transform: uppercase;
+}
 
 .small {
   .cal-month-view .cal-day-cell {
-    min-height: 18px;
-    max-height: 45px;
+    min-height: 40px;
+    max-height: 50px;
+    padding-bottom: 5px;
   }
-
   .cal-month-view .cal-cell-top {
     min-height: 18px;
     max-height: 45px;
+    font: normal normal medium 8px/10px Montserrat;
+    font-size: 10px;
+    text-align: center;
+    color: #686868;
+    letter-spacing: 0px;
+    margin-top: 3px;
   }
+  .events-text {
+    text-align: center;
+    font: normal normal medium Montserrat;
+    letter-spacing: 0px;
+    font-size: 10px;
+    color: #ffffff;
+    opacity: 1;
+  }
+  .cal-month-view .cal-header .cal-cell {
+    font-size: 10px;
+  }
+}
+.events {
+  background: #376dc8 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  opacity: 1;
+  width: 88%;
+  margin: auto;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  text-overflow: ellipsis;
+  display: block;
+}
+.events-text {
+  text-align: center;
+  font: normal normal medium Montserrat;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+  font-size: 15px;
 }

@@ -10,8 +10,16 @@ import {
   addHours,
   addMinutes,
 } from 'date-fns';
-import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView, collapseAnimation } from 'angular-calendar';
+import {
+  CalendarDateFormatter,
+  CalendarEvent,
+  CalendarEventTimesChangedEvent,
+  CalendarView,
+  collapseAnimation,
+  DateFormatterParams,
+} from 'angular-calendar';
 import { Subject, Observable } from 'rxjs';
+import { formatDate } from '@angular/common';
 
 const colors: any = {
   red: {
@@ -28,10 +36,24 @@ const colors: any = {
   },
 };
 
+class CustomDateFormatter extends CalendarDateFormatter {
+  // you can override any of the methods defined in the parent class
+
+  public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
+    return formatDate(date, 'EEE', locale);
+  }
+}
+
 @Component({
   selector: 'app-calendar',
   templateUrl: 'calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter,
+    },
+  ],
   encapsulation: ViewEncapsulation.None,
 })
 export class CalendarComponent implements OnInit {
@@ -77,7 +99,6 @@ export class CalendarComponent implements OnInit {
   refreshData() {
     this.refresh.next();
   }
-
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0) {
