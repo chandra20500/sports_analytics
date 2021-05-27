@@ -20,6 +20,7 @@ import {
 } from 'angular-calendar';
 import { Subject, Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 const colors: any = {
   red: {
@@ -90,7 +91,7 @@ export class CalendarComponent implements OnInit {
   //   },
   // ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.refresh.next();
@@ -137,5 +138,12 @@ export class CalendarComponent implements OnInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+  goToPage(url, date) {
+    this.router.navigateByUrl(url + '?date=' + date);
+  }
+  eventClicked(date: Date) {
+    console.log(date);
+    this.goToPage('practice-plans/details', date);
   }
 }

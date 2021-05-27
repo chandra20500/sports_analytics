@@ -14,7 +14,7 @@
   <div class="cal-cell-top">
     {{ day.date | calendarDate: 'monthViewDayNumber':locale }}
   </div>
-  <div class="events" *ngIf="day.events.length > 0">
+  <div class="events" *ngIf="day.events.length > 0" (click)="eventClicked(day.date)">
     <div class="events-text">{{ day.events[0].title }}</div>
   </div>
 </ng-template>
