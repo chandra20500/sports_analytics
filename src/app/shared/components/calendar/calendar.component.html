@@ -10,6 +10,15 @@
   </mat-menu>
 </ng-template>
 
+<ng-template #customCellTemplate let-day="day" let-locale="locale" let-event="event">
+  <div class="cal-cell-top">
+    {{ day.date | calendarDate: 'monthViewDayNumber':locale }}
+  </div>
+  <div class="events" *ngIf="day.events.length > 0" (click)="eventClicked(day.date)">
+    <div class="events-text">{{ day.events[0].title }}</div>
+  </div>
+</ng-template>
+
 <div class="row calendar" *ngIf="navigation == 'all'">
   <div
     class="navigate-calendar"
@@ -62,8 +71,8 @@
       [viewDate]="viewDate"
       [events]="events"
       [activeDayIsOpen]="activeDayIsOpen"
-      (dayClicked)="dayClicked($event.day)"
       (eventTimesChanged)="eventTimesChanged($event)"
+      [cellTemplate]="customCellTemplate"
     >
     </mwl-calendar-month-view>
   </div>

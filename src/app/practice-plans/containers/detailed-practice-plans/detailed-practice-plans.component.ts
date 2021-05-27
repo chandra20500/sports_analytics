@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDrillDataComponent } from '../../components/add-drill-data/add-drill-data.component';
 import { MatTableDataSource } from '@angular/material/table';
@@ -433,8 +433,22 @@ export class DetailedPracticePlansComponent implements OnInit {
       },
     },
   ];
-
-  constructor(private router: Router, public dialog: MatDialog) {}
+  date: string;
+  day: number;
+  month: number;
+  year: number;
+  dayName: string;
+  constructor(private router: Router, public dialog: MatDialog, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.date = params.date;
+      this.dayName = this.date.substring(0, 3);
+      const dt = new Date(this.date);
+      this.day = dt.getDate();
+      this.month = dt.getMonth();
+      this.year = dt.getFullYear();
+      // this.dayName =  dt.getDay()
+    });
+  }
 
   ngOnInit(): void {
     this.getObjectKeys();
