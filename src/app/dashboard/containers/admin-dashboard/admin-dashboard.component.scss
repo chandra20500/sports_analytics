@@ -26,6 +26,144 @@
     padding-top: 0px;
   }
 
+  .text-c {
+    text-align: center;
+  }
+
+  .disp-flex {
+    display: flex;
+  }
+
+  .top-layout {
+    padding-left: 6px;
+    margin-bottom: 10px !important;
+  }
+
+  .drill-usg-align {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .button-group {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    color: #323336;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .active-button {
+    background: #376dc8 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 600;
+  }  
+
+  .drill-button-group {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    color: #323336;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .drill-active-button {
+    background: #376dc8 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .drill-btn-bdr {
+    border-top: 3px solid #D9D9D9;
+    border-radius: 0px;
+    border-bottom: 3px solid #D9D9D9;
+  }
+
+  .drill-last-btn-bdr {
+    border-top: 3px solid #D9D9D9;
+    border-bottom: 3px solid #D9D9D9;
+    border-right: 3px solid #D9D9D9;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .drill-first-btn-bdr {
+    border-top: 3px solid #D9D9D9;
+    border-bottom: 3px solid #D9D9D9;
+    border-left: 3px solid #D9D9D9;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .team-drill-content {
+    overflow-y: auto;
+    height: 315px;
+  }
+
+  .content-hght {
+    height: 312px;
+  }
+
+  .data-sec {
+    margin-bottom: 26px !important;
+  }
+
+  .drill-usage-sec {
+    margin-bottom: 10px !important;
+  }
+
+  .tableclass {
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+    overflow-y: auto;
+
+    .table-header {
+      background: #eceef2 0% 0% no-repeat padding-box;
+      border-radius: 5px 5px 0px 0px;
+      height: 32px;
+    }
+
+    .table-head {
+      color: #393939;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .tablecontent {
+      color: #393939;
+      font-size: 13px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .mat-row:nth-child(odd) {
+      background: #fcfcfc 0% 0% no-repeat padding-box;
+    }
+
+    .mat-row:nth-child(even) {
+      background: #eceef2 0% 0% no-repeat padding-box;
+    }
+
+    .name_link {
+      padding-left: 10px;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      text-align: left !important;
+      color: #0042b1;
+    }
+  }
+  
   .const-dash {
     min-height: 100px;
     margin-top: 10px;
@@ -37,31 +175,6 @@
     padding-right: 10px;
   }
 
-  .practice-load {
-    margin-left: 13px;
-    padding-bottom: 34px;
-
-    .players-list {
-      padding: 0px 12px;
-      padding-bottom: 10px;
-      overflow-y: auto;
-      width: 113%;
-      max-height: 288px;
-
-      .sec {
-        font-size: 12px;
-        .name,
-        .position {
-          padding-right: 25px;
-        }
-
-        .time {
-          font-weight: 600;
-        }
-      }
-    }
-  }
-
   .avg-practice-hrs {
     margin-right: 12px;
     padding-right: 6px;
@@ -69,23 +182,26 @@
 
     .line-chart-container {
       padding-top: 24px;
-      padding-left: 10px;
-      height: 258px;
     }
   }
 
-  .dash-card {
-    width: 213px;
-    min-height: inherit;
-    padding: 0px;
-    display: inline-block;
-    margin-right: 12px;
-    margin-bottom: 12px;
-
-    .pad-btm {
-      padding-bottom: 17px;
+  .card-sec {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .dash-card {
+      min-height: inherit;
+      padding: 0px;
+      margin-right: 12px;
+      margin-bottom: 12px;
+      flex: 1 1 30%;
+  
+      .pad-btm {
+        padding-bottom: 17px;
+      }
     }
   }
+  
 
   .cont {
     background: #ffffff 0% 0% no-repeat padding-box;
@@ -112,7 +228,7 @@
       margin-top: 10px;
       margin-left: auto;
       margin-right: 15px;
-      width: 120px;
+      width: 100px;
       height: 25px;
       font-family: 'Montserrat' !important;
       font-size: 11px;
@@ -313,5 +429,24 @@
         padding-top: 5px;
       }
     }
+  }
+}
+
+::ng-deep{
+  td.mat-cell {
+    font-size: 12px !important;
+  }
+
+  td.mat-cell:last-of-type {
+    padding-right: 0px !important;
+  }
+
+  td.mat-cell:first-of-type {
+    font-weight: 600 !important;
+  }
+
+  th.mat-header-cell:first-of-type {
+    text-align: start !important;
+    padding-left: 25px !important;
   }
 }

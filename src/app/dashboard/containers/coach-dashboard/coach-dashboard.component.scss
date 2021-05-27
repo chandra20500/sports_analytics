@@ -1,0 +1,325 @@
+.container-p {
+  margin: 30px;
+  margin-top: 6%;
+  padding-bottom: 3%;
+
+  .head {
+    font-size: 14px;
+    font-weight: 500;
+    color: #242424;
+    margin-bottom: 10px;
+  }
+
+  .pad-right-zero {
+    padding-right: 0px;
+  }
+
+  .pad-zero {
+    padding: 0px;
+  }
+
+  .marg-btm {
+    margin-bottom: 20px;
+  }
+
+  .pad-top-zero {
+    padding-top: 0px;
+  }
+
+  .text-c {
+    text-align: center;
+  }
+
+  .const-dash {
+    min-height: 100px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 20px;
+    padding-top: 10px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .practice-load {
+    margin-left: 13px;
+    padding-bottom: 34px;
+
+    .players-list {
+      padding: 0px 12px;
+      padding-bottom: 10px;
+      overflow-y: auto;
+      width: 113%;
+      max-height: 288px;
+
+      .sec {
+        font-size: 12px;
+        .name,
+        .position {
+          padding-right: 25px;
+        }
+
+        .time {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .avg-practice-hrs {
+    margin-right: 12px;
+    padding-right: 6px;
+    padding-left: 12px;
+
+    .line-chart-container {
+      padding-top: 24px;
+      padding-left: 10px;
+      height: 258px;
+    }
+  }
+
+  .card-sec {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .dash-card {
+      min-height: inherit;
+      padding: 0px;
+      margin-right: 12px;
+      margin-bottom: 12px;
+      flex: 1 1 30%;
+  
+      .pad-btm {
+        padding-bottom: 17px;
+      }
+    }
+  }
+
+  .cont {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    padding-top: 10px;
+
+    .head {
+      margin-left: 10px;
+      padding-top: 15px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .sub-head {
+      color: #8d8d8d;
+      font-size: 10px;
+      font-weight: 400;
+      padding-top: 5px;
+      margin-left: 10px;
+      padding-bottom: 10px;
+    }
+
+    .dropdown-menu {
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: 15px;
+      width: 100px;
+      height: 25px;
+      font-family: 'Montserrat' !important;
+      font-size: 11px;
+      padding-left: 10px;
+      border: 1px solid rgb(221, 219, 218);
+      border-radius: 1px;
+    }
+
+    .legend {
+      padding-top: 52px;
+      padding-left: 20px;
+      .value {
+        margin-left: auto;
+        margin-right: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #313131;
+      }
+      .leg {
+        margin-top: 3px;
+        height: 8px;
+        width: 8px;
+        margin-right: 5px;
+      }
+
+      .legend-label1 {
+        background-color: #9cd869;
+      }
+
+      .legend-label2 {
+        background-color: #376dc8;
+      }
+
+      .legend-label3 {
+        background-color: #86b3ff;
+      }
+
+      .legend-label4 {
+        background-color: #f59c42;
+      }
+
+      .name {
+        font-size: 9px;
+        font-weight: 500;
+        display: flex;
+        color: #8d8d8d;
+        margin-bottom: 8px;
+      }
+    }
+
+    .notfilled {
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #e2e2e2;
+      border-radius: 6px;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-family: 'Montserrat';
+      font-size: 10px;
+      .name {
+        color: #161616;
+        font-size: 12px;
+        font-weight: 600;
+        padding-bottom: 5px;
+        p {
+          padding: 0px;
+          margin: 0px !important;
+          margin-left: 5px !important;
+          margin-right: 5px !important;
+          color: #376dc8;
+          font-weight: 700;
+        }
+      }
+      .sub {
+        color: #414141;
+        font-size: 8px;
+        font-weight: 400;
+        padding-bottom: 5px;
+      }
+      .vline {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-bottom: 10px;
+        border: 1px solid #f3f3f3;
+        width: 0px;
+      }
+
+      .level {
+        color: #161616;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: left;
+        margin-right: auto;
+      }
+
+      .text {
+        font-weight: 500;
+        font-size: 10px;
+        color: #404040;
+        padding-top: 5px;
+      }
+
+      .info {
+        display: flex;
+        font-size: 10px;
+        color: #376dc8;
+        margin-left: 10px;
+        margin-top: 3px;
+        cursor: pointer;
+        height: 10px;
+      }
+
+      .icon {
+        font-size: 20px;
+        color: #376dc8;
+        margin-right: 10px;
+      }
+    }
+
+    .select-cont {
+      margin-top: 12px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid #e2e2e2;
+      border-radius: 6px;
+      padding-top: 14px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 14px;
+      background: #f6f6f6 0% 0% no-repeat padding-box;
+      .name {
+        color: #161616;
+        font-size: 12px;
+        font-weight: 400;
+        padding-bottom: 5px;
+        p {
+          padding: 0px;
+          margin: 0px !important;
+          margin-left: 5px !important;
+          margin-right: 5px !important;
+          color: #376dc8;
+          font-weight: 700;
+        }
+      }
+      .sub {
+        color: #414141;
+        font-size: 8px;
+        font-weight: 400;
+        padding-bottom: 5px;
+      }
+      .vline {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-bottom: 10px;
+        border: 1px solid #f3f3f3;
+        width: 0px;
+      }
+
+      .level {
+        color: #161616;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: left;
+        margin-right: auto;
+      }
+
+      .text {
+        font-weight: 500;
+        font-size: 10px;
+        color: #404040;
+        padding-top: 5px;
+      }
+
+      .info {
+        display: flex;
+        font-size: 10px;
+        color: #376dc8;
+        margin-left: 10px;
+        margin-top: 3px;
+        cursor: pointer;
+        height: 10px;
+      }
+
+      .icon {
+        font-size: 20px;
+        color: #376dc8;
+        margin-right: 10px;
+      }
+
+      .w-video {
+        cursor: pointer;
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 10px;
+        color: #376dc8;
+        padding-top: 5px;
+      }
+    }
+  }
+}

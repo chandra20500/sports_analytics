@@ -6,7 +6,11 @@ import * as fromContainers from './containers';
 const routes: Routes = [
   {
     path: '',
-    component: fromContainers.DashboardComponent,
+    component: fromContainers.CoachDashboardComponent,
+  },
+  {
+    path: 'admin',
+    component: fromContainers.AdminDashboardComponent,
   },
 ];
 

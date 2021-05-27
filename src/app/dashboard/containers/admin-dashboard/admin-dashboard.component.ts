@@ -1,27 +1,41 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import Chart from 'chart.js';
 import { ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
-  // Line Chart
-  dashLineChartData = [{ data: [165, 175, 159, 181, 176, 181, 169, 180, 183, 170], label: 'Total Practice Hours' }];
-  dashLineChartLabels: Label[] = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'];
+export class AdminDashboardComponent implements OnInit {
+  selectedAdminButton = 'overview';
+  selectedDrillTypeButton = 'physical';
+  selectedDrillUsageButton = 'most-used';
+  dashLineChartData = [{ data: [165, 175, 159, 181, 176, 181, 165, 170, 183, 170], label: 'Total Practice Hours' }];
+  dashLineChartLabels: Label[] = [
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+    ['Team', 'Name'],
+  ];
   dashLineChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
       point: {
-        radius: 6,
+        radius: 5,
         backgroundColor: '#fff',
         borderColor: '#fff',
-        borderWidth: 5.5,
+        borderWidth: 4,
         hoverBorderWidth: 4.8,
       },
       line: {
@@ -36,6 +50,16 @@ export class DashboardComponent implements OnInit {
           gridLines: {
             drawOnChartArea: false,
             drawBorder: false,
+
+            lineWidth: 1,
+            zeroLineWidth: 1,
+            drawTicks: false,
+          },
+          ticks: {
+            display: true,
+            autoSkip: false,
+            fontSize: 11,
+            padding: 12,
           },
         },
       ],
@@ -71,7 +95,7 @@ export class DashboardComponent implements OnInit {
   };
   dashLineChartColors = [
     {
-      borderColor: '#376DC8',
+      borderColor: '#63B1EC',
       fill: false,
     },
   ];
@@ -97,7 +121,18 @@ export class DashboardComponent implements OnInit {
   dashLineGradient = { gradient: false };
 
   // Bar Chart
-  dashBarChartLabels: Label[] = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'];
+  dashBarChartLabels: Label[] = [
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+    'Team Name',
+  ];
   dashBarChartLegend = true;
   dashBarChartPlugins = [
     {
@@ -244,128 +279,113 @@ export class DashboardComponent implements OnInit {
     },
   };
 
-  // Doughnut Chart
-  dashDoughnutChartLabels: Label[] = ['Player Position', 'Player Position', 'Player Position', 'Player Position'];
-  dashDoughnutChartData = [[10, 35, 17, 17]];
-  dashDoughnutChartOptions: any = {
-    responsive: true,
-    barRoundness: 1,
-    cutoutPercentage: 80,
-    elements: {
-      arc: {
-        roundedCornersFor: 0,
-        borderWidth: 6,
-        offset: 100,
-      },
-    },
-    percentageInnerCutout: 10,
-    plugins: {
-      datalabels: {
-        align: 'start',
-        anchor: 'start',
-        offset: 10,
-        borderRadius: 4,
-        borderWidth: 1,
-      },
-    },
-    tooltips: {
-      enabled: true,
-      backgroundColor: '#FFF',
-      titleFontSize: 16,
-      titleFontColor: '#0066ff',
-      bodyFontColor: '#000',
-      bodyFontSize: 14,
-      displayColors: true,
-    },
-  };
-  dashDoughnutChartColors = [
+  teamDrillData = [
     {
-      backgroundColor: ['#9CD869', '#376DC8', '#86B3FF', '#F59C42'],
-      hoverBorderColor: ['#9CD869', '#376DC8', '#86B3FF', '#F59C42'],
-      hoverBorderWidth: 1,
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
     },
-  ];
-  dashDoughnutChartLegend = false;
-  dashDoughnutChartPlugins = [
     {
-      beforeDraw(chart) {
-        const ctx = chart.ctx;
-        const txt = 'Center Text';
-
-        const sidePadding = 60;
-        const sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2);
-
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
-        const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-
-        const stringWidth = ctx.measureText(txt).width;
-        const elementWidth = chart.innerRadius * 2 - sidePaddingCalculated;
-
-        const widthRatio = elementWidth / stringWidth;
-        const newFontSize = Math.floor(30 * widthRatio);
-        const elementHeight = chart.innerRadius * 2;
-        const fontSizeToUse = Math.min(newFontSize, elementHeight);
-
-        ctx.font = 'bold 20px Montserrat';
-        ctx.fillStyle = '#333333';
-
-        // Draw text in center
-        ctx.fillText('18 Hrs', centerX, centerY);
-        const centerY2 = (chart.chartArea.top + 35 + chart.chartArea.bottom) / 2;
-        ctx.font = 10 + 'px Montserrat';
-        ctx.fillStyle = '#333333';
-        ctx.fillText('Per week', centerX, centerY2);
-      },
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
     },
   ];
 
-  // Range Slider
-  rangeMinValue = 4;
-  rangeMaxValue = 6;
-  rangeOptions: Options = {
-    floor: 0,
-    ceil: 8,
-    step: 1,
-    readOnly: true,
-  };
-
-  playersPracticeLoad = [
+  drillUsageData = [
     {
-      name: 'Player Name',
-      position: 'Position',
-      time: '30 Hours',
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
     },
     {
-      name: 'Player Name',
-      position: 'Position',
-      time: '30 Hours',
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
     },
     {
-      name: 'Player Name',
-      position: 'Position',
-      time: '30 Hours',
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
     },
     {
-      name: 'Player Name',
-      position: 'Position',
-      time: '30 Hours',
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
     },
     {
-      name: 'Player Name',
-      position: 'Position',
-      time: '30 Hours',
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
     },
   ];
 
-  dashboardData = {
-    totalRosters: 4,
-    newProspects: 90,
-    freeAgents: 4,
-    transactions: 4,
-    practicePlans: 4,
-    budget: 45.4,
+  displayedDrillUsageColumns: string[] = ['drillName', 'drillCategory', 'time'];
+
+  drillUsageDataSource = new MatTableDataSource(this.drillUsageData);
+
+  dataSource = new MatTableDataSource(this.teamDrillData);
+
+  displayedColumns: string[] = ['team', 'high', 'low', 'average'];
+
+  adminDashboardData = {
+    totalTeams: 24,
+    totalPlayers: 285,
+    createdDrills: 4,
+    practiceHours: 2345,
   };
 
   constructor() {}
@@ -516,5 +536,17 @@ export class DashboardComponent implements OnInit {
         ctx.stroke();
       }
     };
+  }
+
+  buttonChange(name: any) {
+    this.selectedAdminButton = name;
+  }
+
+  drillButtonChange(name: any) {
+    this.selectedDrillTypeButton = name;
+  }
+
+  drillUsageChange(name: any) {
+    this.selectedDrillUsageButton = name;
   }
 }
