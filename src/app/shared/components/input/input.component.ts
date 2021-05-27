@@ -87,8 +87,9 @@ export class InputComponent implements OnInit {
   }
 
   maxLengthError(control: AbstractControl): string {
-    const requiredLength = (Object.values(control.errors) as any[]).find((_error) => !!_error.requiredLength)
-      .requiredLength;
+    const requiredLength = (Object.values(control.errors) as any[]).find(
+      (_error) => !!_error.requiredLength
+    ).requiredLength;
     return `Maximum number of characters allowed is ${requiredLength}`;
   }
 

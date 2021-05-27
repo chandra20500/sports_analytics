@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ChartOptions, ChartType, RadialChartOptions } from 'chart.js';
+import { ChartLegendOptions, ChartOptions, ChartType, RadialChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
@@ -27,21 +27,152 @@ const colors: any = {
   styleUrls: ['./player-details.component.scss'],
 })
 export class PlayerDetailsComponent implements OnInit {
-  lineChartData = [
-    { data: [1, 2, 3, 3, 2, 2, 3], label: 'Average' },
-    { data: [5, 9, 8, 7, 6, 7, 8], label: 'Player A' },
-    { data: [5, 9, 5, 4, 6, 3, 7], label: 'Player B' },
+  selectedButton = 'tab3';
+  dashBarChartLabels: Label[] = ['Drill1', 'Drill2', 'Drill3'];
+  dashBarChartLegend = true;
+  dashBarChartPlugins = [
+    {
+      beforeDraw(chart: any) {
+        const ctx = chart.ctx;
+        const _stroke = ctx.stroke;
+        // tslint:disable-next-line:space-before-function-paren
+        ctx.stroke = function () {
+          ctx.save();
+          ctx.shadowColor = '#999999';
+          ctx.shadowBlur = 5;
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 1;
+          _stroke.apply(this, arguments);
+          ctx.restore();
+        };
+
+        const _fill = ctx.fill;
+        // tslint:disable-next-line:space-before-function-paren
+        ctx.fill = function () {
+          ctx.save();
+          ctx.shadowColor = '#999999';
+          ctx.shadowBlur = 8;
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 1;
+          _fill.apply(this, arguments);
+          ctx.restore();
+        };
+      },
+    },
   ];
-  lineChartLabels: Label[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  dashBarChartData = [
+    {
+      data: [120, 150, 120],
+      label: 'This player',
+      stack: 'a',
+      barThickness: 7.8,
+    },
+    {
+      data: [200, 190, 150],
+      label: 'Batch average',
+      stack: 'b',
+      barThickness: 7.8,
+    },
+  ];
+  dashBarGradient = { gradient: false };
+  dashBarChartColors = [
+    {
+      borderColor: '#376DC8',
+      backgroundColor: '#376DC8',
+    },
+    {
+      borderColor: '#F98436',
+      backgroundColor: '#F98436',
+    },
+  ];
+
+  dashBarChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    legend: { display: false },
+    title: {
+      display: false,
+      text: 'Custom Chart Title',
+    },
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            drawOnChartArea: false,
+            drawBorder: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            drawOnChartArea: true,
+            drawBorder: false,
+          },
+          ticks: {
+            display: true,
+            autoSkip: true,
+            max: 240,
+            stepSize: 80,
+            beginAtZero: true,
+            fontSize: 7,
+            padding: 10,
+          },
+        },
+      ],
+    },
+    tooltips: {
+      enabled: true,
+      backgroundColor: '#FFF',
+      titleFontSize: 12,
+      titleFontColor: '#161616',
+      bodyFontColor: '#8D8D8D',
+      bodyFontSize: 13,
+      displayColors: true,
+      titleMarginBottom: 10,
+      bodySpacing: 5,
+      xPadding: 10,
+      yPadding: 10,
+      mode: 'label',
+      callbacks: {
+        title: (tooltipItem, data) => {
+          const total = 0;
+          return ['Total Practice Hours : ' + total];
+        },
+        label: (tooltipItem: any, data: any) => {
+          const dstLabel = data.datasets[tooltipItem.datasetIndex].label;
+          const yLabel = tooltipItem.yLabel;
+          return dstLabel + ': ' + yLabel;
+        },
+      },
+    },
+  };
+
+  lineChartData = [
+    { data: [5, 9, 8, 7, 6, 7, 8, 3, 6, 8], label: 'Player A' },
+    { data: [1, 2, 3, 3, 2, 2, 3, 5, 8, 5], label: 'Average' },
+  ];
+  lineChartLabels: Label[] = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'];
   lineChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
       point: {
-        radius: 2,
+        radius: 6,
+        hitRadius: 8,
+        borderWidth: 4,
+        backgroundColor: '#FFFFFF',
+        hoverRadius: 8,
+        hoverBorderWidth: 4,
       },
     },
-    legend: { position: 'bottom' },
+    legend: {
+      position: 'top',
+      align: 'end',
+      labels: {
+        boxWidth: 15,
+      },
+    },
     scales: {
       xAxes: [
         {
@@ -49,19 +180,21 @@ export class PlayerDetailsComponent implements OnInit {
             drawOnChartArea: false,
           },
           ticks: {
-            fontColor: '#768BC4',
+            fontColor: 'rgba(0,0,0,0.5)',
           },
         },
       ],
       yAxes: [
         {
           gridLines: {
-            drawOnChartArea: false,
+            drawOnChartArea: true,
+            drawBorder: false,
           },
           ticks: {
             max: 10,
-            stepSize: 2,
-            beginAtZero: true,
+            stepSize: 2.5,
+            display: false,
+            beginAtZero: false,
             fontColor: '#768BC4',
           },
         },
@@ -70,45 +203,79 @@ export class PlayerDetailsComponent implements OnInit {
   };
   lineChartColors = [
     {
-      borderColor: '#EAEEFF',
-      backgroundColor: '#EAEEFF',
-    },
-    {
-      borderColor: '#376DC8',
+      borderColor: '#63B1EC',
       fill: false,
     },
     {
-      borderColor: '#A52C00',
+      borderColor: '#F98436',
       fill: false,
     },
   ];
-  lineChartLegend = false;
+  lineChartLegend = true;
   lineChartType: ChartType = 'line';
   lineChartPlugins = [];
-  lineGradient = { gradient: true, startColor: '#FFFFFF', endColor: '#C5CEEF4D' };
+  lineGradient;
 
   radarChartOptions: RadialChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
+    scale: {
+      gridLines: {
+        display: true,
+        circular: true,
+        color: '#E6E6E6',
+        lineWidth: 0.3,
+      },
+      pointLabels: {
+        fontColor: '#CCE8FF',
+        fontFamily: 'Montserrat',
+        fontStyle: 'Bold',
+        fontSize: 10,
+      },
+      angleLines: {
+        color: '#E6E6E6',
+        lineWidth: 0.3,
+      },
+      ticks: {
+        maxTicksLimit: 6,
+        display: false,
+      },
+    },
+    elements: {
+      point: {
+        radius: 0,
+      },
+    },
+    legend: {
+      align: 'start',
+      display: true,
+      position: 'bottom',
+      labels: {
+        fontColor: '#CCE8FF',
+        fontFamily: 'Montserrat',
+        fontSize: 6,
+        fontStyle: 'Medium',
+        padding: 35,
+        boxWidth: 14,
+      },
+    },
   };
-  radarChartLabels: Label[] = ['k', 'BB%', 'HR', 'BsR', 'OBP', 'ISO', 'WAR Score', 'Def', 'Off', 'wRC +'];
+  radarChartLabels: Label[] = [
+    'Running',
+    'Jumping',
+    'Jogging',
+    'Sprinting',
+    'Squats',
+    'Physical',
+    'Skill 1',
+    'Skill 2',
+  ];
 
-  radarChartLegend = false;
   radarChartData = [
-    { data: [65, 59, 90, 81, 56, 55, 40, 56, 55, 40], label: 'Player A' },
-    { data: [28, 48, 40, 19, 96, 27, 100, 48, 40, 19], label: 'Player B' },
+    { data: [65, 60, 40, 30, 25, 20, 90, 70], label: 'Player A', type: 'polarArea' },
+    { data: [5, 95, 20, 81, 36, 55, 40, 56], label: 'Average', order: 1 },
   ];
   radarChartType: ChartType = 'radar';
-  radarChartColors: Color[] = [
-    {
-      borderColor: '#376DC8',
-      backgroundColor: '#EAEEFF',
-    },
-    {
-      borderColor: '#A52C00',
-      backgroundColor: '#A52C00',
-    },
-  ];
 
   view: CalendarView = CalendarView.Month;
   selectedView = 'month';
@@ -142,6 +309,7 @@ export class PlayerDetailsComponent implements OnInit {
     { key: 'College', value: 'G League' },
   ];
   tabvalue = 'pergame';
+  tabValueDrill = 'physical';
 
   seasonlements = [
     {
@@ -178,38 +346,48 @@ export class PlayerDetailsComponent implements OnInit {
     },
   ];
 
+  recentColumns: string[] = ['date', 'opp', 'gr', 'mp', 'fg', 'pt3'];
+
   recentlements = [
     {
-      date: '1/1/19',
-      opp: 19,
-      gr: 68,
-      mp: 31.1,
-      fg: 44.5,
-      pt3: 34,
-      ft: 79,
-      reb: 4.5,
-      ast: 4.9,
-      stl: 1.6,
-      blk: 0.3,
-      tov: 2.4,
-      pf: 1.8,
-      pts: 19.9,
+      date: 'Drill1',
+      opp: 'HH:MM',
+      gr: 'HH:MM',
+      mp: 'HH:MM',
+      fg: 'HH:MM',
+      pt3: 'HH:MM',
     },
     {
-      date: '1/2/19',
-      opp: 20,
-      gr: 68,
-      mp: 31.1,
-      fg: 44.5,
-      pt3: 34,
-      ft: 79,
-      reb: 4.5,
-      ast: 4.9,
-      stl: 1.6,
-      blk: 0.3,
-      tov: 2.4,
-      pf: 1.8,
-      pts: 38,
+      date: 'Drill2',
+      opp: 'HH:MM',
+      gr: 'HH:MM',
+      mp: 'HH:MM',
+      fg: 'HH:MM',
+      pt3: 'HH:MM',
+    },
+    {
+      date: 'Drill3',
+      opp: 'HH:MM',
+      gr: 'HH:MM',
+      mp: 'HH:MM',
+      fg: 'HH:MM',
+      pt3: 'HH:MM',
+    },
+    {
+      date: 'Drill4',
+      opp: 'HH:MM',
+      gr: 'HH:MM',
+      mp: 'HH:MM',
+      fg: 'HH:MM',
+      pt3: 'HH:MM',
+    },
+    {
+      date: 'Drill5',
+      opp: 'HH:MM',
+      gr: 'HH:MM',
+      mp: 'HH:MM',
+      fg: 'HH:MM',
+      pt3: 'HH:MM',
     },
   ];
 
@@ -232,28 +410,12 @@ export class PlayerDetailsComponent implements OnInit {
     'pf',
     'pts',
   ];
-  recentColumns: string[] = [
-    'date',
-    'opp',
-    'gr',
-    'mp',
-    'fg',
-    'pt3',
-    'ft',
-    'reb',
-    'ast',
-    'stl',
-    'blk',
-    'tov',
-    'pf',
-    'pts',
-  ];
 
   practices = [1, 1, 1, 1];
 
   constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   goToPage(url) {
     this.router.navigateByUrl(url);
@@ -261,5 +423,11 @@ export class PlayerDetailsComponent implements OnInit {
 
   tabselect(value) {
     this.tabvalue = value;
+  }
+  tabselectdrill(value) {
+    this.tabValueDrill = value;
+  }
+  buttonChange(name) {
+    this.selectedButton = name;
   }
 }

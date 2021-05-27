@@ -6,18 +6,62 @@
     margin: 0 !important;
   }
 
+  /* chart label start */
+  .legend {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100%;
+    flex-direction: row-reverse;
+    .value {
+      margin-left: auto;
+      margin-right: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #313131;
+    }
+    .leg {
+      margin-top: 3px;
+      height: 8px;
+      width: 8px;
+      margin-right: 5px;
+    }
+
+    .legend-label1 {
+      background-color: #f98436;
+      height: 8px;
+      width: 8px;
+      margin-top: 1.5px;
+    }
+
+    .legend-label2 {
+      background-color: #376dc8;
+      height: 8px;
+      width: 8px;
+      margin-top: 1.5px;
+    }
+
+    .name {
+      font-size: 9px;
+      font-weight: 500;
+      display: flex;
+      color: #8d8d8d;
+      margin-bottom: 8px;
+      margin-right: 5px;
+      text-align: center;
+    }
+  }
+  /* chart label ends*/
+
   .card-container {
     background: #ffffff 0% 0% no-repeat padding-box;
     border-radius: 4px;
     min-height: 300px;
-
     .user-image {
       width: 99px;
       height: 99px;
       margin-left: auto;
       margin-top: 10px;
     }
-
     .hline {
       width: 90%;
       margin-left: 5%;
@@ -58,28 +102,74 @@
     }
   }
 
+  ::ng-deep .mat-tab-label .mat-tab-label-content {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  ::ng-deep.mat-tab-label,
+  ::ng-deep.mat-tab-label-active {
+    min-width: 100px !important;
+    padding: 3px !important;
+    margin: 3px !important;
+    font: normal normal medium 13px/16px Montserrat;
+    color: #686868;
+    opacity: 1;
+  }
   .season-performace {
     background: #fdfdfd 0% 0% no-repeat padding-box;
-    border: 1px solid #dbdbdb;
     border-radius: 8px;
+    position: relative;
+    display: flex;
     margin-top: 20px;
     margin-bottom: 50px;
     margin-left: 10px;
     margin-right: 10px;
+    .data-form-field {
+      background: #ffffff 0% 0% no-repeat padding-box;
+      width: 150px;
+      margin: none;
+      padding-bottom: 0px;
+      position: absolute;
+      right: 0px;
+      font-size: 0.7em;
+    }
   }
-
+  ::ng-deep.mat-form-field {
+    font: normal normal 14px/18px Montserrat;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 4px;
+  }
+  ::ng-deep.mat-form-field-flex {
+    background-color: #ffffff;
+    padding: 0;
+  }
+  ::ng-deep.mat-form-field-infix {
+    padding: 0.25em;
+  }
+  ::ng-deep.mat-form-field-underline {
+    display: none;
+  }
+  ::ng-deep .mat-form-field-wrapper {
+    margin-bottom: -1.25em;
+  }
   .recent-performace {
     background: #fafafa 0% 0% no-repeat padding-box;
+    border: 1px solid #d9d9d9;
     border-radius: 4px;
     min-height: 200px;
     padding-left: 10px;
     padding-right: 10px;
-    .heading {
-      font-size: 14px;
-      font-weight: 500;
-      padding-top: 10px;
-      color: #242424;
-    }
+  }
+
+  .heading-small {
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 10px;
+    color: #242424;
+    font: normal normal bold 14px/18px Montserrat;
+    color: #4a4a4a;
   }
 
   .tableclass {
@@ -87,41 +177,53 @@
     border-radius: 5px 5px 0px 0px;
     .table-season {
       background: #fdfdfd 0% 0% no-repeat padding-box;
-      border: 1px solid #d9d9d9;
       border-radius: 4px;
     }
     .table-header {
       background: #eceef2 0% 0% no-repeat padding-box;
       border-radius: 5px 5px 0px 0px;
     }
-
+    .firstColumn {
+      background-color: #ffffff;
+      border: none;
+      box-shadow: 0px 20px 45px #00000011;
+      border: 1px solid #e6e6e6;
+      color: #161616;
+      font: normal normal 600 12px/19px Montserrat;
+    }
     .table-head {
       color: #393939;
       font-size: 12px;
       font-weight: 500;
-      text-align: left;
+      text-align: center;
+      font: normal normal 600 12px/19px Montserrat;
+      color: #161616;
     }
 
     .tablecontent {
-      color: #393939;
       font-size: 13px;
       font-weight: 400;
-      text-align: left;
+      text-align: center;
       padding: 5px;
+      font: normal normal medium 11px/19px Montserrat;
+      color: #414141;
     }
   }
 
   .graph-container {
-    background: #f7f7f7 0% 0% no-repeat padding-box;
-    border-radius: 8px 6px 2px 2px;
-    min-height: 200px;
+    background: #376dc8 0% 0% no-repeat padding-box;
+    border-radius: 8px 8px 8px 8px;
+    height: 300px;
+    margin-top: 40px;
     margin-bottom: 15px;
     .heading {
       font-size: 13px;
       padding-bottom: 10px;
       font-weight: 600;
-      padding-top: 10px;
-      padding-left: 20px;
+      padding-top: 25px;
+      padding-left: 30px;
+      padding-bottom: 25px;
+      color: #cce8ff;
     }
 
     .graph {
@@ -185,36 +287,100 @@
   color: white;
   font-size: 32px;
 }
+.season-performace {
+  background: #696565 0% 0% no-repeat padding-box;
+}
 
 .button-group {
-  font-size: 14px;
-  color: #707070;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  color: #323336;
+  padding-left: 0px;
+  font-family: 'Montserrat';
+  font-size: 15px;
   .active-tab {
     color: #ffffff !important;
     font-weight: 600 !important;
-    background: #00549a !important;
-    box-shadow: 0px -3px 6px #00000029 !important;
+    background: #376dc8 !important;
   }
-  .tab-button-b1 {
-    border: 1px solid #b2b2b2;
-    border-radius: 8px 0px 0px 0px;
-    opacity: 1;
-    font-weight: 400;
-  }
-
-  .tab-button-b2 {
-    border: 1px solid #b2b2b2;
-    border-radius: 0px 0px 0px 0px;
-    opacity: 1;
-    font-weight: 400;
-    border-left: 0px;
-    border-right: 0px;
-  }
-
-  .tab-button-b3 {
-    border: 1px solid #b2b2b2;
-    border-radius: 0px 6px 0px 0px;
-    opacity: 1;
-    font-weight: 400;
-  }
+  font-weight: 400;
+}
+.weakness-header {
+  flex: 1;
+  margin-left: 45px;
+  font: normal normal bold 14px/18px Montserrat;
+  letter-spacing: 0px;
+  color: #4a4a4a;
+  opacity: 1;
+}
+.chart-dimensions {
+  flex: 1;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 20px 80px #00000011;
+  border-radius: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.drill-category {
+  flex: 1;
+  text-align: left;
+  font: normal normal 600 12px/14px Montserrat;
+  letter-spacing: 0px;
+  color: #161616;
+  opacity: 1;
+}
+.barchart-rank {
+  text-align: right;
+  flex: 1;
+  font: normal normal 600 12px/14px Montserrat;
+  letter-spacing: 0px;
+  color: #161616;
+  opacity: 1;
+  font-weight: 400;
+}
+.legend-display {
+  display: flex;
+}
+.strengths {
+  flex: 1;
+  font: normal normal bold 14px/18px Montserrat;
+  letter-spacing: 0px;
+  color: #4a4a4a;
+}
+.analysis-container-child {
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+}
+.chart-dimensions-child {
+  display: flex;
+  margin-top: 10px;
+}
+.drill-cont {
+  flex: 1;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 20px 80px #00000011;
+  border-radius: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 0px;
+}
+.heading-padding {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+}
+.back-cont {
+  background: #fdfdfd 0% 0% no-repeat padding-box;
+}
+.analysis-container {
+  background-color: #ffffff;
+  margin-top: 35px;
 }
