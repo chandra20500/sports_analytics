@@ -53,6 +53,9 @@ $app-theme: mat-light-theme(
   .mat-ink-bar {
     display: none !important;
   }
+  .flex {
+    display: flex;
+  }
 }
 
 .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background,
