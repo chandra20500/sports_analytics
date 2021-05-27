@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import * as fromContainers from './containers';
 
 const routes: Routes = [
@@ -11,6 +10,18 @@ const routes: Routes = [
   {
     path: 'admin',
     component: fromContainers.AdminDashboardComponent,
+  },
+  {
+    path: 'drill-list',
+    component: fromContainers.DrillListComponent,
+  },
+  {
+    path: 'player-list',
+    component: fromContainers.PlayerListComponent,
+  },
+  {
+    path: 'team-list',
+    component: fromContainers.TeamListComponent,
   },
 ];
 

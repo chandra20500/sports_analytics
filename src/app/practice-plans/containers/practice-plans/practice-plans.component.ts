@@ -129,9 +129,9 @@ export class PracticePlansComponent implements OnInit {
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
     {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 2),
-      title: '2 Day Practice for club match',
+      start: subDays(startOfDay(new Date()), 0),
+      end: addDays(new Date(), 0),
+      title: 'Match 1',
       color: colors.blue,
       allDay: true,
       resizable: {
@@ -141,8 +141,8 @@ export class PracticePlansComponent implements OnInit {
       draggable: true,
     },
     {
-      start: startOfDay(new Date()),
-      title: 'Maverick live event',
+      start: addDays(new Date(), 1),
+      title: 'Match 2',
       color: colors.yellow,
     },
   ];

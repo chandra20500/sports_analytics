@@ -76,11 +76,11 @@ export class AddPracticePlansComponent implements OnInit {
     { firstName: 'Group 2', position: 'All', available: 12, booked: 10 },
   ];
   drills = [
-    { name: 'Drill Name 1', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 2', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 3', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 4', category: 'Drill Category', hours: 2, reps: 3 },
-    { name: 'Drill Name 5', category: 'Drill Category', hours: 2, reps: 3 },
+    { name: 'Drill Name 1', category: 'Drill Category', time: 90, reps: 3 },
+    { name: 'Drill Name 2', category: 'Drill Category', time: 90, reps: 3 },
+    { name: 'Drill Name 3', category: 'Drill Category', time: 90, reps: 3 },
+    { name: 'Drill Name 4', category: 'Drill Category', time: 90, reps: 3 },
+    { name: 'Drill Name 5', category: 'Drill Category', time: 90, reps: 3 },
   ];
 
   existingDates = [
@@ -106,9 +106,7 @@ export class AddPracticePlansComponent implements OnInit {
     {
       label: 'edit',
       a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        console.log(event);
-      },
+      onClick: ({ event }: { event: CalendarEvent }): void => {},
     },
     {
       label: 'delete',
@@ -155,7 +153,6 @@ export class AddPracticePlansComponent implements OnInit {
   }
 
   programChange() {
-    console.log(this.selectedTrainingProgram);
     this.startTime = this.selectedTrainingProgram[0].duration.startTime;
     this.endTime = this.selectedTrainingProgram[0].duration.endTime;
   }

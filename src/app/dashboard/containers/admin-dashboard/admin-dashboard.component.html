@@ -15,10 +15,10 @@
       Detailed
     </button>
   </div>
-  <div>
+  <div *ngIf="selectedAdminButton == 'overview'">
     <div class="row">
       <div class="card-sec col-md-4 col-xs-12 p-l-0 p-r-0">
-        <div class="cont const-dash dash-card">
+        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('roaster')">
           <app-dashboard-card
             title="Total Rosters"
             value="{{ adminDashboardData.totalTeams }}"
@@ -28,7 +28,7 @@
             iconClass="people-icon"
           ></app-dashboard-card>
         </div>
-        <div class="cont const-dash dash-card">
+        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('dashboard/player-list')">
           <app-dashboard-card
             title="Total Players"
             value="{{ adminDashboardData.totalPlayers }}"
@@ -38,7 +38,7 @@
             iconClass="prospects-icon"
           ></app-dashboard-card>
         </div>
-        <div class="cont const-dash dash-card">
+        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('dashboard/drill-list')">
           <app-dashboard-card
             title="Created Drills"
             value="{{ adminDashboardData.createdDrills }}"
@@ -48,7 +48,7 @@
             iconClass="calender-icon"
           ></app-dashboard-card>
         </div>
-        <div class="cont const-dash dash-card">
+        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('practice-plans')">
           <app-dashboard-card
             title="Practice Hours"
             value="{{ adminDashboardData.practiceHours }}"
@@ -63,7 +63,7 @@
         <div class="cont const-dash">
           <div class="row">
             <div class="col-md-8 col-sm-8 col-xs-8">
-              <div class="head">Practice Classification</div>
+              <div class="head p-l-0 m-l-0">Practice Classification</div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4 text-c">
               <mat-select class="dropdown-menu paddedSelect" value="age-group">
@@ -91,13 +91,13 @@
     </div>
 
     <div class="row">
-      <div class="col-md-8 col-xs-12 p-l-0 p-r-0">
+      <div class="col-md-9 col-xs-12 p-l-0 p-r-0">
         <div class="cont const-dash avg-practice-hrs">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
               <div class="row">
                 <div class="col-md-6 col-sm-8 col-xs-8 p-l-0">
-                  <div class="head m-l-0">Drill Data Metrics</div>
+                  <div class="head m-l-0 p-l-0">Drill Data Metrics</div>
                   <div class="sub-head p-t-0 m-l-0">Based on Drill Data from All the Teams</div>
                 </div>
                 <div class="col-md-6 col-sm-4 col-xs-4 text-c disp-flex">
@@ -163,10 +163,10 @@
                 </app-line-chart>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="row data-sec">
                 <div class="col-md-12 col-sm-12 col-xs-12 p-l-0">
-                  <div class="head m-l-0">Drill Data Detailed</div>
+                  <div class="head m-l-0 p-l-0">Drill Data Detailed</div>
                   <div class="sub-head p-t-0 m-l-0">Based on Data from All the Teams</div>
                 </div>
               </div>
@@ -210,7 +210,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-xs-12 p-r-0 p-l-0">
+      <div class="col-md-3 col-xs-12 p-r-0 p-l-0">
         <div class="cont const-dash drill-usg-align">
           <div class="row">
             <div>
@@ -268,5 +268,148 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="selectedAdminButton == 'detailed'">
+    <div class="label">Select Team</div>
+    <div class="row">
+      <mat-select class="team-select paddedSelect" [(ngModel)]="selectedTeam">
+        <mat-option *ngFor="let team of teams" [value]="team">{{ team }}</mat-option>
+      </mat-select>
+      <button mat-button class="practice" *ngIf="selectedTeam != ''" (click)="goToPage('practice-plans')">
+        View Practice Schedule
+      </button>
+    </div>
+
+    <div class="row" *ngIf="selectedTeam != ''">
+      <div class="row menu-cont">
+        <mat-select class="input-select paddedSelect" [(ngModel)]="selectedOption">
+          <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+        <img src="assets/images/icons/newmenu.svg" class="icon p-l" />
+        <div class="vline"></div>
+        <div class="row" *ngFor="let option of options">
+          <span class="option-text" [ngClass]="[selectedOption == option ? 'active-option-text' : 'option-text']">
+            {{ option }}
+          </span>
+        </div>
+        <button class="add-option cursor-pointer">Add New</button>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="selectedTeam != ''">
+      <input mat-input type="text" class="search" placeholder="Search by Player Name" />
+      <div class="search-icon-bar">
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+
+      <button mat-button class="filter">
+        <span class="material-icons">tune</span>
+        Filter
+      </button>
+    </div>
+
+    <table mat-table class="tableclass" [dataSource]="tableData" matSort *ngIf="selectedTeam != ''">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l p-l">Name</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox style="float: left"></mat-checkbox>
+          <a href="" class="name_link t-a-l">{{ element.name }}</a>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="teamname">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Team Name</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.teamname }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Age</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.age }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Gender</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.gender }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">DOB</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.dob }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="height">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Height</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.height }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Weight</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.weight }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="season">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Season</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.season }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="gp">
+        <th mat-header-cell *matHeaderCellDef class="table-head">
+          G.P
+          <!-- <mat-icon>tune</mat-icon> -->
+        </th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.gp }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="mp">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">M.P</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.mp }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Position</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.position }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="workload">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.workload }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="ppg">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.ppg }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="seasonpoints">
+        <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+        <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
+          {{ element.seasonpoints }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="table-head"></th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          <span class="material-icons cursor-pointer" [matMenuTriggerFor]="menu">more_vert</span>
+          <mat-menu #menu="matMenu" hasBackdrop="true">
+            <button class="mat-menu-option" mat-menu-item>Edit</button>
+            <button class="mat-menu-option" mat-menu-item>Remove</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+      <tr mat-header-row class="table-header" *matHeaderRowDef="displayedColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+    </table>
   </div>
 </div>

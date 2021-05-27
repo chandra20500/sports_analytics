@@ -143,7 +143,6 @@ export class CalendarComponent implements OnInit {
     this.router.navigateByUrl(url + '?date=' + date);
   }
   eventClicked(date: Date) {
-    console.log(date);
     this.goToPage('practice-plans/details', date);
   }
 }

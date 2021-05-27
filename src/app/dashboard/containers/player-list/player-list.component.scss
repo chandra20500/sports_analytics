@@ -1,47 +1,12 @@
 .container-p {
-  margin: 30px !important;
-  margin-top: 64px !important;
+  margin: 30px;
+  margin-top: 64px;
 
-  .launch-button {
-    margin-left: auto;
-    background-color: #376dc8;
-    height: 34px;
-    margin-bottom: 30px;
-    padding: 0px 20px;
-    background: #376dc8 0% 0% no-repeat padding-box;
-    box-shadow: 0px 5px 10px #00000029;
-    border-radius: 4px;
-    margin-top: 20px;
-    .text {
-      color: white;
-      font-weight: 600;
-      font-size: 14px;
-    }
-  }
-
-  .button-group {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border-radius: 4px;
-    color: #323336;
-    font-family: 'Montserrat';
-    font-size: 15px;
-    font-weight: 400;
-    padding: 0px 5px !important;
-  }
-
-  .active-button {
-    background: #376dc8 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Montserrat';
-    font-size: 15px;
-    font-weight: 600;
-    padding: 0px 5px !important;
+  .row {
+    margin: 0 !important;
   }
 
   .menu-cont {
-    margin-top: 15px !important;
     margin-bottom: 15px !important;
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #eaeaea;
@@ -91,9 +56,9 @@
   }
 
   .filter {
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 15px !important;
-    margin-left: auto;
+    margin-left: 20px;
     padding-left: 15px;
     padding-right: 20px;
     align-items: center;
@@ -103,6 +68,22 @@
     text-align: center;
     font-weight: 500;
     font-size: 14px;
+  }
+
+  .compare {
+    margin-top: 8px;
+    margin-bottom: 15px !important;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 20px;
+    align-items: center;
+    display: flex;
+    background: #376dc8;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
   }
 
   .search {
@@ -145,14 +126,13 @@
       color: #393939;
       font-size: 13px;
       font-weight: 500;
-      text-align: center;
+      padding: 16px 0px !important;
     }
 
     .tablecontent {
       color: #393939;
       font-size: 13px;
       font-weight: 400;
-      text-align: center;
     }
 
     .mat-row:nth-child(odd) {
@@ -172,16 +152,6 @@
       color: #0042b1;
     }
   }
-}
-
-::ng-deep.mat-tab-label.mat-tab-label-active {
-  opacity: 1;
-  background: #376dc8 0% 0% no-repeat padding-box;
-  color: #ffffff;
-}
-
-::ng-deep.mat-ink-bar {
-  display: none !important;
 }
 
 ::ng-deep.mat-menu-option {
