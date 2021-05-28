@@ -63,9 +63,9 @@
       margin-top: 10px;
     }
     .hline {
-      width: 90%;
-      margin-left: 5%;
-      margin-right: 5%;
+      // width: 90%;
+      // margin-left: 5%;
+      // margin-right: 5%;
       height: 0px;
       border: 1px solid #e6e6e6;
       margin-bottom: 10px;
@@ -106,14 +106,21 @@
     padding-right: 0px;
     padding-left: 0px;
   }
-  ::ng-deep.mat-tab-label,
-  ::ng-deep.mat-tab-label-active {
+  ::ng-deep.mat-tab-label{
     min-width: 100px !important;
     padding: 3px !important;
-    margin: 3px !important;
+    //margin: 3px !important;
     font: normal normal medium 13px/16px Montserrat;
     color: #686868;
+    letter-spacing: 0px;
+    font-weight: 800;
     opacity: 1;
+  }
+  ::ng-deep.mat-tab-label:nth-child(3){
+    margin-left: 100px;
+  }
+  ::ng-deep.mat-tab-label:nth-child(6){
+    margin-left: 50px;
   }
   .season-performace {
     background: #fdfdfd 0% 0% no-repeat padding-box;
@@ -122,7 +129,7 @@
     display: flex;
     margin-top: 20px;
     margin-bottom: 50px;
-    margin-left: 10px;
+    // margin-left: 10px;
     margin-right: 10px;
     .data-form-field {
       background: #ffffff 0% 0% no-repeat padding-box;
@@ -133,6 +140,20 @@
       right: 0px;
       font-size: 0.7em;
     }
+  }
+  .drill-analysis-chart-container {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 30px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 20px 80px #00000011;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .drill-analysis-btnGrp {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
   }
   ::ng-deep.mat-form-field {
     font: normal normal 14px/18px Montserrat;
@@ -308,7 +329,7 @@
 }
 .weakness-header {
   flex: 1;
-  margin-left: 45px;
+  margin-left: 50px;
   font: normal normal bold 14px/18px Montserrat;
   letter-spacing: 0px;
   color: #4a4a4a;
@@ -323,7 +344,7 @@
   padding-left: 20px;
   margin-top: 15px;
   margin-left: 25px;
-  margin-right: 25px;
+  //margin-right: 25px;
 }
 .drill-category {
   flex: 1;
@@ -353,7 +374,7 @@
 }
 .analysis-container-child {
   display: flex;
-  margin-left: 25px;
+  //margin-left: 25px;
   margin-right: 25px;
   margin-top: 10px;
 }
@@ -369,11 +390,10 @@
   padding-right: 20px;
   padding-left: 20px;
   margin-top: 15px;
-  margin-left: 25px;
+  //margin-left: 25px;
   margin-right: 0px;
 }
 .heading-padding {
-  padding-left: 25px;
   padding-right: 25px;
   padding-top: 25px;
 }
@@ -381,6 +401,6 @@
   background: #fdfdfd 0% 0% no-repeat padding-box;
 }
 .analysis-container {
-  background-color: #ffffff;
+  background: #FDFDFD 0% 0% no-repeat padding-box;
   margin-top: 35px;
 }

@@ -169,67 +169,75 @@
                   </div>
                   <div class="drill-analysis">
                     <div class="heading-small heading-padding">Drill Analysis</div>
-                    <div class="season-performace">
-                      <div class="button-group">
-                        <button
-                          mat-button
-                          (click)="tabselectdrill('physical')"
-                          class="tab-button-b1"
-                          [ngClass]="[tabValueDrill == 'physical' ? 'active-tab' : '']"
-                        >
-                          Physical
-                        </button>
-                        <button
-                          mat-button
-                          (click)="tabselectdrill('running')"
-                          class="tab-button-b2"
-                          [ngClass]="[tabValueDrill == 'running' ? 'active-tab' : '']"
-                        >
-                          Running
-                        </button>
-                        <button
-                          mat-button
-                          (click)="tabselectdrill('jumping')"
-                          class="tab-button-b3"
-                          [ngClass]="[tabValueDrill == 'jumping' ? 'active-tab' : '']"
-                        >
-                          Jumping
-                        </button>
-                        <button
-                          mat-button
-                          (click)="tabselectdrill('skill')"
-                          class="tab-button-b3"
-                          [ngClass]="[tabValueDrill == 'skill' ? 'active-tab' : '']"
-                        >
-                          Skill
-                        </button>
+                    <div class="drill-analysis-chart-container" >
+                      <div class="season-performace drill-analysis-btnGrp">
+                        <div class="button-group">
+                          <button
+                            mat-button
+                            (click)="tabselectdrill('physical')"
+                            class="tab-button-b1"
+                            [ngClass]="[tabValueDrill == 'physical' ? 'active-tab' : '']"
+                          >
+                            Physical
+                          </button>
+                          <button
+                            mat-button
+                            (click)="tabselectdrill('running')"
+                            class="tab-button-b2"
+                            [ngClass]="[tabValueDrill == 'running' ? 'active-tab' : '']"
+                          >
+                            Running
+                          </button>
+                          <button
+                            mat-button
+                            (click)="tabselectdrill('jumping')"
+                            class="tab-button-b3"
+                            [ngClass]="[tabValueDrill == 'jumping' ? 'active-tab' : '']"
+                          >
+                            Jumping
+                          </button>
+                          <button
+                            mat-button
+                            (click)="tabselectdrill('skill')"
+                            class="tab-button-b3"
+                            [ngClass]="[tabValueDrill == 'skill' ? 'active-tab' : '']"
+                          >
+                            Skill
+                          </button>
+                        </div>
+                        <mat-form-field appearance="fill" class="data-form-field">
+                          <mat-label>Date range</mat-label>
+                          <mat-date-range-input [rangePicker]="rangePicker">
+                            <input matStartDate placeholder="Start date" />
+                            <input matEndDate placeholder="End date" />
+                          </mat-date-range-input>
+                          <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                          <mat-date-range-picker #rangePicker>
+                            <mat-date-range-picker-actions>
+                              <button mat-button matDateRangePickerCancel>Cancel</button>
+                              <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                            </mat-date-range-picker-actions>
+                          </mat-date-range-picker>
+                        </mat-form-field>
                       </div>
-                      <mat-form-field appearance="fill" class="data-form-field">
-                        <mat-label>Date range</mat-label>
-                        <mat-date-range-input [rangePicker]="rangePicker">
-                          <input matStartDate placeholder="Start date" />
-                          <input matEndDate placeholder="End date" />
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
-                        <mat-date-range-picker #rangePicker>
-                          <mat-date-range-picker-actions>
-                            <button mat-button matDateRangePickerCancel>Cancel</button>
-                            <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-                          </mat-date-range-picker-actions>
-                        </mat-date-range-picker>
-                      </mat-form-field>
+                      <div 
+                        style="
+                          padding-left: 12.5px;
+                          padding-right: 12.5px;
+                        ">
+                          <app-line-chart
+                            [lineChartData]="lineChartData"
+                            [lineChartLabels]="lineChartLabels"
+                            [lineChartOptions]="lineChartOptions"
+                            [lineChartColors]="lineChartColors"
+                            [lineChartLegend]="lineChartLegend"
+                            [lineChartPlugins]="lineChartPlugins"
+                            [gradient]="lineGradient"
+                            height="32"
+                          >
+                          </app-line-chart>
+                      </div>
                     </div>
-                    <app-line-chart
-                      [lineChartData]="lineChartData"
-                      [lineChartLabels]="lineChartLabels"
-                      [lineChartOptions]="lineChartOptions"
-                      [lineChartColors]="lineChartColors"
-                      [lineChartLegend]="lineChartLegend"
-                      [lineChartPlugins]="lineChartPlugins"
-                      [gradient]="lineGradient"
-                      height="32"
-                    >
-                    </app-line-chart>
                   </div>
                 </div>
               </div>
@@ -279,11 +287,9 @@
           <mat-tab class="pill-mat-tab" label="Tab 3"> </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 4"> </mat-tab>
           <mat-tab class="pill-mat-tab" label="Tab 5"> </mat-tab>
+          <mat-tab class="pill-mat-tab" label="Reports"> </mat-tab>
         </mat-tab-group>
       </div>
     </div>
-    <!-- <div class="col-md-3 col-sx-6 p-l-0 p-r-0 m-b">
-      
-    </div> -->
   </div>
 </div>
