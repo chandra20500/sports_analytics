@@ -105,11 +105,11 @@
 
   .team-drill-content {
     overflow-y: auto;
-    height: 315px;
-  }
+    height: 435px;
 
-  .content-hght {
-    height: 312px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .data-sec {
