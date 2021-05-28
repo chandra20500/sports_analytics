@@ -329,9 +329,64 @@ export class AdminDashboardComponent implements OnInit {
       low: 'HH:MM',
       average: 'HH:MM',
     },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
+    {
+      team: 'Team Name',
+      high: 'HH:MM',
+      low: 'HH:MM',
+      average: 'HH:MM',
+    },
   ];
 
   drillUsageData = [
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
+    {
+      drillName: 'Drill Name',
+      drillCategory: 'Drill Category',
+      time: '35 Hours/week',
+    },
     {
       drillName: 'Drill Name',
       drillCategory: 'Drill Category',
