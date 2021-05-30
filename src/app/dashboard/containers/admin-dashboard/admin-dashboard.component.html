@@ -1,24 +1,25 @@
 <div class="container-p">
-  <div class="row top-layout">
+  <div class="row">
     <button
       mat-button
       (click)="buttonChange('overview')"
-      [ngClass]="[selectedAdminButton == 'overview' ? 'active-button' : 'button-group']"
+      [ngClass]="[selectedAdminButton == 'overview' ? 'active-button' : 'normal-button']"
     >
       Overview
     </button>
     <button
       mat-button
       (click)="buttonChange('detailed')"
-      [ngClass]="[selectedAdminButton == 'detailed' ? 'active-button' : 'button-group']"
+      [ngClass]="[selectedAdminButton == 'detailed' ? 'active-button' : 'normal-button']"
     >
       Detailed
     </button>
   </div>
-  <div *ngIf="selectedAdminButton == 'overview'">
+
+  <div *ngIf="selectedAdminButton == 'overview'" class="m-t">
     <div class="row">
-      <div class="card-sec col-md-4 col-xs-12 p-l-0 p-r-0">
-        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('roaster')">
+      <div class="card-sec col-md-4 col-xs-12 p-l-0 p-r-0 m-b">
+        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('roaster')">
           <app-dashboard-card
             title="Total Rosters"
             value="{{ adminDashboardData.totalTeams }}"
@@ -28,7 +29,7 @@
             iconClass="people-icon"
           ></app-dashboard-card>
         </div>
-        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('dashboard/player-list')">
+        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('dashboard/player-list')">
           <app-dashboard-card
             title="Total Players"
             value="{{ adminDashboardData.totalPlayers }}"
@@ -38,7 +39,7 @@
             iconClass="prospects-icon"
           ></app-dashboard-card>
         </div>
-        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('dashboard/drill-list')">
+        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('dashboard/drill-list')">
           <app-dashboard-card
             title="Created Drills"
             value="{{ adminDashboardData.createdDrills }}"
@@ -48,7 +49,7 @@
             iconClass="calender-icon"
           ></app-dashboard-card>
         </div>
-        <div class="cont const-dash dash-card cursor-pointer" (click)="goToPage('practice-plans')">
+        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('practice-plans')">
           <app-dashboard-card
             title="Practice Hours"
             value="{{ adminDashboardData.practiceHours }}"
@@ -59,97 +60,82 @@
           ></app-dashboard-card>
         </div>
       </div>
+
       <div class="col-md-8 col-xs-12 p-r-0 p-l-0">
-        <div class="cont const-dash">
+        <div class="cont">
           <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-8">
-              <div class="head p-l-0 m-l-0">Practice Classification</div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 text-c">
-              <mat-select class="dropdown-menu paddedSelect" value="age-group">
-                <mat-option value="age-group">Age Group</mat-option>
-              </mat-select>
-              <mat-select class="dropdown-menu paddedSelect" value="gender">
-                <mat-option value="gender">Gender</mat-option>
-              </mat-select>
-            </div>
+            <div class="head p-l-0 m-l-0">Practice Classification</div>
+            <mat-select class="dropdown-menu paddedSelect m-l-a" value="age-group">
+              <mat-option value="age-group">Age Group</mat-option>
+            </mat-select>
+            <mat-select class="dropdown-menu paddedSelect" value="gender">
+              <mat-option value="gender">Gender</mat-option>
+            </mat-select>
           </div>
-          <div>
-            <app-bar-chart
-              [barChartData]="dashBarChartData"
-              [barChartLabels]="dashBarChartLabels"
-              [barChartOptions]="dashBarChartOptions"
-              [barChartColors]="dashBarChartColors"
-              [barChartLegend]="dashBarChartLegend"
-              [gradient]="dashBarGradient"
-              [barChartPlugins]="dashBarChartPlugins"
-              height="210"
-            ></app-bar-chart>
-          </div>
+          <app-bar-chart
+            [barChartData]="dashBarChartData"
+            [barChartLabels]="dashBarChartLabels"
+            [barChartOptions]="dashBarChartOptions"
+            [barChartColors]="dashBarChartColors"
+            [barChartLegend]="dashBarChartLegend"
+            [gradient]="dashBarGradient"
+            [barChartPlugins]="dashBarChartPlugins"
+            height="210"
+          ></app-bar-chart>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-9 col-xs-12 p-l-0 p-r-0">
-        <div class="cont const-dash avg-practice-hrs">
+      <div class="col-md-9 col-xs-12 p-l-0 p-r-0 m-b">
+        <div class="cont m-r">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-xs-12 col-sm-12 m-a-0 p-a-0">
               <div class="row">
-                <div class="col-md-6 col-sm-8 col-xs-8 p-l-0">
+                <div>
                   <div class="head m-l-0 p-l-0">Drill Data Metrics</div>
                   <div class="sub-head p-t-0 m-l-0">Based on Drill Data from All the Teams</div>
                 </div>
-                <div class="col-md-6 col-sm-4 col-xs-4 text-c disp-flex">
-                  <mat-select class="dropdown-menu paddedSelect" value="age-group">
-                    <mat-option value="age-group">Age Group</mat-option>
-                  </mat-select>
-                  <mat-select class="dropdown-menu paddedSelect" value="gender">
-                    <mat-option value="gender">Gender</mat-option>
-                  </mat-select>
-                </div>
+                <mat-select class="dropdown-menu paddedSelect m-l-a" value="age-group">
+                  <mat-option value="age-group">Age Group</mat-option>
+                </mat-select>
+                <mat-select class="dropdown-menu paddedSelect" value="gender">
+                  <mat-option value="gender">Gender</mat-option>
+                </mat-select>
               </div>
               <div class="row">
-                <button
-                  mat-button
-                  (click)="drillButtonChange('physical')"
-                  [ngClass]="[
-                    selectedDrillTypeButton == 'physical'
-                      ? 'drill-active-button'
-                      : 'drill-button-group drill-first-btn-bdr'
-                  ]"
-                >
-                  Physical
-                </button>
-                <button
-                  mat-button
-                  (click)="drillButtonChange('running')"
-                  [ngClass]="[
-                    selectedDrillTypeButton == 'running' ? 'drill-active-button' : 'drill-button-group drill-btn-bdr'
-                  ]"
-                >
-                  Running
-                </button>
-                <button
-                  mat-button
-                  (click)="drillButtonChange('jumping')"
-                  [ngClass]="[
-                    selectedDrillTypeButton == 'jumping' ? 'drill-active-button' : 'drill-button-group drill-btn-bdr'
-                  ]"
-                >
-                  Jumping
-                </button>
-                <button
-                  mat-button
-                  (click)="drillButtonChange('skill')"
-                  [ngClass]="[
-                    selectedDrillTypeButton == 'skill' ? 'drill-active-button' : 'drill-button-group drill-last-btn-bdr'
-                  ]"
-                >
-                  Skill
-                </button>
+                <div class="button-group">
+                  <button
+                    mat-button
+                    (click)="drillButtonChange('physical')"
+                    [ngClass]="[selectedDrillTypeButton == 'physical' ? 'active-button' : 'normal-button']"
+                  >
+                    Physical
+                  </button>
+                  <button
+                    mat-button
+                    (click)="drillButtonChange('running')"
+                    [ngClass]="[selectedDrillTypeButton == 'running' ? 'active-button' : 'normal-button']"
+                  >
+                    Running
+                  </button>
+                  <button
+                    mat-button
+                    (click)="drillButtonChange('jumping')"
+                    [ngClass]="[selectedDrillTypeButton == 'jumping' ? 'active-button' : 'normal-button']"
+                  >
+                    Jumping
+                  </button>
+                  <button
+                    mat-button
+                    (click)="drillButtonChange('skill')"
+                    [ngClass]="[selectedDrillTypeButton == 'skill' ? 'active-button' : 'normal-button']"
+                  >
+                    Skill
+                  </button>
+                </div>
               </div>
-              <div class="line-chart-container">
+              <div class="m-t">
                 <app-line-chart
                   [lineChartData]="dashLineChartData"
                   [lineChartLabels]="dashLineChartLabels"
@@ -158,16 +144,16 @@
                   [lineChartLegend]="dashLineChartLegend"
                   [lineChartPlugins]="dashLineChartPlugins"
                   [gradient]="dashLineGradient"
-                  height="50"
+                  height="45"
                 >
                 </app-line-chart>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="row data-sec">
+            <div class="col-md-4 col-xs-12 p-r-0">
+              <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 p-l-0">
                   <div class="head m-l-0 p-l-0">Drill Data Detailed</div>
-                  <div class="sub-head p-t-0 m-l-0">Based on Data from All the Teams</div>
+                  <div class="sub-head p-t-0 m-l-0 p-b-0">Based on Data from All the Teams</div>
                 </div>
               </div>
               <div class="row team-drill-content">
@@ -179,26 +165,26 @@
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="high">
-                    <th mat-header-cell *matHeaderCellDef class="table-head">High</th>
-                    <td mat-cell class="tablecontent" *matCellDef="let element">
+                    <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">High</th>
+                    <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
                       {{ element.high }}
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="low">
-                    <th mat-header-cell *matHeaderCellDef class="table-head">Low</th>
-                    <td mat-cell class="tablecontent" *matCellDef="let element">
+                    <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Low</th>
+                    <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
                       {{ element.low }}
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="dob">
-                    <th mat-header-cell *matHeaderCellDef class="table-head">DOB</th>
-                    <td mat-cell class="tablecontent" *matCellDef="let element">
+                    <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">DOB</th>
+                    <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
                       {{ element.dob }}
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="average">
-                    <th mat-header-cell *matHeaderCellDef class="table-head">Average</th>
-                    <td mat-cell class="tablecontent" *matCellDef="let element">
+                    <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Average</th>
+                    <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
                       {{ element.average }}
                     </td>
                   </ng-container>
@@ -211,35 +197,27 @@
         </div>
       </div>
       <div class="col-md-3 col-xs-12 p-r-0 p-l-0">
-        <div class="cont const-dash drill-usg-align">
+        <div class="cont">
           <div class="row">
-            <div>
-              <div class="head m-l-0">Drill Usage</div>
-            </div>
+            <div class="head m-l-0">Drill Usage</div>
           </div>
-          <div class="row drill-usage-sec">
-            <button
-              mat-button
-              (click)="drillUsageChange('most-used')"
-              [ngClass]="[
-                selectedDrillUsageButton == 'most-used'
-                  ? 'drill-active-button'
-                  : 'drill-button-group drill-first-btn-bdr'
-              ]"
-            >
-              Most-used
-            </button>
-            <button
-              mat-button
-              (click)="drillUsageChange('least-used')"
-              [ngClass]="[
-                selectedDrillUsageButton == 'least-used'
-                  ? 'drill-active-button'
-                  : 'drill-button-group drill-last-btn-bdr'
-              ]"
-            >
-              Least-used
-            </button>
+          <div class="row">
+            <div class="button-group">
+              <button
+                mat-button
+                (click)="drillUsageChange('most-used')"
+                [ngClass]="[selectedDrillUsageButton == 'most-used' ? 'active-button' : 'normal-button']"
+              >
+                Most-used
+              </button>
+              <button
+                mat-button
+                (click)="drillUsageChange('least-used')"
+                [ngClass]="[selectedDrillUsageButton == 'least-used' ? 'active-button' : 'normal-button']"
+              >
+                Least-used
+              </button>
+            </div>
           </div>
           <div class="row team-drill-content">
             <table mat-table class="tableclass" [dataSource]="drillUsageDataSource" matSort>
@@ -281,7 +259,7 @@
       </button>
     </div>
 
-    <div class="row" *ngIf="selectedTeam != ''">
+    <div *ngIf="selectedTeam != ''">
       <div class="row menu-cont">
         <mat-select class="input-select paddedSelect" [(ngModel)]="selectedOption">
           <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
@@ -311,10 +289,10 @@
 
     <table mat-table class="tableclass" [dataSource]="tableData" matSort *ngIf="selectedTeam != ''">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l p-l">Name</th>
+        <th mat-header-cell *matHeaderCellDef class="table-head p-l">Name</th>
         <td mat-cell *matCellDef="let element">
-          <mat-checkbox style="float: left"></mat-checkbox>
-          <a href="" class="name_link t-a-l">{{ element.name }}</a>
+          <mat-checkbox></mat-checkbox>
+          <a class="name_link t-a-l">{{ element.name }}</a>
         </td>
       </ng-container>
       <ng-container matColumnDef="teamname">
@@ -360,9 +338,9 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="gp">
-        <th mat-header-cell *matHeaderCellDef class="table-head">
+        <th mat-header-cell *matHeaderCellDef class="table-filt t-a-l">
           G.P
-          <!-- <mat-icon>tune</mat-icon> -->
+          <mat-icon class="table-filt cursor-pointer">tune</mat-icon>
         </th>
         <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
           {{ element.gp }}
@@ -393,7 +371,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="seasonpoints">
-        <th mat-header-cell *matHeaderCellDef class="table-head">Work Load</th>
+        <th mat-header-cell *matHeaderCellDef class="table-head t-a-l">Work Load</th>
         <td mat-cell class="tablecontent t-a-l" *matCellDef="let element">
           {{ element.seasonpoints }}
         </td>

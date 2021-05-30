@@ -4,8 +4,9 @@
     <mat-icon>arrow_forward</mat-icon>
     Player Details
   </div>
+
   <div class="row ac">
-    <div class="col-md-3 col-xs-6 p-l-0 m-b">
+    <div class="col-md-2 col-xs-6 p-l-0 m-b">
       <div class="card-container">
         <div class="row">
           <img class="user-image" src="assets/images/header/profile.png" />
@@ -14,8 +15,8 @@
             <div class="last-name">Kaminga</div>
           </div>
         </div>
-        <div class="hline"></div>
-        <table class="m-l-a m-r-a">
+        <div class="hline-s"></div>
+        <table>
           <div class="row" *ngFor="let condition of conditions">
             <tr>
               <td class="headkey">{{ condition.key }}</td>
@@ -25,271 +26,258 @@
         </table>
       </div>
     </div>
-    <div class="card-container col-lg-9 col-md-12 col-xs-12 m-b p-l-0">
-      <div class="col-lg-12">
-        <mat-tab-group class="pill-tab col">
-          <mat-tab class="row pill-mat-tab" label="Analysis">
-            <div class="row">
-              <div class="col-md-9 back-cont">
-                <div class="col-md-12 col-xs-12 analysis-container">
-                  <div class="analysis-container-child">
-                    <div class="strengths">Strengths</div>
-                    <div class="weakness-header">Weakness</div>
-                  </div>
-                  <div class="flex">
-                    <div class="drill-cont">
-                      <div class="flex m-t">
-                        <div class="drill-category">Drill Category</div>
-                        <div class="barchart-rank"><span>Rank :</span> 2/25</div>
-                      </div>
-                      <div class="legend legend-display">
-                        <div class="name">
-                          <div class="leg legend-label1"></div>
-                          This player
-                        </div>
-                        <div class="name">
-                          <div class="leg legend-label2"></div>
-                          Batch Average
-                        </div>
-                      </div>
-                      <app-bar-chart
-                        [barChartData]="dashBarChartData"
-                        [barChartLabels]="dashBarChartLabels"
-                        [barChartOptions]="dashBarChartOptions"
-                        [barChartColors]="dashBarChartColors"
-                        [barChartLegend]="dashBarChartLegend"
-                        [gradient]="dashBarGradient"
-                        [barChartPlugins]="dashBarChartPlugins"
-                        height="65"
-                      ></app-bar-chart>
-                    </div>
-                    <div class="chart-dimensions">
-                      <div class="chart-dimensions-child">
-                        <div class="drill-category">Drill Category</div>
-                        <div class="barchart-rank"><span>Rank :</span> 2/25</div>
-                      </div>
-                      <div class="legend legend-display">
-                        <div class="name">
-                          <div class="leg legend-label1"></div>
-                          This player
-                        </div>
-                        <div class="name">
-                          <div class="leg legend-label2"></div>
-                          Batch Average
-                        </div>
-                      </div>
-                      <app-bar-chart
-                        [barChartData]="dashBarChartData"
-                        [barChartLabels]="dashBarChartLabels"
-                        [barChartOptions]="dashBarChartOptions"
-                        [barChartColors]="dashBarChartColors"
-                        [barChartLegend]="dashBarChartLegend"
-                        [gradient]="dashBarGradient"
-                        [barChartPlugins]="dashBarChartPlugins"
-                        height="65"
-                      ></app-bar-chart>
-                    </div>
-                  </div>
-                  <div class="hline m-t"></div>
-                  <div class="row">
-                    <div class="col-lg-12 col-md-8 col-xs-12 m-b p-a-0">
-                      <div class="heading-small heading-padding">Detailed Drill Data</div>
-                      <div class="season-performace">
-                        <div class="button-group">
-                          <button
-                            mat-flat-button
-                            (click)="tabselect('pergame')"
-                            class="tab-button-b1"
-                            [ngClass]="[tabvalue == 'pergame' ? 'active-tab' : '']"
-                          >
-                            Physical
-                          </button>
-                          <button mat-button class="tab-button-b2">Running</button>
-                          <button mat-button class="tab-button-b3">Jumping</button>
-                          <button mat-button class="tab-button-b4">Skill</button>
-                        </div>
-                        <mat-form-field appearance="fill" class="data-form-field">
-                          <mat-label>Date range</mat-label>
-                          <mat-date-range-input [rangePicker]="rangePicker">
-                            <input matStartDate placeholder="Start date" />
-                            <input matEndDate placeholder="End date" />
-                          </mat-date-range-input>
-                          <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
-                          <mat-date-range-picker #rangePicker>
-                            <mat-date-range-picker-actions>
-                              <button mat-button matDateRangePickerCancel>Cancel</button>
-                              <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-                            </mat-date-range-picker-actions>
-                          </mat-date-range-picker>
-                        </mat-form-field>
-                        <div *ngIf="tabvalue == 'gamelog'">Game Log</div>
-                        <div *ngIf="tabvalue == 'similarityscore'">Game Log</div>
-                      </div>
-                      <table mat-table class="tableclass table-season m-t" [dataSource]="recentData" matSort>
-                        <ng-container matColumnDef="date">
-                          <th mat-header-cell *matHeaderCellDef class="table-head" class="firstColumn"></th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element" class="firstColumn">
-                            {{ element.date }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="opp">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Trial1</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.opp }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="gr">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Trial2</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.gr }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="mp">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Trial3</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.mp }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="fg">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Trial4</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.fg }}
-                          </td>
-                        </ng-container>
-                        <ng-container matColumnDef="pt3">
-                          <th mat-header-cell *matHeaderCellDef class="table-head">Trial5</th>
-                          <td mat-cell class="tablecontent" *matCellDef="let element">
-                            {{ element.pt3 }}
-                          </td>
-                        </ng-container>
-                        <tr mat-header-row class="table-header" *matHeaderRowDef="recentColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: recentColumns"></tr>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="drill-analysis">
-                    <div class="heading-small heading-padding">Drill Analysis</div>
-                    <div class="drill-analysis-chart-container" >
-                      <div class="season-performace drill-analysis-btnGrp">
-                        <div class="button-group">
-                          <button
-                            mat-button
-                            (click)="tabselectdrill('physical')"
-                            class="tab-button-b1"
-                            [ngClass]="[tabValueDrill == 'physical' ? 'active-tab' : '']"
-                          >
-                            Physical
-                          </button>
-                          <button
-                            mat-button
-                            (click)="tabselectdrill('running')"
-                            class="tab-button-b2"
-                            [ngClass]="[tabValueDrill == 'running' ? 'active-tab' : '']"
-                          >
-                            Running
-                          </button>
-                          <button
-                            mat-button
-                            (click)="tabselectdrill('jumping')"
-                            class="tab-button-b3"
-                            [ngClass]="[tabValueDrill == 'jumping' ? 'active-tab' : '']"
-                          >
-                            Jumping
-                          </button>
-                          <button
-                            mat-button
-                            (click)="tabselectdrill('skill')"
-                            class="tab-button-b3"
-                            [ngClass]="[tabValueDrill == 'skill' ? 'active-tab' : '']"
-                          >
-                            Skill
-                          </button>
-                        </div>
-                        <mat-form-field appearance="fill" class="data-form-field">
-                          <mat-label>Date range</mat-label>
-                          <mat-date-range-input [rangePicker]="rangePicker">
-                            <input matStartDate placeholder="Start date" />
-                            <input matEndDate placeholder="End date" />
-                          </mat-date-range-input>
-                          <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
-                          <mat-date-range-picker #rangePicker>
-                            <mat-date-range-picker-actions>
-                              <button mat-button matDateRangePickerCancel>Cancel</button>
-                              <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-                            </mat-date-range-picker-actions>
-                          </mat-date-range-picker>
-                        </mat-form-field>
-                      </div>
-                      <div 
-                        style="
-                          padding-left: 12.5px;
-                          padding-right: 12.5px;
-                        ">
-                          <app-line-chart
-                            [lineChartData]="lineChartData"
-                            [lineChartLabels]="lineChartLabels"
-                            [lineChartOptions]="lineChartOptions"
-                            [lineChartColors]="lineChartColors"
-                            [lineChartLegend]="lineChartLegend"
-                            [lineChartPlugins]="lineChartPlugins"
-                            [gradient]="lineGradient"
-                            height="32"
-                          >
-                          </app-line-chart>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-md-3 col-sx-6 back-cont">
-                <div class="graph-container">
-                  <div class="heading">Performance Overview</div>
-                  <app-radar-chart
-                    [radarChartData]="radarChartData"
-                    [radarChartLabels]="radarChartLabels"
-                    [radarChartOptions]="radarChartOptions"
-                    height="75"
-                  ></app-radar-chart>
-                </div>
-              </div>
-            </div>
-          </mat-tab>
-          <mat-tab class="pill-mat-tab col-lg-12" label="Practice">
-            <div class="row back-cont">
-              <div class="col-md-12 col-xs-12 analysis-container">
+    <div class="col-md-10 col-xs-12 m-b p-l-0">
+      <mat-tab-group class="pill-tab">
+        <mat-tab class="row pill-mat-tab" label="Analytics">
+          <div class="row">
+            <div class="col-md-9 back-cont">
+              <div class="analysis-container p-l-0 p-r-0 m-t-0">
                 <div class="row">
-                  <div class="col-md-3 col-xs-3 practice">
-                    <div class="head-text">Upcoming Practices</div>
-                    <div *ngFor="let practice of practices">
-                      <div class="practice-date">Dec 24</div>
-                      <div class="practice-text">Practice Name</div>
-                      <div class="practice-text">Practice Duration</div>
-                      <div class="practice-tag">Tag</div>
-                      <div class="hline"></div>
+                  <div class="col-md-6 col-xs-6 p-l-0">
+                    <div class="head-title">Strengths</div>
+                    <div class="drill-cont">
+                      <div class="row">
+                        <div class="drill-head">Drill Category</div>
+                        <div class="rank"><span>Rank :</span> 2/25</div>
+                      </div>
+                      <app-bar-chart
+                        [barChartData]="dashBarChartData"
+                        [barChartLabels]="dashBarChartLabels"
+                        [barChartOptions]="dashBarChartOptions"
+                        [barChartColors]="dashBarChartColors"
+                        [barChartLegend]="dashBarChartLegend"
+                        [gradient]="dashBarGradient"
+                        [barChartPlugins]="dashBarChartPlugins"
+                        height="50"
+                      ></app-bar-chart>
                     </div>
                   </div>
-                  <div class="col-md-9 col-xs-9 p-t-md">
-                    <app-calendar
-                      navigation="all"
-                      size="large"
-                      [view]="view"
-                      [selectedView]="selectedView"
-                      [viewDate]="viewDate"
-                      [events]="events"
-                      startTime="0"
-                      endTime="23"
-                    ></app-calendar>
+                  <div class="col-md-6 col-xs-6 p-r-0">
+                    <div class="head-title">Weakness</div>
+                    <div class="drill-cont">
+                      <div class="row">
+                        <div class="drill-head">Drill Category</div>
+                        <div class="rank"><span>Rank: </span> 2/25</div>
+                      </div>
+
+                      <app-bar-chart
+                        [barChartData]="dashBarChartData"
+                        [barChartLabels]="dashBarChartLabels"
+                        [barChartOptions]="dashBarChartOptions"
+                        [barChartColors]="dashBarChartColors"
+                        [barChartLegend]="dashBarChartLegend"
+                        [gradient]="dashBarGradient"
+                        [barChartPlugins]="dashBarChartPlugins"
+                        height="50"
+                      ></app-bar-chart>
+                    </div>
                   </div>
+                </div>
+                <div class="hline m-t"></div>
+                <div class="row">
+                  <div class="col-lg-12 col-md-8 col-xs-12 m-b p-a-0">
+                    <div class="head-title">Detailed Drill Data</div>
+                    <div class="row">
+                      <div class="button-group">
+                        <button
+                          mat-button
+                          (click)="tableButtonChange('physical')"
+                          [ngClass]="[selectedTableButton == 'physical' ? 'active-button' : 'normal-button']"
+                        >
+                          Physical
+                        </button>
+                        <button
+                          mat-button
+                          (click)="tableButtonChange('running')"
+                          [ngClass]="[selectedTableButton == 'running' ? 'active-button' : 'normal-button']"
+                        >
+                          Running
+                        </button>
+                        <button
+                          mat-button
+                          (click)="tableButtonChange('jumping')"
+                          [ngClass]="[selectedTableButton == 'jumping' ? 'active-button' : 'normal-button']"
+                        >
+                          Jumping
+                        </button>
+                        <button
+                          mat-button
+                          (click)="tableButtonChange('skill')"
+                          [ngClass]="[selectedTableButton == 'skill' ? 'active-button' : 'normal-button']"
+                        >
+                          Skill
+                        </button>
+                      </div>
+                      <mat-form-field appearance="fill" class="data-form-field">
+                        <mat-label>Date range</mat-label>
+                        <mat-date-range-input [rangePicker]="tablerangePicker">
+                          <input matStartDate placeholder="Start date" />
+                          <input matEndDate placeholder="End date" />
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="tablerangePicker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #tablerangePicker>
+                          <mat-date-range-picker-actions>
+                            <button mat-button matDateRangePickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                          </mat-date-range-picker-actions>
+                        </mat-date-range-picker>
+                      </mat-form-field>
+                    </div>
+                    <table mat-table class="tableclass table-season m-t" [dataSource]="recentData" matSort>
+                      <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef class="table-head firstColumn"></th>
+                        <td mat-cell *matCellDef="let element" class="tablecontent firstColumn">
+                          {{ element.date }}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="opp">
+                        <th mat-header-cell *matHeaderCellDef class="table-head">Trial1</th>
+                        <td mat-cell class="tablecontent" *matCellDef="let element">
+                          {{ element.opp }}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="gr">
+                        <th mat-header-cell *matHeaderCellDef class="table-head">Trial2</th>
+                        <td mat-cell class="tablecontent" *matCellDef="let element">
+                          {{ element.gr }}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="mp">
+                        <th mat-header-cell *matHeaderCellDef class="table-head">Trial3</th>
+                        <td mat-cell class="tablecontent" *matCellDef="let element">
+                          {{ element.mp }}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="fg">
+                        <th mat-header-cell *matHeaderCellDef class="table-head">Trial4</th>
+                        <td mat-cell class="tablecontent" *matCellDef="let element">
+                          {{ element.fg }}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="pt3">
+                        <th mat-header-cell *matHeaderCellDef class="table-head">Trial5</th>
+                        <td mat-cell class="tablecontent" *matCellDef="let element">
+                          {{ element.pt3 }}
+                        </td>
+                      </ng-container>
+                      <tr mat-header-row class="table-header" *matHeaderRowDef="recentColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: recentColumns"></tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="drill-analysis">
+                  <div class="head-title">Drill Analysis</div>
+                  <div class="row">
+                    <div class="button-group">
+                      <button
+                        mat-button
+                        (click)="chartButtonChange('physical')"
+                        [ngClass]="[selectedChartButton == 'physical' ? 'active-button' : 'normal-button']"
+                      >
+                        Physical
+                      </button>
+                      <button
+                        mat-button
+                        (click)="chartButtonChange('running')"
+                        [ngClass]="[selectedChartButton == 'running' ? 'active-button' : 'normal-button']"
+                      >
+                        Running
+                      </button>
+                      <button
+                        mat-button
+                        (click)="chartButtonChange('jumping')"
+                        [ngClass]="[selectedChartButton == 'jumping' ? 'active-button' : 'normal-button']"
+                      >
+                        Jumping
+                      </button>
+                      <button
+                        mat-button
+                        (click)="chartButtonChange('skill')"
+                        [ngClass]="[selectedChartButton == 'skill' ? 'active-button' : 'normal-button']"
+                      >
+                        Skill
+                      </button>
+                    </div>
+
+                    <mat-form-field appearance="fill" class="data-form-field">
+                      <mat-label>Date range</mat-label>
+                      <mat-date-range-input [rangePicker]="chartrangePicker">
+                        <input matStartDate placeholder="Start date" />
+                        <input matEndDate placeholder="End date" />
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matSuffix [for]="chartrangePicker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #chartrangePicker>
+                        <mat-date-range-picker-actions>
+                          <button mat-button matDateRangePickerCancel>Cancel</button>
+                          <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                        </mat-date-range-picker-actions>
+                      </mat-date-range-picker>
+                    </mat-form-field>
+                  </div>
+
+                  <app-line-chart
+                    [lineChartData]="lineChartData"
+                    [lineChartLabels]="lineChartLabels"
+                    [lineChartOptions]="lineChartOptions"
+                    [lineChartColors]="lineChartColors"
+                    [lineChartLegend]="lineChartLegend"
+                    [lineChartPlugins]="lineChartPlugins"
+                    [gradient]="lineGradient"
+                    [height]="32"
+                  >
+                  </app-line-chart>
                 </div>
               </div>
             </div>
-          </mat-tab>
-          <mat-tab class="pill-mat-tab" label="Tab 3"> </mat-tab>
-          <mat-tab class="pill-mat-tab" label="Tab 4"> </mat-tab>
-          <mat-tab class="pill-mat-tab" label="Tab 5"> </mat-tab>
-          <mat-tab class="pill-mat-tab" label="Reports"> </mat-tab>
-        </mat-tab-group>
-      </div>
+            <div class="col-md-3 col-sx-6 p-l p-r-0 dark-cont">
+              <div class="graph-container">
+                <div class="heading">Performance Overview</div>
+                <app-radar-chart
+                  [radarChartData]="radarChartData"
+                  [radarChartLabels]="radarChartLabels"
+                  [radarChartOptions]="radarChartOptions"
+                  [radarChartColors]="radarChartColors"
+                  [height]="75"
+                ></app-radar-chart>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Practice">
+          <div class="row back-cont">
+            <div class="col-md-12 col-xs-12 analysis-container">
+              <div class="row">
+                <div class="col-md-3 col-xs-3 practice">
+                  <div class="head-text">Upcoming Practices</div>
+                  <div *ngFor="let practice of practices">
+                    <div class="practice-date">Dec 24</div>
+                    <div class="practice-text">Practice Name</div>
+                    <div class="practice-text">Practice Duration</div>
+                    <div class="practice-tag">Tag</div>
+                    <div class="hline"></div>
+                  </div>
+                </div>
+                <div class="col-md-9 col-xs-9 p-t-md">
+                  <app-calendar
+                    navigation="all"
+                    size="large"
+                    [view]="view"
+                    [selectedView]="selectedView"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    startTime="0"
+                    endTime="23"
+                  ></app-calendar>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Tab 3"> </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Tab 4"> </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Tab 5"> </mat-tab>
+        <mat-tab class="pill-mat-tab" label="Reports"> </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

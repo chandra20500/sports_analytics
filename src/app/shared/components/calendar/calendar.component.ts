@@ -139,9 +139,11 @@ export class CalendarComponent implements OnInit {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
   goToPage(url, date) {
     this.router.navigateByUrl(url + '?date=' + date);
   }
+
   eventClicked(date: Date) {
     this.goToPage('practice-plans/details', date);
   }

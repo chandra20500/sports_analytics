@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ];
 
   ngOnInit(): void {
-    localStorage.setItem('role', 'coach');
+    localStorage.setItem('role', 'admin');
     this.checkDashboardRoutes(this.router.url);
   }
 

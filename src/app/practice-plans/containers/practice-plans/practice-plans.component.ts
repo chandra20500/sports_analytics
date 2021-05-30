@@ -5,6 +5,8 @@ import { Label } from 'ng2-charts';
 import { Router } from '@angular/router';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEvent, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDrillsComponent } from '../../components/add-drills/add-drills.component';
 
 const colors: any = {
   red: {
@@ -193,9 +195,27 @@ export class PracticePlansComponent implements OnInit {
   tradeData = new MatTableDataSource(this.tradeRecords);
   displayedColumns: string[] = ['drill_name', 'category', 'total_hours'];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  addDrill() {
+    const dialogRef = this.dialog.open(AddDrillsComponent, {
+      width: '60%',
+      disableClose: false,
+      data: {
+        type: 'add',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+        // this.apiService.getAllDrills().subscribe((data: any) => {
+        //   this.drills = data.data;
+        // });
+      }
+    });
+  }
 
   goToPage(url) {
     this.router.navigateByUrl(url);

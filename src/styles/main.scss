@@ -75,3 +75,74 @@ body {
 .mat-progress-bar-fill::after {
   background-color: #376dc8;
 }
+
+td.mat-cell {
+  font-size: 12px !important;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0px !important;
+}
+
+td.mat-cell:first-of-type {
+  text-align: start !important;
+  padding-left: 10px !important;
+  font-weight: 600 !important;
+}
+
+th.mat-header-cell:first-of-type {
+  text-align: start !important;
+  padding-left: 10px !important;
+}
+
+th.mat-header-cell {
+  padding: 0px !important;
+}
+
+.menu-cont {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #eaeaea;
+  min-width: 90%;
+  min-height: 40px;
+  .input-select {
+    width: 150px;
+    height: 38px;
+    font-family: 'Montserrat' !important;
+    font-size: 15px;
+    padding-left: 10px;
+    border: 1px solid rgb(221, 219, 218);
+    border-radius: 1px;
+    padding-top: 8px;
+  }
+  .vline {
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #e6e6e6;
+  }
+  .active-option-text {
+    background: #e4ebf7 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    font-weight: 600;
+    height: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .option-text {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .add-option {
+    background: #e4ebf7 0% 0% no-repeat padding-box;
+    border: 1px dashed #376dc8;
+    border-radius: 3px;
+    color: #376dc8;
+    font-family: 'Montserrat';
+    margin: 12px;
+    margin-left: 50px;
+  }
+}

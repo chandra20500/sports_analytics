@@ -27,7 +27,8 @@ const colors: any = {
   styleUrls: ['./player-details.component.scss'],
 })
 export class PlayerDetailsComponent implements OnInit {
-  selectedButton = 'tab3';
+  selectedTableButton = 'physical';
+  selectedChartButton = 'physical';
   dashBarChartLabels: Label[] = ['Drill1', 'Drill2', 'Drill3'];
   dashBarChartLegend = true;
   dashBarChartPlugins = [
@@ -65,13 +66,13 @@ export class PlayerDetailsComponent implements OnInit {
       data: [120, 150, 120],
       label: 'This player',
       stack: 'a',
-      barThickness: 7.8,
+      barThickness: 15,
     },
     {
       data: [200, 190, 150],
       label: 'Batch average',
       stack: 'b',
-      barThickness: 7.8,
+      barThickness: 15,
     },
   ];
   dashBarGradient = { gradient: false };
@@ -214,7 +215,7 @@ export class PlayerDetailsComponent implements OnInit {
   lineChartLegend = true;
   lineChartType: ChartType = 'line';
   lineChartPlugins = [];
-  lineGradient;
+  lineGradient = { gradient: false };
 
   radarChartOptions: RadialChartOptions = {
     responsive: true,
@@ -275,6 +276,16 @@ export class PlayerDetailsComponent implements OnInit {
     { data: [65, 60, 40, 30, 25, 20, 90, 70], label: 'Player A', type: 'polarArea' },
     { data: [5, 95, 20, 81, 36, 55, 40, 56], label: 'Average', order: 1 },
   ];
+  radarChartColors = [
+    {
+      backgroundColor: '#ffffff',
+      borderColor: 'rgba(0,0,0,0)',
+    },
+    {
+      backgroundColor: '#ffffff',
+      borderColor: 'rgba(0,0,0,0)',
+    },
+  ];
   radarChartType: ChartType = 'radar';
 
   view: CalendarView = CalendarView.Month;
@@ -310,41 +321,6 @@ export class PlayerDetailsComponent implements OnInit {
   ];
   tabvalue = 'pergame';
   tabValueDrill = 'physical';
-
-  seasonlements = [
-    {
-      season: '2018-19',
-      age: 19,
-      gp: 68,
-      mp: 31.1,
-      fg: 44.5,
-      pt3: 34,
-      ft: 79,
-      reb: 4.5,
-      ast: 4.9,
-      stl: 1.6,
-      blk: 0.3,
-      tov: 2.4,
-      pf: 1.8,
-      pts: 19.9,
-    },
-    {
-      season: '2019-20',
-      age: 20,
-      gp: 68,
-      mp: 31.1,
-      fg: 44.5,
-      pt3: 34,
-      ft: 79,
-      reb: 4.5,
-      ast: 4.9,
-      stl: 1.6,
-      blk: 0.3,
-      tov: 2.4,
-      pf: 1.8,
-      pts: 38,
-    },
-  ];
 
   recentColumns: string[] = ['date', 'opp', 'gr', 'mp', 'fg', 'pt3'];
 
@@ -391,25 +367,7 @@ export class PlayerDetailsComponent implements OnInit {
     },
   ];
 
-  seasonData = new MatTableDataSource(this.seasonlements);
   recentData = new MatTableDataSource(this.recentlements);
-
-  seasonColumns: string[] = [
-    'season',
-    'age',
-    'gp',
-    'mp',
-    'fg',
-    'pt3',
-    'ft',
-    'reb',
-    'ast',
-    'stl',
-    'blk',
-    'tov',
-    'pf',
-    'pts',
-  ];
 
   practices = [1, 1, 1, 1];
 
@@ -424,10 +382,16 @@ export class PlayerDetailsComponent implements OnInit {
   tabselect(value) {
     this.tabvalue = value;
   }
+
   tabselectdrill(value) {
     this.tabValueDrill = value;
   }
-  buttonChange(name) {
-    this.selectedButton = name;
+
+  tableButtonChange(name) {
+    this.selectedTableButton = name;
+  }
+
+  chartButtonChange(name) {
+    this.selectedChartButton = name;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { DateRange } from '@angular/material/datepicker';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { addHours, format, addDays, subDays, isAfter, addMinutes } from 'date-fns';
 import { CalendarEvent, CalendarEventAction, CalendarView } from 'angular-calendar';
@@ -93,7 +94,7 @@ export class AddPracticePlansComponent implements OnInit {
   selectedPlayers = [];
   selectedDrills = [];
   date = format(new Date(), 'MM-dd-yyyy');
-  calendarDate = new Date();
+  calendarDate = new DateRange(new Date(), addDays(new Date(), 2));
   startTime = '08:00';
   endTime = '14:00';
   minDate = new Date();
