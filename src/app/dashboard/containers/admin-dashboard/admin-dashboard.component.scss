@@ -1,59 +1,28 @@
 .container-p {
   margin: 30px;
-  margin-top: 6%;
-  padding-bottom: 3%;
+  margin-top: 84px;
 
   .head {
     font-size: 14px;
     font-weight: 500;
     color: #242424;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
-  .pad-right-zero {
-    padding-right: 0px;
-  }
-
-  .pad-zero {
-    padding: 0px;
-  }
-
-  .marg-btm {
-    margin-bottom: 20px;
-  }
-
-  .pad-top-zero {
-    padding-top: 0px;
-  }
-
-  .text-c {
-    text-align: center;
-  }
-
-  .disp-flex {
-    display: flex;
-  }
-
-  .top-layout {
-    padding-left: 6px;
-    margin-bottom: 10px !important;
-  }
-
-  .drill-usg-align {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-
-  .button-group {
+  .normal-button {
+    margin-bottom: 15px;
     background: #ffffff 0% 0% no-repeat padding-box;
     border-radius: 4px;
     color: #323336;
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 400;
+    padding: 0px 10px !important;
+    height: 35px;
   }
 
   .active-button {
+    margin-bottom: 15px;
     background: #376dc8 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 4px;
@@ -61,111 +30,50 @@
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 600;
+    padding: 0px 10px !important;
+    height: 35px;
   }
 
-  .drill-button-group {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border: 1px solid #e8e8e8;
-    color: #323336;
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 12px;
-  }
-
-  .drill-active-button {
-    background: #376dc8 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+  .button-group {
+    border: 1px solid #d9d9d9;
     border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 12px;
-  }
+    height: 35px;
+    .normal-button {
+      margin-bottom: 15px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border-radius: 4px;
+      color: #323336;
+      font-family: 'Montserrat';
+      font-size: 15px;
+      font-weight: 400;
+      padding: 0px 10px !important;
+      height: 35px;
+    }
 
-  .drill-btn-bdr {
-    border-top: 1px solid #e8e8e8;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 1px solid #e8e8e8;
-  }
-
-  .drill-last-btn-bdr {
-    border-top: 1px solid #e8e8e8;
-    border-bottom: 1px solid #e8e8e8;
-    border-right: 1px solid #e8e8e8;
-    border-left: 0px;
-  }
-
-  .drill-first-btn-bdr {
-    border-top: 1px solid #e8e8e8;
-    border-bottom: 1px solid #e8e8e8;
-    border-left: 1px solid #e8e8e8;
-    border-right: 0px;
+    .active-button {
+      margin-bottom: 15px;
+      background: #376dc8 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 4px;
+      color: #ffffff;
+      font-family: 'Montserrat';
+      font-size: 15px;
+      font-weight: 600;
+      padding: 0px 10px !important;
+      height: 35px;
+    }
   }
 
   .team-drill-content {
     overflow-y: auto;
-    height: 435px;
+    min-height: 150px;
+    height: 360px;
+    margin-top: 10px !important;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 
     &::-webkit-scrollbar {
       display: none;
-    }
-  }
-
-  .data-sec {
-    margin-bottom: 26px !important;
-  }
-
-  .drill-usage-sec {
-    margin-bottom: 10px !important;
-  }
-
-  .menu-cont {
-    margin-bottom: 15px !important;
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border: 1px solid #eaeaea;
-    width: 90%;
-    height: 40px;
-    .input-select {
-      width: 150px;
-      height: 33px;
-      font-family: 'Montserrat' !important;
-      font-size: 13px;
-      padding-left: 10px;
-      border: 1px solid rgb(221, 219, 218);
-      border-radius: 1px;
-      padding-top: 5px;
-    }
-    .vline {
-      height: 100%;
-      margin-left: 10px;
-      margin-right: 10px;
-      border: 1px solid #e6e6e6;
-    }
-    .active-option-text {
-      background: #e4ebf7 0% 0% no-repeat padding-box;
-      border-radius: 3px;
-      font-weight: 600;
-      height: 22px;
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-    .option-text {
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 7px;
-      padding-right: 7px;
-    }
-    .add-option {
-      background: #e4ebf7 0% 0% no-repeat padding-box;
-      border: 1px dashed #376dc8;
-      border-radius: 3px;
-      color: #376dc8;
-      font-family: 'Montserrat';
-      margin: 5px;
-      margin-left: 50px;
     }
   }
 
@@ -185,7 +93,7 @@
   }
 
   .practice {
-    margin-bottom: 10px !important;
+    margin-bottom: 15px !important;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 20px;
@@ -227,8 +135,8 @@
   .label {
     color: #414141;
     font-size: 13px;
-    font-weight: 600;
-    padding-top: 5px;
+    font-weight: 500;
+    margin-top: 15px;
     padding-bottom: 5px;
   }
 
@@ -241,12 +149,13 @@
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #eaeaea;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding-top: 5px;
   }
 
   .tableclass {
     width: 100%;
+    max-height: 100%;
     border-radius: 5px 5px 0px 0px;
     overflow-y: auto;
 
@@ -260,14 +169,20 @@
       color: #393939;
       font-size: 13px;
       font-weight: 500;
-      text-align: center;
+    }
+
+    .table-filt {
+      color: #393939;
+      font-weight: 500;
+      font-size: 13px;
+      padding-top: 10px;
+      padding-left: 5px;
     }
 
     .tablecontent {
       color: #393939;
-      font-size: 13px;
+      font-size: 18px;
       font-weight: 400;
-      text-align: center;
     }
 
     .mat-row:nth-child(odd) {
@@ -285,27 +200,6 @@
       text-align: center;
       text-align: left !important;
       color: #0042b1;
-    }
-  }
-
-  .const-dash {
-    min-height: 100px;
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding-bottom: 20px;
-    padding-top: 10px !important;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .avg-practice-hrs {
-    margin-right: 12px;
-    padding-right: 6px;
-    padding-left: 12px;
-
-    .line-chart-container {
-      padding-top: 24px;
     }
   }
 
@@ -330,10 +224,12 @@
     background: #ffffff 0% 0% no-repeat padding-box;
     border-radius: 6px;
     padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     .head {
       margin-left: 10px;
-      padding-top: 15px;
+      padding-top: 10px;
       font-size: 13px;
       font-weight: 600;
     }
@@ -349,8 +245,7 @@
 
     .dropdown-menu {
       margin-top: 10px;
-      margin-left: auto;
-      margin-right: 15px;
+      margin-left: 15px;
       width: 100px;
       height: 25px;
       font-family: 'Montserrat' !important;
@@ -555,21 +450,9 @@
   }
 }
 
-::ng-deep {
-  td.mat-cell {
-    font-size: 12px !important;
-  }
-
-  td.mat-cell:last-of-type {
-    padding-right: 0px !important;
-  }
-
-  td.mat-cell:first-of-type {
-    font-weight: 600 !important;
-  }
-
-  th.mat-header-cell:first-of-type {
-    text-align: start !important;
-    padding-left: 25px !important;
-  }
+::ng-deep.mat-menu-option {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
 }

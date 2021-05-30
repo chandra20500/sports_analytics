@@ -1,21 +1,73 @@
-.player-records {
-  padding-left: 4px;
-  color: #404040;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  .name {
-    float: left;
-    font-size: 12px;
-    font-weight: 500;
-    padding-right: 10px;
+.large {
+  .player-records {
+    padding-left: 4px;
+    color: #404040;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    .name {
+      float: left;
+      font-size: 14px;
+      font-weight: 500;
+      padding-right: 10px;
+    }
+    .progress {
+      flex-grow: 3;
+    }
+    .exhausted {
+      font-size: 13px;
+      font-weight: 600;
+      padding-left: 15px;
+      width: 120px;
+    }
   }
-  .progress {
-    flex-grow: 3;
+
+  .mat-progress-bar-fill::after {
+    background-color: #376dc8;
   }
-  .exhausted {
-    font-size: 11px;
-    font-weight: 600;
-    padding-left: 15px;
-    width: 100px;
+
+  .mat-progress-bar-buffer {
+    background: white;
+  }
+
+  .mat-progress-bar {
+    border: 1px solid #e5e5e5;
+    height: 18px !important;
+  }
+}
+
+.small {
+  .player-records {
+    padding-left: 4px;
+    color: #404040;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    .name {
+      float: left;
+      padding-left: 7px;
+      font-size: 11px;
+      font-weight: 500;
+      padding-right: 10px;
+    }
+    .progress {
+      flex-grow: 3;
+    }
+    .exhausted {
+      font-size: 10px;
+      font-weight: 600;
+      padding-left: 15px;
+      width: 100px;
+    }
+    .mat-progress-bar-fill::after {
+      background-color: #376dc8;
+    }
+
+    .mat-progress-bar-buffer {
+      background: white;
+    }
+
+    .mat-progress-bar {
+      border: 1px solid #e5e5e5;
+      height: 14px !important;
+    }
   }
 }

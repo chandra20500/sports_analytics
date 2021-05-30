@@ -69,7 +69,7 @@
     <mat-option value="month"> Current Month </mat-option>
   </mat-select>
 </div>
-<div [ngSwitch]="view" class="p-t-md">
+<div [ngSwitch]="view">
   <div [ngClass]="[size == 'small' ? 'small' : 'large']">
     <mwl-calendar-month-view
       *ngSwitchCase="CalendarView.Month"

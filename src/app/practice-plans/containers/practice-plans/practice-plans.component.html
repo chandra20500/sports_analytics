@@ -1,8 +1,8 @@
 <div class="container-p">
   <div class="row">
-    <div class="bread-path">Practice Plans</div>
+    <div class="bread-path" style="padding-left: 5px">Practice Plans</div>
     <mat-icon class="dashboard-icon">dashboard</mat-icon>
-    <button mat-button class="drill-button">
+    <button mat-button class="drill-button" (click)="addDrill()">
       <div class="text">Create Drill</div>
     </button>
     <button mat-button class="practice-button" (click)="goToPage('practice-plans/create')">
@@ -70,7 +70,7 @@
               [doughnutChartColors]="doughnutChartColors"
               [doughnutChartLegend]="doughnutChartLegend"
               [doughnutChartPlugins]="doughnutChartPlugins"
-              height="60"
+              height="50"
             ></app-donut-chart>
             <div class="row legend" *ngFor="let legend of legends">
               <div class="leg" [style]="'background-color:' + legend.color"></div>
@@ -80,10 +80,10 @@
             <div class="vline"></div>
           </div>
           <div class="col-md-7 col-xs-7">
-            <div class="row p-t">
+            <div class="row">
               <div class="head">Most Common Drills</div>
-              <button mat-button class="practice-button" (click)="goToPage('practice-plans/create')">
-                <div class="text">Create Practice</div>
+              <button mat-button class="practice-button">
+                <div class="text">View All</div>
               </button>
             </div>
             <div class="table-cont">
@@ -118,7 +118,7 @@
       <div class="cont-head">Players with High Practice load</div>
 
       <div class="cont p-a">
-        <app-progress-chart [data]="players"></app-progress-chart>
+        <app-progress-chart [data]="players" size="large"></app-progress-chart>
       </div>
     </div>
   </div>

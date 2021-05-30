@@ -22,12 +22,16 @@ $app-theme: mat-light-theme(
 );
 
 .pill-tab {
+  .mat-tab-label-container {
+    height: 40px;
+  }
+
   .mat-tab-list .mat-tab-labels .mat-tab-label-active:before {
     content: '';
     position: absolute;
     background-color: blue;
     border-radius: 4px;
-    bottom: 0px;
+    bottom: 7px;
     width: 16px;
     height: 4px;
     background: #376dc8 0% 0% no-repeat padding-box;
@@ -40,14 +44,14 @@ $app-theme: mat-light-theme(
   .mat-tab-list .mat-tab-labels .mat-tab-label-active {
     color: #376dc8;
     font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .mat-tab-label-content {
     font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .mat-ink-bar {
@@ -56,6 +60,15 @@ $app-theme: mat-light-theme(
   .flex {
     display: flex;
   }
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+  background-color: #376dc8 !important; /* Red background for example */
 }
 
 .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background,
@@ -167,19 +180,6 @@ mat-dialog-container {
 .mat-row:nth-child(even) {
   background: #eceef2 0% 0% no-repeat padding-box;
   height: 36px !important;
-}
-
-.mat-progress-bar-fill::after {
-  background-color: #376dc8;
-}
-
-.mat-progress-bar-buffer {
-  background: white;
-}
-
-.mat-progress-bar {
-  border: 1px solid #e5e5e5;
-  height: 15px !important;
 }
 
 .paddedSelect .mat-select-trigger {

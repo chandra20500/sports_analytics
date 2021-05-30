@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProgressChartComponent implements OnInit {
   @Input() data;
+  @Input() size;
   constructor() {}
 
   ngOnInit(): void {}

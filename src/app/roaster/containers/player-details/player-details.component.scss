@@ -6,52 +6,6 @@
     margin: 0 !important;
   }
 
-  /* chart label start */
-  .legend {
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 100%;
-    flex-direction: row-reverse;
-    .value {
-      margin-left: auto;
-      margin-right: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #313131;
-    }
-    .leg {
-      margin-top: 3px;
-      height: 8px;
-      width: 8px;
-      margin-right: 5px;
-    }
-
-    .legend-label1 {
-      background-color: #f98436;
-      height: 8px;
-      width: 8px;
-      margin-top: 1.5px;
-    }
-
-    .legend-label2 {
-      background-color: #376dc8;
-      height: 8px;
-      width: 8px;
-      margin-top: 1.5px;
-    }
-
-    .name {
-      font-size: 9px;
-      font-weight: 500;
-      display: flex;
-      color: #8d8d8d;
-      margin-bottom: 8px;
-      margin-right: 5px;
-      text-align: center;
-    }
-  }
-  /* chart label ends*/
-
   .card-container {
     background: #ffffff 0% 0% no-repeat padding-box;
     border-radius: 4px;
@@ -59,21 +13,24 @@
     .user-image {
       width: 99px;
       height: 99px;
-      margin-left: auto;
       margin-top: 10px;
     }
+
+    .hline-s {
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      height: 0px;
+      border: 1px solid #e6e6e6;
+      margin-bottom: 10px;
+    }
     .hline {
-      // width: 90%;
-      // margin-left: 5%;
-      // margin-right: 5%;
       height: 0px;
       border: 1px solid #e6e6e6;
       margin-bottom: 10px;
     }
 
     .playername {
-      margin-left: auto;
-      margin-right: 90px;
       padding-top: 15px;
       .first-name {
         color: #a9a9a9;
@@ -88,100 +45,18 @@
       }
     }
     .headkey {
-      padding-bottom: 10px;
-      width: 110px;
+      padding-bottom: 5px;
+      width: 90px;
       color: #676767;
       font-size: 12px;
-      margin-left: 20px;
+      padding-left: 20px;
     }
 
     .headvalue {
       color: #242424;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
     }
-  }
-
-  ::ng-deep .mat-tab-label .mat-tab-label-content {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-  ::ng-deep.mat-tab-label{
-    min-width: 100px !important;
-    padding: 3px !important;
-    //margin: 3px !important;
-    font: normal normal medium 13px/16px Montserrat;
-    color: #686868;
-    letter-spacing: 0px;
-    font-weight: 800;
-    opacity: 1;
-  }
-  ::ng-deep.mat-tab-label:nth-child(3){
-    margin-left: 100px;
-  }
-  ::ng-deep.mat-tab-label:nth-child(6){
-    margin-left: 50px;
-  }
-  .season-performace {
-    background: #fdfdfd 0% 0% no-repeat padding-box;
-    border-radius: 8px;
-    position: relative;
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    // margin-left: 10px;
-    margin-right: 10px;
-    .data-form-field {
-      background: #ffffff 0% 0% no-repeat padding-box;
-      width: 150px;
-      margin: none;
-      padding-bottom: 0px;
-      position: absolute;
-      right: 0px;
-      font-size: 0.7em;
-    }
-  }
-  .drill-analysis-chart-container {
-    padding-top: 15px;
-    padding-bottom: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 30px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 20px 80px #00000011;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  .drill-analysis-btnGrp {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-  }
-  ::ng-deep.mat-form-field {
-    font: normal normal 14px/18px Montserrat;
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    border-radius: 4px;
-  }
-  ::ng-deep.mat-form-field-flex {
-    background-color: #ffffff;
-    padding: 0;
-  }
-  ::ng-deep.mat-form-field-infix {
-    padding: 0.25em;
-  }
-  ::ng-deep.mat-form-field-underline {
-    display: none;
-  }
-  ::ng-deep .mat-form-field-wrapper {
-    margin-bottom: -1.25em;
-  }
-  .recent-performace {
-    background: #fafafa 0% 0% no-repeat padding-box;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    min-height: 200px;
-    padding-left: 10px;
-    padding-right: 10px;
   }
 
   .heading-small {
@@ -210,14 +85,17 @@
       box-shadow: 0px 20px 45px #00000011;
       border: 1px solid #e6e6e6;
       color: #161616;
-      font: normal normal 600 12px/19px Montserrat;
+      text-align: center !important;
+      font-weight: 600;
+      font-size: 12px;
     }
     .table-head {
       color: #393939;
       font-size: 12px;
       font-weight: 500;
       text-align: center;
-      font: normal normal 600 12px/19px Montserrat;
+      font-weight: 600;
+      font-size: 12px;
       color: #161616;
     }
 
@@ -226,16 +104,16 @@
       font-weight: 400;
       text-align: center;
       padding: 5px;
-      font: normal normal medium 11px/19px Montserrat;
+      font-weight: 500;
+      font-size: 11px;
       color: #414141;
     }
   }
 
   .graph-container {
     background: #376dc8 0% 0% no-repeat padding-box;
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 6px;
     height: 300px;
-    margin-top: 40px;
     margin-bottom: 15px;
     .heading {
       font-size: 13px;
@@ -308,99 +186,138 @@
   color: white;
   font-size: 32px;
 }
-.season-performace {
-  background: #696565 0% 0% no-repeat padding-box;
-}
 
-.button-group {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
-  color: #323336;
-  padding-left: 0px;
-  font-family: 'Montserrat';
-  font-size: 15px;
-  .active-tab {
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    background: #376dc8 !important;
-  }
-  font-weight: 400;
-}
-.weakness-header {
-  flex: 1;
-  margin-left: 50px;
-  font: normal normal bold 14px/18px Montserrat;
-  letter-spacing: 0px;
-  color: #4a4a4a;
-  opacity: 1;
-}
-.chart-dimensions {
-  flex: 1;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 20px 80px #00000011;
-  border-radius: 5px;
-  padding-right: 20px;
-  padding-left: 20px;
-  margin-top: 15px;
-  margin-left: 25px;
-  //margin-right: 25px;
-}
-.drill-category {
-  flex: 1;
-  text-align: left;
-  font: normal normal 600 12px/14px Montserrat;
-  letter-spacing: 0px;
-  color: #161616;
-  opacity: 1;
-}
-.barchart-rank {
-  text-align: right;
-  flex: 1;
-  font: normal normal 600 12px/14px Montserrat;
-  letter-spacing: 0px;
-  color: #161616;
-  opacity: 1;
-  font-weight: 400;
-}
-.legend-display {
-  display: flex;
-}
-.strengths {
-  flex: 1;
-  font: normal normal bold 14px/18px Montserrat;
-  letter-spacing: 0px;
-  color: #4a4a4a;
-}
-.analysis-container-child {
-  display: flex;
-  //margin-left: 25px;
-  margin-right: 25px;
-  margin-top: 10px;
-}
-.chart-dimensions-child {
-  display: flex;
-  margin-top: 10px;
-}
-.drill-cont {
-  flex: 1;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 20px 80px #00000011;
-  border-radius: 5px;
-  padding-right: 20px;
-  padding-left: 20px;
-  margin-top: 15px;
-  //margin-left: 25px;
-  margin-right: 0px;
-}
-.heading-padding {
-  padding-right: 25px;
-  padding-top: 25px;
-}
 .back-cont {
   background: #fdfdfd 0% 0% no-repeat padding-box;
 }
+
 .analysis-container {
-  background: #FDFDFD 0% 0% no-repeat padding-box;
-  margin-top: 35px;
+  background: #fdfdfd 0% 0% no-repeat padding-box;
+  margin-top: 0px;
+  .head-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a4a4a;
+  }
+  .drill-cont {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 20px 80px #00000011;
+    border-radius: 5px;
+
+    .drill-head {
+      padding-left: 10px;
+      padding-top: 15px;
+      padding-bottom: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #161616;
+    }
+    .rank {
+      padding-top: 15px;
+      padding-bottom: 10px;
+      margin-left: auto;
+      padding-right: 10px;
+      font-weight: 600;
+      font-size: 11px;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .button-group {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    height: 35px;
+    .normal-button {
+      margin-bottom: 15px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border-radius: 4px;
+      color: #323336;
+      font-family: 'Montserrat';
+      font-size: 15px;
+      font-weight: 400;
+      padding: 0px 10px !important;
+      height: 35px;
+    }
+
+    .active-button {
+      margin-bottom: 15px;
+      background: #376dc8 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 4px;
+      color: #ffffff;
+      font-family: 'Montserrat';
+      font-size: 15px;
+      font-weight: 600;
+      padding: 0px 10px !important;
+      height: 35px;
+    }
+  }
+
+  .data-form-field {
+    margin-top: -10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    width: 200px;
+    margin-left: auto;
+    padding-bottom: 0px;
+    font-size: 12px;
+  }
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+::ng-deep.mat-tab-labels {
+  background: white;
+}
+
+::ng-deep.mat-tab-nav-bar,
+.mat-tab-header {
+  border-bottom: 0.5px solid rgb(0, 0, 0, 0.1) !important;
+}
+
+.mat-tab-label {
+  background: white;
+  width: 100px !important;
+  padding: 3px !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #686868;
+  letter-spacing: 0px;
+  font-weight: 800;
+  opacity: 1;
+}
+
+// ::ng-deep.mat-tab-label:nth-child(3){
+//   margin-left: 100px;
+// }
+
+// ::ng-deep.mat-tab-label:nth-child(6){
+//   margin-left: 50px;
+// }
+
+::ng-deep.mat-form-field {
+  font: normal normal 14px/18px Montserrat;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+::ng-deep.mat-form-field-flex {
+  background-color: #ffffff;
+  padding: 0;
+}
+::ng-deep.mat-form-field-infix {
+  padding: 0.25em;
+}
+::ng-deep.mat-form-field-underline {
+  display: none;
+}
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
 }

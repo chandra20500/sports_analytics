@@ -15,8 +15,8 @@ export class RadarChartComponent implements OnInit, AfterViewInit {
   @Input() radarChartLabels;
   @Input() radarChartOptions;
   @Input() radarChartColors;
-  @Input() radarChartLegend;
   @Input() height;
+  @Input() gradient;
 
   constructor() {}
 
