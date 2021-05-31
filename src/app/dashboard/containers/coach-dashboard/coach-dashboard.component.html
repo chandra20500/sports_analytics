@@ -1,44 +1,16 @@
 <div class="container-p">
   <div class="row">
-    <div class="card-sec col-md-4 row p-l-0 p-r-0">
-      <div class="cont col-md-6 dash-card cursor-pointer" (click)="goToPage('roaster')">
+    <div class="card-sec col-md-4 p-l-0 p-r-0">
+      <div *ngFor="let item of dashboardCards; let i = index" 
+        (click)="goToPage(item.url)" 
+        class="cont const-dash dash-card cursor-pointer col-md-6 m-b">
         <app-dashboard-card
-          title="Total Rosters"
-          value="{{ dashboardData.totalRosters }}"
-          [src]="'assets/images/dashboard/people.svg'"
-          lightText=""
-          classes=""
-          iconClass="people-icon"
-        ></app-dashboard-card>
-      </div>
-      <div class="cont col-md-6 dash-card cursor-pointer" (click)="goToPage('dashboard/player-list')">
-        <app-dashboard-card
-          title="Total Players"
-          value="{{ dashboardData.totalPlayers }}"
-          [src]="'assets/images/dashboard/groups.svg'"
-          lightText=""
-          classes=""
-          iconClass="prospects-icon"
-        ></app-dashboard-card>
-      </div>
-      <div class="cont col-md-6 dash-card cursor-pointer" (click)="goToPage('practice-plans')">
-        <app-dashboard-card
-          title="Practice Plans"
-          value="{{ dashboardData.practicePlans }}"
-          [src]="'assets/images/dashboard/calender.svg'"
-          lightText=""
-          classes=""
-          iconClass="calender-icon"
-        ></app-dashboard-card>
-      </div>
-      <div class="cont col-md-6 dash-card cursor-pointer" (click)="goToPage('practice-plans')">
-        <app-dashboard-card
-          title="Practice Hours"
-          value="{{ dashboardData.practiceHours }}"
-          [src]="'assets/images/dashboard/transactions.svg'"
-          lightText=""
-          classes=""
-          iconClass="transactions-icon"
+          title="{{item.name}}"
+          value="{{item.value}}"
+          src="{{item.src}}"
+          lightText="{{item.lgText}}"
+          classes="{{item.classes}}"
+          iconClass="{{item.iconClass}}"
         ></app-dashboard-card>
       </div>
     </div>
@@ -95,7 +67,7 @@
       </div>
     </div>
     <div class="col-md-3 col-xs-6 p-r-0 p-l-0 m-t">
-      <div class="cont marg-btm">
+      <div class="cont const-dash m-b">
         <div class="row">
           <div>
             <div class="head">Average Player Practice Duration per Day</div>
@@ -149,7 +121,7 @@
       </div>
     </div>
     <div class="col-md-3 col-xs-12 p-r-0 p-l-0 m-t">
-      <div class="cont practice-load">
+      <div class="cont const-dash practice-load">
         <div class="head">Players with High Practice Load</div>
         <div class="row">
           <div class="players-list col-md-12 col-xs-12">

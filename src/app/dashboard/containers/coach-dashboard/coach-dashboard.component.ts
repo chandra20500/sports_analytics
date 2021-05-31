@@ -370,12 +370,44 @@ export class CoachDashboardComponent implements OnInit {
     },
   ];
 
-  dashboardData = {
-    totalRosters: 4,
-    totalPlayers: 285,
-    practicePlans: 4,
-    practiceHours: 2345,
-  };
+  dashboardCards = [
+    {
+      name: 'Total Rosters',
+      value: 4,
+      src: 'assets/images/dashboard/people.svg',
+      iconClass: 'people-icon',
+      lgText: '',
+      classes: '',
+      url: 'roaster',
+    },
+    {
+      name: 'Total Players',
+      value: 285,
+      src: 'assets/images/dashboard/groups.svg',
+      iconClass: 'prospects-icon',
+      lgText: '',
+      classes: '',
+      url: 'dashboard/player-list',
+    },
+    {
+      name: 'Practice Plans',
+      value: 4,
+      src: 'assets/images/dashboard/calender.svg',
+      iconClass: 'calender-icon',
+      lgText: '',
+      classes: '',
+      url: 'practice-plans',
+    },
+    {
+      name: 'Practice Hours',
+      value: 2345,
+      src: 'assets/images/dashboard/practice-hours.svg',
+      iconClass: 'teams-icon',
+      lgText: '',
+      classes: '',
+      url: 'practice-plans',
+    },
+  ];
 
   constructor(private router: Router) {}
 
