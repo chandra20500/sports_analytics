@@ -194,6 +194,10 @@
 .analysis-container {
   background: #fdfdfd 0% 0% no-repeat padding-box;
   margin-top: 0px;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
   .head-title {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -265,6 +269,10 @@
     padding-bottom: 0px;
     font-size: 12px;
   }
+}
+
+.analysis-container ::-webkit-scrollbar {
+  display: none;
 }
 
 ::ng-deep .mat-tab-label .mat-tab-label-content {
