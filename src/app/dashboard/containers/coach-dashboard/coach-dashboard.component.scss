@@ -17,20 +17,28 @@
       min-height: inherit;
       padding: 0px;
       margin-right: 12px;
-      margin-bottom: 12px;
-      flex: 1 1 25%;
+      flex: 1 1 30%;
     }
   }
+    
+  .const-dash {
+    min-height: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 20px;
+    padding-top: 0px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }    
 
   .practice-load {
     margin-left: 13px;
-    padding-bottom: 34px;
 
     .players-list {
       padding: 0px 12px;
       padding-bottom: 10px;
       overflow-y: auto;
-      max-height: 288px;
+      max-height: 294px;
 
       &::-webkit-scrollbar {
         display: none;

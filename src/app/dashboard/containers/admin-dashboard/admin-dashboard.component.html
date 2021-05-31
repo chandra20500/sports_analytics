@@ -19,48 +19,19 @@
   <div *ngIf="selectedAdminButton == 'overview'" class="m-t">
     <div class="row">
       <div class="card-sec col-md-4 col-xs-12 p-l-0 p-r-0 m-b">
-        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('roaster')">
+        <div *ngFor="let item of dashboardCards; let i = index" 
+          (click)="goToPage(item.url)" 
+          class="cont const-dash dash-card cursor-pointer col-md-6">
           <app-dashboard-card
-            title="Total Rosters"
-            value="{{ adminDashboardData.totalTeams }}"
-            [src]="'assets/images/dashboard/people.svg'"
-            lightText=""
-            classes=""
-            iconClass="people-icon"
+            title="{{item.name}}"
+            value="{{item.value}}"
+            src="{{item.src}}"
+            lightText="{{item.lgText}}"
+            classes="{{item.classes}}"
+            iconClass="{{item.iconClass}}"
           ></app-dashboard-card>
         </div>
-        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('dashboard/player-list')">
-          <app-dashboard-card
-            title="Total Players"
-            value="{{ adminDashboardData.totalPlayers }}"
-            [src]="'assets/images/dashboard/groups.svg'"
-            lightText=""
-            classes=""
-            iconClass="prospects-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('dashboard/drill-list')">
-          <app-dashboard-card
-            title="Created Drills"
-            value="{{ adminDashboardData.createdDrills }}"
-            [src]="'assets/images/dashboard/calender.svg'"
-            lightText=""
-            classes=""
-            iconClass="calender-icon"
-          ></app-dashboard-card>
-        </div>
-        <div class="cont dash-card cursor-pointer col-md-6" (click)="goToPage('practice-plans')">
-          <app-dashboard-card
-            title="Practice Hours"
-            value="{{ adminDashboardData.practiceHours }}"
-            [src]="'assets/images/dashboard/transactions.svg'"
-            lightText=""
-            classes=""
-            iconClass="transactions-icon"
-          ></app-dashboard-card>
-        </div>
-      </div>
-
+      </div>  
       <div class="col-md-8 col-xs-12 p-r-0 p-l-0">
         <div class="cont">
           <div class="row">

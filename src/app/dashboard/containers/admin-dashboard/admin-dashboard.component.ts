@@ -437,13 +437,6 @@ export class AdminDashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['team', 'high', 'low', 'average'];
 
-  adminDashboardData = {
-    totalTeams: 24,
-    totalPlayers: 285,
-    createdDrills: 4,
-    practiceHours: 2345,
-  };
-
   data = [
     {
       name: 'Joe Philip',
@@ -503,6 +496,45 @@ export class AdminDashboardComponent implements OnInit {
   selectedOption = 'Overview';
   teams = ['FC Dallas'];
   selectedTeam = '';
+  dashboardCards = [
+    {
+      name: 'Total Teams',
+      value: 24,
+      src: 'assets/images/dashboard/people.svg',
+      iconClass: 'people-icon',
+      lgText: '',
+      classes: '',
+      url: 'roaster',
+    },
+    {
+      name: 'Total Players',
+      value: 285,
+      src: 'assets/images/dashboard/groups.svg',
+      iconClass: 'prospects-icon',
+      lgText: '',
+      classes: '',
+      url: 'dashboard/player-list',
+    },
+    {
+      name: 'Created Drills',
+      value: 4,
+      src: 'assets/images/dashboard/play-drills.svg',
+      iconClass: 'calender-icon',
+      lgText: '',
+      classes: '',
+      url: 'dashboard/drill-list',
+    },
+    {
+      name: 'Practice Hours',
+      value: 2345,
+      src: 'assets/images/dashboard/practice-hours.svg',
+      iconClass: 'teams-icon',
+      lgText: '',
+      classes: '',
+      url: 'practice-plans',
+    },
+  ];
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
